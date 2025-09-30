@@ -49,17 +49,16 @@ export interface Topic {
   content: ContentBlock[];
 }
 
-// Represents the raw, serializable data for a card (safe for localStorage)
+// Fix: Add RawHomeCard and HomeCard types to be used across the application.
 export interface RawHomeCard {
   id: string;
   title: string;
   color: string;
-  tag?: { name: string; color: string; };
+  tag?: { name: string; color: string };
   status: string;
   href: string;
 }
 
-// Represents the full card object with the React element for rendering
 export interface HomeCard extends RawHomeCard {
   icon: React.ReactNode;
 }
