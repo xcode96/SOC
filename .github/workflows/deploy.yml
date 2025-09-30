@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # your default branch
+      - main
 
 permissions:
   contents: read
@@ -13,8 +13,9 @@ permissions:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    environment: github-pages   # 👈 Required to fix 400 error
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -31,7 +32,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist  # Vite build output
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
