@@ -1,0 +1,5 @@
+{
+  "name": "SOC Concepts Interactive Guide",
+  "description": "An interactive web application that provides a comprehensive guide to Security Operations Center (SOC) concepts, based on provided educational materials. It features a navigable interface to easily browse topics like Threat Intelligence, System Hardening, Incident Response, and more.",
+  "requestFramePermissions": []
+}
