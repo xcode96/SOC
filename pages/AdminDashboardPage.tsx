@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import type { RawHomeCard } from '../types';
 
@@ -20,6 +21,10 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ currentGuides, 
       alert('Title and ID are required.');
       return;
     }
+    if (currentGuides.some(g => g.id === id)) {
+      alert('This ID is already in use. Please choose a unique ID.');
+      return;
+    }
     const newCardData = {
       id,
       title,
@@ -30,6 +35,7 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ currentGuides, 
     // Reset form
     setTitle('');
     setId('');
+    setTagName('');
   };
 
   return (
@@ -80,8 +86,13 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ currentGuides, 
           <ul className="space-y-2 max-h-96 overflow-y-auto">
             {currentGuides.map(guide => (
               <li key={guide.id} className="bg-slate-700/50 p-3 rounded-lg flex justify-between items-center">
-                <span className="font-medium">{guide.title}</span>
-                <span className="text-xs text-slate-400">ID: {guide.id}</span>
+                <div className="flex flex-col">
+                    <span className="font-medium">{guide.title}</span>
+                    <span className="text-xs text-slate-400">ID: {guide.id}</span>
+                </div>
+                <a href={`#/admin/edit/${guide.id}`} className="text-sm bg-sky-600 hover:bg-sky-500 text-white font-bold py-1 px-3 rounded-md transition-colors flex-shrink-0">
+                    Edit
+                </a>
               </li>
             ))}
           </ul>
