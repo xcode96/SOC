@@ -1,4 +1,7 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
 export default defineConfig({
-  base: '/SOC/',   // must match your repo name exactly!
+  base: '/SOC/',   // MUST match repo name
   plugins: [react()],
 })
