@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth h-full">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='url(%23grad)'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%23d946ef;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%234f46e5;stop-opacity:1' /%3e%3c/linearGradient%3e%3c/defs%3e%3cpath d='M12 2.944a11.955 11.955 0 00-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016A11.955 11.955 0 0012 2.944z' /%3e%3c/svg%3e" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOC Concepts Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,16 +19,39 @@
       }
 
       ::-webkit-scrollbar-track {
-        background: rgba(226, 232, 240, 0.5); /* slate-200 with opacity */
+        background: rgba(30, 41, 59, 0.5); /* slate-800 with opacity */
       }
 
       ::-webkit-scrollbar-thumb {
-        background: #94a3b8; /* slate-400 */
+        background: #475569; /* slate-600 */
         border-radius: 4px;
       }
 
       ::-webkit-scrollbar-thumb:hover {
         background: #64748b; /* slate-500 */
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+      
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+
+      .will-change-transform-opacity {
+        will-change: transform, opacity;
       }
     </style>
   <script type="importmap">
@@ -41,9 +64,7 @@
 }
 </script>
 </head>
-  <body class="min-h-screen bg-gradient-to-br from-fuchsia-100 via-sky-200 to-cyan-200 font-sans text-slate-800 antialiased">
-    <div class="p-4 sm:p-6 lg:p-8 h-screen">
-      <div id="root" class="h-full"></div>
-    </div>
+  <body class="h-full bg-slate-900 font-sans text-slate-200 antialiased">
+    <div id="root" class="h-full"></div>
   </body>
 </html>

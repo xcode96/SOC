@@ -1,3 +1,6 @@
+// Fix: Import React namespace to use React.ReactNode type.
+import type React from 'react';
+
 export enum ContentType {
   HEADING2 = 'h2',
   HEADING3 = 'h3',
@@ -22,23 +25,19 @@ export interface TableCell {
     color?: HighlightColor;
 }
 
-// FIX: Define types for content that can have colored parts.
 export type ContentPart = string | ColoredText;
 
 export interface PartedContent {
   parts: ContentPart[];
 }
 
-// FIX: Define a more flexible list item type that can be a string, parted content, or an item with sub-items.
 export type ListItem = string | PartedContent | { text: string; subItems: (string | PartedContent)[] };
 
 
 export interface ContentBlock {
   type: ContentType;
   text?: string;
-  // FIX: Use the new ListItem type to allow for more complex list structures.
   items?: ListItem[];
-  // FIX: Use the new ContentPart type for consistency.
   parts?: ContentPart[]; // For COLORED_PARAGRAPH
   rows?: TableCell[][]; // For TABLE
   color?: HighlightColor; // For HIGHLIGHT blocks
@@ -48,4 +47,19 @@ export interface Topic {
   id: string;
   title: string;
   content: ContentBlock[];
+}
+
+// Represents the raw, serializable data for a card (safe for localStorage)
+export interface RawHomeCard {
+  id: string;
+  title: string;
+  color: string;
+  tag?: { name: string; color: string; };
+  status: string;
+  href: string;
+}
+
+// Represents the full card object with the React element for rendering
+export interface HomeCard extends RawHomeCard {
+  icon: React.ReactNode;
 }

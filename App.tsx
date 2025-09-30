@@ -1,74 +1,139 @@
-import React, { useState, useRef, useEffect } from 'react';
+
+import React, { useState, useEffect } from 'react';
+import HomePage from './pages/HomePage';
+import GuideLayout from './layouts/GuideLayout';
+import AdminLoginPage from './pages/AdminLoginPage';
+import AdminDashboardPage from './pages/AdminDashboardPage';
 import { socConcepts } from './data/socConcepts';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import ContentDisplay from './components/ContentDisplay';
-import ScrollToTopButton from './components/ScrollToTopButton';
-import type { Topic } from './types';
+import { powershellGuide } from './data/powershellGuide';
+import { auditGuide } from './data/auditGuide';
+import { cardData as defaultCardData, icons } from './data/homeCards';
+import { ContentType, type Topic, type HomeCard, type RawHomeCard } from './types';
+
+const defaultGuides: Record<string, { title: string; topics: Topic[] }> = {
+  soc: { title: "SOC Concepts Guide", topics: socConcepts },
+  powershell: { title: "PowerShell Mastery", topics: powershellGuide },
+  audit: { title: "Cybersecurity Auditing", topics: auditGuide },
+};
 
 const App: React.FC = () => {
-  const [selectedTopicId, setSelectedTopicId] = useState<string>(socConcepts[0].id);
-  const [showScrollButton, setShowScrollButton] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const mainContentRef = useRef<HTMLElement>(null);
+  const [route, setRoute] = useState(window.location.hash || '#/home');
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return sessionStorage.getItem('isLoggedIn') === 'true';
+  });
+  
+  const [guides, setGuides] = useState<Record<string, { title: string; topics: Topic[] }>>(() => {
+    const savedGuides = localStorage.getItem('guides');
+    try {
+      return savedGuides ? JSON.parse(savedGuides) : defaultGuides;
+    } catch (e) {
+      console.error("Failed to parse guides from localStorage", e);
+      return defaultGuides;
+    }
+  });
+
+  const [rawHomeCards, setRawHomeCards] = useState<RawHomeCard[]>(() => {
+    const savedCards = localStorage.getItem('rawHomeCards');
+    try {
+      return savedCards ? JSON.parse(savedCards) : defaultCardData;
+    } catch (e) {
+      console.error("Failed to parse rawHomeCards from localStorage", e);
+      return defaultCardData;
+    }
+  });
 
   useEffect(() => {
-    if (mainContentRef.current) {
-      mainContentRef.current.scrollTop = 0;
+    localStorage.setItem('guides', JSON.stringify(guides));
+    localStorage.setItem('rawHomeCards', JSON.stringify(rawHomeCards));
+  }, [guides, rawHomeCards]);
+
+  useEffect(() => {
+    sessionStorage.setItem('isLoggedIn', String(isLoggedIn));
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setRoute(window.location.hash || '#/home');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
+  const handleLogin = (success: boolean) => {
+    if (success) {
+      setIsLoggedIn(true);
+      window.location.hash = '#/admin/dashboard';
     }
-  }, [selectedTopicId]);
+  };
+
+  const handleCreateGuide = (newCardData: Omit<RawHomeCard, 'status' | 'href'>) => {
+    const newGuideId = newCardData.id;
+    
+    const newGuide: { title: string; topics: Topic[] } = {
+      title: `${newCardData.title} Guide`,
+      topics: [
+        {
+          id: 'intro',
+          title: `Intro to ${newCardData.title}`,
+          content: [
+            { type: ContentType.HEADING2, text: `Welcome to the ${newCardData.title} Guide` },
+            { type: ContentType.PARAGRAPH, text: 'This is a placeholder for your new guide. You can edit the content in the source files.' }
+          ]
+        }
+      ]
+    };
+    
+    const newRawCard: RawHomeCard = {
+      ...newCardData,
+      status: 'Explore the guide',
+      href: `#/guide/${newGuideId}`
+    };
+
+    setGuides(prev => ({ ...prev, [newGuideId]: newGuide }));
+    setRawHomeCards(prev => [...prev, newRawCard]);
+  };
+
+  const handleReset = () => {
+    localStorage.removeItem('guides');
+    localStorage.removeItem('rawHomeCards');
+    setGuides(defaultGuides);
+    setRawHomeCards(defaultCardData);
+    alert('Guides have been reset to default.');
+  };
+
+  // Dynamically construct the full HomeCard objects with icons for rendering.
+  const homeCards: HomeCard[] = rawHomeCards.map(rawCard => ({
+    ...rawCard,
+    icon: icons[rawCard.id] || React.createElement('div', { className: "w-8 h-8 bg-white/20 rounded-lg" })
+  }));
+
+  if (route.startsWith('#/guide/')) {
+    const guideKey = route.split('/')[2];
+    const guide = guides[guideKey];
+    if (guide) {
+      return <GuideLayout guide={guide} />;
+    } else {
+      window.location.hash = '#/home';
+      return null;
+    }
+  }
   
-  const handleSelectTopic = (topicId: string) => {
-    setSelectedTopicId(topicId);
-    setIsSidebarOpen(false); // Close sidebar on topic selection
-  };
+  if (route === '#/admin/login') {
+    return <AdminLoginPage onLogin={handleLogin} />;
+  }
 
-  const handleScroll = () => {
-    if (mainContentRef.current) {
-      setShowScrollButton(mainContentRef.current.scrollTop > 300);
+  if (route === '#/admin/dashboard') {
+    if (!isLoggedIn) {
+      window.location.hash = '#/admin/login';
+      return null;
     }
-  };
+    return <AdminDashboardPage currentGuides={rawHomeCards} onCreateGuide={handleCreateGuide} onReset={handleReset} />;
+  }
 
-  const scrollToTop = () => {
-    if (mainContentRef.current) {
-      mainContentRef.current.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  const selectedTopic = socConcepts.find(t => t.id === selectedTopicId) || socConcepts[0];
-
-  return (
-    <div className="flex h-full bg-white/60 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 overflow-hidden relative">
-      {isSidebarOpen && (
-        <div 
-          className="fixed inset-0 bg-black/30 z-20 md:hidden"
-          onClick={() => setIsSidebarOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-      <Sidebar 
-        topics={socConcepts}
-        selectedTopicId={selectedTopicId}
-        onSelectTopic={handleSelectTopic}
-        isOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(false)}
-      />
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Header onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} />
-        <main 
-          ref={mainContentRef}
-          onScroll={handleScroll}
-          className="flex-1 overflow-y-auto p-6 md:p-8 lg:p-10"
-        >
-          <ContentDisplay topic={selectedTopic} />
-        </main>
-        {showScrollButton && <ScrollToTopButton onClick={scrollToTop} />}
-      </div>
-    </div>
-  );
+  return <HomePage homeCards={homeCards} />;
 };
 
 export default App;

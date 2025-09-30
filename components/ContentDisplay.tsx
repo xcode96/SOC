@@ -43,9 +43,9 @@ const ColoredTextSpan: React.FC<{ part: string | ColoredText }> = ({ part }) => 
 const renderContentBlock = (block: ContentBlock, index: number) => {
   switch (block.type) {
     case ContentType.HEADING2:
-      return <h2 key={index} className="text-2xl md:text-3xl font-bold mt-10 mb-4 pb-2 border-b border-white/20 bg-clip-text text-transparent bg-gradient-to-r from-slate-700 to-slate-500">{block.text}</h2>;
+      return <h2 key={index} className="text-2xl md:text-3xl font-bold mt-10 mb-4 pb-2 border-b border-white/20 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-500 to-indigo-500">{block.text}</h2>;
     case ContentType.HEADING3:
-      return <h3 key={index} className="text-xl md:text-2xl font-semibold text-sky-800 mt-8 mb-3">{block.text}</h3>;
+      return <h3 key={index} className="text-xl md:text-2xl font-semibold mt-8 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-500">{block.text}</h3>;
     case ContentType.PARAGRAPH:
       return <p key={index} className="text-slate-700 leading-7 mb-4">{block.text}</p>;
     case ContentType.LIST:
@@ -165,8 +165,11 @@ const renderContentBlock = (block: ContentBlock, index: number) => {
 
 const ContentDisplay: React.FC<ContentDisplayProps> = ({ topic }) => {
   return (
-    <article className="max-w-4xl mx-auto">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600">
+    <article
+      key={topic.id} 
+      className="max-w-4xl mx-auto opacity-0 animate-fade-in-up will-change-transform-opacity"
+    >
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500">
         {topic.title}
       </h1>
       <div>
