@@ -5,9 +5,10 @@ interface HeaderProps {
   onMenuClick: () => void;
   // Fix: Add optional title prop to allow custom header titles.
   title?: string;
+  showBackButton?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick, title }) => {
+const Header: React.FC<HeaderProps> = ({ onMenuClick, title, showBackButton }) => {
   return (
     <header className="p-4 z-10 bg-white/70 backdrop-blur-lg border-b border-slate-900/10 flex items-center justify-between gap-3 flex-shrink-0">
       <div className="flex items-center gap-3">
@@ -28,6 +29,14 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, title }) => {
           {title || 'SOC Concepts Interactive Guide'}
         </h1>
       </div>
+      {showBackButton && (
+        <a href="#/home" className="text-sm font-medium text-sky-600 hover:text-sky-500 transition-colors flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+            </svg>
+            <span>Back to Home</span>
+        </a>
+      )}
     </header>
   );
 };

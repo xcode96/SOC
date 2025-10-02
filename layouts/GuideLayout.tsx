@@ -74,7 +74,7 @@ const GuideLayout: React.FC<GuideLayoutProps> = ({ guide }) => {
           onClose={() => setIsSidebarOpen(false)}
         />
         <div className="flex-1 flex flex-col overflow-hidden bg-white/80">
-          <Header onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} title={guide.title} />
+          <Header onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} title={guide.title} showBackButton />
           <main 
             ref={mainContentRef}
             onScroll={handleScroll}
