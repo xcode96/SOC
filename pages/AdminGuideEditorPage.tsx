@@ -178,6 +178,23 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
     }
   };
 
+  const handleExportGuide = () => {
+    const dataToExport = {
+        title: guide.title,
+        topics: guide.topics,
+    };
+    const dataStr = JSON.stringify(dataToExport, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `guide-${guideId}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
 
   return (
     <div className="h-full text-white p-4 sm:p-8 opacity-0 animate-fade-in will-change-transform-opacity overflow-y-auto">
@@ -193,6 +210,12 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
                 </svg>
                 View Guide
             </a>
+            <button onClick={handleExportGuide} className="text-sm bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-md transition-colors flex-shrink-0 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Export Guide
+            </button>
             <a href="#/admin/dashboard" className="text-sm text-sky-400 hover:text-sky-300 transition-colors">← Back to Dashboard</a>
         </div>
       </header>
