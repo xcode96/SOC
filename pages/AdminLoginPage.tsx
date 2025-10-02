@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 interface AdminLoginPageProps {
@@ -13,7 +14,8 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin }) => {
     e.preventDefault();
     // Updated to handle multiple admin users
     const validUsernames = ['admin', 'dq.adm'];
-    if (validUsernames.includes(username) && password === 'password') {
+    // Fix: Trim whitespace and convert to lowercase for robust validation
+    if (validUsernames.includes(username.trim().toLowerCase()) && password === 'password') {
       setError('');
       onLogin(true);
     } else {
@@ -41,6 +43,7 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin }) => {
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all"
                 placeholder="admin or dq.adm"
+                autoCapitalize="none"
               />
             </div>
             <div>

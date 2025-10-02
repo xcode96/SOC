@@ -1,6 +1,8 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { ContentType } from '../types';
-import type { Topic, ContentBlock, HighlightColor, ColoredText } from '../types';
+import type { Topic, ContentBlock, HighlightColor, ColoredText, ContentPart } from '../types';
+import ExplanationModal from './ExplanationModal';
 
 interface ContentDisplayProps {
   topic: Topic;
@@ -28,6 +30,24 @@ const highlightBlockMap: Record<HighlightColor, { border: string; bg: string; te
     indigo: { border: 'border-indigo-500', bg: 'bg-indigo-50/50', text: 'text-indigo-800' },
 };
 
+const ExplainButton: React.FC<{ onClick: () => void; }> = ({ onClick }) => (
+    <button 
+        onClick={onClick} 
+        className="absolute -top-1 -right-1 p-1.5 text-slate-400 bg-white/80 backdrop-blur-sm rounded-full shadow-sm hover:text-sky-500 hover:scale-110 transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100"
+        aria-label="Explain this concept"
+        title="Explain this concept"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+    </button>
+);
+
+const getTextFromParts = (parts?: ContentPart[]): string => {
+    if (!parts) return '';
+    return parts.map(p => typeof p === 'string' ? p : p.text).join('');
+}
+
 const ColoredTextSpan: React.FC<{ part: string | ColoredText }> = ({ part }) => {
     if (typeof part === 'string') {
         return <span>{part}</span>;
@@ -40,14 +60,29 @@ const ColoredTextSpan: React.FC<{ part: string | ColoredText }> = ({ part }) => 
     );
 };
 
-const renderContentBlock = (block: ContentBlock, index: number) => {
+const renderContentBlock = (block: ContentBlock, index: number, explainHandler: (text: string) => void) => {
   switch (block.type) {
     case ContentType.HEADING2:
-      return <h2 key={index} className="text-2xl md:text-3xl font-bold mt-10 mb-4 pb-2 border-b border-white/20 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-500 to-indigo-500">{block.text}</h2>;
+      return (
+        <div key={index} className="group relative">
+            <h2 className="text-2xl md:text-3xl font-bold mt-10 mb-4 pb-2 border-b border-white/20 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-500 to-indigo-500">{block.text}</h2>
+            <ExplainButton onClick={() => explainHandler(block.text!)} />
+        </div>
+      );
     case ContentType.HEADING3:
-      return <h3 key={index} className="text-xl md:text-2xl font-semibold mt-8 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-500">{block.text}</h3>;
+      return (
+        <div key={index} className="group relative">
+            <h3 className="text-xl md:text-2xl font-semibold mt-8 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-500">{block.text}</h3>
+            <ExplainButton onClick={() => explainHandler(block.text!)} />
+        </div>
+      );
     case ContentType.PARAGRAPH:
-      return <p key={index} className="text-slate-700 leading-7 mb-4">{block.text}</p>;
+      return (
+        <div key={index} className="group relative">
+            <p className="text-slate-700 leading-7 mb-4">{block.text}</p>
+            <ExplainButton onClick={() => explainHandler(block.text!)} />
+        </div>
+      );
     case ContentType.LIST:
       return (
         <ul key={index} className="space-y-3 mb-4 list-disc list-outside pl-5 marker:text-sky-500">
@@ -126,15 +161,19 @@ const renderContentBlock = (block: ContentBlock, index: number) => {
       const color = block.color || 'blue';
       const classes = highlightBlockMap[color];
       return (
-        <div key={index} className={`${classes.bg} border-l-4 ${classes.border} p-4 my-6 rounded-md shadow`}>
+        <div key={index} className={`${classes.bg} border-l-4 ${classes.border} p-4 my-6 rounded-md shadow group relative`}>
           <p className={`${classes.text} leading-6 font-medium`}>{block.text}</p>
+          <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
       );
     case ContentType.COLORED_PARAGRAPH:
       return (
-        <p key={index} className="text-slate-700 leading-7 mb-4 text-base">
-          {block.parts?.map((part, i) => <ColoredTextSpan key={i} part={part} />)}
-        </p>
+        <div key={index} className="group relative">
+            <p className="text-slate-700 leading-7 mb-4 text-base">
+            {block.parts?.map((part, i) => <ColoredTextSpan key={i} part={part} />)}
+            </p>
+            <ExplainButton onClick={() => explainHandler(getTextFromParts(block.parts))} />
+        </div>
       );
     case ContentType.TABLE:
       return (
@@ -164,18 +203,33 @@ const renderContentBlock = (block: ContentBlock, index: number) => {
 };
 
 const ContentDisplay: React.FC<ContentDisplayProps> = ({ topic }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [textToExplain, setTextToExplain] = useState('');
+
+  const handleExplainClick = (text: string) => {
+    setTextToExplain(text);
+    setIsModalOpen(true);
+  };
+
   return (
-    <article
-      key={topic.id} 
-      className="max-w-4xl mx-auto opacity-0 animate-fade-in-up will-change-transform-opacity"
-    >
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500">
-        {topic.title}
-      </h1>
-      <div>
-        {topic.content.map(renderContentBlock)}
-      </div>
-    </article>
+    <>
+        <article
+        key={topic.id} 
+        className="max-w-4xl mx-auto opacity-0 animate-fade-in-up will-change-transform-opacity"
+        >
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500">
+            {topic.title}
+        </h1>
+        <div>
+            {topic.content.map((block, index) => renderContentBlock(block, index, handleExplainClick))}
+        </div>
+        </article>
+        <ExplanationModal 
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            textToExplain={textToExplain}
+        />
+    </>
   );
 };
 

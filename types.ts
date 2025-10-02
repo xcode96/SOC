@@ -1,5 +1,5 @@
-// Fix: Import React namespace to use React.ReactNode type.
-import type React from 'react';
+
+import React from 'react';
 
 export enum ContentType {
   HEADING2 = 'h2',

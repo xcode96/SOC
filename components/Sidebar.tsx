@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import type { Topic } from '../types';
 
 interface SidebarProps {
@@ -10,14 +11,20 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ topics, selectedTopicId, onSelectTopic, isOpen, onClose }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredTopics = topics.filter(topic =>
+    topic.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <aside 
-      className={`fixed inset-y-0 left-0 z-30 w-64 bg-white/60 backdrop-blur-xl border-r border-white/30 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:flex-shrink-0 ${
+      className={`fixed inset-y-0 left-0 z-30 w-64 bg-white/60 backdrop-blur-xl border-r border-white/30 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:flex-shrink-0 flex flex-col ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
-      <div className="p-4">
-        <div className="flex justify-between items-center mb-4">
+      <div className="p-4 flex flex-col h-full">
+        <div className="flex justify-between items-center mb-4 flex-shrink-0">
           <h2 className="text-sm font-semibold text-cyan-600 px-3 tracking-wider uppercase">Topics</h2>
           <button 
             onClick={onClose}
@@ -29,9 +36,26 @@ const Sidebar: React.FC<SidebarProps> = ({ topics, selectedTopicId, onSelectTopi
             </svg>
           </button>
         </div>
-        <nav>
+
+        <div className="relative mb-4 flex-shrink-0">
+          <input
+            type="text"
+            placeholder="Search topics..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-9 pr-3 py-2 rounded-md text-sm bg-black/5 text-slate-700 border border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors placeholder:text-slate-500"
+            aria-label="Search topics"
+          />
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </div>
+        
+        <nav className="flex-grow overflow-y-auto">
           <ul className="space-y-1">
-            {topics.map(topic => (
+            {filteredTopics.map(topic => (
               <li key={topic.id}>
                 <button
                   onClick={() => onSelectTopic(topic.id)}
@@ -45,6 +69,9 @@ const Sidebar: React.FC<SidebarProps> = ({ topics, selectedTopicId, onSelectTopi
                 </button>
               </li>
             ))}
+             {filteredTopics.length === 0 && (
+              <li className="px-3 py-2 text-sm text-slate-500 text-center">No topics found.</li>
+            )}
           </ul>
         </nav>
       </div>

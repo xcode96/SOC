@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
@@ -20,8 +21,10 @@ const GuideLayout: React.FC<GuideLayoutProps> = ({ guide }) => {
 
   useEffect(() => {
     // Reset to the first topic when the guide changes
-    if (guide.topics.length > 0) {
+    if (guide.topics.length > 0 && guide.topics[0].id !== selectedTopicId) {
       setSelectedTopicId(guide.topics[0].id);
+    } else if (guide.topics.length === 0) {
+      setSelectedTopicId('');
     }
   }, [guide]);
 
@@ -77,7 +80,7 @@ const GuideLayout: React.FC<GuideLayoutProps> = ({ guide }) => {
             onScroll={handleScroll}
             className="flex-1 overflow-y-auto p-6 md:p-8 lg:p-10"
           >
-            {selectedTopic ? <ContentDisplay topic={selectedTopic} /> : <p>This guide has no topics yet.</p>}
+            {selectedTopic ? <ContentDisplay topic={selectedTopic} /> : <div className="text-center text-slate-500 pt-10">This guide has no topics yet. Select a guide from the <a href="#/home" className="text-sky-600 underline">homepage</a> or create one in the admin dashboard.</div>}
             <footer className="mt-12 pt-8 border-t border-slate-300/50 text-center text-xs text-slate-500">
               <p>&copy; {new Date().getFullYear()} Interactive Guide. All rights reserved.</p>
             </footer>

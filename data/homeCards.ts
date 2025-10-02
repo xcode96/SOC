@@ -1,4 +1,5 @@
-// Fix: Import React to enable JSX syntax and resolve parsing errors.
+
+// Import React to use React.createElement.
 import React from 'react';
 import type { RawHomeCard } from '../types';
 

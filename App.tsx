@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import GuideLayout from './layouts/GuideLayout';
@@ -107,6 +106,31 @@ const App: React.FC = () => {
     }
   };
 
+  const handleUpdateTopic = (guideId: string, originalTopicId: string, updatedTopic: Topic) => {
+    const guideToUpdate = dynamicGuideData[guideId];
+    if (guideToUpdate) {
+      const updatedTopics = guideToUpdate.topics.map(topic =>
+        topic.id === originalTopicId ? updatedTopic : topic
+      );
+      const updatedGuide = { ...guideToUpdate, topics: updatedTopics };
+      const updatedGuides = { ...dynamicGuideData, [guideId]: updatedGuide };
+      setDynamicGuideData(updatedGuides);
+      localStorage.setItem('guideData', JSON.stringify(updatedGuides));
+    }
+  };
+
+  const handleDeleteTopic = (guideId: string, topicIdToDelete: string) => {
+    const guideToUpdate = dynamicGuideData[guideId];
+    if (guideToUpdate) {
+      const updatedTopics = guideToUpdate.topics.filter(topic => topic.id !== topicIdToDelete);
+      const updatedGuide = { ...guideToUpdate, topics: updatedTopics };
+      const updatedGuides = { ...dynamicGuideData, [guideId]: updatedGuide };
+      setDynamicGuideData(updatedGuides);
+      localStorage.setItem('guideData', JSON.stringify(updatedGuides));
+    }
+  };
+
+
   const handleReset = () => {
     localStorage.removeItem('homeCards');
     localStorage.removeItem('guideData');
@@ -118,29 +142,49 @@ const App: React.FC = () => {
   const renderPage = () => {
     const path = route.split('/');
     
+    // Guide page route
     if (path[1] === 'guide' && path[2] && dynamicGuideData[path[2]]) {
       const guideId = path[2];
       return <GuideLayout guide={dynamicGuideData[guideId]} />;
     }
     
+    // Admin routes
     if (path[1] === 'admin') {
+      // The login page is accessible to everyone.
       if (path[2] === 'login') {
         return <AdminLoginPage onLogin={handleLogin} />;
       }
-      if (isLoggedIn) {
-        if (path[2] === 'dashboard') {
-          return <AdminDashboardPage currentGuides={homeCards} onCreateGuide={handleCreateGuide} onReset={handleReset} />;
-        }
-        if (path[2] === 'edit' && path[3] && dynamicGuideData[path[3]]) {
-          const guideId = path[3];
-          return <AdminGuideEditorPage guide={dynamicGuideData[guideId]} guideId={guideId} onAddNewTopic={handleAddNewTopic} />;
-        }
+      
+      // All other admin routes are protected.
+      if (!isLoggedIn) {
+        // If not logged in, redirect to the login page and render nothing this cycle.
+        // The hash change will trigger a re-render with the correct login page route.
+        window.location.hash = '#/admin/login';
+        return null; 
       }
-       // Redirect to login if not logged in and trying to access a protected admin page
-      window.location.hash = '#/admin/login';
-      return <AdminLoginPage onLogin={handleLogin} />;
+      
+      // From here on, we know the user is logged in.
+      if (path[2] === 'dashboard') {
+        return <AdminDashboardPage currentGuides={homeCards} onCreateGuide={handleCreateGuide} onReset={handleReset} />;
+      }
+      
+      if (path[2] === 'edit' && path[3] && dynamicGuideData[path[3]]) {
+        const guideId = path[3];
+        return <AdminGuideEditorPage 
+          guide={dynamicGuideData[guideId]} 
+          guideId={guideId} 
+          onAddNewTopic={handleAddNewTopic}
+          onUpdateTopic={handleUpdateTopic}
+          onDeleteTopic={handleDeleteTopic}
+        />;
+      }
+
+      // If a logged-in user hits an invalid admin route (e.g., /admin/foo), redirect them to their dashboard.
+      window.location.hash = '#/admin/dashboard';
+      return null;
     }
 
+    // Default to home page
     const cardsWithIcons: HomeCard[] = homeCards.map(card => ({
       ...card,
       icon: icons[card.id] || icons.soc,

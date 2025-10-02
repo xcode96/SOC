@@ -1,4 +1,6 @@
-import { Topic, ContentType } from '../types';
+
+import type { Topic } from '../types';
+import { ContentType } from '../types';
 
 export const socConcepts: Topic[] = [
   {
