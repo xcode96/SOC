@@ -14,9 +14,13 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, validUsers }) 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const cleanedUsername = username.trim().toLowerCase();
-    const userExists = validUsers.some(user => user.username.toLowerCase() === cleanedUsername);
+    const user = validUsers.find(user => user.username.toLowerCase() === cleanedUsername);
     
-    if (userExists && password === 'password') {
+    // Use the user's specific password if it exists, otherwise default to 'password'
+    // for backward compatibility with older user data.
+    const correctPassword = user?.password || 'password';
+
+    if (user && password === correctPassword) {
       setError('');
       onLogin(true);
     } else {
@@ -64,7 +68,7 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, validUsers }) 
             {error && <p className="text-red-400 text-sm text-center">{error}</p>}
             
             <div className="text-center text-xs text-slate-500">
-                <p>Hint: The valid usernames are ({validUsers.map(u=>u.username).join(', ')}) and the password is 'password'.</p>
+                <p>Hint: Valid users are ({validUsers.map(u=>u.username).join(', ')}). The default password is 'password'.</p>
             </div>
 
             <button

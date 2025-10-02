@@ -64,4 +64,5 @@ export interface HomeCard extends RawHomeCard {
 
 export interface AdminUser {
   username: string;
+  password?: string;
 }

@@ -20,13 +20,14 @@ const initialGuideData: Record<string, { title: string; topics: Topic[] }> = {
 };
 
 const defaultAdminUsers: AdminUser[] = [
-    { username: 'admin' },
-    { username: 'dq.adm' },
+    { username: 'admin', password: 'password' },
+    { username: 'dq.adm', password: 'password' },
 ];
 
 const App: React.FC = () => {
   const [route, setRoute] = useState(window.location.hash || '#/home');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isInitializing, setIsInitializing] = useState(true);
   
   const [homeCards, setHomeCards] = useState<RawHomeCard[]>(() => {
     try {
@@ -58,6 +59,23 @@ const App: React.FC = () => {
       return defaultAdminUsers;
     }
   });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    // If a code is present, attempt to log in.
+    if (code) {
+      const userExists = adminUsers.some(user => user.username.toLowerCase() === code.trim().toLowerCase());
+      if (userExists) {
+        setIsLoggedIn(true);
+        // Redirect to admin dashboard
+        window.location.hash = '#/admin/dashboard';
+        // Clean the URL by removing the query parameter
+        window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+      }
+    }
+    setIsInitializing(false);
+  }, [adminUsers]);
 
 
   useEffect(() => {
@@ -192,6 +210,51 @@ const App: React.FC = () => {
     URL.revokeObjectURL(url);
   };
 
+  const handleImportData = (fileContent: string) => {
+    if (!window.confirm('Are you sure you want to import this data? This will overwrite all current guides, cards, and users.')) {
+      return;
+    }
+
+    try {
+      const data = JSON.parse(fileContent);
+      
+      // Basic validation
+      if (data && data.homeCards && data.guideData && data.adminUsers) {
+        setHomeCards(data.homeCards);
+        localStorage.setItem('homeCards', JSON.stringify(data.homeCards));
+        
+        setDynamicGuideData(data.guideData);
+        localStorage.setItem('guideData', JSON.stringify(data.guideData));
+        
+        setAdminUsers(data.adminUsers);
+        localStorage.setItem('adminUsers', JSON.stringify(data.adminUsers));
+        
+        alert('Data imported successfully! The page will now reload.');
+        window.location.reload(); // Reload to ensure all components reflect the new state
+      } else {
+        throw new Error('Invalid data structure in JSON file.');
+      }
+    } catch (error) {
+      console.error("Failed to import data:", error);
+      alert(`Error importing data: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  };
+
+  const handleUpdateGuide = (guideId: string, newGuideData: { title: string; topics: Topic[] }) => {
+    // Update the guide data itself
+    const updatedGuides = { ...dynamicGuideData, [guideId]: newGuideData };
+    setDynamicGuideData(updatedGuides);
+    localStorage.setItem('guideData', JSON.stringify(updatedGuides));
+
+    // Update the corresponding home card's title.
+    const newCardTitle = newGuideData.title.replace(' Interactive Guide', '').replace(' Guide', '');
+    const updatedCards = homeCards.map(card => 
+        card.id === guideId ? { ...card, title: newCardTitle } : card
+    );
+    setHomeCards(updatedCards);
+    localStorage.setItem('homeCards', JSON.stringify(updatedCards));
+  };
+
 
   const renderPage = () => {
     const path = route.split('/');
@@ -227,6 +290,7 @@ const App: React.FC = () => {
             onAddUser={handleAddUser}
             onDeleteUser={handleDeleteUser}
             onExportData={handleExportData}
+            onImportData={handleImportData}
         />;
       }
       
@@ -238,6 +302,7 @@ const App: React.FC = () => {
           onAddNewTopic={handleAddNewTopic}
           onUpdateTopic={handleUpdateTopic}
           onDeleteTopic={handleDeleteTopic}
+          onUpdateGuide={handleUpdateGuide}
         />;
       }
 
@@ -253,6 +318,10 @@ const App: React.FC = () => {
     }));
     return <HomePage homeCards={cardsWithIcons} />;
   };
+
+  if (isInitializing) {
+    return <div className="h-full bg-slate-900" />; // Render a blank screen during initialization
+  }
 
   return <div className="h-full bg-gradient-to-br from-fuchsia-900 via-slate-900 to-sky-900 font-sans text-slate-200">{renderPage()}</div>;
 };

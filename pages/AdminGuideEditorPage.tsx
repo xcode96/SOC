@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ContentType } from '../types';
 import type { Topic, ContentBlock, HighlightColor } from '../types';
 
@@ -9,6 +8,7 @@ interface AdminGuideEditorPageProps {
   onAddNewTopic: (guideId: string, newTopic: { id: string; title: string }) => void;
   onUpdateTopic: (guideId: string, originalTopicId: string, updatedTopic: Topic) => void;
   onDeleteTopic: (guideId: string, topicId: string) => void;
+  onUpdateGuide: (guideId: string, newGuideData: { title: string; topics: Topic[] }) => void;
 }
 
 const ContentBlockAdder: React.FC<{ onAddBlock: (block: ContentBlock) => void }> = ({ onAddBlock }) => {
@@ -94,9 +94,10 @@ const ContentBlockAdder: React.FC<{ onAddBlock: (block: ContentBlock) => void }>
 };
 
 
-const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guideId, onAddNewTopic, onUpdateTopic, onDeleteTopic }) => {
+const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guideId, onAddNewTopic, onUpdateTopic, onDeleteTopic, onUpdateGuide }) => {
   const [newTopicTitle, setNewTopicTitle] = useState('');
   const [newTopicId, setNewTopicId] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // State for inline editing
   const [editingTopicId, setEditingTopicId] = useState<string | null>(null);
@@ -194,10 +195,66 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
+  
+  const handleImportClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) {
+      return;
+    }
+
+    if (!window.confirm('Are you sure you want to import this file? This will overwrite all content for the current guide.')) {
+      if (event.target) {
+        event.target.value = '';
+      }
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const content = e.target?.result;
+      if (typeof content === 'string') {
+        try {
+          const data = JSON.parse(content);
+          // Basic validation
+          if (data && typeof data.title === 'string' && Array.isArray(data.topics)) {
+            onUpdateGuide(guideId, data);
+            alert('Guide imported successfully!');
+          } else {
+            throw new Error('Invalid guide data structure in JSON file.');
+          }
+        } catch (error) {
+          console.error("Failed to import guide:", error);
+          alert(`Error importing guide: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+      } else {
+        alert('Failed to read file content.');
+      }
+    };
+    reader.onerror = () => {
+      alert('Error reading the file.');
+    };
+    reader.readAsText(file);
+
+    // Reset the file input value
+    if (event.target) {
+      event.target.value = '';
+    }
+  };
 
 
   return (
     <div className="h-full text-white p-4 sm:p-8 opacity-0 animate-fade-in will-change-transform-opacity overflow-y-auto">
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        accept=".json"
+        className="hidden"
+      />
       <header className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold">Edit Guide: <span className="text-cyan-400">{guide.title}</span></h1>
@@ -210,6 +267,12 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
                 </svg>
                 View Guide
             </a>
+             <button onClick={handleImportClick} className="text-sm bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-md transition-colors flex-shrink-0 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+                Import Guide
+            </button>
             <button onClick={handleExportGuide} className="text-sm bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-md transition-colors flex-shrink-0 flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

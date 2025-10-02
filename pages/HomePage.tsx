@@ -50,9 +50,6 @@ const HomePage: React.FC<HomePageProps> = ({ homeCards }) => {
         <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
           An interactive collection of guides and resources for modern technologies and concepts.
         </p>
-         <div className="mt-4">
-            <a href="#/admin/login" className="text-sm text-sky-400 hover:text-sky-300 transition-colors">Admin Login</a>
-        </div>
       </header>
       <main>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
