@@ -58,8 +58,8 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({ isOpen, onClose, te
 
         try {
           // Dynamically import the module ONLY when needed.
-          // This solves the Vite "Failed to resolve import" error.
-          const { GoogleGenAI } = await import('https://aistudiocdn.com/@google/genai@^0.14.2');
+          // This uses the import map alias and solves the Vite "Failed to resolve import" error.
+          const { GoogleGenAI } = await import('@google/genai');
 
           // This try...catch block is crucial. It prevents a ReferenceError
           // if `process` is not defined in a browser environment, which would
