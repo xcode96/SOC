@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import ContentDisplay from '../components/ContentDisplay';
@@ -13,17 +13,19 @@ interface GuideLayoutProps {
 }
 
 const GuideLayout: React.FC<GuideLayoutProps> = ({ guide }) => {
-  const [selectedTopicId, setSelectedTopicId] = useState<string>(guide.topics[0].id);
+  const [selectedTopicId, setSelectedTopicId] = useState<string>(guide.topics.length > 0 ? guide.topics[0].id : '');
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const mainContentRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // Reset to the first topic when the guide changes
-    setSelectedTopicId(guide.topics[0].id);
+    if (guide.topics.length > 0) {
+      setSelectedTopicId(guide.topics[0].id);
+    }
   }, [guide]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (mainContentRef.current) {
       mainContentRef.current.scrollTop = 0;
     }
@@ -49,7 +51,7 @@ const GuideLayout: React.FC<GuideLayoutProps> = ({ guide }) => {
     }
   };
 
-  const selectedTopic = guide.topics.find(t => t.id === selectedTopicId) || guide.topics[0];
+  const selectedTopic = guide.topics.find(t => t.id === selectedTopicId) || (guide.topics.length > 0 ? guide.topics[0] : null);
 
   return (
      <div className="p-4 sm:p-6 lg:p-8 h-full opacity-0 animate-fade-in will-change-transform-opacity">
@@ -68,15 +70,15 @@ const GuideLayout: React.FC<GuideLayoutProps> = ({ guide }) => {
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
         />
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden bg-white/80">
           <Header onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} title={guide.title} />
           <main 
             ref={mainContentRef}
             onScroll={handleScroll}
             className="flex-1 overflow-y-auto p-6 md:p-8 lg:p-10"
           >
-            <ContentDisplay topic={selectedTopic} />
-            <footer className="mt-12 pt-8 border-t border-slate-700/50 text-center text-xs text-slate-500">
+            {selectedTopic ? <ContentDisplay topic={selectedTopic} /> : <p>This guide has no topics yet.</p>}
+            <footer className="mt-12 pt-8 border-t border-slate-300/50 text-center text-xs text-slate-500">
               <p>&copy; {new Date().getFullYear()} Interactive Guide. All rights reserved.</p>
             </footer>
           </main>
