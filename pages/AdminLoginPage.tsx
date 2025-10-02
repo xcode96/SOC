@@ -1,21 +1,22 @@
-
 import React, { useState } from 'react';
+import type { AdminUser } from '../types';
 
 interface AdminLoginPageProps {
   onLogin: (success: boolean) => void;
+  validUsers: AdminUser[];
 }
 
-const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin }) => {
+const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, validUsers }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Updated to handle multiple admin users
-    const validUsernames = ['admin', 'dq.adm'];
-    // Fix: Trim whitespace and convert to lowercase for robust validation
-    if (validUsernames.includes(username.trim().toLowerCase()) && password === 'password') {
+    const cleanedUsername = username.trim().toLowerCase();
+    const userExists = validUsers.some(user => user.username.toLowerCase() === cleanedUsername);
+    
+    if (userExists && password === 'password') {
       setError('');
       onLogin(true);
     } else {
@@ -42,7 +43,7 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin }) => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all"
-                placeholder="admin or dq.adm"
+                placeholder="Enter admin username"
                 autoCapitalize="none"
               />
             </div>
@@ -61,6 +62,10 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin }) => {
             </div>
 
             {error && <p className="text-red-400 text-sm text-center">{error}</p>}
+            
+            <div className="text-center text-xs text-slate-500">
+                <p>Hint: The valid usernames are ({validUsers.map(u=>u.username).join(', ')}) and the password is 'password'.</p>
+            </div>
 
             <button
               type="submit"

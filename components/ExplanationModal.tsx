@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 interface ExplanationModalProps {
   isOpen: boolean;
@@ -45,64 +45,81 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
 };
 
 const ExplanationModal: React.FC<ExplanationModalProps> = ({ isOpen, onClose, textToExplain }) => {
-  const [explanation, setExplanation] = useState('');
+  const [explanations, setExplanations] = useState<{ simple?: string; expert?: string }>({});
+  const [explanationMode, setExplanationMode] = useState<'simple' | 'expert'>('simple');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  
+  // Track the text being explained to reset state when it changes
+  const explainedTextRef = useRef<string | null>(null);
 
-  useEffect(() => {
-    if (isOpen && textToExplain) {
-      const getExplanation = async () => {
-        setIsLoading(true);
-        setError('');
-        setExplanation('');
+  const fetchExplanation = useCallback(async (mode: 'simple' | 'expert') => {
+    setIsLoading(true);
+    setError('');
 
-        try {
-          // Dynamically import the module ONLY when needed.
-          // This uses the import map alias and solves the Vite "Failed to resolve import" error.
-          const { GoogleGenAI } = await import('@google/genai');
+    try {
+        // Fix: Use the full CDN URL in the dynamic import to resolve module loading issues with Vite.
+        const genAIModule = await import('https://aistudiocdn.com/@google/genai@^0.14.2');
+        const GoogleGenAI = genAIModule.GoogleGenAI;
 
-          // This try...catch block is crucial. It prevents a ReferenceError
-          // if `process` is not defined in a browser environment, which would
-          // otherwise crash the entire application.
-          let apiKey;
-          try {
-            apiKey = process.env.API_KEY;
-          } catch (e) {
-             throw new Error("API key is not configured.");
-          }
+        // Fix: Safely check for the API key to prevent ReferenceError in browser environments.
+        let apiKey: string | undefined;
+        if (typeof process !== 'undefined' && process.env) {
+          apiKey = process.env.API_KEY;
+        }
 
-          if (!apiKey) {
+        if (!apiKey) {
             throw new Error("API key is not configured.");
-          }
-          
-          const ai = new GoogleGenAI({ apiKey });
+        }
+        
+        const ai = new GoogleGenAI({ apiKey });
 
-          const prompt = `Explain the following concept in simple terms for a beginner. Use bullet points (using * or -) for lists and bold text (using **text**) for key terms. Keep it concise and clear.\n\nConcept: "${textToExplain}"`;
-          
-          const response = await ai.models.generateContent({
+        const prompt = mode === 'simple'
+            ? `Explain the following concept in simple terms for a beginner. Use bullet points (using * or -) for lists and bold text (using **text**) for key terms. Keep it concise and clear.\n\nConcept: "${textToExplain}"`
+            : `Explain the following concept in technical detail for an expert. Assume deep existing knowledge. Use bullet points (using * or -) for lists and bold text (using **text**) for key terms. Be thorough and specific.\n\nConcept: "${textToExplain}"`;
+        
+        const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
             contents: prompt,
-          });
+        });
 
-          setExplanation(response.text);
-
-        } catch (err) {
-          console.error("Error fetching explanation:", err);
-          const errorMessage = (err instanceof Error) ? err.message : 'An unknown error occurred.';
-           if (errorMessage.includes("API key is not configured")) {
-               setError('Sorry, I couldn\'t get an explanation. The AI service has not been configured correctly by the developer.');
-           } else {
-               setError('Sorry, I couldn\'t get an explanation at this time. The AI service may be temporarily unavailable.');
-           }
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      getExplanation();
+        setExplanations(prev => ({ ...prev, [mode]: response.text }));
+    } catch (err) {
+      console.error("Error fetching explanation:", err);
+      const errorMessage = (err instanceof Error) ? err.message : 'An unknown error occurred.';
+       if (errorMessage.includes("API key is not configured")) {
+           setError('Sorry, I couldn\'t get an explanation. The AI service has not been configured correctly by the developer.');
+       } else {
+           setError('Sorry, I couldn\'t get an explanation at this time. The AI service may be temporarily unavailable.');
+       }
+    } finally {
+        setIsLoading(false);
     }
-  }, [isOpen, textToExplain]);
+  }, [textToExplain]);
+
+  // Effect to handle opening the modal or changing the text
+  useEffect(() => {
+    if (isOpen) {
+      // If the text to explain has changed, reset everything.
+      if (textToExplain !== explainedTextRef.current) {
+        setExplanations({});
+        setExplanationMode('simple');
+        explainedTextRef.current = textToExplain;
+        fetchExplanation('simple'); // Kick off the initial fetch
+      }
+    }
+  }, [isOpen, textToExplain, fetchExplanation]);
+
+  // Effect for handling mode changes
+  useEffect(() => {
+    if (isOpen && !explanations[explanationMode]) {
+      fetchExplanation(explanationMode);
+    }
+  }, [explanationMode, isOpen, explanations, fetchExplanation]);
 
   if (!isOpen) return null;
+  
+  const currentExplanation = explanations[explanationMode];
 
   return (
     <div 
@@ -121,7 +138,7 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({ isOpen, onClose, te
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
-            Simplified Explanation
+            AI Explanation
           </h2>
           <button onClick={onClose} className="text-slate-500 hover:text-red-600 transition-colors" aria-label="Close modal">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -130,6 +147,29 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({ isOpen, onClose, te
           </button>
         </header>
 
+        <div className="px-6 pt-4 flex-shrink-0">
+            <div className="inline-flex rounded-md shadow-sm bg-slate-100 p-1" role="group">
+                <button
+                    type="button"
+                    onClick={() => setExplanationMode('simple')}
+                    className={`px-4 py-1.5 text-sm font-medium rounded-md transition-all duration-200 ${
+                        explanationMode === 'simple' ? 'bg-white text-sky-600 shadow' : 'text-slate-600 hover:bg-slate-200'
+                    }`}
+                >
+                    Simple
+                </button>
+                <button
+                    type="button"
+                    onClick={() => setExplanationMode('expert')}
+                    className={`px-4 py-1.5 text-sm font-medium rounded-md transition-all duration-200 ${
+                        explanationMode === 'expert' ? 'bg-white text-sky-600 shadow' : 'text-slate-600 hover:bg-slate-200'
+                    }`}
+                >
+                    Expert
+                </button>
+            </div>
+        </div>
+
         <div className="p-6 overflow-y-auto">
           {isLoading && (
             <div className="flex flex-col items-center justify-center text-slate-500 py-8">
@@ -137,16 +177,16 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({ isOpen, onClose, te
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              <p className="font-semibold">Generating explanation...</p>
+              <p className="font-semibold">Generating {explanationMode} explanation...</p>
             </div>
           )}
-          {error && (
+          {error && !isLoading && (
             <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-md">
                 <p className="text-red-700 font-medium">{error}</p>
             </div>
           )}
-          {explanation && (
-            <MarkdownRenderer content={explanation} />
+          {currentExplanation && !isLoading && !error && (
+            <MarkdownRenderer content={currentExplanation} />
           )}
         </div>
         <footer className="p-3 bg-slate-50 border-t border-slate-200 text-right flex-shrink-0">

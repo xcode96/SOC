@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import GuideLayout from './layouts/GuideLayout';
@@ -11,7 +10,7 @@ import { powershellGuide } from './data/powershellGuide';
 import { auditGuide } from './data/auditGuide';
 // Fix: Import ContentType as a value, and other identifiers as types.
 import { ContentType } from './types';
-import type { Topic, HomeCard, RawHomeCard } from './types';
+import type { Topic, HomeCard, RawHomeCard, AdminUser } from './types';
 
 // Data structure to hold all guides
 const initialGuideData: Record<string, { title: string; topics: Topic[] }> = {
@@ -19,6 +18,11 @@ const initialGuideData: Record<string, { title: string; topics: Topic[] }> = {
   powershell: { title: 'PowerShell Interactive Guide', topics: powershellGuide },
   audit: { title: 'Auditing Interactive Guide', topics: auditGuide },
 };
+
+const defaultAdminUsers: AdminUser[] = [
+    { username: 'admin' },
+    { username: 'dq.adm' },
+];
 
 const App: React.FC = () => {
   const [route, setRoute] = useState(window.location.hash || '#/home');
@@ -44,6 +48,17 @@ const App: React.FC = () => {
       return initialGuideData;
     }
   });
+
+  const [adminUsers, setAdminUsers] = useState<AdminUser[]>(() => {
+    try {
+      const savedUsers = localStorage.getItem('adminUsers');
+      return savedUsers ? JSON.parse(savedUsers) : defaultAdminUsers;
+    } catch (error) {
+      console.error("Failed to parse adminUsers from localStorage", error);
+      return defaultAdminUsers;
+    }
+  });
+
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -132,12 +147,51 @@ const App: React.FC = () => {
 
 
   const handleReset = () => {
-    localStorage.removeItem('homeCards');
-    localStorage.removeItem('guideData');
-    setHomeCards(defaultCardData);
-    setDynamicGuideData(initialGuideData);
-    window.location.hash = '#/admin/dashboard';
+    if (window.confirm('Are you sure you want to reset all guides and users to their default state? This action is permanent.')) {
+        localStorage.removeItem('homeCards');
+        localStorage.removeItem('guideData');
+        localStorage.removeItem('adminUsers');
+        setHomeCards(defaultCardData);
+        setDynamicGuideData(initialGuideData);
+        setAdminUsers(defaultAdminUsers);
+        window.location.hash = '#/admin/dashboard';
+    }
   };
+
+  const handleAddUser = (newUser: AdminUser) => {
+    const updatedUsers = [...adminUsers, newUser];
+    setAdminUsers(updatedUsers);
+    localStorage.setItem('adminUsers', JSON.stringify(updatedUsers));
+  };
+
+  const handleDeleteUser = (usernameToDelete: string) => {
+    if (adminUsers.length <= 1) {
+      alert('Cannot delete the last admin user.');
+      return;
+    }
+    const updatedUsers = adminUsers.filter(user => user.username !== usernameToDelete);
+    setAdminUsers(updatedUsers);
+    localStorage.setItem('adminUsers', JSON.stringify(updatedUsers));
+  };
+  
+  const handleExportData = () => {
+    const dataToExport = {
+      homeCards,
+      guideData: dynamicGuideData,
+      adminUsers
+    };
+    const dataStr = JSON.stringify(dataToExport, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'soc-guide-data-export.json';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
 
   const renderPage = () => {
     const path = route.split('/');
@@ -152,7 +206,7 @@ const App: React.FC = () => {
     if (path[1] === 'admin') {
       // The login page is accessible to everyone.
       if (path[2] === 'login') {
-        return <AdminLoginPage onLogin={handleLogin} />;
+        return <AdminLoginPage onLogin={handleLogin} validUsers={adminUsers} />;
       }
       
       // All other admin routes are protected.
@@ -165,7 +219,15 @@ const App: React.FC = () => {
       
       // From here on, we know the user is logged in.
       if (path[2] === 'dashboard') {
-        return <AdminDashboardPage currentGuides={homeCards} onCreateGuide={handleCreateGuide} onReset={handleReset} />;
+        return <AdminDashboardPage 
+            currentGuides={homeCards} 
+            onCreateGuide={handleCreateGuide} 
+            onReset={handleReset} 
+            adminUsers={adminUsers}
+            onAddUser={handleAddUser}
+            onDeleteUser={handleDeleteUser}
+            onExportData={handleExportData}
+        />;
       }
       
       if (path[2] === 'edit' && path[3] && dynamicGuideData[path[3]]) {

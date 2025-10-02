@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export enum ContentType {
@@ -61,4 +60,8 @@ export interface RawHomeCard {
 
 export interface HomeCard extends RawHomeCard {
   icon: React.ReactNode;
+}
+
+export interface AdminUser {
+  username: string;
 }
