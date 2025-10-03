@@ -2,7 +2,11 @@
 
 > **An interactive, AI-enhanced web application for learning cybersecurity concepts.**
 
-![SOC Guide screenshot](https://storage.googleapis.com/aistudio-ux-team-public/apps/soc-guide/soc-guide-screenshot.png)
+<img width="960" height="540" alt="image" src="https://github.com/user-attachments/assets/5ad6cae4-91af-48ad-a93a-c25a00ad92b8" />
+<img width="953" height="500" alt="image" src="https://github.com/user-attachments/assets/abb0ba2e-21c4-4c5f-ac58-283003bf1d51" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/6e41e5d0-4244-45ce-968e-447b7c668fc9" />
+
+
 
 ## ✨ Overview
 
