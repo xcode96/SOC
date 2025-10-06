@@ -163,6 +163,19 @@ const App: React.FC = () => {
     }
   };
 
+  const handleDeleteGuide = (guideIdToDelete: string) => {
+    // Remove the card
+    const updatedCards = homeCards.filter(card => card.id !== guideIdToDelete);
+    setHomeCards(updatedCards);
+    localStorage.setItem('homeCards', JSON.stringify(updatedCards));
+
+    // Remove the guide data
+    const updatedGuides = { ...dynamicGuideData };
+    delete updatedGuides[guideIdToDelete];
+    setDynamicGuideData(updatedGuides);
+    localStorage.setItem('guideData', JSON.stringify(updatedGuides));
+  };
+
 
   const handleReset = () => {
     if (window.confirm('Are you sure you want to reset all guides and users to their default state? This action is permanent.')) {
@@ -285,6 +298,7 @@ const App: React.FC = () => {
         return <AdminDashboardPage 
             currentGuides={homeCards} 
             onCreateGuide={handleCreateGuide} 
+            onDeleteGuide={handleDeleteGuide}
             onReset={handleReset} 
             adminUsers={adminUsers}
             onAddUser={handleAddUser}
