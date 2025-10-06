@@ -4,6 +4,7 @@ import type { RawHomeCard, AdminUser } from '../types';
 interface AdminDashboardPageProps {
   currentGuides: RawHomeCard[];
   onCreateGuide: (newCardData: Omit<RawHomeCard, 'status' | 'href'>) => void;
+  onDeleteGuide: (guideId: string) => void;
   onReset: () => void;
   adminUsers: AdminUser[];
   onAddUser: (newUser: AdminUser) => void;
@@ -12,7 +13,7 @@ interface AdminDashboardPageProps {
   onImportData: (fileContent: string) => void;
 }
 
-const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ currentGuides, onCreateGuide, onReset, adminUsers, onAddUser, onDeleteUser, onExportData, onImportData }) => {
+const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ currentGuides, onCreateGuide, onDeleteGuide, onReset, adminUsers, onAddUser, onDeleteUser, onExportData, onImportData }) => {
   const [title, setTitle] = useState('');
   const [id, setId] = useState('');
   const [color, setColor] = useState('bg-gray-800/80');
@@ -146,9 +147,21 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ currentGuides, 
                             <span className="font-medium">{guide.title}</span>
                             <span className="text-xs text-slate-400">ID: {guide.id}</span>
                         </div>
-                        <a href={`#/admin/edit/${guide.id}`} className="text-sm bg-sky-600 hover:bg-sky-500 text-white font-bold py-1 px-3 rounded-md transition-colors flex-shrink-0">
-                            Edit
-                        </a>
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                          <a href={`#/admin/edit/${guide.id}`} className="text-sm bg-sky-600 hover:bg-sky-500 text-white font-bold py-1 px-3 rounded-md transition-colors">
+                              Edit
+                          </a>
+                          <button
+                            onClick={() => {
+                              if (window.confirm(`Are you sure you want to delete the "${guide.title}" guide? This action is permanent.`)) {
+                                onDeleteGuide(guide.id);
+                              }
+                            }}
+                            className="text-sm bg-red-600/80 hover:bg-red-500 text-white font-bold py-1 px-3 rounded-md transition-colors"
+                          >
+                            Delete
+                          </button>
+                        </div>
                     </li>
                     ))}
                 </ul>
