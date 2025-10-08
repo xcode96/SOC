@@ -10,7 +10,7 @@ import { powershellGuide } from './data/powershellGuide';
 import { auditGuide } from './data/auditGuide';
 // Fix: Import ContentType as a value, and other identifiers as types.
 import { ContentType } from './types';
-import type { Topic, HomeCard, RawHomeCard, AdminUser, GuideImportData } from './types';
+import type { Topic, HomeCard, RawHomeCard, AdminUser } from './types';
 
 // Data structure to hold all guides
 const initialGuideData: Record<string, { title: string; topics: Topic[] }> = {
@@ -24,43 +24,71 @@ const defaultAdminUsers: AdminUser[] = [
     { username: 'dq.adm', password: 'password' },
 ];
 
+const hardcodedDefaultData = {
+  homeCards: defaultCardData,
+  guideData: initialGuideData,
+  adminUsers: defaultAdminUsers,
+};
+
 const App: React.FC = () => {
   const [route, setRoute] = useState(window.location.hash || '#/home');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
+  const [defaultData, setDefaultData] = useState<typeof hardcodedDefaultData | null>(null);
   
-  const [homeCards, setHomeCards] = useState<RawHomeCard[]>(() => {
-    try {
-      const savedCards = localStorage.getItem('homeCards');
-      return savedCards ? JSON.parse(savedCards) : defaultCardData;
-    } catch (error) {
-      console.error("Failed to parse homeCards from localStorage", error);
-      return defaultCardData;
-    }
-  });
-
-  const [dynamicGuideData, setDynamicGuideData] = useState(() => {
-     try {
-      const savedGuides = localStorage.getItem('guideData');
-      return savedGuides ? JSON.parse(savedGuides) : initialGuideData;
-    } catch (error)
-    {
-      console.error("Failed to parse guideData from localStorage", error);
-      return initialGuideData;
-    }
-  });
-
-  const [adminUsers, setAdminUsers] = useState<AdminUser[]>(() => {
-    try {
-      const savedUsers = localStorage.getItem('adminUsers');
-      return savedUsers ? JSON.parse(savedUsers) : defaultAdminUsers;
-    } catch (error) {
-      console.error("Failed to parse adminUsers from localStorage", error);
-      return defaultAdminUsers;
-    }
-  });
+  const [homeCards, setHomeCards] = useState<RawHomeCard[]>([]);
+  const [dynamicGuideData, setDynamicGuideData] = useState<Record<string, { title: string; topics: Topic[] }>>({});
+  const [adminUsers, setAdminUsers] = useState<AdminUser[]>([]);
 
   useEffect(() => {
+    const loadDefaultData = async () => {
+      try {
+        const response = await fetch('/data.json');
+        if (!response.ok) {
+          throw new Error('data.json not found, using hardcoded fallback.');
+        }
+        const externalData = await response.json();
+        // Basic validation
+        if (externalData.homeCards && externalData.guideData && externalData.adminUsers) {
+          setDefaultData(externalData);
+        } else {
+          console.error('Invalid data.json structure, using hardcoded fallback.');
+          setDefaultData(hardcodedDefaultData);
+        }
+      } catch (error) {
+        console.log((error as Error).message);
+        setDefaultData(hardcodedDefaultData);
+      }
+    };
+    loadDefaultData();
+  }, []);
+
+  useEffect(() => {
+    if (defaultData) {
+      try {
+        const savedCards = localStorage.getItem('homeCards');
+        setHomeCards(savedCards ? JSON.parse(savedCards) : defaultData.homeCards);
+
+        const savedGuides = localStorage.getItem('guideData');
+        setDynamicGuideData(savedGuides ? JSON.parse(savedGuides) : defaultData.guideData);
+
+        const savedUsers = localStorage.getItem('adminUsers');
+        setAdminUsers(savedUsers ? JSON.parse(savedUsers) : defaultData.adminUsers);
+      } catch (error) {
+        console.error("Failed to parse from localStorage, using defaults", error);
+        setHomeCards(defaultData.homeCards);
+        setDynamicGuideData(defaultData.guideData);
+        setAdminUsers(defaultData.adminUsers);
+      }
+      setIsInitializing(false);
+    }
+  }, [defaultData]);
+
+
+  useEffect(() => {
+    // Only run login check once data has been initialized.
+    if (isInitializing || !adminUsers.length) return;
+
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     // If a code is present, attempt to log in.
@@ -74,9 +102,7 @@ const App: React.FC = () => {
         window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
       }
     }
-    setIsInitializing(false);
-  }, [adminUsers]);
-
+  }, [adminUsers, isInitializing]);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -166,12 +192,16 @@ const App: React.FC = () => {
 
   const handleReset = () => {
     if (window.confirm('Are you sure you want to reset all guides and users to their default state? This action is permanent.')) {
+        if (!defaultData) {
+            alert('Default data is not available. Cannot reset.');
+            return;
+        }
         localStorage.removeItem('homeCards');
         localStorage.removeItem('guideData');
         localStorage.removeItem('adminUsers');
-        setHomeCards(defaultCardData);
-        setDynamicGuideData(initialGuideData);
-        setAdminUsers(defaultAdminUsers);
+        setHomeCards(defaultData.homeCards);
+        setDynamicGuideData(defaultData.guideData);
+        setAdminUsers(defaultData.adminUsers);
         window.location.hash = '#/admin/dashboard';
     }
   };
@@ -203,7 +233,7 @@ const App: React.FC = () => {
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'soc-guide-data-export.json';
+    link.download = 'data.json';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -238,36 +268,6 @@ const App: React.FC = () => {
       console.error("Failed to import data:", error);
       alert(`Error importing data: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
-  };
-
-  const handleImportGuideFromUrl = (data: GuideImportData) => {
-    if (!data.homeCard || !data.homeCard.id || !data.homeCard.title || !data.guideData || !data.guideData.title || !Array.isArray(data.guideData.topics)) {
-        alert('Error: The imported JSON file has an invalid structure.');
-        return;
-    }
-
-    const { homeCard, guideData } = data;
-
-    if (homeCards.some(card => card.id === homeCard.id)) {
-        alert(`Error: A guide with the ID "${homeCard.id}" already exists. Please use a unique ID.`);
-        return;
-    }
-    
-    const newFullCard: RawHomeCard = {
-      ...homeCard,
-      status: 'Explore the guide',
-      href: `#/guide/${homeCard.id}`,
-    };
-
-    const updatedCards = [...homeCards, newFullCard];
-    setHomeCards(updatedCards);
-    localStorage.setItem('homeCards', JSON.stringify(updatedCards));
-
-    const updatedGuides = {...dynamicGuideData, [homeCard.id]: guideData };
-    setDynamicGuideData(updatedGuides);
-    localStorage.setItem('guideData', JSON.stringify(updatedGuides));
-    
-    alert(`Successfully imported guide: "${homeCard.title}"!`);
   };
 
   const handleUpdateGuide = (guideId: string, newGuideData: { title: string; topics: Topic[] }) => {
@@ -321,7 +321,6 @@ const App: React.FC = () => {
             onDeleteUser={handleDeleteUser}
             onExportData={handleExportData}
             onImportData={handleImportData}
-            onImportGuideFromUrl={handleImportGuideFromUrl}
         />;
       }
       

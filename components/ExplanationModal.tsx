@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 interface ExplanationModalProps {
@@ -58,21 +57,10 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({ isOpen, onClose, te
     setError('');
 
     try {
-        // Fix: Use the full CDN URL in the dynamic import to resolve module loading issues with Vite.
-        const genAIModule = await import('https://aistudiocdn.com/@google/genai@^0.14.0');
+        const genAIModule = await import('@google/genai');
         const GoogleGenAI = genAIModule.GoogleGenAI;
-
-        // Fix: Safely check for the API key to prevent ReferenceError in browser environments.
-        let apiKey: string | undefined;
-        if (typeof process !== 'undefined' && process.env) {
-          apiKey = process.env.API_KEY;
-        }
-
-        if (!apiKey) {
-            throw new Error("API key is not configured.");
-        }
         
-        const ai = new GoogleGenAI({ apiKey });
+        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
         const prompt = mode === 'simple'
             ? `Explain the following concept in simple terms for a beginner. Use bullet points (using * or -) for lists and bold text (using **text**) for key terms. Keep it concise and clear.\n\nConcept: "${textToExplain}"`
@@ -87,7 +75,7 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({ isOpen, onClose, te
     } catch (err) {
       console.error("Error fetching explanation:", err);
       const errorMessage = (err instanceof Error) ? err.message : 'An unknown error occurred.';
-       if (errorMessage.includes("API key is not configured")) {
+       if (errorMessage.toLowerCase().includes('api key') || (err instanceof ReferenceError && err.message.includes('process is not defined'))) {
            setError('Sorry, I couldn\'t get an explanation. The AI service has not been configured correctly by the developer.');
        } else {
            setError('Sorry, I couldn\'t get an explanation at this time. The AI service may be temporarily unavailable.');
