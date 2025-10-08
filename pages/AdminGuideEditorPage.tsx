@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ContentType } from '../types';
 import type { Topic, ContentBlock, HighlightColor } from '../types';
 
@@ -99,11 +99,19 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
   const [newTopicId, setNewTopicId] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // State for inline editing
+  // State for guide title editing
+  const [editedGuideTitle, setEditedGuideTitle] = useState(guide.title);
+
+  // State for inline topic editing
   const [editingTopicId, setEditingTopicId] = useState<string | null>(null);
   const [editedTitle, setEditedTitle] = useState('');
   const [editedId, setEditedId] = useState('');
   const [editedContent, setEditedContent] = useState('');
+
+  // Sync state with props if the guide changes
+  useEffect(() => {
+    setEditedGuideTitle(guide.title);
+  }, [guide.title]);
 
   const handleAddTopicSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -178,6 +186,16 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
         alert('Could not add block because current content is not valid JSON.');
     }
   };
+  
+  const handleGuideTitleSave = () => {
+    if (!editedGuideTitle) {
+        alert('Guide title cannot be empty.');
+        return;
+    }
+    onUpdateGuide(guideId, { title: editedGuideTitle, topics: guide.topics });
+    alert('Guide title updated successfully!');
+  };
+
 
   const handleExportGuide = () => {
     const dataToExport = {
@@ -255,29 +273,44 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
         accept=".json"
         className="hidden"
       />
-      <header className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-3xl font-bold">Edit Guide: <span className="text-cyan-400">{guide.title}</span></h1>
-          <p className="text-slate-400">Manage topics for this guide.</p>
+      <header className="flex flex-wrap justify-between items-center gap-4 mb-8">
+        <div className="flex-grow min-w-0">
+          <label htmlFor="guide-title-input" className="text-sm font-medium text-slate-300">Guide Title</label>
+          <div className="flex items-center gap-3 mt-1">
+            <input 
+              id="guide-title-input"
+              type="text" 
+              value={editedGuideTitle} 
+              onChange={(e) => setEditedGuideTitle(e.target.value)}
+              className="w-full max-w-lg bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-cyan-400 text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-sky-500"
+            />
+            <button 
+              onClick={handleGuideTitleSave}
+              className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2.5 px-4 rounded-md transition-colors flex-shrink-0"
+              aria-label="Save guide title"
+            >
+              Save Title
+            </button>
+          </div>
         </div>
-        <div className="flex items-center gap-4">
-            <a href={`#/guide/${guideId}`} target="_blank" rel="noopener noreferrer" className="text-sm bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-md transition-colors flex-shrink-0 flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+            <a href={`#/guide/${guideId}`} target="_blank" rel="noopener noreferrer" className="text-sm bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-3 rounded-md transition-colors flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
-                View Guide
+                View
             </a>
-             <button onClick={handleImportClick} className="text-sm bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-md transition-colors flex-shrink-0 flex items-center gap-2">
+             <button onClick={handleImportClick} className="text-sm bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded-md transition-colors flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                 </svg>
-                Import Guide
+                Import
             </button>
-            <button onClick={handleExportGuide} className="text-sm bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-md transition-colors flex-shrink-0 flex items-center gap-2">
+            <button onClick={handleExportGuide} className="text-sm bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-3 rounded-md transition-colors flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                Export Guide
+                Export
             </button>
             <a href="#/admin/dashboard" className="text-sm text-sky-400 hover:text-sky-300 transition-colors">← Back to Dashboard</a>
         </div>

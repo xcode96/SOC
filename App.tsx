@@ -146,7 +146,69 @@ const App: React.FC = () => {
     setDynamicGuideData(updatedGuides);
     localStorage.setItem('guideData', JSON.stringify(updatedGuides));
   };
+
+  const handleCreateComingSoonCard = (newCard: Omit<RawHomeCard, 'status' | 'href'>) => {
+    const newFullCard: RawHomeCard = {
+      ...newCard,
+      status: 'Coming Soon',
+      href: '#', // Inactive link
+    };
+    const updatedCards = [...homeCards, newFullCard];
+    setHomeCards(updatedCards);
+    localStorage.setItem('homeCards', JSON.stringify(updatedCards));
+    // No guide data is created for "Coming Soon" cards
+  };
   
+  const handleUpdateCard = (updatedCard: RawHomeCard) => {
+    let guideDataToUpdate = { ...dynamicGuideData };
+    const originalCard = homeCards.find(c => c.id === updatedCard.id);
+
+    // If a "Coming Soon" card is being promoted to an active guide
+    if (originalCard && originalCard.status === 'Coming Soon' && updatedCard.status !== 'Coming Soon') {
+      // and if the guide data doesn't exist yet
+      if (!guideDataToUpdate[updatedCard.id]) {
+        // Create the basic guide structure
+        guideDataToUpdate[updatedCard.id] = {
+          title: `${updatedCard.title} Interactive Guide`,
+          topics: [{
+            id: 'toc',
+            title: `Welcome to ${updatedCard.title}`,
+            content: [
+              { type: ContentType.HEADING2, text: `Welcome to the ${updatedCard.title} Guide`},
+              { type: ContentType.PARAGRAPH, text: 'This is a new guide. Start adding topics!'}
+            ]
+          }]
+        };
+        // Update guide data state and localStorage
+        setDynamicGuideData(guideDataToUpdate);
+        localStorage.setItem('guideData', JSON.stringify(guideDataToUpdate));
+      }
+      // Make sure the link is active
+      updatedCard.href = `#/guide/${updatedCard.id}`;
+    } else if (updatedCard.status === 'Coming Soon') {
+        // If it's being set (or re-set) to Coming Soon, deactivate the link
+        updatedCard.href = '#';
+    }
+
+    const updatedCards = homeCards.map(card => card.id === updatedCard.id ? updatedCard : card);
+    setHomeCards(updatedCards);
+    localStorage.setItem('homeCards', JSON.stringify(updatedCards));
+  };
+  
+  const handleDeleteCard = (cardIdToDelete: string) => {
+    // Remove the card
+    const updatedCards = homeCards.filter(card => card.id !== cardIdToDelete);
+    setHomeCards(updatedCards);
+    localStorage.setItem('homeCards', JSON.stringify(updatedCards));
+
+    // Remove the associated guide data if it exists
+    if (dynamicGuideData[cardIdToDelete]) {
+      const { [cardIdToDelete]: _, ...remainingGuides } = dynamicGuideData;
+      setDynamicGuideData(remainingGuides);
+      localStorage.setItem('guideData', JSON.stringify(remainingGuides));
+    }
+  };
+
   const handleAddNewTopic = (guideId: string, newTopic: { id: string; title: string }) => {
     const guideToUpdate = dynamicGuideData[guideId];
     if (guideToUpdate) {
@@ -315,6 +377,9 @@ const App: React.FC = () => {
         return <AdminDashboardPage 
             currentGuides={homeCards} 
             onCreateGuide={handleCreateGuide} 
+            onCreateComingSoonCard={handleCreateComingSoonCard}
+            onUpdateCard={handleUpdateCard}
+            onDeleteCard={handleDeleteCard}
             onReset={handleReset} 
             adminUsers={adminUsers}
             onAddUser={handleAddUser}
