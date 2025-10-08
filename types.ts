@@ -66,3 +66,11 @@ export interface AdminUser {
   username: string;
   password?: string;
 }
+
+export interface GuideImportData {
+  homeCard: Omit<RawHomeCard, 'status' | 'href'>;
+  guideData: {
+    title: string;
+    topics: Topic[];
+  };
+}

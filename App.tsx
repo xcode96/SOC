@@ -10,7 +10,7 @@ import { powershellGuide } from './data/powershellGuide';
 import { auditGuide } from './data/auditGuide';
 // Fix: Import ContentType as a value, and other identifiers as types.
 import { ContentType } from './types';
-import type { Topic, HomeCard, RawHomeCard, AdminUser } from './types';
+import type { Topic, HomeCard, RawHomeCard, AdminUser, GuideImportData } from './types';
 
 // Data structure to hold all guides
 const initialGuideData: Record<string, { title: string; topics: Topic[] }> = {
@@ -163,19 +163,6 @@ const App: React.FC = () => {
     }
   };
 
-  const handleDeleteGuide = (guideIdToDelete: string) => {
-    // Remove the card
-    const updatedCards = homeCards.filter(card => card.id !== guideIdToDelete);
-    setHomeCards(updatedCards);
-    localStorage.setItem('homeCards', JSON.stringify(updatedCards));
-
-    // Remove the guide data
-    const updatedGuides = { ...dynamicGuideData };
-    delete updatedGuides[guideIdToDelete];
-    setDynamicGuideData(updatedGuides);
-    localStorage.setItem('guideData', JSON.stringify(updatedGuides));
-  };
-
 
   const handleReset = () => {
     if (window.confirm('Are you sure you want to reset all guides and users to their default state? This action is permanent.')) {
@@ -253,6 +240,36 @@ const App: React.FC = () => {
     }
   };
 
+  const handleImportGuideFromUrl = (data: GuideImportData) => {
+    if (!data.homeCard || !data.homeCard.id || !data.homeCard.title || !data.guideData || !data.guideData.title || !Array.isArray(data.guideData.topics)) {
+        alert('Error: The imported JSON file has an invalid structure.');
+        return;
+    }
+
+    const { homeCard, guideData } = data;
+
+    if (homeCards.some(card => card.id === homeCard.id)) {
+        alert(`Error: A guide with the ID "${homeCard.id}" already exists. Please use a unique ID.`);
+        return;
+    }
+    
+    const newFullCard: RawHomeCard = {
+      ...homeCard,
+      status: 'Explore the guide',
+      href: `#/guide/${homeCard.id}`,
+    };
+
+    const updatedCards = [...homeCards, newFullCard];
+    setHomeCards(updatedCards);
+    localStorage.setItem('homeCards', JSON.stringify(updatedCards));
+
+    const updatedGuides = {...dynamicGuideData, [homeCard.id]: guideData };
+    setDynamicGuideData(updatedGuides);
+    localStorage.setItem('guideData', JSON.stringify(updatedGuides));
+    
+    alert(`Successfully imported guide: "${homeCard.title}"!`);
+  };
+
   const handleUpdateGuide = (guideId: string, newGuideData: { title: string; topics: Topic[] }) => {
     // Update the guide data itself
     const updatedGuides = { ...dynamicGuideData, [guideId]: newGuideData };
@@ -298,13 +315,13 @@ const App: React.FC = () => {
         return <AdminDashboardPage 
             currentGuides={homeCards} 
             onCreateGuide={handleCreateGuide} 
-            onDeleteGuide={handleDeleteGuide}
             onReset={handleReset} 
             adminUsers={adminUsers}
             onAddUser={handleAddUser}
             onDeleteUser={handleDeleteUser}
             onExportData={handleExportData}
             onImportData={handleImportData}
+            onImportGuideFromUrl={handleImportGuideFromUrl}
         />;
       }
       

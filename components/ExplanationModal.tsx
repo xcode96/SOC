@@ -59,7 +59,7 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({ isOpen, onClose, te
 
     try {
         // Fix: Use the full CDN URL in the dynamic import to resolve module loading issues with Vite.
-        const genAIModule = await import('https://aistudiocdn.com/@google/genai@^0.14.2');
+        const genAIModule = await import('https://aistudiocdn.com/@google/genai@^0.14.0');
         const GoogleGenAI = genAIModule.GoogleGenAI;
 
         // Fix: Safely check for the API key to prevent ReferenceError in browser environments.
