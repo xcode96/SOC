@@ -409,7 +409,8 @@ const App: React.FC = () => {
     // Default to home page
     const cardsWithIcons: HomeCard[] = homeCards.map(card => ({
       ...card,
-      icon: icons[card.id] || icons.soc,
+      // Use the card's specific icon key if it exists, otherwise fall back to its ID, then to a default.
+      icon: icons[card.icon || card.id] || icons.soc,
     }));
     return <HomePage homeCards={cardsWithIcons} />;
   };

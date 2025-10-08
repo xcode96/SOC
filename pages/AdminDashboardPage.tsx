@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import type { RawHomeCard, AdminUser } from '../types';
+import { icons } from '../data/homeCards';
 
 interface AdminDashboardPageProps {
   currentGuides: RawHomeCard[];
@@ -31,6 +32,7 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   // Create form state
   const [title, setTitle] = useState('');
   const [id, setId] = useState('');
+  const [iconId, setIconId] = useState('');
   const [color, setColor] = useState('bg-gray-800/80');
   const [tagName, setTagName] = useState('');
   const [tagColor, setTagColor] = useState('bg-gray-500/50 text-white');
@@ -47,10 +49,18 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [cardToEdit, setCardToEdit] = useState<RawHomeCard | null>(null);
   const [editedTitle, setEditedTitle] = useState('');
+  const [editedIcon, setEditedIcon] = useState('');
   const [editedColor, setEditedColor] = useState('');
   const [editedTagName, setEditedTagName] = useState('');
   const [editedTagColor, setEditedTagColor] = useState('');
   const [editedStatus, setEditedStatus] = useState('');
+
+  // Effect to sync iconId with id for convenience
+  useEffect(() => {
+    setIconId(id);
+  }, [id]);
+
+  const availableIcons = Object.keys(icons).join(', ');
 
 
   const handleCreateGuideSubmit = (e: React.FormEvent) => {
@@ -66,6 +76,7 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
     const newCardData = {
       id,
       title,
+      icon: iconId,
       color,
       tag: tagName ? { name: tagName, color: tagColor } : undefined,
     };
@@ -79,6 +90,7 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
     // Reset form
     setTitle('');
     setId('');
+    setIconId('');
     setTagName('');
     setIsComingSoon(false);
   };
@@ -124,6 +136,7 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   const openEditModal = (card: RawHomeCard) => {
     setCardToEdit(card);
     setEditedTitle(card.title);
+    setEditedIcon(card.icon || card.id);
     setEditedColor(card.color);
     setEditedTagName(card.tag?.name || '');
     setEditedTagColor(card.tag?.color || 'bg-gray-500/50 text-white');
@@ -137,6 +150,7 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
     const updatedCard: RawHomeCard = {
         ...cardToEdit,
         title: editedTitle,
+        icon: editedIcon,
         color: editedColor,
         tag: editedTagName ? { name: editedTagName, color: editedTagColor } : undefined,
         status: editedStatus,
@@ -170,13 +184,20 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             <div className="bg-slate-800/60 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6">
               <h2 className="text-xl font-bold mb-4">Create New Card</h2>
               <form onSubmit={handleCreateGuideSubmit} className="space-y-4">
-                 <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-1">Title</label>
-                    <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="e.g., React Basics" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" required />
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-medium text-slate-300 mb-1">Title</label>
+                        <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="e.g., React Basics" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" required />
+                    </div>
+                     <div>
+                        <label className="block text-sm font-medium text-slate-300 mb-1">ID (unique, no spaces)</label>
+                        <input type="text" value={id} onChange={e => setId(e.target.value.toLowerCase().replace(/\s/g, ''))} placeholder="e.g., react-basics" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" required />
+                    </div>
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-1">ID (unique, no spaces)</label>
-                    <input type="text" value={id} onChange={e => setId(e.target.value.toLowerCase().replace(/\s/g, ''))} placeholder="e.g., react-basics" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" required />
+                    <label className="block text-sm font-medium text-slate-300 mb-1">Icon ID</label>
+                    <input type="text" value={iconId} onChange={e => setIconId(e.target.value)} placeholder="e.g., soc" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" />
+                    <p className="text-xs text-slate-400 mt-1 truncate">Available: {availableIcons}</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
@@ -303,6 +324,11 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                     <div>
                         <label className="block text-sm font-medium text-slate-300 mb-1">Title</label>
                         <input type="text" value={editedTitle} onChange={e => setEditedTitle(e.target.value)} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-slate-300 mb-1">Icon ID</label>
+                        <input type="text" value={editedIcon} onChange={e => setEditedIcon(e.target.value)} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" />
+                        <p className="text-xs text-slate-400 mt-1 truncate">Available: {availableIcons}</p>
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-slate-300 mb-1">Status</label>

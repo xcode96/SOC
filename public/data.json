@@ -2,6 +2,7 @@
   "homeCards": [
     {
       "id": "soc",
+      "icon": "soc",
       "title": "SOC Concepts",
       "color": "bg-red-800/80",
       "tag": { "name": "CyberSec", "color": "bg-red-500/50 text-white" },
@@ -10,6 +11,7 @@
     },
     {
       "id": "powershell",
+      "icon": "powershell",
       "title": "PowerShell",
       "color": "bg-blue-800/80",
       "tag": { "name": "Scripting", "color": "bg-blue-500/50 text-white" },
@@ -18,6 +20,7 @@
     },
     {
       "id": "audit",
+      "icon": "audit",
       "title": "Auditing",
       "color": "bg-green-800/80",
       "tag": { "name": "CyberSec", "color": "bg-green-500/50 text-white" },
@@ -26,6 +29,7 @@
     },
     {
       "id": "csharp",
+      "icon": "csharp",
       "title": "C#",
       "color": "bg-green-700/80",
       "status": "Coming Soon",
@@ -33,6 +37,7 @@
     },
     {
       "id": "django",
+      "icon": "django",
       "title": "Django",
       "color": "bg-emerald-900/80",
       "tag": { "name": "Python", "color": "bg-emerald-600/50 text-white" },
@@ -41,6 +46,7 @@
     },
     {
       "id": "flask",
+      "icon": "flask",
       "title": "Flask",
       "color": "bg-purple-700/80",
       "tag": { "name": "Python", "color": "bg-purple-500/50 text-white" },
@@ -49,6 +55,7 @@
     },
     {
       "id": "flutter",
+      "icon": "flutter",
       "title": "Flutter",
       "color": "bg-sky-700/80",
       "tag": { "name": "Dart", "color": "bg-sky-500/50 text-white" },
@@ -57,6 +64,7 @@
     },
     {
       "id": "nest-js",
+      "icon": "nest-js",
       "title": "NestJS",
       "color": "bg-rose-800/80",
       "status": "Coming Soon",
