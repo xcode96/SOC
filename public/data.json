@@ -15,7 +15,7 @@
     {
       "id": "powershell",
       "icon": "powershell",
-      "title": "PowerShell",
+      "title": "Firewall Rules",
       "color": "bg-blue-800/80",
       "tag": {
         "name": "Scripting",
@@ -2258,100 +2258,1429 @@
       ]
     },
     "powershell": {
-      "title": "PowerShell Interactive Guide",
+      "title": "Firewall Rules",
       "topics": [
         {
-          "id": "ps-introduction",
-          "title": "Introduction to PowerShell",
+          "id": "allow-ssh-port-22-from-a-specific-ip-address",
+          "title": "Allow SSH (port 22) from a specific IP address",
           "content": [
             {
-              "type": "h2",
-              "text": "What is PowerShell?"
-            },
-            {
-              "type": "colored_p",
-              "parts": [
-                "PowerShell is a cross-platform ",
-                {
-                  "text": "task automation",
-                  "color": "blue"
-                },
-                " and ",
-                {
-                  "text": "configuration management",
-                  "color": "purple"
-                },
-                " framework, consisting of a command-line shell and a scripting language."
-              ]
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.1.2\" port protocol=\"tcp\" port=\"22\" accept' --permanent"
             },
             {
               "type": "p",
-              "text": "Built on the .NET Framework, PowerShell helps IT professionals and power users control and automate the administration of the Windows operating system and applications that run on Windows."
-            },
-            {
-              "type": "highlight",
-              "color": "green",
-              "text": "PowerShell is now open-source and available on Windows, macOS, and Linux."
+              "text": "sudo firewall-cmd --reload"
             }
           ]
         },
         {
-          "id": "ps-cmdlets",
-          "title": "Cmdlets and Syntax",
+          "id": "block-incoming-icmp-ping-requests",
+          "title": "Block incoming ICMP (ping) requests",
           "content": [
             {
-              "type": "h2",
-              "text": "Understanding Cmdlets"
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" protocol value=\"icmp\" drop' --permanent"
             },
             {
-              "type": "colored_p",
-              "parts": [
-                "A cmdlet (pronounced \"command-let\") is a lightweight command that is used in the PowerShell environment. Cmdlets follow a ",
-                {
-                  "text": "Verb-Noun",
-                  "color": "yellow"
-                },
-                " naming convention."
-              ]
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-from-a-specific-network-range",
+          "title": "Allow traffic from a specific network range",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-source=192.168.0.0/24 --permanent"
             },
             {
-              "type": "h3",
-              "text": "Common Verbs:"
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "open-a-custom-port-range-e-g-5000-6000",
+          "title": "Open a custom port range (e.g., 5000-6000)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=5000-6000/tcp --permanent"
             },
             {
-              "type": "ul",
-              "items": [
-                "Get",
-                "Set",
-                "Start",
-                "Stop",
-                "New",
-                "Remove"
-              ]
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-outgoing-traffic-on-a-specific-port-e-g-8080",
+          "title": "Block outgoing traffic on a specific port (e.g., 8080)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" port protocol=\"tcp\" port=\"8080\" drop' --permanent"
             },
             {
-              "type": "h3",
-              "text": "Example:"
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-ftp-port-21-for-a-specific-interface",
+          "title": "Allow FTP (port 21) for a specific interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" interface=\"eth0\" port protocol=\"tcp\" port=\"21\" accept' --permanent"
             },
             {
-              "type": "colored_p",
-              "parts": [
-                {
-                  "text": "Get-Process",
-                  "color": "cyan"
-                },
-                ": Retrieves the processes running on the local computer."
-              ]
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-specific-service-e-g-telnet",
+          "title": "Block specific service (e.g., Telnet)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --remove-service=telnet --permanent"
             },
             {
-              "type": "colored_p",
-              "parts": [
-                {
-                  "text": "Stop-Process -Name \"Notepad\"",
-                  "color": "red"
-                },
-                ": Stops all instances of the Notepad process."
-              ]
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-multicast-traffic",
+          "title": "Allow multicast traffic",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"224.0.0.0/4\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-specific-application-traffic-e-g-apache",
+          "title": "Allow specific application traffic (e.g., Apache)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-service=http --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-from-a-specific-country-e-g-russia",
+          "title": "Block traffic from a specific country (e.g., Russia)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"0.0.0.0/0\" invert source=\"country\" destination country=\"RU\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-dns-port-53-for-both-tcp-and-udp",
+          "title": "Allow DNS (port 53) for both TCP and UDP",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=53/tcp --add-port=53/udp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-incoming-traffic-on-a-specific-network-interface-e-g-eth1",
+          "title": "Allow incoming traffic on a specific network interface (e.g., eth1)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-interface=eth1 --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-all-incoming-traffic-except-for-established-connections",
+          "title": "Block all incoming traffic except for established connections",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"0.0.0.0/0\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"0.0.0.0/0\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-only-specific-ip-addresses-on-a-certain-port-e-g-8080",
+          "title": "Allow only specific IP addresses on a certain port (e.g., 8080)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" port protocol=\"tcp\" port=\"8080\" source address=\"192.168.1.2\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "open-port-123-for-ntp-network-time-protocol",
+          "title": "Open port 123 for NTP (Network Time Protocol)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=123/udp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-icmp-echo-requests-ping-from-a-specific-subnet",
+          "title": "Allow ICMP echo requests (ping) from a specific subnet",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.0.0/24\" protocol=\"icmp\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-to-a-specific-ip-address",
+          "title": "Block traffic to a specific IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"0.0.0.0/0\" destination address=\"192.168.1.2\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-ssh-on-a-non-default-port-e-g-2222",
+          "title": "Allow SSH on a non-default port (e.g., 2222)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=2222/tcp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-based-on-a-custom-service",
+          "title": "Allow traffic based on a custom service",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-service=my_custom_service --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-all-incoming-and-outgoing-traffic",
+          "title": "Block all incoming and outgoing traffic",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --set-target=DROP --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-rdp-remote-desktop-protocol-port-3389-from-a-specific-ip-address",
+          "title": "Allow RDP (Remote Desktop Protocol - port 3389) from a specific IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.1.2\" port protocol=\"tcp\" port=\"3389\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-for-a-specific-application-e-g-postgresql",
+          "title": "Allow traffic for a specific application (e.g., PostgreSQL)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-service=postgresql --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-incoming-connections-on-a-specific-port-range-e-g-8000-9000-for-udp",
+          "title": "Allow incoming connections on a specific port range (e.g., 8000-9000) for UDP",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=8000-9000/udp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-sip-session-initiation-protocol-port-5060-for-voip",
+          "title": "Allow SIP (Session Initiation Protocol - port 5060) for VoIP",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=5060/udp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-specific-mac-address",
+          "title": "Block specific MAC address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source mac=\"00:11:22:33:44:55\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-for-a-specific-user",
+          "title": "Allow traffic for a specific user",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-nfs-network-file-system-port-2049-for-file-sharing",
+          "title": "Allow NFS (Network File System - port 2049) for file sharing",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=2049/tcp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-docker-containers-to-communicate-on-a-bridge-network",
+          "title": "Allow Docker containers to communicate on a bridge network",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=trusted --add-source=172.17.0.0/16 --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-outgoing-traffic-to-a-specific-ip-address",
+          "title": "Block outgoing traffic to a specific IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" destination address=\"203.0.113.10\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-snmp-simple-network-management-protocol-port-161-for-monitoring",
+          "title": "Allow SNMP (Simple Network Management Protocol - port 161) for monitoring",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=161/udp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-incoming-traffic-on-a-specific-port-for-ipv6-e-g-port-8080",
+          "title": "Allow incoming traffic on a specific port for IPv6 (e.g., port 8080)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent --ipv6"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-all-traffic-except-for-a-specific-service-e-g-ssh",
+          "title": "Block all traffic except for a specific service (e.g., SSH)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-service=ssh --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --remove-service={http,https} --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-from-and-to-a-specific-network-interface-e-g-eth0",
+          "title": "Allow traffic from and to a specific network interface (e.g., eth0)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-interface=eth0 --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source interface=\"eth0\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-dns-traffic-only-for-a-specific-domain",
+          "title": "Allow DNS traffic only for a specific domain",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"0.0.0.0/0\" destination domain=\"example.com\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-from-a-specific-country-for-a-specific-service-e-g-ssh",
+          "title": "Block traffic from a specific country for a specific service (e.g., SSH)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"0.0.0.0/0\" invert source=\"country\" destination port=\"22\" protocol=\"tcp\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-multicast-traffic-for-ipv6",
+          "title": "Allow multicast traffic for IPv6",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv6\" source address=\"fe80::/10\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-for-a-specific-udp-service-e-g-syslog-port-514",
+          "title": "Allow traffic for a specific UDP service (e.g., syslog - port 514)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=514/udp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-from-a-specific-mac-address",
+          "title": "Allow traffic from a specific MAC address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source mac=\"00:11:22:33:44:55\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-outgoing-smtp-traffic-port-25-for-a-specific-ip-range",
+          "title": "Allow outgoing SMTP traffic (port 25) for a specific IP range",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.1.0/24\" port protocol=\"tcp\" port=\"25\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-custom-port-range-for-both-tcp-and-udp-e-g-7000-8000",
+          "title": "Allow traffic on a custom port range for both TCP and UDP (e.g., 7000-8000)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=7000-8000/tcp --add-port=7000-8000/udp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-both-tcp-and-udp-limiting-it-to-a-specific-ip-address",
+          "title": "Allow traffic on a specific port range for both TCP and UDP, limiting it to a specific IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.1.2\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-to-a-specific-port-from-a-range-of-ip-addresses",
+          "title": "Block traffic to a specific port from a range of IP addresses",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.0.0/24\" port port=\"1234\" protocol=\"tcp\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-for-a-specific-user-on-a-custom-port",
+          "title": "Allow traffic for a specific user on a custom port",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -p tcp -dport 9876 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-outgoing-traffic-to-a-specific-domain",
+          "title": "Block outgoing traffic to a specific domain",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" destination domain=\"example.com\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-ntp-traffic-port-123-for-both-tcp-and-udp",
+          "title": "Allow NTP traffic (port 123) for both TCP and UDP",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-port=123/tcp --add-port=123/udp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-from-a-specific-country-on-a-specific-port-e-g-8080",
+          "title": "Allow traffic from a specific country on a specific port (e.g., 8080)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"0.0.0.0/0\" source country=\"US\" port port=\"8080\" protocol=\"tcp\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-for-a-specific-service-on-a-custom-interface-e-g-eth1",
+          "title": "Allow traffic for a specific service on a custom interface (e.g., eth1)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-service=http --add-interface=eth1 --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-incoming-and-outgoing-traffic-on-a-specific-port-only-for-a-specific-time",
+          "title": "Allow incoming and outgoing traffic on a specific port only for a specific time",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" port port=\"9876\" protocol=\"tcp\" accept' --permanent --active-from=Mon-Fri 08:00-17:00"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-for-a-specific-service-from-a-specific-ip-address-range",
+          "title": "Allow traffic for a specific service from a specific IP address range",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.0.0/24\" service name=\"ftp\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-from-and-to-a-specific-port-for-a-range-of-ip-addresses",
+          "title": "Allow traffic from and to a specific port for a range of IP addresses",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.0.0/24\" port port=\"5432\" protocol=\"tcp\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-both-tcp-and-udp-limiting-it-to-a-specific-mac-address",
+          "title": "Allow traffic on a specific port range for both TCP and UDP, limiting it to a specific MAC address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source mac=\"00:11:22:33:44:55\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-from-a-specific-user-on-a-custom-port",
+          "title": "Block traffic from a specific user on a custom port",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -p tcp -dport 9876 -j DROP"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-from-a-specific-country",
+          "title": "Allow traffic on a specific port range from a specific country",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source country=\"US\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-to-a-specific-domain-for-a-specific-service-e-g-ssh",
+          "title": "Block traffic to a specific domain for a specific service (e.g., SSH)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" destination domain=\"example.com\" service name=\"ssh\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-custom-port-range-for-a-specific-service-e-g-snmp",
+          "title": "Allow traffic on a custom port range for a specific service (e.g., SNMP)",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-service=snmp --add-port=6000-7000/tcp --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-for-a-specific-user-and-specific-service",
+          "title": "Allow traffic for a specific user and specific service",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -p tcp -dport 1234 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-icmp-echo-requests-ping-from-a-specific-ip-address",
+          "title": "Block ICMP echo requests (ping) from a specific IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.1.2\" protocol=\"icmp\" icmp-type=\"8\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application",
+          "title": "Allow traffic on a specific port range for a specific application",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-from-a-specific-ip-address-range-on-a-specific-port",
+          "title": "Block traffic from a specific IP address range on a specific port",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.0.0/24\" port port=\"9876\" protocol=\"tcp\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-incoming-traffic-on-a-specific-port-for-both-tcp-and-udp-limiting-it-to-a-specific-user",
+          "title": "Allow incoming traffic on a specific port for both TCP and UDP, limiting it to a specific user",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -m owner --uid-owner username -p tcp -dport 8080 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -m owner --uid-owner username -p udp -dport 8080 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-range-of-ip-addresses-during-specific-days-and-times",
+          "title": "Allow traffic on a specific port for a range of IP addresses during specific days and times",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.1.10 192.168.1.20\" port port=\"8080\" protocol=\"tcp\" accept' --permanent --active-on=Mon,Tue,Wed,Thu,Fri --active-at=\"08:00-17:00\""
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-both-tcp-and-udp-limiting-it-to-a-specific-user-and-interface",
+          "title": "Allow traffic on a specific port range for both TCP and UDP, limiting it to a specific user and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source address=\"192.168.1.2\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --interface=eth0"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-from-a-specific-mac-address-for-a-specific-service",
+          "title": "Block traffic from a specific MAC address for a specific service",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source mac=\"00:11:22:33:44:55\" service name=\"ftp\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-custom-port-range-for-a-specific-application-and-user",
+          "title": "Allow traffic on a custom port range for a specific application and user",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-and-outgoing-traffic-on-a-specific-port-for-a-specific-user",
+          "title": "Block incoming and outgoing traffic on a specific port for a specific user",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -m owner --uid-owner username -p tcp -dport 9876 -j DROP"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -p tcp -dport 9876 -j DROP"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-and-network-interface",
+          "title": "Allow traffic on a specific port for a specific service and network interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" accept' --permanent --interface=eth1"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-and-source-ip-address",
+          "title": "Allow traffic on a specific port for a specific service and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"ssh\" port port=\"2222\" protocol=\"tcp\" source address=\"192.168.1.2\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-from-a-specific-country-on-a-specific-port-for-a-specific-service",
+          "title": "Block traffic from a specific country on a specific port for a specific service",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source country=\"CN\" port port=\"80\" protocol=\"tcp\" service name=\"http\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-and-destination-ip-address",
+          "title": "Allow traffic on a specific port range for a specific application and destination IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" destination address=\"192.168.1.2\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-from-a-specific-mac-address-for-a-specific-service-and-interface",
+          "title": "Block traffic from a specific MAC address for a specific service and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source mac=\"00:11:22:33:44:55\" service name=\"ftp\" drop' --permanent --interface=eth0"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-user-and-interface",
+          "title": "Allow traffic on a specific port range for a specific application, user, and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -o eth1 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-country",
+          "title": "Block incoming traffic on a specific port range for a specific country",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" source country=\"RU\" port port=\"3000-4000\" protocol=\"tcp\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-source-ip-address-and-interface",
+          "title": "Allow traffic on a specific port for a specific service, source IP address, and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source address=\"192.168.1.2\" accept' --permanent --interface=eth1"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-user-and-source-ip-address",
+          "title": "Allow traffic on a specific port range for a specific application, user, and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -s 192.168.1.2 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-traffic-on-a-specific-port-for-a-specific-service-and-source-ip-address",
+          "title": "Block traffic on a specific port for a specific service and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source address=\"192.168.1.2\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-user-and-destination-ip-address",
+          "title": "Allow traffic on a specific port range for a specific application, user, and destination IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -d 192.168.1.2 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-source-mac-address-and-interface",
+          "title": "Allow traffic on a specific port for a specific service, source MAC address, and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source mac=\"00:11:22:33:44:55\" accept' --permanent --interface=eth0"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-application",
+          "title": "Block incoming traffic on a specific port range for a specific application",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-source-mac-address-and-source-ip-address",
+          "title": "Allow traffic on a specific port for a specific service, source MAC address, and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source mac=\"00:11:22:33:44:55\" source address=\"192.168.1.2\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-user-source-ip-address-and-interface",
+          "title": "Allow traffic on a specific port range for a specific application, user, source IP address, and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -s 192.168.1.2 -o eth1 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-user-source-ip-address-and-interface",
+          "title": "Allow traffic on a specific port range for a specific application, user, source IP address, and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -s 192.168.1.2 -o eth1 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-application-and-source-ip-address",
+          "title": "Block incoming traffic on a specific port range for a specific application and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" source address=\"192.168.1.2\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-source-mac-address-and-interface",
+          "title": "Allow traffic on a specific port for a specific service, source MAC address, and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source mac=\"00:11:22:33:44:55\" accept' --permanent --interface=eth0"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-application-and-destination-ip-address",
+          "title": "Block incoming traffic on a specific port range for a specific application and destination IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" destination address=\"192.168.1.2\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-user-and-destination-ip-address",
+          "title": "Allow traffic on a specific port range for a specific application, user, and destination IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -d 192.168.1.2 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-source-mac-address-and-source-ip-address",
+          "title": "Allow traffic on a specific port for a specific service, source MAC address, and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source mac=\"00:11:22:33:44:55\" source address=\"192.168.1.2\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-application-and-interface",
+          "title": "Block incoming traffic on a specific port range for a specific application and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" drop' --permanent --interface=eth0"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-source-ip-address-and-interface",
+          "title": "Allow traffic on a specific port for a specific service, source IP address, and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source address=\"192.168.1.2\" accept' --permanent --interface=eth1"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-application-user-and-source-ip-address",
+          "title": "Block incoming traffic on a specific port range for a specific application, user, and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" source address=\"192.168.1.2\" drop' --permanent --direct -add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -s 192.168.1.2 -j DROP"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-user-and-destination-ip-address",
+          "title": "Allow traffic on a specific port range for a specific application, user, and destination IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -d 192.168.1.2 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-user-and-source-ip-address",
+          "title": "Allow traffic on a specific port range for a specific application, user, and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -s 192.168.1.2 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-application-and-source-ip-address",
+          "title": "Block incoming traffic on a specific port range for a specific application and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" source address=\"192.168.1.2\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-source-mac-address-and-interface",
+          "title": "Allow traffic on a specific port for a specific service, source MAC address, and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source mac=\"00:11:22:33:44:55\" accept' --permanent --interface=eth0"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-application-and-destination-ip-address",
+          "title": "Block incoming traffic on a specific port range for a specific application and destination IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" destination address=\"192.168.1.2\" drop' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-source-mac-address-and-source-ip-address",
+          "title": "Allow traffic on a specific port for a specific service, source MAC address, and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source mac=\"00:11:22:33:44:55\" source address=\"192.168.1.2\" accept' --permanent"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-application-and-interface",
+          "title": "Block incoming traffic on a specific port range for a specific application and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" drop' --permanent --interface=eth0"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-for-a-specific-service-source-ip-address-and-interface",
+          "title": "Allow traffic on a specific port for a specific service, source IP address, and interface",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" service name=\"http\" port port=\"8080\" protocol=\"tcp\" source address=\"192.168.1.2\" accept' --permanent --interface=eth1"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-traffic-on-a-specific-port-range-for-a-specific-application-user-and-source-ip-address",
+          "title": "Block incoming traffic on a specific port range for a specific application, user, and source IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" source address=\"192.168.1.2\" drop' --permanent --direct -add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -s 192.168.1.2 -j DROP"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "allow-traffic-on-a-specific-port-range-for-a-specific-application-user-and-destination-ip-address",
+          "title": "Allow traffic on a specific port range for a specific application, user, and destination IP address",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --zone=public --add-rich-rule='rule family=\"ipv4\" application=\"my_custom_app\" port port=\"8000-9000\" protocol=\"tcp\" accept' --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -d 192.168.1.2 -j ACCEPT"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
+            }
+          ]
+        },
+        {
+          "id": "block-incoming-and-outgoing-traffic-on-a-specific-port-for-a-specific-user",
+          "title": "Block incoming and outgoing traffic on a specific port for a specific user",
+          "content": [
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -m owner --uid-owner username -p tcp --dport 9876 -j DROP"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --direct --add-rule ipv4 filter OUTPUT 0 -m owner --uid-owner username -p tcp --dport 9876 -j DROP"
+            },
+            {
+              "type": "p",
+              "text": "sudo firewall-cmd --reload"
             }
           ]
         }
