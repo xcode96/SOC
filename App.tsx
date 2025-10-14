@@ -12,6 +12,15 @@ import { auditGuide } from './data/auditGuide';
 import { ContentType } from './types';
 import type { Topic, HomeCard, RawHomeCard, AdminUser } from './types';
 
+// Helper to correctly encode UTF-8 strings to Base64
+function utf8_to_b64(str: string): string {
+    // This is a common trick to handle UTF-8 characters correctly.
+    // encodeURIComponent escapes all non-ASCII characters into UTF-8 byte sequences,
+    // then unescape converts them back to single-byte characters which btoa can handle.
+    return btoa(unescape(encodeURIComponent(str)));
+}
+
+
 // Data structure to hold all guides
 const initialGuideData: Record<string, { title: string; topics: Topic[] }> = {
   soc: { title: 'SOC Concepts Interactive Guide', topics: socConcepts },
@@ -209,21 +218,19 @@ const App: React.FC = () => {
     }
   };
 
-  const handleAddNewTopic = (guideId: string, newTopic: { id: string; title: string }) => {
+  const handleAddNewTopic = (guideId: string, newTopic: Topic) => {
     const guideToUpdate = dynamicGuideData[guideId];
     if (guideToUpdate) {
-        const newTopicData: Topic = {
-            ...newTopic,
-            content: [
-                 { type: ContentType.HEADING2, text: newTopic.title },
-                 { type: ContentType.PARAGRAPH, text: 'Content for this topic is coming soon.'}
-            ]
-        };
-        const updatedTopics = [...guideToUpdate.topics, newTopicData];
-        const updatedGuide = { ...guideToUpdate, topics: updatedTopics };
-        const updatedGuides = { ...dynamicGuideData, [guideId]: updatedGuide };
-        setDynamicGuideData(updatedGuides);
-        localStorage.setItem('guideData', JSON.stringify(updatedGuides));
+      if (guideToUpdate.topics.some(topic => topic.id === newTopic.id)) {
+        console.error(`Attempted to add a topic with a duplicate ID: ${newTopic.id}`);
+        alert(`A topic with the ID "${newTopic.id}" already exists in this guide.`);
+        return;
+      }
+      const updatedTopics = [...guideToUpdate.topics, newTopic];
+      const updatedGuide = { ...guideToUpdate, topics: updatedTopics };
+      const updatedGuides = { ...dynamicGuideData, [guideId]: updatedGuide };
+      setDynamicGuideData(updatedGuides);
+      localStorage.setItem('guideData', JSON.stringify(updatedGuides));
     }
   };
 
@@ -332,6 +339,83 @@ const App: React.FC = () => {
     }
   };
 
+  const handlePublishToGitHub = async () => {
+    const settingsStr = localStorage.getItem('githubPublishSettings');
+    if (!settingsStr) {
+        alert('GitHub settings not configured. Please configure them in the Admin Dashboard.');
+        return;
+    }
+    const settings = JSON.parse(settingsStr);
+    const { owner, repo, path, pat } = settings;
+
+    if (!owner || !repo || !path || !pat) {
+        alert('GitHub settings are incomplete. Please fill in all fields.');
+        return;
+    }
+
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+    // 1. Prepare the data
+    const dataToPublish = {
+      homeCards,
+      guideData: dynamicGuideData,
+      adminUsers
+    };
+    const content = JSON.stringify(dataToPublish, null, 2);
+    const encodedContent = utf8_to_b64(content);
+
+    try {
+        // 2. Get the current file SHA to perform an update
+        let sha;
+        const getFileResponse = await fetch(apiUrl, {
+            headers: {
+                'Authorization': `token ${pat}`,
+                'Accept': 'application/vnd.github.v3+json',
+            },
+        });
+
+        if (getFileResponse.ok) {
+            const fileData = await getFileResponse.json();
+            sha = fileData.sha;
+        } else if (getFileResponse.status !== 404) {
+            // Handle errors other than "file not found"
+            const errorData = await getFileResponse.json();
+            throw new Error(`Failed to get file info: ${errorData.message}`);
+        }
+        // If status is 404, sha remains undefined, and we'll create a new file.
+
+        // 3. Update or create the file
+        const updateResponse = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${pat}`,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                message: `Update data.json via web app [${new Date().toISOString()}]`,
+                content: encodedContent,
+                sha: sha, // If sha is undefined, GitHub API creates a new file
+                committer: {
+                    name: 'Interactive Guide App',
+                    email: 'app@example.com'
+                }
+            }),
+        });
+
+        if (!updateResponse.ok) {
+            const errorData = await updateResponse.json();
+            throw new Error(`GitHub API error: ${errorData.message}`);
+        }
+
+        alert('Data successfully published to GitHub!');
+
+    } catch (error) {
+        console.error('Failed to publish to GitHub:', error);
+        alert(`Error publishing to GitHub: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  };
+
   const handleUpdateGuide = (guideId: string, newGuideData: { title: string; topics: Topic[] }) => {
     // Update the guide data itself
     const updatedGuides = { ...dynamicGuideData, [guideId]: newGuideData };
@@ -386,6 +470,7 @@ const App: React.FC = () => {
             onDeleteUser={handleDeleteUser}
             onExportData={handleExportData}
             onImportData={handleImportData}
+            onPublishToGitHub={handlePublishToGitHub}
         />;
       }
       

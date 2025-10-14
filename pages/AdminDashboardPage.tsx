@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { RawHomeCard, AdminUser } from '../types';
 import { icons } from '../data/homeCards';
+import GitHubPublishModal from '../components/GitHubPublishModal';
+import type { GitHubSettings } from '../components/GitHubPublishModal';
 
 interface AdminDashboardPageProps {
   currentGuides: RawHomeCard[];
@@ -14,6 +16,7 @@ interface AdminDashboardPageProps {
   onDeleteUser: (username: string) => void;
   onExportData: () => void;
   onImportData: (fileContent: string) => void;
+  onPublishToGitHub: () => Promise<void>;
 }
 
 const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ 
@@ -27,12 +30,12 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
     onAddUser, 
     onDeleteUser, 
     onExportData, 
-    onImportData 
+    onImportData,
+    onPublishToGitHub
 }) => {
   // Create form state
   const [title, setTitle] = useState('');
   const [id, setId] = useState('');
-  const [iconId, setIconId] = useState('');
   const [color, setColor] = useState('bg-gray-800/80');
   const [tagName, setTagName] = useState('');
   const [tagColor, setTagColor] = useState('bg-gray-500/50 text-white');
@@ -49,19 +52,27 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [cardToEdit, setCardToEdit] = useState<RawHomeCard | null>(null);
   const [editedTitle, setEditedTitle] = useState('');
-  const [editedIcon, setEditedIcon] = useState('');
   const [editedColor, setEditedColor] = useState('');
   const [editedTagName, setEditedTagName] = useState('');
   const [editedTagColor, setEditedTagColor] = useState('');
   const [editedStatus, setEditedStatus] = useState('');
 
-  // Effect to sync iconId with id for convenience
+  // GitHub Publish feature states
+  const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
+  const [githubSettings, setGithubSettings] = useState<GitHubSettings>({ owner: '', repo: '', path: 'public/data.json', pat: '' });
+  const [isPublishing, setIsPublishing] = useState(false);
+
   useEffect(() => {
-    setIconId(id);
-  }, [id]);
-
-  const availableIcons = Object.keys(icons).join(', ');
-
+    try {
+        const savedSettings = localStorage.getItem('githubPublishSettings');
+        if (savedSettings) {
+            setGithubSettings(JSON.parse(savedSettings));
+        }
+    } catch (e) {
+        console.error("Could not parse GitHub settings from localStorage", e);
+        localStorage.removeItem('githubPublishSettings');
+    }
+  }, []);
 
   const handleCreateGuideSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,7 +87,7 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
     const newCardData = {
       id,
       title,
-      icon: iconId,
+      icon: id,
       color,
       tag: tagName ? { name: tagName, color: tagColor } : undefined,
     };
@@ -90,7 +101,6 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
     // Reset form
     setTitle('');
     setId('');
-    setIconId('');
     setTagName('');
     setIsComingSoon(false);
   };
@@ -136,7 +146,6 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   const openEditModal = (card: RawHomeCard) => {
     setCardToEdit(card);
     setEditedTitle(card.title);
-    setEditedIcon(card.icon || card.id);
     setEditedColor(card.color);
     setEditedTagName(card.tag?.name || '');
     setEditedTagColor(card.tag?.color || 'bg-gray-500/50 text-white');
@@ -150,7 +159,6 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
     const updatedCard: RawHomeCard = {
         ...cardToEdit,
         title: editedTitle,
-        icon: editedIcon,
         color: editedColor,
         tag: editedTagName ? { name: editedTagName, color: editedTagColor } : undefined,
         status: editedStatus,
@@ -163,6 +171,26 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   const handleDeleteClick = (card: RawHomeCard) => {
     if (window.confirm(`Are you sure you want to delete the card "${card.title}"? This will also delete its guide content and cannot be undone.`)) {
         onDeleteCard(card.id);
+    }
+  };
+
+  const handleSaveGitHubSettings = (settings: GitHubSettings) => {
+    setGithubSettings(settings);
+    localStorage.setItem('githubPublishSettings', JSON.stringify(settings));
+    setIsPublishModalOpen(false);
+    alert('GitHub settings saved! You can now publish your data.');
+  };
+
+  const handlePublishClick = async () => {
+    if (!githubSettings.pat || !githubSettings.owner || !githubSettings.repo) {
+        alert('GitHub settings are not configured. Please set them up first.');
+        setIsPublishModalOpen(true);
+        return;
+    }
+    if (window.confirm('This will overwrite the file in your GitHub repository with the current data. Are you sure?')) {
+        setIsPublishing(true);
+        await onPublishToGitHub();
+        setIsPublishing(false);
     }
   };
 
@@ -193,11 +221,6 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                         <label className="block text-sm font-medium text-slate-300 mb-1">ID (unique, no spaces)</label>
                         <input type="text" value={id} onChange={e => setId(e.target.value.toLowerCase().replace(/\s/g, ''))} placeholder="e.g., react-basics" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" required />
                     </div>
-                </div>
-                <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-1">Icon ID</label>
-                    <input type="text" value={iconId} onChange={e => setIconId(e.target.value)} placeholder="e.g., soc" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" />
-                    <p className="text-xs text-slate-400 mt-1 truncate">Available: {availableIcons}</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
@@ -260,9 +283,17 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             <div className="bg-slate-800/60 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6">
                 <h2 className="text-xl font-bold mb-4">Data Management</h2>
                 <p className="text-xs text-slate-400 mb-3 -mt-2">
-                  Export creates a `data.json` file. Place this file in your project's public root to set the new default content.
+                  Publish or Export creates a `data.json` file. Place this file in your project's public root to set the new default content.
                 </p>
                 <div className="space-y-3">
+                    <button onClick={handlePublishClick} disabled={isPublishing} className="w-full text-center text-sm bg-gray-600 hover:bg-gray-500 disabled:bg-gray-700 disabled:cursor-wait text-white font-bold py-2 px-3 rounded-md transition-colors flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+                        {isPublishing ? 'Publishing...' : 'Publish to GitHub'}
+                    </button>
+                    <button onClick={() => setIsPublishModalOpen(true)} className="w-full text-center text-sm bg-slate-600 hover:bg-slate-500 text-white font-bold py-2 px-3 rounded-md transition-colors flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        GitHub Settings
+                    </button>
                      <button onClick={onExportData} className="w-full text-center text-sm bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-3 rounded-md transition-colors flex items-center justify-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -326,11 +357,6 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                         <input type="text" value={editedTitle} onChange={e => setEditedTitle(e.target.value)} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">Icon ID</label>
-                        <input type="text" value={editedIcon} onChange={e => setEditedIcon(e.target.value)} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" />
-                        <p className="text-xs text-slate-400 mt-1 truncate">Available: {availableIcons}</p>
-                    </div>
-                    <div>
                         <label className="block text-sm font-medium text-slate-300 mb-1">Status</label>
                         <input type="text" value={editedStatus} onChange={e => setEditedStatus(e.target.value)} placeholder="e.g., Explore the guide" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" />
                          <p className="text-xs text-slate-400 mt-1">Use "Coming Soon" to make this a placeholder.</p>
@@ -357,6 +383,12 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             </div>
         </div>
       )}
+      <GitHubPublishModal
+        isOpen={isPublishModalOpen}
+        onClose={() => setIsPublishModalOpen(false)}
+        onSave={handleSaveGitHubSettings}
+        initialSettings={githubSettings}
+      />
     </div>
   );
 };

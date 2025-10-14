@@ -1,141 +1,170 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ContentType } from '../types';
-import type { Topic, ContentBlock, HighlightColor } from '../types';
+import type { Topic, ContentBlock, ListItem } from '../types';
+import AddArticleModal from '../components/AddArticleModal';
 
 interface AdminGuideEditorPageProps {
   guide: { title: string; topics: Topic[] };
   guideId: string;
-  onAddNewTopic: (guideId: string, newTopic: { id: string; title: string }) => void;
+  onAddNewTopic: (guideId: string, newTopic: Topic) => void;
   onUpdateTopic: (guideId: string, originalTopicId: string, updatedTopic: Topic) => void;
   onDeleteTopic: (guideId: string, topicId: string) => void;
   onUpdateGuide: (guideId: string, newGuideData: { title: string; topics: Topic[] }) => void;
 }
 
-const ContentBlockAdder: React.FC<{ onAddBlock: (block: ContentBlock) => void }> = ({ onAddBlock }) => {
-    const [type, setType] = useState<ContentType>(ContentType.PARAGRAPH);
-    const [text, setText] = useState('');
-    const [items, setItems] = useState('');
-    const [color, setColor] = useState<HighlightColor>('blue');
+// --- START: Markdown Conversion Utilities ---
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        let newBlock: ContentBlock | null = null;
-        switch(type) {
-            case ContentType.HEADING2:
-            case ContentType.HEADING3:
-            case ContentType.PARAGRAPH:
-                if (!text) { alert('Text is required.'); return; }
-                newBlock = { type, text };
-                break;
-            case ContentType.HIGHLIGHT:
-                 if (!text) { alert('Text is required.'); return; }
-                newBlock = { type, text, color };
-                break;
-            case ContentType.LIST:
-            case ContentType.ORDERED_LIST:
-                if (!items) { alert('List items are required.'); return; }
-                newBlock = { type, items: items.split('\n').filter(i => i.trim() !== '') };
-                break;
-        }
-
-        if (newBlock) {
-            onAddBlock(newBlock);
-            // Reset form
-            setText('');
-            setItems('');
-        }
-    };
-    
-    return (
-        <div className="mt-6 pt-4 border-t border-slate-600">
-            <h4 className="text-md font-bold mb-3">Add Content Block</h4>
-            <form onSubmit={handleSubmit} className="space-y-3 p-3 bg-slate-800/50 rounded-lg">
-                <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">Block Type</label>
-                    <select value={type} onChange={e => setType(e.target.value as ContentType)} className="w-full bg-slate-700/50 border border-slate-600 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-sky-500">
-                        <option value={ContentType.HEADING2}>Heading 2</option>
-                        <option value={ContentType.HEADING3}>Heading 3</option>
-                        <option value={ContentType.PARAGRAPH}>Paragraph</option>
-                        <option value={ContentType.LIST}>Unordered List</option>
-                        <option value={ContentType.ORDERED_LIST}>Ordered List</option>
-                        <option value={ContentType.HIGHLIGHT}>Highlight Box</option>
-                    </select>
-                </div>
-
-                { (type === ContentType.HEADING2 || type === ContentType.HEADING3 || type === ContentType.PARAGRAPH || type === ContentType.HIGHLIGHT) && (
-                    <div>
-                        <label className="block text-xs font-medium text-slate-300 mb-1">Text</label>
-                        <input type="text" value={text} onChange={e => setText(e.target.value)} className="w-full bg-slate-700/50 border border-slate-600 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-sky-500" />
-                    </div>
-                )}
-
-                { type === ContentType.HIGHLIGHT && (
-                     <div>
-                        <label className="block text-xs font-medium text-slate-300 mb-1">Color</label>
-                         <select value={color} onChange={e => setColor(e.target.value as HighlightColor)} className="w-full bg-slate-700/50 border border-slate-600 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-sky-500">
-                            {['green', 'fuchsia', 'yellow', 'red', 'purple', 'blue', 'cyan', 'indigo'].map(c => <option key={c} value={c}>{c}</option>)}
-                        </select>
-                    </div>
-                )}
-
-                { (type === ContentType.LIST || type === ContentType.ORDERED_LIST) && (
-                    <div>
-                        <label className="block text-xs font-medium text-slate-300 mb-1">List Items (one per line)</label>
-                        <textarea value={items} onChange={e => setItems(e.target.value)} rows={4} className="w-full bg-slate-700/50 border border-slate-600 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-sky-500"></textarea>
-                    </div>
-                )}
-
-                <button type="submit" className="w-full bg-indigo-600 text-white font-bold py-1.5 px-4 rounded-md hover:bg-indigo-500 transition-colors text-sm">
-                    Add Block
-                </button>
-            </form>
-        </div>
-    );
+/**
+ * Converts an array of ContentBlock objects into a Markdown string.
+ * Simple blocks are converted to Markdown syntax, while complex ones are embedded as JSON code blocks.
+ */
+const contentBlocksToMarkdown = (content: ContentBlock[]): string => {
+  if (!content) return '';
+  return content.map(block => {
+    switch (block.type) {
+      case ContentType.HEADING2:
+        return `## ${block.text || ''}`;
+      case ContentType.HEADING3:
+        return `### ${block.text || ''}`;
+      case ContentType.PARAGRAPH:
+        return block.text || '';
+      case ContentType.LIST:
+        return (block.items?.map(item => `* ${typeof item === 'string' ? item : JSON.stringify(item)}`).join('\n')) || '';
+      case ContentType.ORDERED_LIST:
+        return (block.items?.map((item, index) => `${index + 1}. ${typeof item === 'string' ? item : JSON.stringify(item)}`).join('\n')) || '';
+      // For complex types, embed them as JSON code blocks to preserve them
+      case ContentType.HIGHLIGHT:
+      case ContentType.COLORED_PARAGRAPH:
+      case ContentType.TABLE:
+      default:
+        return '```json\n' + JSON.stringify(block, null, 2) + '\n```';
+    }
+  }).join('\n\n');
 };
+
+/**
+ * Converts a Markdown string into an array of ContentBlock objects.
+ * Parses standard Markdown and special JSON code blocks.
+ */
+const markdownToContentBlocks = (markdown: string): ContentBlock[] => {
+  const blocks: ContentBlock[] = [];
+  const lines = markdown.split('\n');
+  let i = 0;
+
+  while (i < lines.length) {
+    let line = lines[i];
+
+    // Skip empty lines between blocks
+    if (line.trim() === '') {
+      i++;
+      continue;
+    }
+
+    if (line.startsWith('## ')) {
+      blocks.push({ type: ContentType.HEADING2, text: line.substring(3).trim() });
+      i++;
+    } else if (line.startsWith('### ')) {
+      blocks.push({ type: ContentType.HEADING3, text: line.substring(4).trim() });
+      i++;
+    } else if (line.match(/^[\*\-\+] /)) {
+      const listItems: ListItem[] = [];
+      while (i < lines.length && lines[i].match(/^[\*\-\+] /)) {
+        listItems.push(lines[i].substring(2).trim());
+        i++;
+      }
+      blocks.push({ type: ContentType.LIST, items: listItems });
+    } else if (line.match(/^\d+\. /)) {
+      const listItems: ListItem[] = [];
+      while (i < lines.length && lines[i].match(/^\d+\. /)) {
+        listItems.push(lines[i].replace(/^\d+\. /, '').trim());
+        i++;
+      }
+      blocks.push({ type: ContentType.ORDERED_LIST, items: listItems });
+    } else if (line.trim() === '```json') {
+      let jsonString = '';
+      i++;
+      while (i < lines.length && lines[i].trim() !== '```') {
+        jsonString += lines[i] + '\n';
+        i++;
+      }
+      i++; // Skip closing ```
+      try {
+        const parsedBlock = JSON.parse(jsonString);
+        if (parsedBlock.type) {
+          blocks.push(parsedBlock);
+        }
+      } catch (e) {
+        console.error("Invalid JSON in code block:", e);
+        // Fallback: treat invalid JSON block as plain text
+        // Fix: Corrected typo from PARAGraph to PARAGRAPH.
+        blocks.push({ type: ContentType.PARAGRAPH, text: '```json\n' + jsonString + '```' });
+      }
+    } else {
+      // Default to paragraph
+      let paragraphText = '';
+      while (i < lines.length && lines[i].trim() !== '' && !lines[i].match(/^(## |### |[\*\-\+] |\d+\. |```json)/)) {
+        paragraphText += (paragraphText ? '\n' : '') + lines[i];
+        i++;
+      }
+      blocks.push({ type: ContentType.PARAGRAPH, text: paragraphText });
+    }
+  }
+  return blocks;
+};
+
+// --- END: Markdown Conversion Utilities ---
 
 
 const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guideId, onAddNewTopic, onUpdateTopic, onDeleteTopic, onUpdateGuide }) => {
-  const [newTopicTitle, setNewTopicTitle] = useState('');
-  const [newTopicId, setNewTopicId] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // State for guide title editing
   const [editedGuideTitle, setEditedGuideTitle] = useState(guide.title);
+  const [isAddArticleModalOpen, setIsAddArticleModalOpen] = useState(false);
 
   // State for inline topic editing
   const [editingTopicId, setEditingTopicId] = useState<string | null>(null);
   const [editedTitle, setEditedTitle] = useState('');
   const [editedId, setEditedId] = useState('');
-  const [editedContent, setEditedContent] = useState('');
+  const [editedContentMarkdown, setEditedContentMarkdown] = useState('');
 
   // Sync state with props if the guide changes
   useEffect(() => {
     setEditedGuideTitle(guide.title);
   }, [guide.title]);
+  
+  const handleSaveNewArticle = (title: string, markdownContent: string) => {
+    const newId = title.trim().toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
 
-  const handleAddTopicSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newTopicTitle || !newTopicId) {
-      alert('Topic Title and ID are required.');
+    if (!title || !newId) {
+      alert('Title is required and must result in a valid ID.');
       return;
     }
-    if (guide.topics.some(t => t.id === newTopicId)) {
-      alert('This Topic ID is already in use for this guide. Please choose a unique ID.');
+
+    if (guide.topics.some(t => t.id === newId)) {
+      alert(`A topic with the generated ID "${newId}" already exists. Please choose a different title.`);
       return;
     }
 
-    onAddNewTopic(guideId, { id: newTopicId, title: newTopicTitle });
+    const newTopic: Topic = {
+      id: newId,
+      title: title.trim(),
+      content: markdownToContentBlocks(markdownContent)
+    };
 
-    // Reset form
-    setNewTopicTitle('');
-    setNewTopicId('');
+    onAddNewTopic(guideId, newTopic);
+    setIsAddArticleModalOpen(false); // Close modal on success
   };
 
   const handleEditClick = (topic: Topic) => {
     setEditingTopicId(topic.id);
     setEditedTitle(topic.title);
     setEditedId(topic.id);
-    setEditedContent(JSON.stringify(topic.content, null, 2));
+    setEditedContentMarkdown(contentBlocksToMarkdown(topic.content));
   };
 
   const handleCancelEdit = () => {
@@ -159,13 +188,7 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
       return;
     }
 
-    let parsedContent;
-    try {
-      parsedContent = JSON.parse(editedContent);
-    } catch (error) {
-      alert('Content is not valid JSON. Please correct the format.');
-      return;
-    }
+    const parsedContent = markdownToContentBlocks(editedContentMarkdown);
 
     const updatedTopic: Topic = {
       id: editedId,
@@ -175,16 +198,6 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
 
     onUpdateTopic(guideId, originalTopicId, updatedTopic);
     setEditingTopicId(null);
-  };
-
-  const addContentBlockToTopic = (newBlock: ContentBlock) => {
-    try {
-        const currentContent = JSON.parse(editedContent) as ContentBlock[];
-        const updatedContent = [...currentContent, newBlock];
-        setEditedContent(JSON.stringify(updatedContent, null, 2));
-    } catch {
-        alert('Could not add block because current content is not valid JSON.');
-    }
   };
   
   const handleGuideTitleSave = () => {
@@ -273,6 +286,11 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
         accept=".json"
         className="hidden"
       />
+       <AddArticleModal 
+        isOpen={isAddArticleModalOpen}
+        onClose={() => setIsAddArticleModalOpen(false)}
+        onSave={handleSaveNewArticle}
+      />
       <header className="flex flex-wrap justify-between items-center gap-4 mb-8">
         <div className="flex-grow min-w-0">
           <label htmlFor="guide-title-input" className="text-sm font-medium text-slate-300">Guide Title</label>
@@ -317,36 +335,19 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Add Topic Form */}
+        {/* Add Topic Area */}
         <div className="bg-slate-800/60 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 self-start">
-          <h2 className="text-xl font-bold mb-4">Add New Topic</h2>
-          <form onSubmit={handleAddTopicSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Topic Title</label>
-              <input 
-                type="text" 
-                value={newTopicTitle} 
-                onChange={e => setNewTopicTitle(e.target.value)} 
-                placeholder="e.g., Advanced Commands" 
-                className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" 
-                required 
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Topic ID (unique, no spaces)</label>
-              <input 
-                type="text" 
-                value={newTopicId} 
-                onChange={e => setNewTopicId(e.target.value.toLowerCase().replace(/\s/g, ''))} 
-                placeholder="e.g., advanced-commands" 
-                className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" 
-                required 
-              />
-            </div>
-            <button type="submit" className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-transform hover:scale-105">
-              Add Topic
-            </button>
-          </form>
+          <h2 className="text-xl font-bold mb-2">Add New Topic</h2>
+          <p className="text-slate-400 text-sm mb-4">Add a new article to this guide, complete with its initial content written in Markdown.</p>
+          <button 
+            onClick={() => setIsAddArticleModalOpen(true)}
+            className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold py-2.5 px-4 rounded-lg hover:opacity-90 transition-transform hover:scale-105 flex items-center justify-center gap-2"
+          >
+             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+               <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+             </svg>
+            Add New Article
+          </button>
         </div>
 
         {/* Current Topics List */}
@@ -367,16 +368,16 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
                       <input type="text" value={editedId} onChange={e => setEditedId(e.target.value.toLowerCase().replace(/\s/g, ''))} className="w-full bg-slate-600/50 border border-slate-500 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-1">Content (JSON)</label>
+                      <label className="block text-sm font-medium text-slate-300 mb-1">Content (Markdown)</label>
                       <textarea 
-                        value={editedContent}
-                        onChange={e => setEditedContent(e.target.value)}
-                        className="w-full h-40 font-mono text-xs bg-slate-900/70 border border-slate-500 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        value={editedContentMarkdown}
+                        onChange={e => setEditedContentMarkdown(e.target.value)}
+                        className="w-full h-64 font-mono text-sm bg-slate-900/70 border border-slate-500 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
                         spellCheck="false"
+                        placeholder="Use Markdown to write content. e.g., ## Heading, * for lists..."
                       />
+                       <p className="text-xs text-slate-400 mt-1">Complex blocks like highlights will appear as editable JSON blocks here.</p>
                     </div>
-                    
-                    <ContentBlockAdder onAddBlock={addContentBlockToTopic} />
 
                     <div className="flex gap-2 justify-end mt-4">
                       <button onClick={handleCancelEdit} className="text-sm bg-slate-600 hover:bg-slate-500 text-white font-bold py-1 px-3 rounded-md transition-colors">Cancel</button>
