@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { RawHomeCard, AdminUser } from '../types';
-import { icons } from '../data/homeCards';
 import GitHubPublishModal from '../components/GitHubPublishModal';
 import type { GitHubSettings } from '../components/GitHubPublishModal';
 
@@ -35,7 +34,6 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 }) => {
   // Create form state
   const [title, setTitle] = useState('');
-  const [id, setId] = useState('');
   const [color, setColor] = useState('bg-gray-800/80');
   const [tagName, setTagName] = useState('');
   const [tagColor, setTagColor] = useState('bg-gray-500/50 text-white');
@@ -76,18 +74,30 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 
   const handleCreateGuideSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title || !id) {
-      alert('Title and ID are required.');
+    if (!title) {
+      alert('Title is required.');
       return;
     }
-    if (currentGuides.some(g => g.id === id)) {
-      alert('This ID is already in use. Please choose a unique ID.');
+    
+    // Auto-generate ID from title
+    const newId = title.trim().toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    if (!newId) {
+      alert('Title must result in a valid ID.');
+      return;
+    }
+
+    if (currentGuides.some(g => g.id === newId)) {
+      alert(`The generated ID "${newId}" is already in use. Please choose a different title.`);
       return;
     }
     const newCardData = {
-      id,
+      id: newId,
       title,
-      icon: id,
       color,
       tag: tagName ? { name: tagName, color: tagColor } : undefined,
     };
@@ -100,7 +110,6 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 
     // Reset form
     setTitle('');
-    setId('');
     setTagName('');
     setIsComingSoon(false);
   };
@@ -212,15 +221,9 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             <div className="bg-slate-800/60 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6">
               <h2 className="text-xl font-bold mb-4">Create New Card</h2>
               <form onSubmit={handleCreateGuideSubmit} className="space-y-4">
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">Title</label>
-                        <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="e.g., React Basics" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" required />
-                    </div>
-                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">ID (unique, no spaces)</label>
-                        <input type="text" value={id} onChange={e => setId(e.target.value.toLowerCase().replace(/\s/g, ''))} placeholder="e.g., react-basics" className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" required />
-                    </div>
+                 <div>
+                    <label className="block text-sm font-medium text-slate-300 mb-1">Title</label>
+                    <input type="text" value={title} onChange={e => setTitle(e.target.value)} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500" required />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>

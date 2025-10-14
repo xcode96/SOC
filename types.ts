@@ -52,7 +52,6 @@ export interface Topic {
 export interface RawHomeCard {
   id: string;
   title: string;
-  icon?: string;
   color: string;
   tag?: { name: string; color: string };
   status: string;
@@ -60,9 +59,8 @@ export interface RawHomeCard {
 }
 
 // FIX: Correctly extend RawHomeCard by omitting the incompatible 'icon' property before redefining it.
-export interface HomeCard extends Omit<RawHomeCard, 'icon'> {
-  icon: React.ReactNode;
-}
+// Fix: Changed from an interface to a type alias to correctly handle the 'icon' property override.
+export type HomeCard = RawHomeCard;
 
 export interface AdminUser {
   username: string;
