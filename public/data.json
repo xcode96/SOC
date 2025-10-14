@@ -53,8 +53,8 @@
         "name": "Python",
         "color": "bg-emerald-600/50 text-white"
       },
-      "status": "Coming Soon",
-      "href": "#"
+      "status": "ok",
+      "href": "#/guide/django"
     },
     {
       "id": "flask",
@@ -2418,6 +2418,25 @@
             {
               "type": "h2",
               "text": "Welcome to the C# Guide"
+            },
+            {
+              "type": "p",
+              "text": "This is a new guide. Start adding topics!"
+            }
+          ]
+        }
+      ]
+    },
+    "django": {
+      "title": "Django Interactive Guide",
+      "topics": [
+        {
+          "id": "toc",
+          "title": "Welcome to Django",
+          "content": [
+            {
+              "type": "h2",
+              "text": "Welcome to the Django Guide"
             },
             {
               "type": "p",
