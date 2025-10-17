@@ -361,16 +361,16 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
   };
   const handleImageInsert = () => {
     const url = prompt('Enter image URL:', 'https://');
-    if (url) insertMarkdown('![alt text](', `)`);
-    // Replace placeholder with URL
-    setTimeout(() => setEditedContent(c => c.replace('text', url)), 0);
+    if (url) {
+      insertMarkdown('![alt text](', ')', url);
+    }
   }
 
   const toolbarButtons = [
     { label: 'H2', action: () => insertMarkdown('## ', '', 'Heading') },
     { label: 'H3', action: () => insertMarkdown('### ', '', 'Subheading') },
     { label: 'B', action: () => insertMarkdown('**', '**', 'bold text'), className: 'font-bold' },
-    { label: 'I', action: () => insertMarkdown('{', '}[blue]', 'italic text'), className: 'italic' },
+    { label: 'Color', action: () => insertMarkdown('{', '}[blue]', 'colored text'), className: 'italic' },
     { label: 'List', action: () => insertMarkdown('\n- ', '', 'List item') },
     { label: 'Img', action: handleImageInsert },
   ];
@@ -420,7 +420,7 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
                     <div>
                         <div className="flex justify-between items-center mb-1"><label className="text-sm font-medium text-slate-300">Content (Markdown)</label><button onClick={handleCopyMarkdown} className="text-xs bg-slate-600 hover:bg-slate-500 rounded px-2 py-0.5 transition-colors">{copyButtonText}</button></div>
                         <div className="bg-slate-900/70 border border-slate-500 rounded-md overflow-hidden">
-                            <div className="flex items-center gap-1 p-2 bg-slate-800/50 border-b border-slate-500">{toolbarButtons.map(btn => (<button key={btn.label} type="button" onClick={btn.action} className={`w-8 h-8 rounded text-sm text-slate-300 hover:bg-slate-600 ${btn.className}`}>{btn.label}</button>))}</div>
+                            <div className="flex items-center gap-1 p-2 bg-slate-800/50 border-b border-slate-500">{toolbarButtons.map(btn => (<button key={btn.label} type="button" onClick={btn.action} title={btn.label} className={`w-8 h-8 rounded text-sm text-slate-300 hover:bg-slate-600 ${btn.className}`}>{btn.label}</button>))}</div>
                             <div className="grid grid-cols-1 xl:grid-cols-2 gap-px bg-slate-500 h-[30rem] xl:h-96">
                                 <textarea ref={editorRef} value={editedContent} onChange={e => setEditedContent(e.target.value)} className="w-full h-full font-mono text-xs bg-slate-800 p-3 text-white focus:outline-none resize-none" spellCheck="false" />
                                 <div className="bg-slate-100 p-4 overflow-y-auto h-full text-sm hidden xl:block">{parseMarkdownToContentBlocks(editedContent).map((block, i) => renderPreviewBlock(block, i))}</div>
