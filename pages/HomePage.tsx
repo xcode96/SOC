@@ -1,15 +1,18 @@
 import React from 'react';
-import type { RawHomeCard } from '../types';
+import type { HomeCard } from '../types';
 
 interface HomePageProps {
-  homeCards: RawHomeCard[];
+  homeCards: HomeCard[];
 }
 
-const Card: React.FC<{ card: RawHomeCard }> = ({ card }) => (
+const Card: React.FC<{ card: HomeCard }> = ({ card }) => (
   <a href={card.href} className={`rounded-2xl p-5 flex flex-col justify-between h-40 transition-all duration-300 ease-in-out hover:transform hover:scale-105 hover:shadow-2xl ${card.color}`}>
     <div>
       <div className="flex justify-between items-start">
-        <h3 className="text-lg font-bold text-white">{card.title}</h3>
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 flex items-center justify-center">{card.icon}</div>
+          <h3 className="text-lg font-bold text-white">{card.title}</h3>
+        </div>
         {card.tag && (
           <span className={`text-xs font-semibold rounded-full px-2 py-0.5 ${card.tag.color}`}>
             {card.tag.name}

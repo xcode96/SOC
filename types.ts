@@ -10,6 +10,7 @@ export enum ContentType {
   SUB_LIST = 'sub_list',
   COLORED_PARAGRAPH = 'colored_p',
   TABLE = 'table',
+  IMAGE = 'img',
 }
 
 export type HighlightColor = 'green' | 'fuchsia' | 'yellow' | 'red' | 'purple' | 'blue' | 'cyan' | 'indigo';
@@ -40,6 +41,8 @@ export interface ContentBlock {
   parts?: ContentPart[]; // For COLORED_PARAGRAPH
   rows?: TableCell[][]; // For TABLE
   color?: HighlightColor; // For HIGHLIGHT blocks
+  src?: string; // For IMAGE
+  alt?: string; // For IMAGE
 }
 
 export interface Topic {
@@ -52,15 +55,16 @@ export interface Topic {
 export interface RawHomeCard {
   id: string;
   title: string;
+  icon?: string;
   color: string;
   tag?: { name: string; color: string };
   status: string;
   href: string;
 }
 
-// FIX: Correctly extend RawHomeCard by omitting the incompatible 'icon' property before redefining it.
-// Fix: Changed from an interface to a type alias to correctly handle the 'icon' property override.
-export type HomeCard = RawHomeCard;
+export interface HomeCard extends RawHomeCard {
+  icon: React.ReactNode;
+}
 
 export interface AdminUser {
   username: string;

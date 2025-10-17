@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ContentType } from '../types';
 import type { Topic, ContentBlock, HighlightColor, ColoredText, ContentPart } from '../types';
@@ -173,6 +172,18 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
             {block.parts?.map((part, i) => <ColoredTextSpan key={i} part={part} />)}
             </p>
             <ExplainButton onClick={() => explainHandler(getTextFromParts(block.parts))} />
+        </div>
+      );
+    case ContentType.IMAGE:
+      return (
+        <div key={index} className="my-6">
+          <img 
+            src={block.src} 
+            alt={block.alt} 
+            className="rounded-lg shadow-md max-w-full h-auto mx-auto border-4 border-slate-200/80" 
+            loading="lazy"
+          />
+          {block.alt && <p className="text-center text-sm text-slate-500 italic mt-2">{block.alt}</p>}
         </div>
       );
     case ContentType.TABLE:
