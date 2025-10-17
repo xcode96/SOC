@@ -15,14 +15,19 @@ const getMarkdownFromParts = (parts: ContentPart[]): string => {
   return parts.map(p => {
     if (typeof p === 'string') return p;
     // Fix: Use 'in' operator as a type guard to correctly identify object shapes.
-    if ('type' in p && p.type === ContentType.STRIKETHROUGH) return `~~${p.text}~~`;
+    if ('type' in p) {
+      switch(p.type) {
+        case ContentType.STRIKETHROUGH: return `~~${p.text}~~`;
+        case ContentType.LINK: return `[${p.text}](${p.href})`;
+      }
+    }
     return `{${p.text}}[${p.color}]`;
   }).join('');
 };
 
 const parseLineToParts = (line: string): ContentPart[] => {
     const parts: ContentPart[] = [];
-    const regex = /\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~/g;
+    const regex = /\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~|\[([^\]]+?)\]\(([^)]+?)\)/g;
     let lastIndex = 0;
     let match;
 
@@ -42,6 +47,8 @@ const parseLineToParts = (line: string): ContentPart[] => {
             }
         } else if (match[3] !== undefined) { // Strikethrough
             parts.push({ type: ContentType.STRIKETHROUGH, text: match[3] });
+        } else if (match[4] !== undefined) { // Link
+            parts.push({ type: ContentType.LINK, text: match[4], href: match[5] });
         }
         
         lastIndex = regex.lastIndex;
@@ -64,6 +71,7 @@ const convertJsonToMarkdown = (content: ContentBlock[]): string => {
       case ContentType.HEADING3: lines.push(`### ${block.text}`); break;
       case ContentType.HEADING4: lines.push(`#### ${block.text}`); break;
       case ContentType.PARAGRAPH: lines.push(block.parts ? getMarkdownFromParts(block.parts) : block.text || ''); break;
+      case ContentType.HTML_BLOCK: lines.push(block.html || ''); break;
       case ContentType.COLORED_PARAGRAPH: if (block.parts) { lines.push(getMarkdownFromParts(block.parts)); } break;
       case ContentType.LIST:
       case ContentType.ORDERED_LIST:
@@ -132,10 +140,39 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
     const lines = markdown.trim().split('\n');
     let i = 0;
 
+    const htmlBlockTags = ['p', 'details', 'summary', 'div', 'figure', 'table', 'thead', 'tbody', 'tr', 'th', 'td'];
+
     while (i < lines.length) {
         let line = lines[i];
 
         if (line.trim() === '') { i++; continue; }
+
+        const htmlMatch = line.trim().match(new RegExp(`^<(${htmlBlockTags.join('|')})`, 'i'));
+        if (htmlMatch) {
+            const tag = htmlMatch[1].toLowerCase();
+            const blockLines = [];
+            let openTags = 0;
+            let finished = false;
+
+            for (let j = i; j < lines.length; j++) {
+                const currentLine = lines[j];
+                blockLines.push(currentLine);
+                const openMatches = currentLine.match(new RegExp(`<${tag}`, 'gi')) || [];
+                const closeMatches = currentLine.match(new RegExp(`</${tag}>`, 'gi')) || [];
+                openTags += openMatches.length - closeMatches.length;
+
+                if (openTags <= 0 && closeMatches.length > 0) {
+                    i = j + 1;
+                    finished = true;
+                    break;
+                }
+            }
+             if (!finished) i = lines.length; // Consume rest of lines if no closing tag found
+
+            content.push({ type: ContentType.HTML_BLOCK, html: blockLines.join('\n') });
+            continue;
+        }
+
 
         // Table
         if (line.match(/^\|.*\|$/) && i + 1 < lines.length && lines[i+1].match(/^\|\s*:?---:?\s*\|/)) {
@@ -169,16 +206,6 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
             i++; continue;
         }
 
-        if (line.trim().toLowerCase().startsWith('<details>')) {
-            const summaryMatch = line.match(/<summary>(.*?)<\/summary>/i);
-            const summary = summaryMatch ? summaryMatch[1].trim() : 'Details';
-            const detailLines: string[] = [];
-            i++;
-            while (i < lines.length && !lines[i].trim().toLowerCase().startsWith('</details>')) { detailLines.push(lines[i]); i++; }
-            content.push({ type: ContentType.DETAILS, summary, children: parseMarkdownToContentBlocks(detailLines.join('\n')) });
-            i++; continue;
-        }
-
         if (line.startsWith('#### ')) { content.push({ type: ContentType.HEADING4, text: line.substring(5).trim() }); i++; continue; }
         if (line.startsWith('### ')) { content.push({ type: ContentType.HEADING3, text: line.substring(4).trim() }); i++; continue; }
         if (line.startsWith('## ')) { content.push({ type: ContentType.HEADING2, text: line.substring(3).trim() }); i++; continue; }
@@ -204,11 +231,8 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
             
             const bqLines = [];
             if (alertType) {
-                // If there's content on the same line as the alert tag, capture it.
                 const restOfFirstLine = line.substring(alertMatch[0].length).trim();
-                if (restOfFirstLine) {
-                    bqLines.push(restOfFirstLine);
-                }
+                if (restOfFirstLine) bqLines.push(restOfFirstLine);
             } else {
                  bqLines.push(line.substring(line.startsWith('> ') ? 2 : 1).trim());
             }
@@ -251,7 +275,7 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
 
         const pLines: string[] = [line];
         i++;
-        while (i < lines.length && lines[i].trim() !== '' && !lines[i].match(/^(#|`{3}|- |>|---|---\s*$|\d+\.|\* |<details>|!\[|\|.*\|)/)) {
+        while (i < lines.length && lines[i].trim() !== '' && !lines[i].match(/^(#|`{3}|- |>|---|---\s*$|\d+\.|\* |<p|<details|!\[|\|.*\|)/i)) {
             pLines.push(lines[i]);
             i++;
         }
@@ -301,12 +325,21 @@ const highlightBlockMap: Record<HighlightColor, { border: string; bg: string; te
     green: { border: 'border-green-500', bg: 'bg-green-50', text: 'text-green-800' }, fuchsia: { border: 'border-fuchsia-500', bg: 'bg-fuchsia-50', text: 'text-fuchsia-800' }, yellow: { border: 'border-yellow-500', bg: 'bg-yellow-50', text: 'text-yellow-800' }, red: { border: 'border-red-500', bg: 'bg-red-50', text: 'text-red-800' }, purple: { border: 'border-purple-500', bg: 'bg-purple-50', text: 'text-purple-800' }, blue: { border: 'border-blue-500', bg: 'bg-blue-50', text: 'text-blue-800' }, cyan: { border: 'border-cyan-500', bg: 'bg-cyan-50', text: 'text-cyan-800' }, indigo: { border: 'border-indigo-500', bg: 'bg-indigo-50', text: 'text-indigo-800' },
 };
 
-const ColoredTextSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
+const ContentPartSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
     if (typeof part === 'string') return <span>{part}</span>;
-    if (part.type === ContentType.STRIKETHROUGH) return <s>{part.text}</s>;
-    const colorClasses = inlineColorMap[part.color];
-    return <span className={`${colorClasses.bg} ${colorClasses.text} font-semibold px-1 py-0.5 rounded`}>{part.text}</span>;
+    if (typeof part === 'object' && 'type' in part) {
+      switch (part.type) {
+        case ContentType.STRIKETHROUGH: return <s>{part.text}</s>;
+        case ContentType.LINK: return <a href={part.href} className="text-sky-600 underline" target="_blank" rel="noopener noreferrer">{part.text}</a>;
+      }
+    }
+    if ('color' in part) {
+        const colorClasses = inlineColorMap[part.color];
+        return <span className={`${colorClasses.bg} ${colorClasses.text} font-semibold px-1 py-0.5 rounded`}>{part.text}</span>;
+    }
+    return null;
 };
+
 
 const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode => {
   switch (block.type) {
@@ -314,7 +347,8 @@ const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode
     case ContentType.HEADING2: return <h2 key={index} className="text-2xl font-bold mt-6 mb-3 pb-1 border-b border-slate-300 text-slate-800">{block.text}</h2>;
     case ContentType.HEADING3: return <h3 key={index} className="text-xl font-semibold mt-5 mb-2 text-slate-700">{block.text}</h3>;
     case ContentType.HEADING4: return <h4 key={index} className="text-lg font-semibold mt-4 mb-1 text-slate-700">{block.text}</h4>;
-    case ContentType.PARAGRAPH: return <p key={index} className="text-slate-600 leading-relaxed mb-4">{block.parts?.map((p, j) => <ColoredTextSpan key={j} part={p} />)}</p>;
+    case ContentType.HTML_BLOCK: return <div key={index} className="html-content-wrapper" dangerouslySetInnerHTML={{ __html: block.html || '' }} />;
+    case ContentType.PARAGRAPH: return <p key={index} className="text-slate-600 leading-relaxed mb-4">{block.parts?.map((p, j) => <ContentPartSpan key={j} part={p} />)}</p>;
     case ContentType.LIST: 
     case ContentType.ORDERED_LIST:
         const ListTag = block.type === ContentType.ORDERED_LIST ? 'ol' : 'ul';
@@ -325,7 +359,7 @@ const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode
                     return <li key={i} className="text-slate-600 pl-2 list-none"><input type="checkbox" className="mr-2" checked={item.checked} readOnly />{item.text}</li>;
                 }
                 if (typeof item === 'string') return <li key={i} className="text-slate-600 pl-2">{item}</li>;
-                if ('parts' in item && item.parts) return <li key={i} className="text-slate-600 pl-2">{item.parts.map((p, j) => <ColoredTextSpan key={j} part={p} />)}</li>;
+                if ('parts' in item && item.parts) return <li key={i} className="text-slate-600 pl-2">{item.parts.map((p, j) => <ContentPartSpan key={j} part={p} />)}</li>;
                 return null;
             })}
         </ListTag>
@@ -334,7 +368,7 @@ const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode
       const color = block.color || 'blue';
       const classes = highlightBlockMap[color];
       return <div key={index} className={`${classes.bg} border-l-4 ${classes.border} p-4 my-5 rounded-r-md`}><p className={`${classes.text} leading-6 font-medium`}>{block.text}</p></div>;
-    case ContentType.COLORED_PARAGRAPH: return <p key={index} className="text-slate-600 leading-relaxed mb-4">{block.parts?.map((part, i) => <ColoredTextSpan key={i} part={part} />)}</p>;
+    case ContentType.COLORED_PARAGRAPH: return <p key={index} className="text-slate-600 leading-relaxed mb-4">{block.parts?.map((part, i) => <ContentPartSpan key={i} part={part} />)}</p>;
     case ContentType.IMAGE: return (
         <div key={index} className="my-5"><img src={block.src} alt={block.alt} className="rounded-md shadow-sm max-w-full h-auto mx-auto border-2 border-slate-200" loading="lazy" />{block.alt && <p className="text-center text-xs text-slate-500 italic mt-2">{block.alt}</p>}</div>
     );
@@ -470,7 +504,7 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
     { label: 'H2', action: () => insertMarkdown('## ', '', 'Heading') },
     { label: 'H3', action: () => insertMarkdown('### ', '', 'Subheading') },
     { label: 'B', action: () => insertMarkdown('**', '**', 'bold text'), className: 'font-bold' },
-    { label: 'Color', action: () => insertMarkdown('{', '}[blue]', 'colored text'), className: 'italic' },
+    { label: 'Link', action: () => insertMarkdown('[', '](url)', 'link text') },
     { label: 'List', action: () => insertMarkdown('\n- ', '', 'List item') },
     { label: 'Img', action: handleImageInsert },
   ];

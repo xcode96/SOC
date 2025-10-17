@@ -100,10 +100,10 @@ const getTextFromParts = (parts?: ContentPart[]): string => {
 
 const renderContentParts = (parts?: ContentPart[]) => {
     if (!parts) return null;
-    return parts.map((part, i) => <ColoredTextSpan key={i} part={part} />);
+    return parts.map((part, i) => <ContentPartSpan key={i} part={part} />);
 };
 
-const ColoredTextSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
+const ContentPartSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
     if (typeof part === 'string') {
         const segments = part.split(/(\*\*.*?\*\*|~~.*?~~)/g);
         return (
@@ -120,8 +120,13 @@ const ColoredTextSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
             </>
         );
     }
-    if ('type' in part && part.type === ContentType.STRIKETHROUGH) {
-        return <s>{part.text}</s>;
+    if (typeof part === 'object' && 'type' in part) {
+        switch (part.type) {
+            case ContentType.STRIKETHROUGH:
+                return <s>{part.text}</s>;
+            case ContentType.LINK:
+                return <a href={part.href} className="text-sky-600 underline hover:text-sky-700 transition-colors" target="_blank" rel="noopener noreferrer">{part.text}</a>;
+        }
     }
     if ('color' in part) {
       const colorClasses = inlineColorMap[part.color];
@@ -145,10 +150,9 @@ const alertStyles = {
     },
 };
 
-// Fix: Add parseLineToParts function to parse markdown-like syntax in strings.
 const parseLineToParts = (line: string): ContentPart[] => {
     const parts: ContentPart[] = [];
-    const regex = /\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~/g;
+    const regex = /\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~|\[([^\]]+?)\]\(([^)]+?)\)/g;
     let lastIndex = 0;
     let match;
 
@@ -168,6 +172,8 @@ const parseLineToParts = (line: string): ContentPart[] => {
             }
         } else if (match[3] !== undefined) { // Strikethrough
             parts.push({ type: ContentType.STRIKETHROUGH, text: match[3] });
+        } else if (match[4] !== undefined) { // Link
+            parts.push({ type: ContentType.LINK, text: match[4], href: match[5] });
         }
         
         lastIndex = regex.lastIndex;
@@ -300,6 +306,8 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
       );
     case ContentType.CODE:
       return <CodeBlock key={index} language={block.language} code={block.text || ''} />;
+    case ContentType.HTML_BLOCK:
+      return <div key={index} className="html-content-wrapper" dangerouslySetInnerHTML={{ __html: block.html || '' }} />;
     case ContentType.BLOCKQUOTE:
         const alertStyle = block.alertType && alertStyles[block.alertType];
         if (alertStyle) {

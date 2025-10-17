@@ -19,6 +19,8 @@ export enum ContentType {
   DETAILS = 'details',
   STRIKETHROUGH = 's',
   TASK_LIST = 'tasklist',
+  HTML_BLOCK = 'html',
+  LINK = 'link',
 }
 
 export type HighlightColor = 'green' | 'fuchsia' | 'yellow' | 'red' | 'purple' | 'blue' | 'cyan' | 'indigo';
@@ -33,7 +35,7 @@ export interface TableCell {
     color?: HighlightColor;
 }
 
-export type ContentPart = string | ColoredText | { type: ContentType.STRIKETHROUGH; text: string };
+export type ContentPart = string | ColoredText | { type: ContentType.STRIKETHROUGH; text: string } | { type: ContentType.LINK, text: string, href: string };
 
 export interface PartedContent {
   parts: ContentPart[];
@@ -57,6 +59,7 @@ export interface ContentBlock {
   summary?: string; // For DETAILS
   children?: ContentBlock[]; // For DETAILS
   alertType?: 'note' | 'tip' | 'important' | 'warning' | 'caution'; // For BLOCKQUOTE
+  html?: string; // For HTML_BLOCK
 }
 
 export interface Topic {
