@@ -42,6 +42,36 @@ const ExplainButton: React.FC<{ onClick: () => void; }> = ({ onClick }) => (
     </button>
 );
 
+const CodeBlock: React.FC<{ language?: string; code: string }> = ({ language, code }) => {
+    const [buttonText, setButtonText] = useState('Copy');
+    
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code).then(() => {
+            setButtonText('Copied!');
+            setTimeout(() => setButtonText('Copy'), 2000);
+        }, (err) => {
+            setButtonText('Failed!');
+            console.error('Could not copy text: ', err);
+        });
+    };
+
+    return (
+        <div className="bg-slate-800 rounded-lg my-6 relative group text-left">
+            <div className="flex justify-between items-center px-4 py-2 bg-slate-900/50 rounded-t-lg border-b border-slate-700">
+                <span className="text-xs font-sans text-slate-400 select-none">{language || 'code'}</span>
+                <button 
+                    onClick={handleCopy}
+                    className="text-xs font-sans text-slate-300 bg-slate-700 hover:bg-slate-600 rounded-md px-3 py-1 transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100"
+                >
+                    {buttonText}
+                </button>
+            </div>
+            <pre className="p-4 text-sm text-slate-200 overflow-x-auto font-mono"><code>{code}</code></pre>
+        </div>
+    );
+};
+
+
 const getTextFromParts = (parts?: ContentPart[]): string => {
     if (!parts) return '';
     return parts.map(p => typeof p === 'string' ? p : p.text).join('');
@@ -49,7 +79,19 @@ const getTextFromParts = (parts?: ContentPart[]): string => {
 
 const ColoredTextSpan: React.FC<{ part: string | ColoredText }> = ({ part }) => {
     if (typeof part === 'string') {
-        return <span>{part}</span>;
+        // A simple regex to find and replace **bold** text within a string part
+        const segments = part.split(/(\*\*.*?\*\*)/g);
+        return (
+            <>
+                {segments.map((segment, i) =>
+                    segment.startsWith('**') && segment.endsWith('**') ? (
+                        <strong key={i}>{segment.slice(2, -2)}</strong>
+                    ) : (
+                        <span key={i}>{segment}</span>
+                    )
+                )}
+            </>
+        );
     }
     const colorClasses = inlineColorMap[part.color];
     return (
@@ -61,6 +103,13 @@ const ColoredTextSpan: React.FC<{ part: string | ColoredText }> = ({ part }) => 
 
 const renderContentBlock = (block: ContentBlock, index: number, explainHandler: (text: string) => void) => {
   switch (block.type) {
+    case ContentType.HEADING1:
+        return (
+          <div key={index} className="group relative">
+              <h1 className="text-3xl md:text-4xl font-bold mt-12 mb-5 pb-2 border-b-2 border-fuchsia-500/50 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-600 to-indigo-600">{block.text}</h1>
+              <ExplainButton onClick={() => explainHandler(block.text!)} />
+          </div>
+        );
     case ContentType.HEADING2:
       return (
         <div key={index} className="group relative">
@@ -72,6 +121,13 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
       return (
         <div key={index} className="group relative">
             <h3 className="text-xl md:text-2xl font-semibold mt-8 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-500">{block.text}</h3>
+            <ExplainButton onClick={() => explainHandler(block.text!)} />
+        </div>
+      );
+    case ContentType.HEADING4:
+      return (
+        <div key={index} className="group relative">
+            <h4 className="text-lg md:text-xl font-semibold mt-6 mb-2 text-slate-700">{block.text}</h4>
             <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
       );
@@ -186,6 +242,25 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
           {block.alt && <p className="text-center text-sm text-slate-500 italic mt-2">{block.alt}</p>}
         </div>
       );
+    case ContentType.CODE:
+      return <CodeBlock key={index} language={block.language} code={block.text || ''} />;
+    case ContentType.BLOCKQUOTE:
+        return (
+            <blockquote key={index} className="border-l-4 border-slate-400 pl-4 my-6 text-slate-600 italic">
+                {block.text}
+            </blockquote>
+        );
+    case ContentType.HORIZONTAL_RULE:
+        return <hr key={index} className="my-8 border-slate-300/80" />;
+    case ContentType.DETAILS:
+        return (
+            <details key={index} className="my-6 bg-slate-100/80 border border-slate-200 rounded-lg p-4 open:shadow-lg transition-shadow">
+                <summary className="font-semibold text-slate-800 cursor-pointer">{block.summary}</summary>
+                <div className="mt-4">
+                    {block.children?.map((childBlock, childIndex) => renderContentBlock(childBlock, childIndex, explainHandler))}
+                </div>
+            </details>
+        );
     case ContentType.TABLE:
       return (
         <div key={index} className="my-6 overflow-x-auto rounded-lg border border-slate-300/50 shadow-sm">

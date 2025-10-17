@@ -17,13 +17,11 @@ const getMarkdownFromParts = (parts: (string | ColoredText)[]): string => {
 
 const parseLineToParts = (line: string): (string | ColoredText)[] => {
     const parts: (string | ColoredText)[] = [];
-    // Regex to find {text}[color] patterns. It will match the text inside {} and the color inside [].
     const regex = /\{([^}]+?)\}\[([a-z]+?)\]/g;
     let lastIndex = 0;
     let match;
 
     while ((match = regex.exec(line)) !== null) {
-        // Add the plain text before the match
         if (match.index > lastIndex) {
             parts.push(line.substring(lastIndex, match.index));
         }
@@ -35,14 +33,12 @@ const parseLineToParts = (line: string): (string | ColoredText)[] => {
         if (validColors.includes(color)) {
             parts.push({ text, color });
         } else {
-            // If color is not valid, treat the whole match as plain text
             parts.push(match[0]);
         }
         
         lastIndex = regex.lastIndex;
     }
 
-    // Add any remaining text after the last match
     if (lastIndex < line.length) {
         parts.push(line.substring(lastIndex));
     }
@@ -50,26 +46,17 @@ const parseLineToParts = (line: string): (string | ColoredText)[] => {
     return parts;
 };
 
-
 const convertJsonToMarkdown = (content: ContentBlock[]): string => {
   const lines: string[] = [];
 
   content.forEach(block => {
     switch (block.type) {
-      case ContentType.HEADING2:
-        lines.push(`## ${block.text}`);
-        break;
-      case ContentType.HEADING3:
-        lines.push(`### ${block.text}`);
-        break;
-      case ContentType.PARAGRAPH:
-        lines.push(block.text || '');
-        break;
-      case ContentType.COLORED_PARAGRAPH:
-        if (block.parts) {
-          lines.push(getMarkdownFromParts(block.parts));
-        }
-        break;
+      case ContentType.HEADING1: lines.push(`# ${block.text}`); break;
+      case ContentType.HEADING2: lines.push(`## ${block.text}`); break;
+      case ContentType.HEADING3: lines.push(`### ${block.text}`); break;
+      case ContentType.HEADING4: lines.push(`#### ${block.text}`); break;
+      case ContentType.PARAGRAPH: lines.push(block.text || ''); break;
+      case ContentType.COLORED_PARAGRAPH: if (block.parts) { lines.push(getMarkdownFromParts(block.parts)); } break;
       case ContentType.LIST:
       case ContentType.ORDERED_LIST:
         const listLines: string[] = [];
@@ -79,39 +66,26 @@ const convertJsonToMarkdown = (content: ContentBlock[]): string => {
             listLines.push(`${prefix} ${item}`);
           } else if ('parts' in item && item.parts) {
             listLines.push(`${prefix} ${getMarkdownFromParts(item.parts)}`);
-          } else if ('text' in item && 'subItems' in item) { // For backwards compatibility, flatten sub-items
+          } else if ('text' in item && 'subItems' in item) {
             listLines.push(`${prefix} **${item.text}**`);
             item.subItems.forEach(subItem => {
-              if (typeof subItem === 'string') {
-                listLines.push(`  - ${subItem}`);
-              } else if ('parts' in subItem && subItem.parts) {
-                listLines.push(`  - ${getMarkdownFromParts(subItem.parts)}`);
-              }
+              if (typeof subItem === 'string') { listLines.push(`  - ${subItem}`); } 
+              else if ('parts' in subItem && subItem.parts) { listLines.push(`  - ${getMarkdownFromParts(subItem.parts)}`); }
             });
           }
         });
-        if (listLines.length > 0) {
-            lines.push(listLines.join('\n'));
-        }
+        if (listLines.length > 0) { lines.push(listLines.join('\n')); }
         break;
-      case ContentType.HIGHLIGHT:
-        lines.push(`> **${block.color?.toUpperCase()}**: ${block.text}`);
+      case ContentType.CODE: lines.push(`\`\`\`${block.language || ''}\n${block.text || ''}\n\`\`\``); break;
+      case ContentType.BLOCKQUOTE: lines.push((block.text || '').split('\n').map(l => `> ${l}`).join('\n')); break;
+      case ContentType.HORIZONTAL_RULE: lines.push('---'); break;
+      case ContentType.IMAGE: lines.push(`![${block.alt || ''}](${block.src || ''})`); break;
+      case ContentType.HIGHLIGHT: lines.push(`> **${block.color?.toUpperCase()}**: ${block.text}`); break;
+      case ContentType.DETAILS:
+        const childrenMarkdown = convertJsonToMarkdown(block.children || []);
+        lines.push(`<details>\n<summary>${block.summary || 'Details'}</summary>\n\n${childrenMarkdown}\n\n</details>`);
         break;
-      case ContentType.IMAGE:
-        lines.push(`![${block.alt || ''}](${block.src || ''})`);
-        break;
-      case ContentType.TABLE:
-        if (block.rows && block.rows.length > 0) {
-          lines.push('| Category | Description |');
-          lines.push('|---|---|');
-          block.rows.forEach(row => {
-            const rowText = row.map(cell => cell.text).join(' | ');
-            lines.push(`| ${rowText} |`);
-          });
-        }
-        break;
-      default:
-        break;
+      default: break;
     }
   });
 
@@ -121,49 +95,87 @@ const convertJsonToMarkdown = (content: ContentBlock[]): string => {
 const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
     const content: ContentBlock[] = [];
     if (!markdown) return content;
-    
-    const blocks = markdown.trim().split(/\n\s*\n/);
 
-    for (const block of blocks) {
-        const imageMatch = block.match(/^!\[(.*?)]\((.*?)\)$/);
+    const lines = markdown.trim().split('\n');
+    let i = 0;
 
-        if (imageMatch) {
-            content.push({ type: ContentType.IMAGE, alt: imageMatch[1].trim(), src: imageMatch[2].trim() });
-        } else if (block.startsWith('### ')) {
-            content.push({ type: ContentType.HEADING3, text: block.substring(4).trim() });
-        } else if (block.startsWith('## ')) {
-            content.push({ type: ContentType.HEADING2, text: block.substring(3).trim() });
-        } else if (block.startsWith('> **')) {
-            const match = block.match(/> \*\*(.*?)\*\*: (.*)/s);
+    while (i < lines.length) {
+        let line = lines[i];
+
+        if (line.trim() === '') { i++; continue; }
+
+        if (line.startsWith('```')) {
+            const lang = line.substring(3).trim();
+            const codeLines: string[] = [];
+            i++;
+            while (i < lines.length && !lines[i].startsWith('```')) { codeLines.push(lines[i]); i++; }
+            content.push({ type: ContentType.CODE, language: lang, text: codeLines.join('\n') });
+            i++; continue;
+        }
+
+        if (line.trim().toLowerCase().startsWith('<details>')) {
+            const summaryMatch = line.match(/<summary>(.*?)<\/summary>/i);
+            const summary = summaryMatch ? summaryMatch[1].trim() : 'Details';
+            const detailLines: string[] = [];
+            i++;
+            while (i < lines.length && !lines[i].trim().toLowerCase().startsWith('</details>')) { detailLines.push(lines[i]); i++; }
+            content.push({ type: ContentType.DETAILS, summary, children: parseMarkdownToContentBlocks(detailLines.join('\n')) });
+            i++; continue;
+        }
+
+        if (line.startsWith('#### ')) { content.push({ type: ContentType.HEADING4, text: line.substring(5).trim() }); i++; continue; }
+        if (line.startsWith('### ')) { content.push({ type: ContentType.HEADING3, text: line.substring(4).trim() }); i++; continue; }
+        if (line.startsWith('## ')) { content.push({ type: ContentType.HEADING2, text: line.substring(3).trim() }); i++; continue; }
+        if (line.startsWith('# ')) { content.push({ type: ContentType.HEADING1, text: line.substring(2).trim() }); i++; continue; }
+        if (line.match(/^---\s*$/)) { content.push({ type: ContentType.HORIZONTAL_RULE }); i++; continue; }
+        const imageMatch = line.match(/^!\[(.*?)]\((.*?)\)$/);
+        if (imageMatch) { content.push({ type: ContentType.IMAGE, alt: imageMatch[1].trim(), src: imageMatch[2].trim() }); i++; continue; }
+
+        if (line.startsWith('> **')) {
+            const match = line.match(/> \*\*(.*?)\*\*: (.*)/s);
             if (match) {
                 const color = match[1].toLowerCase() as HighlightColor;
                 if (['green', 'fuchsia', 'yellow', 'red', 'purple', 'blue', 'cyan', 'indigo'].includes(color)) {
                     content.push({ type: ContentType.HIGHLIGHT, color, text: match[2].trim() });
+                    i++; continue;
                 }
             }
-        } else if (block.startsWith('- ') || block.startsWith('* ') || block.match(/^\d+\.\s/)) {
-            const isOrdered = block.match(/^\d+\.\s/);
-            const lines = block.split('\n');
-            const items = lines.map(line => {
-                const cleanLine = line.replace(/^([-*]|\d+\.)\s*/, '').trim();
+        }
+
+        if (line.startsWith('> ')) {
+            const bqLines = [line.substring(2)];
+            i++;
+            while (i < lines.length && lines[i].startsWith('> ')) { bqLines.push(lines[i].substring(2)); i++; }
+            content.push({ type: ContentType.BLOCKQUOTE, text: bqLines.join('\n') });
+            continue;
+        }
+
+        if (line.match(/^([-*]|\d+\.)\s/)) {
+            const listBlockLines: string[] = [];
+            while (i < lines.length && lines[i].match(/^(\s*([-*]|\d+\.))\s/)) { listBlockLines.push(lines[i]); i++; }
+            const isOrdered = listBlockLines[0].match(/^\d+\.\s/);
+            const items = listBlockLines.map(listItem => {
+                const cleanLine = listItem.replace(/^(\s*([-*]|\d+\.))\s*/, '').trim();
                 if (!cleanLine) return null;
-
                 const parts = parseLineToParts(cleanLine);
-                if (parts.length === 1 && typeof parts[0] === 'string') {
-                    return parts[0]; // Simple string item
-                }
-                return { parts }; // Item with colored parts
-            }).filter(item => item !== null);
-
+                return (parts.length === 1 && typeof parts[0] === 'string') ? parts[0] : { parts };
+            }).filter(Boolean);
             content.push({ type: isOrdered ? ContentType.ORDERED_LIST : ContentType.LIST, items: items as ListItem[] });
-        
-        } else if (block.trim()) {
-            const parts = parseLineToParts(block.trim());
-            if (parts.length === 1 && typeof parts[0] === 'string') {
-                 content.push({ type: ContentType.PARAGRAPH, text: parts[0] });
-            } else {
-                 content.push({ type: ContentType.COLORED_PARAGRAPH, parts });
-            }
+            continue;
+        }
+
+        const pLines: string[] = [line];
+        i++;
+        while (i < lines.length && lines[i].trim() !== '' && !lines[i].match(/^(#|`{3}|- |>|---|---\s*$|\d+\.|\* |<details>|!\[)/)) {
+            pLines.push(lines[i]);
+            i++;
+        }
+        const fullParagraph = pLines.join('\n').trim();
+        const parts = parseLineToParts(fullParagraph);
+        if (parts.length === 1 && typeof parts[0] === 'string') {
+            content.push({ type: ContentType.PARAGRAPH, text: parts[0] });
+        } else {
+            content.push({ type: ContentType.COLORED_PARAGRAPH, parts });
         }
     }
     return content;
@@ -178,7 +190,6 @@ const parseMarkdownToGuide = (markdown: string): { title: string; topics: Topic[
   const titleMatch = firstPart.match(/^# (.*)/);
   if (titleMatch) {
     guideTitle = titleMatch[1];
-    // Remove title from the first topic's content if it's there
     contentParts[0] = firstPart.substring(firstPart.indexOf('\n')).trim();
   }
 
@@ -201,8 +212,6 @@ const parseMarkdownToGuide = (markdown: string): { title: string; topics: Topic[
   return { title: guideTitle, topics };
 };
 
-
-// Preview rendering helpers (adapted from ContentDisplay)
 const inlineColorMap: Record<HighlightColor, { bg: string; text: string }> = {
     green: { bg: 'bg-green-100', text: 'text-green-800' }, fuchsia: { bg: 'bg-fuchsia-100', text: 'text-fuchsia-800' }, yellow: { bg: 'bg-yellow-100', text: 'text-yellow-800' }, red: { bg: 'bg-red-100', text: 'text-red-800' }, purple: { bg: 'bg-purple-100', text: 'text-purple-800' }, blue: { bg: 'bg-blue-100', text: 'text-blue-800' }, cyan: { bg: 'bg-cyan-100', text: 'text-cyan-800' }, indigo: { bg: 'bg-indigo-100', text: 'text-indigo-800' },
 };
@@ -216,10 +225,12 @@ const ColoredTextSpan: React.FC<{ part: string | ColoredText }> = ({ part }) => 
     return <span className={`${colorClasses.bg} ${colorClasses.text} font-semibold px-1 py-0.5 rounded`}>{part.text}</span>;
 };
 
-const renderPreviewBlock = (block: ContentBlock, index: number) => {
+const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode => {
   switch (block.type) {
+    case ContentType.HEADING1: return <h1 key={index} className="text-3xl font-bold mt-8 mb-4 pb-2 border-b-2 border-slate-300 text-slate-900">{block.text}</h1>;
     case ContentType.HEADING2: return <h2 key={index} className="text-2xl font-bold mt-6 mb-3 pb-1 border-b border-slate-300 text-slate-800">{block.text}</h2>;
     case ContentType.HEADING3: return <h3 key={index} className="text-xl font-semibold mt-5 mb-2 text-slate-700">{block.text}</h3>;
+    case ContentType.HEADING4: return <h4 key={index} className="text-lg font-semibold mt-4 mb-1 text-slate-700">{block.text}</h4>;
     case ContentType.PARAGRAPH: return <p key={index} className="text-slate-600 leading-relaxed mb-4">{block.text}</p>;
     case ContentType.LIST: return (
         <ul key={index} className="space-y-2 mb-4 list-disc list-outside pl-5 marker:text-sky-500">
@@ -247,11 +258,14 @@ const renderPreviewBlock = (block: ContentBlock, index: number) => {
     case ContentType.IMAGE: return (
         <div key={index} className="my-5"><img src={block.src} alt={block.alt} className="rounded-md shadow-sm max-w-full h-auto mx-auto border-2 border-slate-200" loading="lazy" />{block.alt && <p className="text-center text-xs text-slate-500 italic mt-2">{block.alt}</p>}</div>
     );
+    case ContentType.CODE: return <div key={index} className="bg-slate-800 rounded-md my-4"><pre className="p-3 text-xs text-slate-200 overflow-x-auto font-mono"><code>{block.text}</code></pre></div>
+    case ContentType.BLOCKQUOTE: return <blockquote key={index} className="border-l-4 border-slate-300 pl-3 my-4 text-slate-500 italic">{block.text}</blockquote>;
+    case ContentType.HORIZONTAL_RULE: return <hr key={index} className="my-6 border-slate-300" />;
+    case ContentType.DETAILS: return <details key={index} className="my-4 bg-slate-200/50 border border-slate-300 rounded-md p-3"><summary className="font-semibold text-slate-700 cursor-pointer">{block.summary}</summary><div className="mt-2">{block.children?.map((b, j) => renderPreviewBlock(b, j))}</div></details>;
     default: return null;
   }
 };
 
-// Main Component
 const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guideId, onAddNewTopic, onUpdateTopic, onDeleteTopic, onUpdateGuide }) => {
   const [newTopicTitle, setNewTopicTitle] = useState('');
   const [newTopicId, setNewTopicId] = useState('');

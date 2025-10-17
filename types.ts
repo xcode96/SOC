@@ -1,8 +1,10 @@
 import React from 'react';
 
 export enum ContentType {
+  HEADING1 = 'h1',
   HEADING2 = 'h2',
   HEADING3 = 'h3',
+  HEADING4 = 'h4',
   PARAGRAPH = 'p',
   LIST = 'ul',
   ORDERED_LIST = 'ol',
@@ -11,6 +13,10 @@ export enum ContentType {
   COLORED_PARAGRAPH = 'colored_p',
   TABLE = 'table',
   IMAGE = 'img',
+  CODE = 'code',
+  BLOCKQUOTE = 'blockquote',
+  HORIZONTAL_RULE = 'hr',
+  DETAILS = 'details',
 }
 
 export type HighlightColor = 'green' | 'fuchsia' | 'yellow' | 'red' | 'purple' | 'blue' | 'cyan' | 'indigo';
@@ -43,6 +49,9 @@ export interface ContentBlock {
   color?: HighlightColor; // For HIGHLIGHT blocks
   src?: string; // For IMAGE
   alt?: string; // For IMAGE
+  language?: string; // For CODE
+  summary?: string; // For DETAILS
+  children?: ContentBlock[]; // For DETAILS
 }
 
 export interface Topic {
