@@ -17,6 +17,8 @@ export enum ContentType {
   BLOCKQUOTE = 'blockquote',
   HORIZONTAL_RULE = 'hr',
   DETAILS = 'details',
+  STRIKETHROUGH = 's',
+  TASK_LIST = 'tasklist',
 }
 
 export type HighlightColor = 'green' | 'fuchsia' | 'yellow' | 'red' | 'purple' | 'blue' | 'cyan' | 'indigo';
@@ -31,13 +33,13 @@ export interface TableCell {
     color?: HighlightColor;
 }
 
-export type ContentPart = string | ColoredText;
+export type ContentPart = string | ColoredText | { type: ContentType.STRIKETHROUGH; text: string };
 
 export interface PartedContent {
   parts: ContentPart[];
 }
 
-export type ListItem = string | PartedContent | { text: string; subItems: (string | PartedContent)[] };
+export type ListItem = string | PartedContent | { text: string; subItems: (string | PartedContent)[] } | { text: string, checked: boolean, type: ContentType.TASK_LIST };
 
 
 export interface ContentBlock {
@@ -46,12 +48,15 @@ export interface ContentBlock {
   items?: ListItem[];
   parts?: ContentPart[]; // For COLORED_PARAGRAPH
   rows?: TableCell[][]; // For TABLE
+  headers?: string[]; // For TABLE
+  align?: ('left' | 'center' | 'right')[]; // For TABLE
   color?: HighlightColor; // For HIGHLIGHT blocks
   src?: string; // For IMAGE
   alt?: string; // For IMAGE
   language?: string; // For CODE
   summary?: string; // For DETAILS
   children?: ContentBlock[]; // For DETAILS
+  alertType?: 'note' | 'tip' | 'important' | 'warning' | 'caution'; // For BLOCKQUOTE
 }
 
 export interface Topic {

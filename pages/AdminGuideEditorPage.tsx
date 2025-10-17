@@ -11,13 +11,18 @@ interface AdminGuideEditorPageProps {
   onUpdateGuide: (guideId: string, newGuideData: { title: string; topics: Topic[] }) => void;
 }
 
-const getMarkdownFromParts = (parts: (string | ColoredText)[]): string => {
-  return parts.map(p => typeof p === 'string' ? p : `{${p.text}}[${p.color}]`).join('');
+const getMarkdownFromParts = (parts: ContentPart[]): string => {
+  return parts.map(p => {
+    if (typeof p === 'string') return p;
+    // Fix: Use 'in' operator as a type guard to correctly identify object shapes.
+    if ('type' in p && p.type === ContentType.STRIKETHROUGH) return `~~${p.text}~~`;
+    return `{${p.text}}[${p.color}]`;
+  }).join('');
 };
 
-const parseLineToParts = (line: string): (string | ColoredText)[] => {
-    const parts: (string | ColoredText)[] = [];
-    const regex = /\{([^}]+?)\}\[([a-z]+?)\]/g;
+const parseLineToParts = (line: string): ContentPart[] => {
+    const parts: ContentPart[] = [];
+    const regex = /\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~/g;
     let lastIndex = 0;
     let match;
 
@@ -26,14 +31,17 @@ const parseLineToParts = (line: string): (string | ColoredText)[] => {
             parts.push(line.substring(lastIndex, match.index));
         }
         
-        const text = match[1];
-        const color = match[2] as HighlightColor;
-
-        const validColors: HighlightColor[] = ['green', 'fuchsia', 'yellow', 'red', 'purple', 'blue', 'cyan', 'indigo'];
-        if (validColors.includes(color)) {
-            parts.push({ text, color });
-        } else {
-            parts.push(match[0]);
+        if (match[1] !== undefined) { // Colored text
+            const text = match[1];
+            const color = match[2] as HighlightColor;
+            const validColors: HighlightColor[] = ['green', 'fuchsia', 'yellow', 'red', 'purple', 'blue', 'cyan', 'indigo'];
+            if (validColors.includes(color)) {
+                parts.push({ text, color });
+            } else {
+                parts.push(match[0]);
+            }
+        } else if (match[3] !== undefined) { // Strikethrough
+            parts.push({ type: ContentType.STRIKETHROUGH, text: match[3] });
         }
         
         lastIndex = regex.lastIndex;
@@ -55,14 +63,17 @@ const convertJsonToMarkdown = (content: ContentBlock[]): string => {
       case ContentType.HEADING2: lines.push(`## ${block.text}`); break;
       case ContentType.HEADING3: lines.push(`### ${block.text}`); break;
       case ContentType.HEADING4: lines.push(`#### ${block.text}`); break;
-      case ContentType.PARAGRAPH: lines.push(block.text || ''); break;
+      case ContentType.PARAGRAPH: lines.push(block.parts ? getMarkdownFromParts(block.parts) : block.text || ''); break;
       case ContentType.COLORED_PARAGRAPH: if (block.parts) { lines.push(getMarkdownFromParts(block.parts)); } break;
       case ContentType.LIST:
       case ContentType.ORDERED_LIST:
         const listLines: string[] = [];
         block.items?.forEach((item, index) => {
           const prefix = block.type === ContentType.ORDERED_LIST ? `${index + 1}.` : '-';
-          if (typeof item === 'string') {
+          // Fix: Use 'in' operator as a type guard to correctly identify the task list object.
+          if (typeof item === 'object' && item !== null && 'type' in item && item.type === ContentType.TASK_LIST) {
+              listLines.push(`${prefix} [${item.checked ? 'x' : ' '}] ${item.text}`);
+          } else if (typeof item === 'string') {
             listLines.push(`${prefix} ${item}`);
           } else if ('parts' in item && item.parts) {
             listLines.push(`${prefix} ${getMarkdownFromParts(item.parts)}`);
@@ -77,13 +88,35 @@ const convertJsonToMarkdown = (content: ContentBlock[]): string => {
         if (listLines.length > 0) { lines.push(listLines.join('\n')); }
         break;
       case ContentType.CODE: lines.push(`\`\`\`${block.language || ''}\n${block.text || ''}\n\`\`\``); break;
-      case ContentType.BLOCKQUOTE: lines.push((block.text || '').split('\n').map(l => `> ${l}`).join('\n')); break;
+      case ContentType.BLOCKQUOTE: 
+        let bqPrefix = '> ';
+        if (block.alertType) {
+            bqPrefix = `> [!${block.alertType.toUpperCase()}]\n> `;
+        }
+        lines.push(bqPrefix + (block.text || '').split('\n').join('\n> ')); 
+        break;
       case ContentType.HORIZONTAL_RULE: lines.push('---'); break;
       case ContentType.IMAGE: lines.push(`![${block.alt || ''}](${block.src || ''})`); break;
       case ContentType.HIGHLIGHT: lines.push(`> **${block.color?.toUpperCase()}**: ${block.text}`); break;
       case ContentType.DETAILS:
         const childrenMarkdown = convertJsonToMarkdown(block.children || []);
         lines.push(`<details>\n<summary>${block.summary || 'Details'}</summary>\n\n${childrenMarkdown}\n\n</details>`);
+        break;
+      case ContentType.TABLE:
+        const tableLines = [];
+        if (block.headers) {
+            tableLines.push(`| ${block.headers.join(' | ')} |`);
+            const alignLine = block.align?.map(a => {
+                if (a === 'center') return ':---:';
+                if (a === 'right') return '---:';
+                return '---';
+            }).join(' | ');
+            tableLines.push(`| ${alignLine} |`);
+        }
+        block.rows?.forEach(row => {
+            tableLines.push(`| ${row.map(cell => cell.text.replace(/\|/g, '\\|')).join(' | ')} |`);
+        });
+        lines.push(tableLines.join('\n'));
         break;
       default: break;
     }
@@ -103,6 +136,29 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
         let line = lines[i];
 
         if (line.trim() === '') { i++; continue; }
+
+        // Table
+        if (line.match(/^\|.*\|$/) && i + 1 < lines.length && lines[i+1].match(/^\|\s*:?---:?\s*\|/)) {
+            const headerLine = lines[i];
+            const alignLine = lines[i+1];
+            const headers = headerLine.split('|').map(h => h.trim()).slice(1, -1);
+            const align = alignLine.split('|').map(a => {
+                const trimmed = a.trim();
+                if (trimmed.startsWith(':') && trimmed.endsWith(':')) return 'center';
+                if (trimmed.endsWith(':')) return 'right';
+                return 'left';
+            }).slice(1, -1) as ('left' | 'center' | 'right')[];
+
+            const rows: {text: string}[][] = [];
+            i += 2;
+            while(i < lines.length && lines[i].match(/^\|.*\|$/)) {
+                const rowCells = lines[i].split('|').map(c => ({ text: c.trim() })).slice(1, -1);
+                rows.push(rowCells);
+                i++;
+            }
+            content.push({ type: ContentType.TABLE, headers, align, rows });
+            continue;
+        }
 
         if (line.startsWith('```')) {
             const lang = line.substring(3).trim();
@@ -141,42 +197,68 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
                 }
             }
         }
-
+        
         if (line.startsWith('> ')) {
-            const bqLines = [line.substring(2)];
+            const alertMatch = line.match(/^>\s+\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i);
+            const alertType = alertMatch ? alertMatch[1].toLowerCase() as ContentBlock['alertType'] : undefined;
+            
+            const bqLines = [];
+            if (alertType) {
+                // If there's content on the same line as the alert tag, capture it.
+                const restOfFirstLine = line.substring(alertMatch[0].length).trim();
+                if (restOfFirstLine) {
+                    bqLines.push(restOfFirstLine);
+                }
+            } else {
+                 bqLines.push(line.substring(line.startsWith('> ') ? 2 : 1).trim());
+            }
+
             i++;
-            while (i < lines.length && lines[i].startsWith('> ')) { bqLines.push(lines[i].substring(2)); i++; }
-            content.push({ type: ContentType.BLOCKQUOTE, text: bqLines.join('\n') });
+            while (i < lines.length && lines[i].startsWith('>')) { 
+                bqLines.push(lines[i].substring(lines[i].startsWith('> ') ? 2 : 1)); 
+                i++; 
+            }
+            content.push({ type: ContentType.BLOCKQUOTE, text: bqLines.join('\n'), alertType });
             continue;
         }
 
+
         if (line.match(/^([-*]|\d+\.)\s/)) {
             const listBlockLines: string[] = [];
-            while (i < lines.length && lines[i].match(/^(\s*([-*]|\d+\.))\s/)) { listBlockLines.push(lines[i]); i++; }
-            const isOrdered = listBlockLines[0].match(/^\d+\.\s/);
-            const items = listBlockLines.map(listItem => {
+            while (i < lines.length && (lines[i].match(/^(\s*([-*]|\d+\.))\s/) || lines[i].trim() === '')) { 
+                listBlockLines.push(lines[i]); 
+                i++; 
+            }
+
+            const isOrdered = /^\d+\.\s/.test(listBlockLines.find(l => l.trim() !== '') || '');
+            const items: ListItem[] = [];
+
+            listBlockLines.forEach(listItem => {
+                const taskMatch = listItem.match(/^\s*-\s+\[(x|\s)\]\s+(.*)/i);
+                if (taskMatch) {
+                    items.push({ type: ContentType.TASK_LIST, checked: taskMatch[1].toLowerCase() === 'x', text: taskMatch[2].trim() });
+                    return;
+                }
+
                 const cleanLine = listItem.replace(/^(\s*([-*]|\d+\.))\s*/, '').trim();
-                if (!cleanLine) return null;
+                if (!cleanLine) return;
                 const parts = parseLineToParts(cleanLine);
-                return (parts.length === 1 && typeof parts[0] === 'string') ? parts[0] : { parts };
-            }).filter(Boolean);
+                items.push((parts.length === 1 && typeof parts[0] === 'string') ? parts[0] : { parts });
+            });
             content.push({ type: isOrdered ? ContentType.ORDERED_LIST : ContentType.LIST, items: items as ListItem[] });
             continue;
         }
 
         const pLines: string[] = [line];
         i++;
-        while (i < lines.length && lines[i].trim() !== '' && !lines[i].match(/^(#|`{3}|- |>|---|---\s*$|\d+\.|\* |<details>|!\[)/)) {
+        while (i < lines.length && lines[i].trim() !== '' && !lines[i].match(/^(#|`{3}|- |>|---|---\s*$|\d+\.|\* |<details>|!\[|\|.*\|)/)) {
             pLines.push(lines[i]);
             i++;
         }
         const fullParagraph = pLines.join('\n').trim();
         const parts = parseLineToParts(fullParagraph);
-        if (parts.length === 1 && typeof parts[0] === 'string') {
-            content.push({ type: ContentType.PARAGRAPH, text: parts[0] });
-        } else {
-            content.push({ type: ContentType.COLORED_PARAGRAPH, parts });
-        }
+        
+        content.push({ type: ContentType.PARAGRAPH, parts });
     }
     return content;
 };
@@ -219,8 +301,9 @@ const highlightBlockMap: Record<HighlightColor, { border: string; bg: string; te
     green: { border: 'border-green-500', bg: 'bg-green-50', text: 'text-green-800' }, fuchsia: { border: 'border-fuchsia-500', bg: 'bg-fuchsia-50', text: 'text-fuchsia-800' }, yellow: { border: 'border-yellow-500', bg: 'bg-yellow-50', text: 'text-yellow-800' }, red: { border: 'border-red-500', bg: 'bg-red-50', text: 'text-red-800' }, purple: { border: 'border-purple-500', bg: 'bg-purple-50', text: 'text-purple-800' }, blue: { border: 'border-blue-500', bg: 'bg-blue-50', text: 'text-blue-800' }, cyan: { border: 'border-cyan-500', bg: 'bg-cyan-50', text: 'text-cyan-800' }, indigo: { border: 'border-indigo-500', bg: 'bg-indigo-50', text: 'text-indigo-800' },
 };
 
-const ColoredTextSpan: React.FC<{ part: string | ColoredText }> = ({ part }) => {
+const ColoredTextSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
     if (typeof part === 'string') return <span>{part}</span>;
+    if (part.type === ContentType.STRIKETHROUGH) return <s>{part.text}</s>;
     const colorClasses = inlineColorMap[part.color];
     return <span className={`${colorClasses.bg} ${colorClasses.text} font-semibold px-1 py-0.5 rounded`}>{part.text}</span>;
 };
@@ -231,24 +314,21 @@ const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode
     case ContentType.HEADING2: return <h2 key={index} className="text-2xl font-bold mt-6 mb-3 pb-1 border-b border-slate-300 text-slate-800">{block.text}</h2>;
     case ContentType.HEADING3: return <h3 key={index} className="text-xl font-semibold mt-5 mb-2 text-slate-700">{block.text}</h3>;
     case ContentType.HEADING4: return <h4 key={index} className="text-lg font-semibold mt-4 mb-1 text-slate-700">{block.text}</h4>;
-    case ContentType.PARAGRAPH: return <p key={index} className="text-slate-600 leading-relaxed mb-4">{block.text}</p>;
-    case ContentType.LIST: return (
-        <ul key={index} className="space-y-2 mb-4 list-disc list-outside pl-5 marker:text-sky-500">
+    case ContentType.PARAGRAPH: return <p key={index} className="text-slate-600 leading-relaxed mb-4">{block.parts?.map((p, j) => <ColoredTextSpan key={j} part={p} />)}</p>;
+    case ContentType.LIST: 
+    case ContentType.ORDERED_LIST:
+        const ListTag = block.type === ContentType.ORDERED_LIST ? 'ol' : 'ul';
+        return (
+        <ListTag key={index} className={`space-y-2 mb-4 list-disc list-outside pl-5 ${block.type === ContentType.ORDERED_LIST ? 'list-decimal' : ''}`}>
             {block.items?.map((item, i) => {
+                 if (typeof item === 'object' && item !== null && 'type' in item && item.type === ContentType.TASK_LIST) {
+                    return <li key={i} className="text-slate-600 pl-2 list-none"><input type="checkbox" className="mr-2" checked={item.checked} readOnly />{item.text}</li>;
+                }
                 if (typeof item === 'string') return <li key={i} className="text-slate-600 pl-2">{item}</li>;
                 if ('parts' in item && item.parts) return <li key={i} className="text-slate-600 pl-2">{item.parts.map((p, j) => <ColoredTextSpan key={j} part={p} />)}</li>;
                 return null;
             })}
-        </ul>
-    );
-    case ContentType.ORDERED_LIST: return (
-        <ol key={index} className="space-y-2 mb-4 list-decimal list-outside pl-5 marker:text-sky-600">
-            {block.items?.map((item, i) => {
-                if (typeof item === 'string') return <li key={i} className="text-slate-600 pl-2">{item}</li>;
-                if ('parts' in item && item.parts) return <li key={i} className="text-slate-600 pl-2">{item.parts.map((p, j) => <ColoredTextSpan key={j} part={p} />)}</li>;
-                return null;
-            })}
-        </ol>
+        </ListTag>
     );
     case ContentType.HIGHLIGHT:
       const color = block.color || 'blue';
@@ -262,6 +342,12 @@ const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode
     case ContentType.BLOCKQUOTE: return <blockquote key={index} className="border-l-4 border-slate-300 pl-3 my-4 text-slate-500 italic">{block.text}</blockquote>;
     case ContentType.HORIZONTAL_RULE: return <hr key={index} className="my-6 border-slate-300" />;
     case ContentType.DETAILS: return <details key={index} className="my-4 bg-slate-200/50 border border-slate-300 rounded-md p-3"><summary className="font-semibold text-slate-700 cursor-pointer">{block.summary}</summary><div className="mt-2">{block.children?.map((b, j) => renderPreviewBlock(b, j))}</div></details>;
+    case ContentType.TABLE: return (
+        <table key={index} className="my-4 w-full border-collapse border border-slate-300">
+            {block.headers && <thead><tr className="bg-slate-200">{block.headers.map((h, i) => <th key={i} className="border border-slate-300 p-2 text-left">{h}</th>)}</tr></thead>}
+            <tbody>{block.rows?.map((row, i) => <tr key={i} className="border-b border-slate-300">{row.map((cell, j) => <td key={j} className="border border-slate-300 p-2">{cell.text}</td>)}</tr>)}</tbody>
+        </table>
+    );
     default: return null;
   }
 };

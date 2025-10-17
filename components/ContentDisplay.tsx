@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ContentType } from '../types';
 import type { Topic, ContentBlock, HighlightColor, ColoredText, ContentPart } from '../types';
 import ExplanationModal from './ExplanationModal';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-markdown';
+
 
 interface ContentDisplayProps {
   topic: Topic;
@@ -45,6 +54,10 @@ const ExplainButton: React.FC<{ onClick: () => void; }> = ({ onClick }) => (
 const CodeBlock: React.FC<{ language?: string; code: string }> = ({ language, code }) => {
     const [buttonText, setButtonText] = useState('Copy');
     
+    useEffect(() => {
+        Prism.highlightAll();
+    }, [code, language]);
+
     const handleCopy = () => {
         navigator.clipboard.writeText(code).then(() => {
             setButtonText('Copied!');
@@ -55,18 +68,22 @@ const CodeBlock: React.FC<{ language?: string; code: string }> = ({ language, co
         });
     };
 
+    const langClass = language ? `language-${language}` : '';
+
     return (
-        <div className="bg-slate-800 rounded-lg my-6 relative group text-left">
-            <div className="flex justify-between items-center px-4 py-2 bg-slate-900/50 rounded-t-lg border-b border-slate-700">
-                <span className="text-xs font-sans text-slate-400 select-none">{language || 'code'}</span>
+        <div className="my-6 relative group text-left">
+            <div className="flex justify-between items-center px-4 py-2 bg-slate-200 rounded-t-lg border-b border-slate-300">
+                <span className="text-xs font-sans text-slate-500 select-none">{language || 'code'}</span>
                 <button 
                     onClick={handleCopy}
-                    className="text-xs font-sans text-slate-300 bg-slate-700 hover:bg-slate-600 rounded-md px-3 py-1 transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100"
+                    className="text-xs font-sans text-slate-600 bg-slate-300 hover:bg-slate-400 rounded-md px-3 py-1 transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100"
                 >
                     {buttonText}
                 </button>
             </div>
-            <pre className="p-4 text-sm text-slate-200 overflow-x-auto font-mono"><code>{code}</code></pre>
+            <pre className="p-4 text-sm text-slate-200 overflow-x-auto font-mono !bg-slate-800 rounded-b-lg !m-0">
+                <code className={langClass}>{code}</code>
+            </pre>
         </div>
     );
 };
@@ -74,31 +91,93 @@ const CodeBlock: React.FC<{ language?: string; code: string }> = ({ language, co
 
 const getTextFromParts = (parts?: ContentPart[]): string => {
     if (!parts) return '';
-    return parts.map(p => typeof p === 'string' ? p : p.text).join('');
+    return parts.map(p => {
+        if (typeof p === 'string') return p;
+        if ('text' in p) return p.text;
+        return '';
+    }).join('');
 }
 
-const ColoredTextSpan: React.FC<{ part: string | ColoredText }> = ({ part }) => {
+const renderContentParts = (parts?: ContentPart[]) => {
+    if (!parts) return null;
+    return parts.map((part, i) => <ColoredTextSpan key={i} part={part} />);
+};
+
+const ColoredTextSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
     if (typeof part === 'string') {
-        // A simple regex to find and replace **bold** text within a string part
-        const segments = part.split(/(\*\*.*?\*\*)/g);
+        const segments = part.split(/(\*\*.*?\*\*|~~.*?~~)/g);
         return (
             <>
-                {segments.map((segment, i) =>
-                    segment.startsWith('**') && segment.endsWith('**') ? (
-                        <strong key={i}>{segment.slice(2, -2)}</strong>
-                    ) : (
-                        <span key={i}>{segment}</span>
-                    )
-                )}
+                {segments.map((segment, i) => {
+                    if (segment.startsWith('**') && segment.endsWith('**')) {
+                        return <strong key={i}>{segment.slice(2, -2)}</strong>;
+                    }
+                    if (segment.startsWith('~~') && segment.endsWith('~~')) {
+                        return <s key={i}>{segment.slice(2, -2)}</s>;
+                    }
+                    return <span key={i}>{segment}</span>;
+                })}
             </>
         );
     }
-    const colorClasses = inlineColorMap[part.color];
-    return (
-        <span className={`${colorClasses.bg} ${colorClasses.text} font-semibold px-1.5 py-0.5 rounded-md`}>
-        {part.text}
-        </span>
-    );
+    if ('type' in part && part.type === ContentType.STRIKETHROUGH) {
+        return <s>{part.text}</s>;
+    }
+    if ('color' in part) {
+      const colorClasses = inlineColorMap[part.color];
+      return (
+          <span className={`${colorClasses.bg} ${colorClasses.text} font-semibold px-1.5 py-0.5 rounded-md`}>
+              {part.text}
+          </span>
+      );
+    }
+    return null;
+};
+
+const alertStyles = {
+    note: {
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" /></svg>,
+      classes: 'bg-blue-50 border-blue-400 text-blue-800',
+    },
+    warning: {
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8.257 3.099c.636-1.21 2.37-1.21 3.006 0l4.312 8.216c.63 1.202-.294 2.685-1.503 2.685H5.448c-1.21 0-2.133-1.483-1.503-2.685L8.257 3.099zM10 6a1 1 0 011 1v3a1 1 0 11-2 0V7a1 1 0 011-1zm-1 6a1 1 0 102 0 1 1 0 00-2 0z" clipRule="evenodd" /></svg>,
+      classes: 'bg-yellow-50 border-yellow-400 text-yellow-800',
+    },
+};
+
+// Fix: Add parseLineToParts function to parse markdown-like syntax in strings.
+const parseLineToParts = (line: string): ContentPart[] => {
+    const parts: ContentPart[] = [];
+    const regex = /\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = regex.exec(line)) !== null) {
+        if (match.index > lastIndex) {
+            parts.push(line.substring(lastIndex, match.index));
+        }
+        
+        if (match[1] !== undefined) { // Colored text
+            const text = match[1];
+            const color = match[2] as HighlightColor;
+            const validColors: HighlightColor[] = ['green', 'fuchsia', 'yellow', 'red', 'purple', 'blue', 'cyan', 'indigo'];
+            if (validColors.includes(color)) {
+                parts.push({ text, color });
+            } else {
+                parts.push(match[0]);
+            }
+        } else if (match[3] !== undefined) { // Strikethrough
+            parts.push({ type: ContentType.STRIKETHROUGH, text: match[3] });
+        }
+        
+        lastIndex = regex.lastIndex;
+    }
+
+    if (lastIndex < line.length) {
+        parts.push(line.substring(lastIndex));
+    }
+
+    return parts;
 };
 
 const renderContentBlock = (block: ContentBlock, index: number, explainHandler: (text: string) => void) => {
@@ -106,21 +185,21 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
     case ContentType.HEADING1:
         return (
           <div key={index} className="group relative">
-              <h1 className="text-3xl md:text-4xl font-bold mt-12 mb-5 pb-2 border-b-2 border-fuchsia-500/50 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-600 to-indigo-600">{block.text}</h1>
+              <h1 className="text-3xl md:text-4xl font-bold mt-12 mb-5 pb-2 border-b-2 border-slate-300 text-slate-900">{block.text}</h1>
               <ExplainButton onClick={() => explainHandler(block.text!)} />
           </div>
         );
     case ContentType.HEADING2:
       return (
         <div key={index} className="group relative">
-            <h2 className="text-2xl md:text-3xl font-bold mt-10 mb-4 pb-2 border-b border-white/20 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-500 to-indigo-500">{block.text}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mt-10 mb-4 pb-2 border-b border-slate-300 text-slate-800">{block.text}</h2>
             <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
       );
     case ContentType.HEADING3:
       return (
         <div key={index} className="group relative">
-            <h3 className="text-xl md:text-2xl font-semibold mt-8 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-500">{block.text}</h3>
+            <h3 className="text-xl md:text-2xl font-semibold mt-8 mb-3 text-slate-700">{block.text}</h3>
             <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
       );
@@ -134,21 +213,35 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
     case ContentType.PARAGRAPH:
       return (
         <div key={index} className="group relative">
-            <p className="text-slate-700 leading-7 mb-4">{block.text}</p>
-            <ExplainButton onClick={() => explainHandler(block.text!)} />
+            <p className="text-slate-700 leading-7 mb-4">{renderContentParts(block.parts || [block.text || ''])}</p>
+            <ExplainButton onClick={() => explainHandler(getTextFromParts(block.parts) || block.text!)} />
         </div>
       );
     case ContentType.LIST:
-      return (
-        <ul key={index} className="space-y-3 mb-4 list-disc list-outside pl-5 marker:text-sky-500">
+    case ContentType.ORDERED_LIST:
+        const ListTag = block.type === ContentType.ORDERED_LIST ? 'ol' : 'ul';
+        const listStyle = block.type === ContentType.ORDERED_LIST 
+            ? 'list-decimal marker:text-sky-600'
+            : 'list-disc marker:text-sky-500';
+
+        return (
+        <ListTag key={index} className={`space-y-3 mb-4 list-outside pl-5 ${listStyle}`}>
           {block.items?.map((item, i) => {
+            if (typeof item === 'object' && item !== null && 'type' in item && item.type === ContentType.TASK_LIST) {
+                return (
+                    <li key={i} className="text-slate-600 pl-2 task-list-item">
+                        <input type="checkbox" className="task-list-item-checkbox" checked={item.checked} readOnly />
+                        {renderContentParts([{ type: ContentType.STRIKETHROUGH, text: item.text }])}
+                    </li>
+                );
+            }
             if (typeof item === 'string') {
                 return <li key={i} className="text-slate-600 pl-2">{item}</li>;
             }
             if ('parts' in item && item.parts) {
                 return (
                     <li key={i} className="text-slate-600 pl-2">
-                        {item.parts.map((part, j) => <ColoredTextSpan key={j} part={part} />)}
+                        {renderContentParts(item.parts)}
                     </li>
                 );
             }
@@ -163,7 +256,7 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
                                 }
                                 return (
                                     <li key={j} className="text-slate-500 pl-2">
-                                        {sub.parts.map((part, k) => <ColoredTextSpan key={k} part={part} />)}
+                                        {renderContentParts(sub.parts)}
                                     </li>
                                 );
                             })}
@@ -173,45 +266,8 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
             }
             return null;
           })}
-        </ul>
+        </ListTag>
       );
-    case ContentType.ORDERED_LIST:
-        return (
-          <ol key={index} className="space-y-4 mb-4 list-decimal list-outside pl-5 marker:text-sky-600">
-            {block.items?.map((item, i) => {
-                if (typeof item === 'string') {
-                    return <li key={i} className="text-slate-600 pl-2">{item}</li>;
-                }
-                if ('parts' in item && item.parts) {
-                    return (
-                        <li key={i} className="text-slate-600 pl-2">
-                            {item.parts.map((part, j) => <ColoredTextSpan key={j} part={part} />)}
-                        </li>
-                    );
-                }
-                if ('text' in item && 'subItems' in item) {
-                    return (
-                    <li key={i} className="text-slate-600 pl-2">
-                        <span className="font-bold text-slate-700">{item.text}</span>
-                        <div className="mt-2 space-y-2">
-                            {item.subItems.map((sub, j) => {
-                                if (typeof sub === 'string') {
-                                    return <p key={j} className="text-slate-500">{sub}</p>;
-                                }
-                                return (
-                                    <p key={j} className="text-slate-500">
-                                        {sub.parts.map((part, k) => <ColoredTextSpan key={k} part={part} />)}
-                                    </p>
-                                );
-                            })}
-                        </div>
-                    </li>
-                    );
-                }
-                return null;
-            })}
-          </ol>
-        );
     case ContentType.HIGHLIGHT:
       const color = block.color || 'blue';
       const classes = highlightBlockMap[color];
@@ -225,7 +281,7 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
       return (
         <div key={index} className="group relative">
             <p className="text-slate-700 leading-7 mb-4 text-base">
-            {block.parts?.map((part, i) => <ColoredTextSpan key={i} part={part} />)}
+                {renderContentParts(block.parts)}
             </p>
             <ExplainButton onClick={() => explainHandler(getTextFromParts(block.parts))} />
         </div>
@@ -245,6 +301,15 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
     case ContentType.CODE:
       return <CodeBlock key={index} language={block.language} code={block.text || ''} />;
     case ContentType.BLOCKQUOTE:
+        const alertStyle = block.alertType && alertStyles[block.alertType];
+        if (alertStyle) {
+            return (
+                <div key={index} className={`border-l-4 p-4 my-6 rounded-r-md flex ${alertStyle.classes}`}>
+                    {alertStyle.icon}
+                    <div className="flex-1">{block.text}</div>
+                </div>
+            )
+        }
         return (
             <blockquote key={index} className="border-l-4 border-slate-400 pl-4 my-6 text-slate-600 italic">
                 {block.text}
@@ -262,27 +327,41 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
             </details>
         );
     case ContentType.TABLE:
-      return (
-        <div key={index} className="my-6 overflow-x-auto rounded-lg border border-slate-300/50 shadow-sm">
-          <table className="w-full">
-            <tbody>
-              {block.rows?.map((row, i) => (
-                <tr key={i} className="border-b border-slate-200/50 last:border-b-0">
-                  {row.map((cell, j) => {
-                    const cellColor = cell.color ? inlineColorMap[cell.color] : null;
-                    const cellClasses = cellColor ? `${cellColor.bg} ${cellColor.text} font-semibold` : 'bg-white/50 text-slate-700';
-                    return (
-                      <td key={j} className={`p-3 border-r border-slate-200/50 last:border-r-0 ${cellClasses}`}>
-                        {cell.text}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      );
+        const getAlignmentClass = (align: 'left' | 'center' | 'right' | undefined) => {
+            switch(align) {
+                case 'center': return 'text-center';
+                case 'right': return 'text-right';
+                default: return 'text-left';
+            }
+        }
+        return (
+            <div key={index} className="my-6 overflow-x-auto rounded-lg border border-slate-300 shadow-sm">
+            <table className="w-full border-collapse">
+                {block.headers && (
+                    <thead>
+                        <tr className="bg-slate-200">
+                        {block.headers.map((header, hIndex) => (
+                            <th key={hIndex} className={`p-3 border-b-2 border-slate-300 font-semibold text-slate-700 ${getAlignmentClass(block.align?.[hIndex])}`}>
+                                {header}
+                            </th>
+                        ))}
+                        </tr>
+                    </thead>
+                )}
+                <tbody>
+                {block.rows?.map((row, i) => (
+                    <tr key={i} className="border-b border-slate-200 last:border-b-0 even:bg-slate-50">
+                    {row.map((cell, j) => (
+                        <td key={j} className={`p-3 text-slate-700 ${getAlignmentClass(block.align?.[j])}`}>
+                            {renderContentParts(parseLineToParts(cell.text))}
+                        </td>
+                    ))}
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+            </div>
+        );
     default:
       return null;
   }
@@ -291,6 +370,10 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
 const ContentDisplay: React.FC<ContentDisplayProps> = ({ topic }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [textToExplain, setTextToExplain] = useState('');
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [topic]);
 
   const handleExplainClick = (text: string) => {
     setTextToExplain(text);
