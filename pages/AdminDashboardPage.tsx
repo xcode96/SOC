@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { RawHomeCard, AdminUser } from '../types';
 import { icons } from '../data/homeCards';
+import GitHubSyncModal from '../components/GitHubSyncModal';
 
 interface AdminDashboardPageProps {
   currentGuides: RawHomeCard[];
@@ -45,6 +46,11 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   const [editedTagName, setEditedTagName] = useState('');
   const [editedTagColor, setEditedTagColor] = useState('');
   const [editedStatus, setEditedStatus] = useState('');
+
+  // GitHub Sync State
+  const [isGithubModalOpen, setIsGithubModalOpen] = useState(false);
+  const [isPublishing, setIsPublishing] = useState(false);
+
 
   // Effect to sync iconId with id for convenience
   useEffect(() => {
@@ -132,6 +138,77 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   const handleDeleteClick = (card: RawHomeCard) => {
     if (window.confirm(`Are you sure you want to delete the card "${card.title}"? This will also delete its guide content and cannot be undone.`)) {
         onDeleteCard(card.id);
+    }
+  };
+
+  const handlePublishToGitHub = async () => {
+    if (!window.confirm('This will overwrite the data file in your GitHub repository. Are you sure you want to publish?')) {
+      return;
+    }
+
+    setIsPublishing(true);
+
+    const owner = localStorage.getItem('githubOwner');
+    const repo = localStorage.getItem('githubRepo');
+    const path = localStorage.getItem('githubPath');
+    const token = localStorage.getItem('githubPAT');
+
+    if (!owner || !repo || !path || !token) {
+      alert('GitHub settings are incomplete. Please configure them first.');
+      setIsPublishing(false);
+      return;
+    }
+
+    try {
+      const homeCards = JSON.parse(localStorage.getItem('homeCards') || '[]');
+      const guideData = JSON.parse(localStorage.getItem('guideData') || '{}');
+      const adminUsers = JSON.parse(localStorage.getItem('adminUsers') || '[]');
+      
+      const fullData = { homeCards, guideData, adminUsers };
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2))));
+      
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+      const headers = {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json',
+      };
+      
+      let sha;
+      const getResponse = await fetch(apiUrl, { headers, cache: 'no-cache' });
+
+      if (getResponse.ok) {
+        const fileData = await getResponse.json();
+        sha = fileData.sha;
+      } else if (getResponse.status !== 404) {
+        const errorData = await getResponse.json();
+        throw new Error(`Failed to fetch current file: ${errorData.message}`);
+      }
+      
+      const body = {
+        message: `Update data from admin panel [${new Date().toISOString()}]`,
+        content,
+        sha,
+      };
+
+      const putResponse = await fetch(apiUrl, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify(body),
+      });
+      
+      if (!putResponse.ok) {
+        const errorData = await putResponse.json();
+        throw new Error(`GitHub API Error: ${errorData.message}`);
+      }
+
+      alert('Successfully published to GitHub!');
+
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      alert(`Failed to publish: ${errorMessage}`);
+      console.error('Publishing error:', error);
+    } finally {
+      setIsPublishing(false);
     }
   };
 
@@ -250,6 +327,39 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 ))}
               </ul>
             </div>
+
+            {/* GitHub Sync Section */}
+            <div className="bg-slate-800/60 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6">
+                <h2 className="text-xl font-bold mb-4">Data Sync</h2>
+                <div className="space-y-3">
+                    <button 
+                        onClick={() => setIsGithubModalOpen(true)}
+                        className="w-full text-sm bg-slate-600 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                    >
+                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" /></svg>
+                        GitHub Settings
+                    </button>
+                    <button 
+                        onClick={handlePublishToGitHub}
+                        disabled={isPublishing}
+                        className="w-full text-sm bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-2"
+                    >
+                        {isPublishing ? (
+                             <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        ) : (
+                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
+                        )}
+                        {isPublishing ? 'Publishing...' : 'Publish to GitHub'}
+                    </button>
+                    <p className="text-xs text-slate-400 text-center">
+                        Saves a `data.json` file to your repo. This can be used for backups or to load the guide from an external source.
+                    </p>
+                </div>
+            </div>
+
         </div>
       </div>
 
@@ -297,6 +407,11 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             </div>
         </div>
       )}
+
+       <GitHubSyncModal
+        isOpen={isGithubModalOpen}
+        onClose={() => setIsGithubModalOpen(false)}
+      />
     </div>
   );
 };
