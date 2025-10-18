@@ -72,15 +72,10 @@ export interface Topic {
 export interface RawHomeCard {
   id: string;
   title: string;
-  icon?: string;
   color: string;
   tag?: { name: string; color: string };
   status: string;
   href: string;
-}
-
-export interface HomeCard extends RawHomeCard {
-  icon: React.ReactNode;
 }
 
 export interface AdminUser {

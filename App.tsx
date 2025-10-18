@@ -4,13 +4,13 @@ import GuideLayout from './layouts/GuideLayout';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import AdminGuideEditorPage from './pages/AdminGuideEditorPage';
-import { cardData as defaultCardData, icons } from './data/homeCards';
+import { cardData as defaultCardData } from './data/homeCards';
 import { socConcepts } from './data/socConcepts';
 import { powershellGuide } from './data/powershellGuide';
 import { auditGuide } from './data/auditGuide';
 // Fix: Import ContentType as a value, and other identifiers as types.
 import { ContentType } from './types';
-import type { Topic, HomeCard, RawHomeCard, AdminUser } from './types';
+import type { Topic, RawHomeCard, AdminUser } from './types';
 
 // Data structure to hold all guides
 const initialGuideData: Record<string, { title: string; topics: Topic[] }> = {
@@ -339,12 +339,7 @@ const App: React.FC = () => {
     }
 
     // Default to home page
-    const cardsWithIcons: HomeCard[] = homeCards.map(card => ({
-      ...card,
-      // Use the card's specific icon key if it exists, otherwise fall back to its ID, then to a default.
-      icon: icons[card.icon || card.id] || icons.soc,
-    }));
-    return <HomePage homeCards={cardsWithIcons} />;
+    return <HomePage homeCards={homeCards} />;
   };
 
   if (isInitializing) {
