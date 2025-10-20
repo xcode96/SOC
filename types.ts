@@ -5,6 +5,8 @@ export enum ContentType {
   HEADING2 = 'h2',
   HEADING3 = 'h3',
   HEADING4 = 'h4',
+  HEADING5 = 'h5',
+  HEADING6 = 'h6',
   PARAGRAPH = 'p',
   LIST = 'ul',
   ORDERED_LIST = 'ol',
@@ -14,6 +16,7 @@ export enum ContentType {
   TABLE = 'table',
   IMAGE = 'img',
   CODE = 'code',
+  INLINE_CODE = 'inline_code',
   BLOCKQUOTE = 'blockquote',
   HORIZONTAL_RULE = 'hr',
   DETAILS = 'details',
@@ -21,6 +24,7 @@ export enum ContentType {
   TASK_LIST = 'tasklist',
   HTML_BLOCK = 'html',
   LINK = 'link',
+  HIGHLIGHT_TEXT = 'mark',
 }
 
 export type HighlightColor = 'green' | 'fuchsia' | 'yellow' | 'red' | 'purple' | 'blue' | 'cyan' | 'indigo';
@@ -35,13 +39,13 @@ export interface TableCell {
     color?: HighlightColor;
 }
 
-export type ContentPart = string | ColoredText | { type: ContentType.STRIKETHROUGH; text: string } | { type: ContentType.LINK, text: string, href: string };
+export type ContentPart = string | ColoredText | { type: ContentType.STRIKETHROUGH; text: string } | { type: ContentType.LINK, text: string, href: string } | { type: ContentType.INLINE_CODE, text: string } | { type: ContentType.HIGHLIGHT_TEXT, text: string };
 
 export interface PartedContent {
   parts: ContentPart[];
 }
 
-export type ListItem = string | PartedContent | { text: string; subItems: (string | PartedContent)[] } | { text: string, checked: boolean, type: ContentType.TASK_LIST };
+export type ListItem = string | (PartedContent & { subItems?: ListItem[] }) | { text: string; subItems?: ListItem[] } | { text: string, checked: boolean, type: ContentType.TASK_LIST, subItems?: ListItem[] };
 
 
 export interface ContentBlock {
