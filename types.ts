@@ -80,5 +80,5 @@ export interface RawHomeCard {
 
 export interface AdminUser {
   username: string;
-  password?: string;
+  password: string;
 }

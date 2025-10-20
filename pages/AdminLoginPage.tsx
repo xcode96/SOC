@@ -16,11 +16,8 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, validUsers }) 
     const cleanedUsername = username.trim().toLowerCase();
     const user = validUsers.find(user => user.username.toLowerCase() === cleanedUsername);
     
-    // Use the user's specific password if it exists, otherwise default to 'password'
-    // for backward compatibility with older user data.
-    const correctPassword = user?.password || 'password';
-
-    if (user && password === correctPassword) {
+    // Updated logic: Directly compare with the user's required password.
+    if (user && password === user.password) {
       setError('');
       onLogin(true);
     } else {
@@ -68,7 +65,7 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, validUsers }) 
             {error && <p className="text-red-400 text-sm text-center">{error}</p>}
             
             <div className="text-center text-xs text-slate-500">
-                <p>Hint: Valid users are ({validUsers.map(u=>u.username).join(', ')}). The default password is 'password'.</p>
+                <p>Hint: Default credentials are admin/password or dq.adm/password.</p>
             </div>
 
             <button
