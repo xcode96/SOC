@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ContentType } from '../types';
-import type { Topic, ContentBlock, HighlightColor, ColoredText, ContentPart } from '../types';
+import type { Topic, ContentBlock, HighlightColor, ColoredText, ContentPart, ListItem, PartedContent } from '../types';
 import ExplanationModal from './ExplanationModal';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-bash';
@@ -15,6 +15,16 @@ import 'prismjs/components/prism-markdown';
 interface ContentDisplayProps {
   topic: Topic;
 }
+
+const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^a-z0-9-]/g, '') // Remove all non-word chars except hyphens
+    .replace(/\-\-+/g, '-'); // Replace multiple - with single -
+};
 
 const inlineColorMap: Record<HighlightColor, { bg: string; text: string }> = {
     green: { bg: 'bg-green-300/80', text: 'text-green-900' },
@@ -71,7 +81,7 @@ const CodeBlock: React.FC<{ language?: string; code: string }> = ({ language, co
     const langClass = language ? `language-${language}` : '';
 
     return (
-        <div className="my-6 relative group text-left">
+        <div className="relative group text-left">
             <div className="flex justify-between items-center px-4 py-2 bg-slate-200 rounded-t-lg border-b border-slate-300">
                 <span className="text-xs font-sans text-slate-500 select-none">{language || 'code'}</span>
                 <button 
@@ -126,6 +136,10 @@ const ContentPartSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
                 return <s>{part.text}</s>;
             case ContentType.LINK:
                 return <a href={part.href} className="text-sky-600 underline hover:text-sky-700 transition-colors" target="_blank" rel="noopener noreferrer">{part.text}</a>;
+            case ContentType.INLINE_CODE:
+                return <code className="bg-slate-200/80 text-rose-700 font-mono text-[90%] px-1.5 py-0.5 rounded-md">{part.text}</code>;
+            case ContentType.HIGHLIGHT_TEXT:
+                return <mark className="bg-yellow-200/80 text-yellow-900 px-1 py-0.5 rounded-md">{part.text}</mark>;
         }
     }
     if ('color' in part) {
@@ -186,36 +200,106 @@ const parseLineToParts = (line: string): ContentPart[] => {
     return parts;
 };
 
+const RenderListItem: React.FC<{ item: ListItem }> = ({ item }) => {
+  let content: React.ReactNode;
+  let subItems: ListItem[] | undefined;
+
+  if (typeof item === 'string') {
+    content = <>{item}</>;
+  } else if ('type' in item && item.type === ContentType.TASK_LIST) {
+    content = (
+      <span className="flex items-center">
+        <input type="checkbox" className="task-list-item-checkbox" checked={item.checked} readOnly disabled />
+        <span className={item.checked ? 'text-slate-400 line-through' : 'text-slate-600'}>{item.text}</span>
+      </span>
+    );
+    subItems = item.subItems;
+  } else if ('parts' in item) {
+    content = <>{renderContentParts(item.parts)}</>;
+    subItems = item.subItems;
+  } else if ('text' in item) {
+    content = <span className="font-semibold text-slate-700">{item.text}</span>;
+    subItems = item.subItems;
+  }
+
+  const ListTag = 'ul'; // Sub-lists are always UL for now
+  const listStyle = 'list-[circle] marker:text-cyan-600';
+
+  return (
+    <li className="text-slate-600 pl-2">
+      {content}
+      {subItems && subItems.length > 0 && (
+        <ListTag className={`mt-2 space-y-2 list-outside pl-5 ${listStyle}`}>
+          {subItems.map((sub, j) => <RenderListItem key={j} item={sub} />)}
+        </ListTag>
+      )}
+    </li>
+  );
+};
+
 const renderContentBlock = (block: ContentBlock, index: number, explainHandler: (text: string) => void) => {
+  const slug = block.text ? slugify(block.text) : '';
   switch (block.type) {
     case ContentType.HEADING1:
         return (
           <div key={index} className="group relative">
-              <h1 className="text-3xl md:text-4xl font-bold mt-12 mb-5 pb-2 border-b-2 border-slate-300 text-slate-900">{block.text}</h1>
+              <h1 id={slug} className="text-3xl md:text-4xl font-bold mt-12 mb-5 pb-2 border-b-2 border-slate-300 text-slate-900 scroll-mt-20">
+                <a href={`#${slug}`} className="absolute -left-8 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
+                {block.text}
+              </h1>
               <ExplainButton onClick={() => explainHandler(block.text!)} />
           </div>
         );
     case ContentType.HEADING2:
       return (
         <div key={index} className="group relative">
-            <h2 className="text-2xl md:text-3xl font-bold mt-10 mb-4 pb-2 border-b border-slate-300 text-slate-800">{block.text}</h2>
+            <h2 id={slug} className="text-2xl md:text-3xl font-bold mt-10 mb-4 pb-2 border-b border-slate-300 text-slate-800 scroll-mt-20">
+              <a href={`#${slug}`} className="absolute -left-8 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
+              {block.text}
+            </h2>
             <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
       );
     case ContentType.HEADING3:
       return (
         <div key={index} className="group relative">
-            <h3 className="text-xl md:text-2xl font-semibold mt-8 mb-3 text-slate-700">{block.text}</h3>
+            <h3 id={slug} className="text-xl md:text-2xl font-semibold mt-8 mb-3 text-slate-700 scroll-mt-20">
+              <a href={`#${slug}`} className="absolute -left-7 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
+              {block.text}
+            </h3>
             <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
       );
     case ContentType.HEADING4:
       return (
         <div key={index} className="group relative">
-            <h4 className="text-lg md:text-xl font-semibold mt-6 mb-2 text-slate-700">{block.text}</h4>
+            <h4 id={slug} className="text-lg md:text-xl font-semibold mt-6 mb-2 text-slate-700 scroll-mt-20">
+              <a href={`#${slug}`} className="absolute -left-6 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
+              {block.text}
+            </h4>
             <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
       );
+    case ContentType.HEADING5:
+        return (
+            <div key={index} className="group relative">
+                <h5 id={slug} className="text-base md:text-lg font-semibold mt-5 mb-2 text-slate-700 scroll-mt-20">
+                  <a href={`#${slug}`} className="absolute -left-5 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
+                  {block.text}
+                </h5>
+                <ExplainButton onClick={() => explainHandler(block.text!)} />
+            </div>
+        );
+    case ContentType.HEADING6:
+        return (
+            <div key={index} className="group relative">
+                <h6 id={slug} className="text-base font-semibold mt-5 mb-2 text-slate-600 scroll-mt-20">
+                  <a href={`#${slug}`} className="absolute -left-5 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
+                  {block.text}
+                </h6>
+                <ExplainButton onClick={() => explainHandler(block.text!)} />
+            </div>
+        );
     case ContentType.PARAGRAPH:
       return (
         <div key={index} className="group relative">
@@ -231,49 +315,12 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
             : 'list-disc marker:text-sky-500';
 
         return (
-        <ListTag key={index} className={`space-y-3 mb-4 list-outside pl-5 ${listStyle}`}>
-          {block.items?.map((item, i) => {
-            if (typeof item === 'object' && item !== null && 'type' in item && item.type === ContentType.TASK_LIST) {
-                return (
-                    <li key={i} className="text-slate-600 pl-2 task-list-item">
-                        <input type="checkbox" className="task-list-item-checkbox" checked={item.checked} readOnly />
-                        {renderContentParts([{ type: ContentType.STRIKETHROUGH, text: item.text }])}
-                    </li>
-                );
-            }
-            if (typeof item === 'string') {
-                return <li key={i} className="text-slate-600 pl-2">{item}</li>;
-            }
-            if ('parts' in item && item.parts) {
-                return (
-                    <li key={i} className="text-slate-600 pl-2">
-                        {renderContentParts(item.parts)}
-                    </li>
-                );
-            }
-            if ('text' in item && 'subItems' in item) {
-                return (
-                    <li key={i} className="text-slate-600 pl-2">
-                        <span className="font-semibold text-slate-700">{item.text}</span>
-                        <ul className="mt-2 space-y-2 list-[circle] list-outside pl-5 marker:text-cyan-600">
-                            {item.subItems.map((sub, j) => {
-                                if (typeof sub === 'string') {
-                                    return <li key={j} className="text-slate-500 pl-2">{sub}</li>;
-                                }
-                                return (
-                                    <li key={j} className="text-slate-500 pl-2">
-                                        {renderContentParts(sub.parts)}
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </li>
-                );
-            }
-            return null;
-          })}
-        </ListTag>
-      );
+            <ListTag key={index} className={`space-y-3 mb-4 list-outside pl-5 ${listStyle}`}>
+                {block.items?.map((item, i) => (
+                    <RenderListItem key={i} item={item} />
+                ))}
+            </ListTag>
+        );
     case ContentType.HIGHLIGHT:
       const color = block.color || 'blue';
       const classes = highlightBlockMap[color];
@@ -307,7 +354,7 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
     case ContentType.CODE:
       return <CodeBlock key={index} language={block.language} code={block.text || ''} />;
     case ContentType.HTML_BLOCK:
-      return <div key={index} className="html-content-wrapper" dangerouslySetInnerHTML={{ __html: block.html || '' }} />;
+      return <div key={index} className="html-content-wrapper my-4" dangerouslySetInnerHTML={{ __html: block.html || '' }} />;
     case ContentType.BLOCKQUOTE:
         const alertStyle = block.alertType && alertStyles[block.alertType];
         if (alertStyle) {
@@ -375,6 +422,68 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
   }
 };
 
+const SectionParagraph: React.FC<{ block: ContentBlock }> = ({ block }) => {
+  const text = getTextFromParts(block.parts);
+  const match = text.match(/^\*\*(.*?):\*\*\s*(.*)/s);
+  if (match) {
+    return (
+      <div className="my-4 text-slate-700 leading-relaxed">
+        <strong className="font-semibold text-slate-800">{match[1]}:</strong>
+        <span className="ml-1">{match[2]}</span>
+      </div>
+    );
+  }
+  return <p className="text-slate-700 leading-7 mb-4">{renderContentParts(block.parts || [block.text || ''])}</p>;
+};
+
+const CommandSnippet: React.FC<{ block: ContentBlock, explainHandler: (text: string) => void }> = ({ block, explainHandler }) => {
+    return (
+      <details className="my-2 bg-slate-100/80 border border-slate-200 rounded-lg open:shadow-lg transition-shadow group overflow-hidden">
+        <summary className="font-semibold text-slate-800 cursor-pointer p-3 flex justify-between items-center hover:bg-slate-200/50 transition-colors">
+          <div className="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            <span>{block.summary}</span>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div className="border-t border-slate-200 bg-white">
+          {block.children?.map((childBlock, childIndex) => renderContentBlock(childBlock, childIndex, explainHandler))}
+        </div>
+      </details>
+    );
+};
+
+const TechniqueCard: React.FC<{ title: string; blocks: ContentBlock[]; explainHandler: (text: string) => void }> = ({ title, blocks, explainHandler }) => {
+    const slug = slugify(title);
+    return (
+        <div className="bg-white border border-slate-200/80 rounded-2xl shadow-lg my-8 transition-all hover:border-slate-300/80 hover:shadow-xl">
+          <h3 id={slug} className="text-xl md:text-2xl font-bold text-slate-900 border-b border-slate-200 px-6 py-4 bg-slate-50/70 rounded-t-2xl scroll-mt-20 group relative">
+            <a href={`#${slug}`} className="absolute -left-7 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${title}`}>#</a>
+            {title}
+          </h3>
+          <div className="p-6">
+            {blocks.map((block, index) => {
+                switch (block.type) {
+                    case ContentType.HEADING4:
+                        return <h4 key={index} className="text-sm font-bold uppercase tracking-wider text-sky-700 mt-6 mb-2">{block.text}</h4>;
+                    case ContentType.PARAGRAPH:
+                        return <SectionParagraph key={index} block={block} />;
+                    case ContentType.DETAILS:
+                        return <CommandSnippet key={index} block={block} explainHandler={explainHandler} />;
+                    default:
+                        return renderContentBlock(block, index, explainHandler);
+                }
+            })}
+          </div>
+        </div>
+    );
+};
+
+
 const ContentDisplay: React.FC<ContentDisplayProps> = ({ topic }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [textToExplain, setTextToExplain] = useState('');
@@ -387,6 +496,33 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ topic }) => {
     setTextToExplain(text);
     setIsModalOpen(true);
   };
+  
+  type GroupedContentItem = ContentBlock | { type: 'technique-group'; title: string; blocks: ContentBlock[] };
+  const groupedContent: GroupedContentItem[] = [];
+  let currentGroup: { type: 'technique-group'; title: string; blocks: ContentBlock[] } | null = null;
+
+  for (const block of topic.content) {
+    if (block.type === ContentType.HEADING3) {
+      if (currentGroup) {
+        groupedContent.push(currentGroup);
+      }
+      currentGroup = { type: 'technique-group', title: block.text || 'Untitled Technique', blocks: [] };
+    } else if (block.type === ContentType.HEADING2 || block.type === ContentType.HEADING1) {
+      if (currentGroup) {
+        groupedContent.push(currentGroup);
+        currentGroup = null;
+      }
+      groupedContent.push(block);
+    } else if (currentGroup) {
+      currentGroup.blocks.push(block);
+    } else {
+      groupedContent.push(block);
+    }
+  }
+
+  if (currentGroup) {
+    groupedContent.push(currentGroup);
+  }
 
   return (
     <>
@@ -398,7 +534,12 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ topic }) => {
             {topic.title}
         </h1>
         <div>
-            {topic.content.map((block, index) => renderContentBlock(block, index, handleExplainClick))}
+           {groupedContent.map((item, index) => {
+              if ('type' in item && item.type === 'technique-group') {
+                return <TechniqueCard key={index} title={item.title} blocks={item.blocks} explainHandler={handleExplainClick} />;
+              }
+              return renderContentBlock(item as ContentBlock, index, handleExplainClick);
+            })}
         </div>
         </article>
         <ExplanationModal 
