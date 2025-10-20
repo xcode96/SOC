@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ContentType } from '../types';
-import type { Topic, ContentBlock, HighlightColor, ColoredText, ContentPart, ListItem } from '../types';
+import type { Topic, ContentBlock, HighlightColor, ColoredText, ContentPart, ListItem, PartedContent } from '../types';
 
 interface AdminGuideEditorPageProps {
   guide: { title: string; topics: Topic[] };
@@ -19,6 +19,8 @@ const getMarkdownFromParts = (parts: ContentPart[]): string => {
       switch(p.type) {
         case ContentType.STRIKETHROUGH: return `~~${p.text}~~`;
         case ContentType.LINK: return `[${p.text}](${p.href})`;
+        case ContentType.INLINE_CODE: return `\`${p.text}\``;
+        case ContentType.HIGHLIGHT_TEXT: return `==${p.text}==`;
       }
     }
     return `{${p.text}}[${p.color}]`;
@@ -26,43 +28,95 @@ const getMarkdownFromParts = (parts: ContentPart[]): string => {
 };
 
 const parseLineToParts = (line: string): ContentPart[] => {
-    const parts: ContentPart[] = [];
-    const regex = /\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~|\[([^\]]+?)\]\(([^)]+?)\)/g;
+    const rawParts: (string | { type: string, content: string, groups: string[] })[] = [];
+    const regex = /\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~|\[([^\]]+?)\]\(([^)]+?)\)|\*\*(.*?)\*\*|\*(.*?)\*|`(.*?)`|==(.*?)==/g;
     let lastIndex = 0;
     let match;
 
     while ((match = regex.exec(line)) !== null) {
         if (match.index > lastIndex) {
-            parts.push(line.substring(lastIndex, match.index));
+            rawParts.push(line.substring(lastIndex, match.index));
         }
         
-        if (match[1] !== undefined) { // Colored text
-            const text = match[1];
-            const color = match[2] as HighlightColor;
-            const validColors: HighlightColor[] = ['green', 'fuchsia', 'yellow', 'red', 'purple', 'blue', 'cyan', 'indigo'];
-            if (validColors.includes(color)) {
-                parts.push({ text, color });
-            } else {
-                parts.push(match[0]);
-            }
-        } else if (match[3] !== undefined) { // Strikethrough
-            parts.push({ type: ContentType.STRIKETHROUGH, text: match[3] });
-        } else if (match[4] !== undefined) { // Link
-            parts.push({ type: ContentType.LINK, text: match[4], href: match[5] });
-        }
+        if (match[1] !== undefined) rawParts.push({ type: 'color', content: match[0], groups: [match[1], match[2]]});
+        else if (match[3] !== undefined) rawParts.push({ type: 's', content: match[0], groups: [match[3]]});
+        else if (match[4] !== undefined) rawParts.push({ type: 'link', content: match[0], groups: [match[4], match[5]]});
+        else if (match[6] !== undefined) rawParts.push({ type: 'bold', content: match[0], groups: [match[6]]});
+        else if (match[7] !== undefined) rawParts.push({ type: 'italic', content: match[0], groups: [match[7]]});
+        else if (match[8] !== undefined) rawParts.push({ type: 'inline_code', content: match[0], groups: [match[8]]});
+        else if (match[9] !== undefined) rawParts.push({ type: 'mark', content: match[0], groups: [match[9]]});
         
         lastIndex = regex.lastIndex;
     }
-
     if (lastIndex < line.length) {
-        parts.push(line.substring(lastIndex));
+        rawParts.push(line.substring(lastIndex));
     }
 
-    return parts;
+    const finalParts: ContentPart[] = [];
+    rawParts.forEach(p => {
+        if (typeof p === 'string') {
+            const urlRegex = /(https?:\/\/[^\s"<`]+[^\s"<`.,;!?\])])/g;
+            let lastUrlIndex = 0;
+            let urlMatch;
+            while ((urlMatch = urlRegex.exec(p)) !== null) {
+                if (urlMatch.index > lastUrlIndex) {
+                    finalParts.push(p.substring(lastUrlIndex, urlMatch.index));
+                }
+                finalParts.push({ type: ContentType.LINK, text: urlMatch[0], href: urlMatch[0] });
+                lastUrlIndex = urlMatch.index + urlMatch[0].length;
+            }
+            if (lastUrlIndex < p.length) {
+                finalParts.push(p.substring(lastUrlIndex));
+            }
+        } else {
+            switch(p.type) {
+                case 'color': finalParts.push({ text: p.groups[0], color: p.groups[1] as HighlightColor }); break;
+                case 's': finalParts.push({ type: ContentType.STRIKETHROUGH, text: p.groups[0] }); break;
+                case 'link': finalParts.push({ type: ContentType.LINK, text: p.groups[0], href: p.groups[1] }); break;
+                case 'bold': finalParts.push(`**${p.groups[0]}**`); break;
+                case 'italic': finalParts.push(`*${p.groups[0]}*`); break;
+                case 'inline_code': finalParts.push({ type: ContentType.INLINE_CODE, text: p.groups[0] }); break;
+                case 'mark': finalParts.push({ type: ContentType.HIGHLIGHT_TEXT, text: p.groups[0] }); break;
+            }
+        }
+    });
+
+    return finalParts;
 };
 
 const convertJsonToMarkdown = (content: ContentBlock[]): string => {
   const lines: string[] = [];
+
+  const convertListToMarkdown = (items: ListItem[], isOrdered: boolean, indent = ''): string[] => {
+    const listLines: string[] = [];
+    items.forEach((item, index) => {
+        const prefix = isOrdered ? `${index + 1}.` : '-';
+        let itemContent = '';
+        let subItems: ListItem[] | undefined;
+
+        if (typeof item === 'string') {
+            itemContent = item;
+        } else if ('type' in item && item.type === ContentType.TASK_LIST) {
+            itemContent = `[${item.checked ? 'x' : ' '}] ${item.text}`;
+            subItems = item.subItems;
+        } else if ('parts' in item) {
+            itemContent = getMarkdownFromParts(item.parts);
+            subItems = item.subItems;
+        } else if ('text' in item) { // Legacy support
+            itemContent = item.text;
+            subItems = item.subItems;
+        }
+
+        listLines.push(`${indent}${prefix} ${itemContent}`);
+
+        if (subItems && subItems.length > 0) {
+            const firstSubItemLine = typeof subItems[0] === 'string' ? subItems[0] : ('text' in subItems[0] ? subItems[0].text : '');
+            const subListIsOrdered = /^\d+\.\s/.test(firstSubItemLine);
+            listLines.push(...convertListToMarkdown(subItems, subListIsOrdered, indent + '  '));
+        }
+    });
+    return listLines;
+  };
 
   content.forEach(block => {
     switch (block.type) {
@@ -70,30 +124,16 @@ const convertJsonToMarkdown = (content: ContentBlock[]): string => {
       case ContentType.HEADING2: lines.push(`## ${block.text}`); break;
       case ContentType.HEADING3: lines.push(`### ${block.text}`); break;
       case ContentType.HEADING4: lines.push(`#### ${block.text}`); break;
+      case ContentType.HEADING5: lines.push(`##### ${block.text}`); break;
+      case ContentType.HEADING6: lines.push(`###### ${block.text}`); break;
       case ContentType.PARAGRAPH: lines.push(block.parts ? getMarkdownFromParts(block.parts) : block.text || ''); break;
       case ContentType.HTML_BLOCK: lines.push(block.html || ''); break;
       case ContentType.COLORED_PARAGRAPH: if (block.parts) { lines.push(getMarkdownFromParts(block.parts)); } break;
       case ContentType.LIST:
       case ContentType.ORDERED_LIST:
-        const listLines: string[] = [];
-        block.items?.forEach((item, index) => {
-          const prefix = block.type === ContentType.ORDERED_LIST ? `${index + 1}.` : '-';
-          // Fix: Use 'in' operator as a type guard to correctly identify the task list object.
-          if (typeof item === 'object' && item !== null && 'type' in item && item.type === ContentType.TASK_LIST) {
-              listLines.push(`${prefix} [${item.checked ? 'x' : ' '}] ${item.text}`);
-          } else if (typeof item === 'string') {
-            listLines.push(`${prefix} ${item}`);
-          } else if ('parts' in item && item.parts) {
-            listLines.push(`${prefix} ${getMarkdownFromParts(item.parts)}`);
-          } else if ('text' in item && 'subItems' in item) {
-            listLines.push(`${prefix} **${item.text}**`);
-            item.subItems.forEach(subItem => {
-              if (typeof subItem === 'string') { listLines.push(`  - ${subItem}`); } 
-              else if ('parts' in subItem && subItem.parts) { listLines.push(`  - ${getMarkdownFromParts(subItem.parts)}`); }
-            });
-          }
-        });
-        if (listLines.length > 0) { lines.push(listLines.join('\n')); }
+        if (block.items) {
+           lines.push(convertListToMarkdown(block.items, block.type === ContentType.ORDERED_LIST).join('\n'));
+        }
         break;
       case ContentType.CODE: lines.push(`\`\`\`${block.language || ''}\n${block.text || ''}\n\`\`\``); break;
       case ContentType.BLOCKQUOTE: 
@@ -107,8 +147,13 @@ const convertJsonToMarkdown = (content: ContentBlock[]): string => {
       case ContentType.IMAGE: lines.push(`![${block.alt || ''}](${block.src || ''})`); break;
       case ContentType.HIGHLIGHT: lines.push(`> **${block.color?.toUpperCase()}**: ${block.text}`); break;
       case ContentType.DETAILS:
-        const childrenMarkdown = convertJsonToMarkdown(block.children || []);
-        lines.push(`<details>\n<summary>${block.summary || 'Details'}</summary>\n\n${childrenMarkdown}\n\n</details>`);
+        if (block.children?.length === 1 && block.children[0].type === ContentType.CODE) {
+            const codeBlock = block.children[0];
+            lines.push(`* **${block.summary}:**\n\n\`\`\`${codeBlock.language || ''}\n${codeBlock.text || ''}\n\`\`\``);
+        } else {
+            const childrenMarkdown = convertJsonToMarkdown(block.children || []);
+            lines.push(`<details>\n<summary>${block.summary || 'Details'}</summary>\n\n${childrenMarkdown}\n\n</details>`);
+        }
         break;
       case ContentType.TABLE:
         const tableLines = [];
@@ -140,14 +185,17 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
     const lines = markdown.trim().split('\n');
     let i = 0;
 
-    const htmlBlockTags = ['p', 'details', 'summary', 'div', 'figure', 'table', 'thead', 'tbody', 'tr', 'th', 'td'];
+    const htmlBlockTags = ['div', 'details', 'summary', 'figure', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'video', 'audio', 'iframe', 'section', 'article', 'header', 'footer', 'aside', 'form', 'p', 'ul', 'ol', 'li', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'kbd', 'mark'];
+
+    const getIndent = (s: string) => s.match(/^\s*/)?.[0].length ?? 0;
 
     while (i < lines.length) {
         let line = lines[i];
 
         if (line.trim() === '') { i++; continue; }
-
-        const htmlMatch = line.trim().match(new RegExp(`^<(${htmlBlockTags.join('|')})`, 'i'));
+        
+        // HTML Block Parsing
+        const htmlMatch = line.trim().match(new RegExp(`^<(${htmlBlockTags.join('|')})[\\s>]`, 'i'));
         if (htmlMatch) {
             const tag = htmlMatch[1].toLowerCase();
             const blockLines = [];
@@ -157,7 +205,7 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
             for (let j = i; j < lines.length; j++) {
                 const currentLine = lines[j];
                 blockLines.push(currentLine);
-                const openMatches = currentLine.match(new RegExp(`<${tag}`, 'gi')) || [];
+                const openMatches = currentLine.match(new RegExp(`<${tag}[\\s>]`, 'gi')) || [];
                 const closeMatches = currentLine.match(new RegExp(`</${tag}>`, 'gi')) || [];
                 openTags += openMatches.length - closeMatches.length;
 
@@ -173,6 +221,107 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
             continue;
         }
 
+
+        // Details block: list item with bolded title, followed by code block
+        const currentLineTrimmed = line.trim();
+        if (currentLineTrimmed.startsWith('*')) {
+            const summaryMatch = currentLineTrimmed.match(/^\*\s+\*\*(.+?):\*\*/);
+            let codeBlockLineIndex = i + 1;
+            while (codeBlockLineIndex < lines.length && lines[codeBlockLineIndex].trim() === '') {
+                codeBlockLineIndex++;
+            }
+            if (summaryMatch && codeBlockLineIndex < lines.length && lines[codeBlockLineIndex].trim().startsWith('```')) {
+                const summary = summaryMatch[1];
+                i = codeBlockLineIndex; 
+                const lang = lines[i].substring(3).trim();
+                const codeLines: string[] = [];
+                i++;
+                while (i < lines.length && !lines[i].startsWith('```')) {
+                    codeLines.push(lines[i]);
+                    i++;
+                }
+                i++;
+                content.push({
+                    type: ContentType.DETAILS,
+                    summary: summary,
+                    children: [{ type: ContentType.CODE, language: lang, text: codeLines.join('\n') }]
+                });
+                continue;
+            }
+        }
+
+        // LIST PARSING (New logic)
+        const listMatch = line.match(/^(\s*)([-*]|\d+\.)\s/);
+        if (listMatch) {
+            const listBlockLines = [];
+            let temp_i = i;
+            while (temp_i < lines.length && (lines[temp_i].match(/^\s*([-*]|\d+\.)\s/) || (lines[temp_i].trim() !== '' && getIndent(lines[temp_i]) > getIndent(line)))) {
+                listBlockLines.push(lines[temp_i]);
+                temp_i++;
+            }
+            
+            const parseListItems = (itemLines: string[], baseIndent: number): ListItem[] => {
+                const items: ListItem[] = [];
+                let currentItemContent: string[] = [];
+                
+                for(let k = 0; k < itemLines.length; k++) {
+                    const l = itemLines[k];
+                    const lIndent = getIndent(l);
+                    const isNewItem = l.match(/^(\s*)([-*]|\d+\.)\s/);
+
+                    if (isNewItem && lIndent === baseIndent) {
+                        if (currentItemContent.length > 0) {
+                           // process previous item
+                           const contentStr = currentItemContent[0].replace(/^(\s*)([-*]|\d+\.)\s+/, '');
+                           const subLines = currentItemContent.slice(1);
+
+                           const taskMatch = contentStr.match(/^\[(x|\s)\]\s+(.*)/i);
+                           let newItem: (PartedContent & { subItems?: ListItem[] }) | ({ text: string, checked: boolean, type: ContentType.TASK_LIST, subItems?: ListItem[] });
+                           if (taskMatch) {
+                               newItem = { type: ContentType.TASK_LIST, checked: taskMatch[1].toLowerCase() === 'x', text: taskMatch[2].trim() };
+                           } else {
+                               newItem = { parts: parseLineToParts(contentStr) };
+                           }
+
+                           if (subLines.length > 0) {
+                               newItem.subItems = parseListItems(subLines, baseIndent + 2); // Assuming 2 space indent
+                           }
+                           items.push(newItem);
+                        }
+                        currentItemContent = [l];
+                    } else if (lIndent >= baseIndent) {
+                        currentItemContent.push(l);
+                    }
+                }
+
+                if (currentItemContent.length > 0) {
+                   // process final item
+                    const contentStr = currentItemContent[0].replace(/^(\s*)([-*]|\d+\.)\s+/, '');
+                    const subLines = currentItemContent.slice(1);
+                    const taskMatch = contentStr.match(/^\[(x|\s)\]\s+(.*)/i);
+                    let newItem: (PartedContent & { subItems?: ListItem[] }) | ({ text: string, checked: boolean, type: ContentType.TASK_LIST, subItems?: ListItem[] });
+                    if (taskMatch) {
+                        newItem = { type: ContentType.TASK_LIST, checked: taskMatch[1].toLowerCase() === 'x', text: taskMatch[2].trim() };
+                    } else {
+                        newItem = { parts: parseLineToParts(contentStr) };
+                    }
+                    if (subLines.length > 0) {
+                        newItem.subItems = parseListItems(subLines, baseIndent + 2);
+                    }
+                    items.push(newItem);
+                }
+
+                return items;
+            };
+
+            const [items] = [parseListItems(listBlockLines, getIndent(listBlockLines[0]))];
+            if (items.length > 0) {
+                const isOrdered = /^\s*\d+\.\s/.test(listBlockLines[0]);
+                content.push({ type: isOrdered ? ContentType.ORDERED_LIST : ContentType.LIST, items });
+            }
+            i += listBlockLines.length;
+            continue;
+        }
 
         // Table
         if (line.match(/^\|.*\|$/) && i + 1 < lines.length && lines[i+1].match(/^\|\s*:?---:?\s*\|/)) {
@@ -206,6 +355,8 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
             i++; continue;
         }
 
+        if (line.startsWith('###### ')) { content.push({ type: ContentType.HEADING6, text: line.substring(7).trim() }); i++; continue; }
+        if (line.startsWith('##### ')) { content.push({ type: ContentType.HEADING5, text: line.substring(6).trim() }); i++; continue; }
         if (line.startsWith('#### ')) { content.push({ type: ContentType.HEADING4, text: line.substring(5).trim() }); i++; continue; }
         if (line.startsWith('### ')) { content.push({ type: ContentType.HEADING3, text: line.substring(4).trim() }); i++; continue; }
         if (line.startsWith('## ')) { content.push({ type: ContentType.HEADING2, text: line.substring(3).trim() }); i++; continue; }
@@ -246,36 +397,9 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
             continue;
         }
 
-
-        if (line.match(/^([-*]|\d+\.)\s/)) {
-            const listBlockLines: string[] = [];
-            while (i < lines.length && (lines[i].match(/^(\s*([-*]|\d+\.))\s/) || lines[i].trim() === '')) { 
-                listBlockLines.push(lines[i]); 
-                i++; 
-            }
-
-            const isOrdered = /^\d+\.\s/.test(listBlockLines.find(l => l.trim() !== '') || '');
-            const items: ListItem[] = [];
-
-            listBlockLines.forEach(listItem => {
-                const taskMatch = listItem.match(/^\s*-\s+\[(x|\s)\]\s+(.*)/i);
-                if (taskMatch) {
-                    items.push({ type: ContentType.TASK_LIST, checked: taskMatch[1].toLowerCase() === 'x', text: taskMatch[2].trim() });
-                    return;
-                }
-
-                const cleanLine = listItem.replace(/^(\s*([-*]|\d+\.))\s*/, '').trim();
-                if (!cleanLine) return;
-                const parts = parseLineToParts(cleanLine);
-                items.push((parts.length === 1 && typeof parts[0] === 'string') ? parts[0] : { parts });
-            });
-            content.push({ type: isOrdered ? ContentType.ORDERED_LIST : ContentType.LIST, items: items as ListItem[] });
-            continue;
-        }
-
         const pLines: string[] = [line];
         i++;
-        while (i < lines.length && lines[i].trim() !== '' && !lines[i].match(/^(#|`{3}|- |>|---|---\s*$|\d+\.|\* |<p|<details|!\[|\|.*\|)/i)) {
+        while (i < lines.length && lines[i].trim() !== '' && !lines[i].match(/^(#|`{3}|- |>|---|---\s*$|\d+\.|\* |<[a-z]|!\[|\|.*\|)/i)) {
             pLines.push(lines[i]);
             i++;
         }
@@ -326,11 +450,31 @@ const highlightBlockMap: Record<HighlightColor, { border: string; bg: string; te
 };
 
 const ContentPartSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
-    if (typeof part === 'string') return <span>{part}</span>;
+    if (typeof part === 'string') {
+       const segments = part.split(/(\*\*.*?\*\*|\*.*?\*|~~.*?~~)/g);
+        return (
+            <>
+                {segments.map((segment, i) => {
+                    if (segment.startsWith('**') && segment.endsWith('**')) {
+                        return <strong key={i}>{segment.slice(2, -2)}</strong>;
+                    }
+                    if (segment.startsWith('*') && segment.endsWith('*')) {
+                        return <em key={i}>{segment.slice(1, -1)}</em>;
+                    }
+                    if (segment.startsWith('~~') && segment.endsWith('~~')) {
+                        return <s key={i}>{segment.slice(2, -2)}</s>;
+                    }
+                    return <span key={i}>{segment}</span>;
+                })}
+            </>
+        );
+    }
     if (typeof part === 'object' && 'type' in part) {
       switch (part.type) {
         case ContentType.STRIKETHROUGH: return <s>{part.text}</s>;
         case ContentType.LINK: return <a href={part.href} className="text-sky-600 underline" target="_blank" rel="noopener noreferrer">{part.text}</a>;
+        case ContentType.INLINE_CODE: return <code className="bg-slate-700 text-rose-300 font-mono text-xs px-1.5 py-0.5 rounded">{part.text}</code>;
+        case ContentType.HIGHLIGHT_TEXT: return <mark className="bg-yellow-200/80 text-yellow-900 px-1 py-0.5 rounded-md">{part.text}</mark>;
       }
     }
     if ('color' in part) {
@@ -340,6 +484,40 @@ const ContentPartSpan: React.FC<{ part: ContentPart }> = ({ part }) => {
     return null;
 };
 
+const RenderListItem: React.FC<{ item: ListItem }> = ({ item }) => {
+  let content: React.ReactNode;
+  let subItems: ListItem[] | undefined;
+
+  if (typeof item === 'string') {
+    content = <>{item}</>;
+  } else if ('type' in item && item.type === ContentType.TASK_LIST) {
+    content = (
+      <span className="flex items-center">
+        <input type="checkbox" className="mr-2 accent-sky-500" checked={item.checked} readOnly disabled />
+        <span className={item.checked ? 'text-slate-400 line-through' : ''}>{item.text}</span>
+      </span>
+    );
+    subItems = item.subItems;
+  } else if ('parts' in item) {
+    content = <>{item.parts.map((p, j) => <ContentPartSpan key={j} part={p} />)}</>;
+    subItems = item.subItems;
+  } else if ('text' in item) { // Legacy support
+    content = <>{item.text}</>;
+    subItems = item.subItems;
+  }
+
+  return (
+    <li className="text-slate-600">
+      {content}
+      {subItems && subItems.length > 0 && (
+        <ul className="list-disc list-outside pl-5 mt-1 space-y-1">
+          {subItems.map((sub, i) => <RenderListItem key={i} item={sub} />)}
+        </ul>
+      )}
+    </li>
+  );
+};
+
 
 const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode => {
   switch (block.type) {
@@ -347,21 +525,17 @@ const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode
     case ContentType.HEADING2: return <h2 key={index} className="text-2xl font-bold mt-6 mb-3 pb-1 border-b border-slate-300 text-slate-800">{block.text}</h2>;
     case ContentType.HEADING3: return <h3 key={index} className="text-xl font-semibold mt-5 mb-2 text-slate-700">{block.text}</h3>;
     case ContentType.HEADING4: return <h4 key={index} className="text-lg font-semibold mt-4 mb-1 text-slate-700">{block.text}</h4>;
+    case ContentType.HEADING5: return <h5 key={index} className="text-base font-semibold mt-4 mb-1 text-slate-700">{block.text}</h5>;
+    case ContentType.HEADING6: return <h6 key={index} className="text-sm font-semibold mt-4 mb-1 text-slate-700">{block.text}</h6>;
     case ContentType.HTML_BLOCK: return <div key={index} className="html-content-wrapper" dangerouslySetInnerHTML={{ __html: block.html || '' }} />;
     case ContentType.PARAGRAPH: return <p key={index} className="text-slate-600 leading-relaxed mb-4">{block.parts?.map((p, j) => <ContentPartSpan key={j} part={p} />)}</p>;
     case ContentType.LIST: 
     case ContentType.ORDERED_LIST:
         const ListTag = block.type === ContentType.ORDERED_LIST ? 'ol' : 'ul';
+        const listStyle = block.type === ContentType.ORDERED_LIST ? 'list-decimal' : 'list-disc';
         return (
-        <ListTag key={index} className={`space-y-2 mb-4 list-disc list-outside pl-5 ${block.type === ContentType.ORDERED_LIST ? 'list-decimal' : ''}`}>
-            {block.items?.map((item, i) => {
-                 if (typeof item === 'object' && item !== null && 'type' in item && item.type === ContentType.TASK_LIST) {
-                    return <li key={i} className="text-slate-600 pl-2 list-none"><input type="checkbox" className="mr-2" checked={item.checked} readOnly />{item.text}</li>;
-                }
-                if (typeof item === 'string') return <li key={i} className="text-slate-600 pl-2">{item}</li>;
-                if ('parts' in item && item.parts) return <li key={i} className="text-slate-600 pl-2">{item.parts.map((p, j) => <ContentPartSpan key={j} part={p} />)}</li>;
-                return null;
-            })}
+        <ListTag key={index} className={`space-y-2 mb-4 ${listStyle} list-outside pl-5`}>
+            {block.items?.map((item, i) => <RenderListItem key={i} item={item} />)}
         </ListTag>
     );
     case ContentType.HIGHLIGHT:
@@ -501,12 +675,21 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
   }
 
   const toolbarButtons = [
-    { label: 'H2', action: () => insertMarkdown('## ', '', 'Heading') },
-    { label: 'H3', action: () => insertMarkdown('### ', '', 'Subheading') },
-    { label: 'B', action: () => insertMarkdown('**', '**', 'bold text'), className: 'font-bold' },
-    { label: 'Link', action: () => insertMarkdown('[', '](url)', 'link text') },
-    { label: 'List', action: () => insertMarkdown('\n- ', '', 'List item') },
-    { label: 'Img', action: handleImageInsert },
+    { label: 'H2', action: () => insertMarkdown('## ', '', 'Heading'), title: 'Heading 2' },
+    { label: 'H3', action: () => insertMarkdown('### ', '', 'Subheading'), title: 'Heading 3' },
+    { label: 'B', action: () => insertMarkdown('**', '**', 'bold text'), className: 'font-bold', title: 'Bold' },
+    { label: 'I', action: () => insertMarkdown('*', '*', 'italic text'), className: 'italic', title: 'Italic' },
+    { label: '</>', action: () => insertMarkdown('`', '`', 'code'), title: 'Inline Code' },
+    { label: 'S', action: () => insertMarkdown('~~', '~~', 'strikethrough'), className: 'line-through', title: 'Strikethrough' },
+    { label: 'Mark', action: () => insertMarkdown('==', '==', 'highlight'), title: 'Highlight' },
+    { label: 'Link', action: () => insertMarkdown('[', '](url)', 'link text'), title: 'Link' },
+    { label: 'Img', action: handleImageInsert, title: 'Image' },
+    { label: 'UL', action: () => insertMarkdown('\n- ', '', 'List item'), title: 'Unordered List' },
+    { label: 'OL', action: () => insertMarkdown('\n1. ', '', 'List item'), title: 'Ordered List' },
+    { label: 'Task', action: () => insertMarkdown('\n- [ ] ', '', 'Task'), title: 'Task List' },
+    { label: 'Quote', action: () => insertMarkdown('\n> ', '', 'Quote'), title: 'Blockquote' },
+    { label: 'Code', action: () => insertMarkdown('\n```\n', '\n```', 'code'), title: 'Code Block' },
+    { label: 'Table', action: () => insertMarkdown('\n| Header 1 | Header 2 |\n|---|---|\n| Cell 1 | Cell 2 |\n', ''), title: 'Table' },
   ];
 
   return (
@@ -554,7 +737,7 @@ const AdminGuideEditorPage: React.FC<AdminGuideEditorPageProps> = ({ guide, guid
                     <div>
                         <div className="flex justify-between items-center mb-1"><label className="text-sm font-medium text-slate-300">Content (Markdown)</label><button onClick={handleCopyMarkdown} className="text-xs bg-slate-600 hover:bg-slate-500 rounded px-2 py-0.5 transition-colors">{copyButtonText}</button></div>
                         <div className="bg-slate-900/70 border border-slate-500 rounded-md overflow-hidden">
-                            <div className="flex items-center gap-1 p-2 bg-slate-800/50 border-b border-slate-500">{toolbarButtons.map(btn => (<button key={btn.label} type="button" onClick={btn.action} title={btn.label} className={`w-8 h-8 rounded text-sm text-slate-300 hover:bg-slate-600 ${btn.className}`}>{btn.label}</button>))}</div>
+                            <div className="flex items-center gap-1 p-1 bg-slate-800/50 border-b border-slate-500 flex-wrap">{toolbarButtons.map(btn => (<button key={btn.label} type="button" onClick={btn.action} title={btn.title} className={`w-8 h-8 rounded text-sm text-slate-300 hover:bg-slate-600 transition-colors ${btn.className || ''}`}>{btn.label}</button>))}</div>
                             <div className="grid grid-cols-1 xl:grid-cols-2 gap-px bg-slate-500 h-[30rem] xl:h-96">
                                 <textarea ref={editorRef} value={editedContent} onChange={e => setEditedContent(e.target.value)} className="w-full h-full font-mono text-xs bg-slate-800 p-3 text-white focus:outline-none resize-none" spellCheck="false" />
                                 <div className="bg-slate-100 p-4 overflow-y-auto h-full text-sm hidden xl:block">{parseMarkdownToContentBlocks(editedContent).map((block, i) => renderPreviewBlock(block, i))}</div>
