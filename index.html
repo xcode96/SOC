@@ -65,16 +65,28 @@
       }
 
       /* Styles for rendered HTML content */
-      .html-content-wrapper p {
+      .html-content-wrapper p,
+      .html-content-wrapper ul,
+      .html-content-wrapper ol,
+      .html-content-wrapper blockquote {
         color: #334155; /* text-slate-700 */
         line-height: 1.75; /* leading-7 */
         margin-bottom: 1rem;
       }
-       .html-content-wrapper strong {
+      .html-content-wrapper ul, .html-content-wrapper ol {
+        padding-left: 1.5rem;
+      }
+      .html-content-wrapper ul {
+        list-style-type: disc;
+      }
+      .html-content-wrapper ol {
+        list-style-type: decimal;
+      }
+       .html-content-wrapper strong, .html-content-wrapper b {
         font-weight: 600; /* font-semibold */
         color: #1e293b; /* text-slate-800 */
       }
-      .html-content-wrapper em {
+      .html-content-wrapper em, .html-content-wrapper i {
         font-style: italic;
       }
       .html-content-wrapper a {
@@ -84,6 +96,40 @@
        .html-content-wrapper a:hover {
         color: #0369a1; /* text-sky-700 */
       }
+      .html-content-wrapper blockquote {
+        border-left: 4px solid #cbd5e1; /* border-slate-300 */
+        padding-left: 1rem;
+        font-style: italic;
+      }
+       .html-content-wrapper code {
+         background-color: #f1f5f9; /* bg-slate-100 */
+         color: #c2410c; /* text-orange-700 */
+         font-family: monospace;
+         padding: 0.125rem 0.25rem;
+         border-radius: 0.25rem;
+         font-size: 90%;
+       }
+       .html-content-wrapper pre {
+         margin-bottom: 1rem;
+       }
+       .html-content-wrapper pre code {
+         background-color: #1e293b; /* bg-slate-800 */
+         color: #e2e8f0; /* text-slate-200 */
+         padding: 1rem;
+         display: block;
+         overflow-x: auto;
+         border-radius: 0.5rem; /* rounded-lg */
+       }
+       .html-content-wrapper kbd {
+          background-color: #334155; /* bg-slate-700 */
+          border: 1px solid #475569; /* border-slate-600 */
+          color: #f1f5f9; /* text-slate-100 */
+          border-radius: 0.25rem;
+          padding: 0.125rem 0.375rem;
+          font-family: monospace;
+          font-size: 90%;
+          box-shadow: inset 0 -1px 0 #64748b;
+       }
       .html-content-wrapper [align="center"] {
         text-align: center;
       }
