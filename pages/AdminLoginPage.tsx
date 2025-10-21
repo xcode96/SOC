@@ -16,25 +16,13 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, validUsers }) 
     const cleanedUsername = username.trim().toLowerCase();
     const user = validUsers.find(user => user.username.toLowerCase() === cleanedUsername);
     
-    // Use the user's specific password if it exists, otherwise default to 'password'
-    // for backward compatibility with older user data where the password field might be missing.
-    const correctPassword = user?.password ?? 'password';
-
-    if (user && password === correctPassword) {
+    // Updated logic: Directly compare with the user's required password.
+    if (user && password === user.password) {
       setError('');
       onLogin(true);
     } else {
       setError('Invalid username or password');
       onLogin(false);
-    }
-  };
-
-  const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset all data to application defaults? All custom guides, cards, and users will be permanently deleted.')) {
-      localStorage.removeItem('homeCards');
-      localStorage.removeItem('guideData');
-      localStorage.removeItem('adminUsers');
-      window.location.reload();
     }
   };
 
@@ -77,7 +65,7 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, validUsers }) 
             {error && <p className="text-red-400 text-sm text-center">{error}</p>}
             
             <div className="text-center text-xs text-slate-500">
-                <p>Hint: Valid users are ({validUsers.map(u=>u.username).join(', ')}). Default passwords may vary.</p>
+                <p>Hint: Default credentials are admin/password or dq.adm/password.</p>
             </div>
 
             <button
@@ -88,14 +76,8 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLogin, validUsers }) 
             </button>
           </form>
 
-           <div className="text-center mt-6 space-y-4">
-            <a href="#/home" className="block text-sm text-sky-400 hover:text-sky-300 transition-colors">← Back to Home</a>
-            <button 
-              onClick={handleReset} 
-              className="text-xs text-slate-500 hover:text-red-400 transition-colors underline"
-            >
-              Having trouble logging in? Reset to default settings.
-            </button>
+           <div className="text-center mt-6">
+            <a href="#/home" className="text-sm text-sky-400 hover:text-sky-300 transition-colors">← Back to Home</a>
           </div>
         </div>
       </div>
