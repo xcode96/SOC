@@ -46,13 +46,6 @@
       },
       "status": "Explore the guide",
       "href": "#/guide/red"
-    },
-    {
-      "id": "sl",
-      "title": "ls",
-      "color": "bg-gray-800/80",
-      "status": "Explore the guide",
-      "href": "#/guide/sl"
     }
   ],
   "guideData": {
@@ -13233,15 +13226,10 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    "sl": {
-      "title": "ls Interactive Guide",
-      "topics": [
+        },
         {
-          "id": "toc",
-          "title": "Welcome to ls",
+          "id": "2",
+          "title": "2",
           "content": [
             {
               "type": "h2",
@@ -14287,11 +14275,7 @@
               "items": [
                 {
                   "parts": [
-                    "**",
-                    {
-                      "text": "DLL Search Order Hijacking",
-                      "color": "blue"
-                    },
+                    "**<span class=\"hl-blue\">DLL Search Order Hijacking</span>:**",
                     " Place your malicious ",
                     {
                       "text": "`hijack.dll`",
@@ -14304,11 +14288,7 @@
                 },
                 {
                   "parts": [
-                    "**",
-                    {
-                      "text": "Phantom DLL Hijacking",
-                      "color": "blue"
-                    },
+                    "**<span class=\"hl-blue\">Phantom DLL Hijacking</span>:**",
                     " An application attempts to load a ",
                     {
                       "text": "missing DLL",
@@ -14319,11 +14299,7 @@
                 },
                 {
                   "parts": [
-                    "**",
-                    {
-                      "text": "SideLoading",
-                      "color": "blue"
-                    },
+                    "**<span class=\"hl-blue\">DLL Side-Loading</span>:**",
                     " Replace a legitimate DLL within a signed application's directory with your malicious version. The application loads your DLL, believing it to be legitimate."
                   ]
                 }
