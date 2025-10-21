@@ -238,14 +238,14 @@ const RenderListItem: React.FC<{ item: ListItem }> = ({ item }) => {
 };
 
 const renderContentBlock = (block: ContentBlock, index: number, explainHandler: (text: string) => void) => {
-  const slug = block.text ? slugify(block.text) : '';
+  const slug = slugify(block.text || getTextFromParts(block.parts));
   switch (block.type) {
     case ContentType.HEADING1:
         return (
           <div key={index} className="group relative">
               <h1 id={slug} className="text-3xl md:text-4xl font-bold mt-12 mb-5 pb-2 border-b-2 border-slate-300 text-slate-900 scroll-mt-20">
                 <a href={`#${slug}`} className="absolute -left-8 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
-                {block.text}
+                {block.parts ? renderContentParts(block.parts) : block.text}
               </h1>
               <ExplainButton onClick={() => explainHandler(block.text!)} />
           </div>
@@ -255,7 +255,7 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
         <div key={index} className="group relative">
             <h2 id={slug} className="text-2xl md:text-3xl font-bold mt-10 mb-4 pb-2 border-b border-slate-300 text-slate-800 scroll-mt-20">
               <a href={`#${slug}`} className="absolute -left-8 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
-              {block.text}
+              {block.parts ? renderContentParts(block.parts) : block.text}
             </h2>
             <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
@@ -265,7 +265,7 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
         <div key={index} className="group relative">
             <h3 id={slug} className="text-xl md:text-2xl font-semibold mt-8 mb-3 text-slate-700 scroll-mt-20">
               <a href={`#${slug}`} className="absolute -left-7 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
-              {block.text}
+              {block.parts ? renderContentParts(block.parts) : block.text}
             </h3>
             <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
@@ -275,7 +275,7 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
         <div key={index} className="group relative">
             <h4 id={slug} className="text-lg md:text-xl font-semibold mt-6 mb-2 text-slate-700 scroll-mt-20">
               <a href={`#${slug}`} className="absolute -left-6 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
-              {block.text}
+              {block.parts ? renderContentParts(block.parts) : block.text}
             </h4>
             <ExplainButton onClick={() => explainHandler(block.text!)} />
         </div>
@@ -285,7 +285,7 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
             <div key={index} className="group relative">
                 <h5 id={slug} className="text-base md:text-lg font-semibold mt-5 mb-2 text-slate-700 scroll-mt-20">
                   <a href={`#${slug}`} className="absolute -left-5 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
-                  {block.text}
+                  {block.parts ? renderContentParts(block.parts) : block.text}
                 </h5>
                 <ExplainButton onClick={() => explainHandler(block.text!)} />
             </div>
@@ -295,7 +295,7 @@ const renderContentBlock = (block: ContentBlock, index: number, explainHandler: 
             <div key={index} className="group relative">
                 <h6 id={slug} className="text-base font-semibold mt-5 mb-2 text-slate-600 scroll-mt-20">
                   <a href={`#${slug}`} className="absolute -left-5 text-slate-300 hover:text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity no-underline" aria-label={`Link to ${block.text}`}>#</a>
-                  {block.text}
+                  {block.parts ? renderContentParts(block.parts) : block.text}
                 </h6>
                 <ExplainButton onClick={() => explainHandler(block.text!)} />
             </div>
