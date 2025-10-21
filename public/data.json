@@ -14913,5 +14913,6 @@
       ]
     }
   },
-  "adminUsers": []
+  "adminUsers": [ { "username": "admin", "password": "password" },
+                  { "username": "dq.adm", "password": "admin" } ]
 }
