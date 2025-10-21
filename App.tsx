@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import GuideLayout from './layouts/GuideLayout';
@@ -21,7 +22,7 @@ const initialGuideData: Record<string, { title: string; topics: Topic[] }> = {
 
 const defaultAdminUsers: AdminUser[] = [
     { username: 'admin', password: 'password' },
-    { username: 'dq.adm', password: 'password' },
+    { username: 'dq.adm', password: 'admin' },
 ];
 
 const hardcodedDefaultData = {
