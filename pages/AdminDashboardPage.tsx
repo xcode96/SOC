@@ -145,11 +145,11 @@ const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
     }
 
     try {
-      const homeCards = JSON.parse(localStorage.getItem('homeCards') || '[]');
+      // Fetch guideData from localStorage as it's not available in props.
       const guideData = JSON.parse(localStorage.getItem('guideData') || '{}');
-      const adminUsers = JSON.parse(localStorage.getItem('adminUsers') || '[]');
       
-      const fullData = { homeCards, guideData, adminUsers };
+      // Use currentGuides and adminUsers from props to ensure we publish what's currently in the state.
+      const fullData = { homeCards: currentGuides, guideData, adminUsers };
       const content = btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2))));
       
       const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
