@@ -29,7 +29,7 @@ const getMarkdownFromParts = (parts: ContentPart[]): string => {
 
 const parseLineToParts = (line: string): ContentPart[] => {
     const rawParts: (string | { type: string, content: string, groups: string[] })[] = [];
-    const regex = /\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~|\[([^\]]+?)\]\(([^)]+?)\)|\*\*(.*?)\*\*|\*(.*?)\*|`(.*?)`|==(.*?)==/g;
+    const regex = /<span class="hl-([a-z]+)">(.+?)<\/span>|\{([^}]+?)\}\[([a-z]+?)\]|~~(.*?)~~|\[([^\]]+?)\]\(([^)]+?)\)|\*\*(.*?)\*\*|\*(.*?)\*|`(.*?)`|==(.*?)==/g;
     let lastIndex = 0;
     let match;
 
@@ -38,13 +38,14 @@ const parseLineToParts = (line: string): ContentPart[] => {
             rawParts.push(line.substring(lastIndex, match.index));
         }
         
-        if (match[1] !== undefined) rawParts.push({ type: 'color', content: match[0], groups: [match[1], match[2]]});
-        else if (match[3] !== undefined) rawParts.push({ type: 's', content: match[0], groups: [match[3]]});
-        else if (match[4] !== undefined) rawParts.push({ type: 'link', content: match[0], groups: [match[4], match[5]]});
-        else if (match[6] !== undefined) rawParts.push({ type: 'bold', content: match[0], groups: [match[6]]});
-        else if (match[7] !== undefined) rawParts.push({ type: 'italic', content: match[0], groups: [match[7]]});
-        else if (match[8] !== undefined) rawParts.push({ type: 'inline_code', content: match[0], groups: [match[8]]});
-        else if (match[9] !== undefined) rawParts.push({ type: 'mark', content: match[0], groups: [match[9]]});
+        if (match[1] !== undefined) rawParts.push({ type: 'span_color', content: match[0], groups: [match[2], match[1]]});
+        else if (match[3] !== undefined) rawParts.push({ type: 'color', content: match[0], groups: [match[3], match[4]]});
+        else if (match[5] !== undefined) rawParts.push({ type: 's', content: match[0], groups: [match[5]]});
+        else if (match[6] !== undefined) rawParts.push({ type: 'link', content: match[0], groups: [match[6], match[7]]});
+        else if (match[8] !== undefined) rawParts.push({ type: 'bold', content: match[0], groups: [match[8]]});
+        else if (match[9] !== undefined) rawParts.push({ type: 'italic', content: match[0], groups: [match[9]]});
+        else if (match[10] !== undefined) rawParts.push({ type: 'inline_code', content: match[0], groups: [match[10]]});
+        else if (match[11] !== undefined) rawParts.push({ type: 'mark', content: match[0], groups: [match[11]]});
         
         lastIndex = regex.lastIndex;
     }
@@ -70,6 +71,11 @@ const parseLineToParts = (line: string): ContentPart[] => {
             }
         } else {
             switch(p.type) {
+                case 'span_color':
+                    let color = p.groups[1] as string;
+                    if (color === 'pink') color = 'fuchsia';
+                    finalParts.push({ text: p.groups[0], color: color as HighlightColor }); 
+                    break;
                 case 'color': finalParts.push({ text: p.groups[0], color: p.groups[1] as HighlightColor }); break;
                 case 's': finalParts.push({ type: ContentType.STRIKETHROUGH, text: p.groups[0] }); break;
                 case 'link': finalParts.push({ type: ContentType.LINK, text: p.groups[0], href: p.groups[1] }); break;
@@ -354,13 +360,17 @@ const parseMarkdownToContentBlocks = (markdown: string): ContentBlock[] => {
             content.push({ type: ContentType.CODE, language: lang, text: codeLines.join('\n') });
             i++; continue;
         }
-
-        if (line.startsWith('###### ')) { content.push({ type: ContentType.HEADING6, text: line.substring(7).trim() }); i++; continue; }
-        if (line.startsWith('##### ')) { content.push({ type: ContentType.HEADING5, text: line.substring(6).trim() }); i++; continue; }
-        if (line.startsWith('#### ')) { content.push({ type: ContentType.HEADING4, text: line.substring(5).trim() }); i++; continue; }
-        if (line.startsWith('### ')) { content.push({ type: ContentType.HEADING3, text: line.substring(4).trim() }); i++; continue; }
-        if (line.startsWith('## ')) { content.push({ type: ContentType.HEADING2, text: line.substring(3).trim() }); i++; continue; }
-        if (line.startsWith('# ')) { content.push({ type: ContentType.HEADING1, text: line.substring(2).trim() }); i++; continue; }
+        
+        const headingMatch = line.match(/^(#{1,6})\s(.*)/);
+        if (headingMatch) {
+            const level = headingMatch[1].length;
+            const text = headingMatch[2].trim();
+            const type = `h${level}` as ContentType;
+            content.push({ type, text, parts: parseLineToParts(text) });
+            i++;
+            continue;
+        }
+        
         if (line.match(/^---\s*$/)) { content.push({ type: ContentType.HORIZONTAL_RULE }); i++; continue; }
         const imageMatch = line.match(/^!\[(.*?)]\((.*?)\)$/);
         if (imageMatch) { content.push({ type: ContentType.IMAGE, alt: imageMatch[1].trim(), src: imageMatch[2].trim() }); i++; continue; }
@@ -521,12 +531,12 @@ const RenderListItem: React.FC<{ item: ListItem }> = ({ item }) => {
 
 const renderPreviewBlock = (block: ContentBlock, index: number): React.ReactNode => {
   switch (block.type) {
-    case ContentType.HEADING1: return <h1 key={index} className="text-3xl font-bold mt-8 mb-4 pb-2 border-b-2 border-slate-300 text-slate-900">{block.text}</h1>;
-    case ContentType.HEADING2: return <h2 key={index} className="text-2xl font-bold mt-6 mb-3 pb-1 border-b border-slate-300 text-slate-800">{block.text}</h2>;
-    case ContentType.HEADING3: return <h3 key={index} className="text-xl font-semibold mt-5 mb-2 text-slate-700">{block.text}</h3>;
-    case ContentType.HEADING4: return <h4 key={index} className="text-lg font-semibold mt-4 mb-1 text-slate-700">{block.text}</h4>;
-    case ContentType.HEADING5: return <h5 key={index} className="text-base font-semibold mt-4 mb-1 text-slate-700">{block.text}</h5>;
-    case ContentType.HEADING6: return <h6 key={index} className="text-sm font-semibold mt-4 mb-1 text-slate-700">{block.text}</h6>;
+    case ContentType.HEADING1: return <h1 key={index} className="text-3xl font-bold mt-8 mb-4 pb-2 border-b-2 border-slate-300 text-slate-900">{block.parts ? block.parts.map((p, j) => <ContentPartSpan key={j} part={p} />) : block.text}</h1>;
+    case ContentType.HEADING2: return <h2 key={index} className="text-2xl font-bold mt-6 mb-3 pb-1 border-b border-slate-300 text-slate-800">{block.parts ? block.parts.map((p, j) => <ContentPartSpan key={j} part={p} />) : block.text}</h2>;
+    case ContentType.HEADING3: return <h3 key={index} className="text-xl font-semibold mt-5 mb-2 text-slate-700">{block.parts ? block.parts.map((p, j) => <ContentPartSpan key={j} part={p} />) : block.text}</h3>;
+    case ContentType.HEADING4: return <h4 key={index} className="text-lg font-semibold mt-4 mb-1 text-slate-700">{block.parts ? block.parts.map((p, j) => <ContentPartSpan key={j} part={p} />) : block.text}</h4>;
+    case ContentType.HEADING5: return <h5 key={index} className="text-base font-semibold mt-4 mb-1 text-slate-700">{block.parts ? block.parts.map((p, j) => <ContentPartSpan key={j} part={p} />) : block.text}</h5>;
+    case ContentType.HEADING6: return <h6 key={index} className="text-sm font-semibold mt-4 mb-1 text-slate-700">{block.parts ? block.parts.map((p, j) => <ContentPartSpan key={j} part={p} />) : block.text}</h6>;
     case ContentType.HTML_BLOCK: return <div key={index} className="html-content-wrapper" dangerouslySetInnerHTML={{ __html: block.html || '' }} />;
     case ContentType.PARAGRAPH: return <p key={index} className="text-slate-600 leading-relaxed mb-4">{block.parts?.map((p, j) => <ContentPartSpan key={j} part={p} />)}</p>;
     case ContentType.LIST: 
