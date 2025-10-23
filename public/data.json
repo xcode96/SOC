@@ -38,7 +38,7 @@
     },
     {
       "id": "red",
-      "title": "Redteam",
+      "title": "Redteam Interactive pentest",
       "color": "bg-red-800/80",
       "tag": {
         "name": "Redteam",
@@ -14095,7 +14095,7 @@
       ]
     },
     "red": {
-      "title": "Redteam Interactive Guide",
+      "title": "Redteam Interactive pentest Guide",
       "topics": [
         {
           "id": "toc",
@@ -15689,19 +15689,28 @@
         },
         {
           "id": "ok",
-          "title": "TEST",
+          "title": "Persistence",
           "content": [
             {
               "type": "h2",
-              "text": "3. 🔁 Persistence"
+              "text": "3. 🔁 Persistence",
+              "parts": [
+                "3. 🔁 Persistence"
+              ]
             },
             {
               "type": "h3",
-              "text": "3.1 Registry Keys"
+              "text": "3.1 Registry Keys",
+              "parts": [
+                "3.1 Registry Keys"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -15711,7 +15720,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -15759,7 +15771,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -15769,7 +15784,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -15810,7 +15828,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -15827,7 +15848,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -15852,11 +15876,17 @@
             },
             {
               "type": "h3",
-              "text": "3.2 Scheduled Tasks"
+              "text": "3.2 Scheduled Tasks",
+              "parts": [
+                "3.2 Scheduled Tasks"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -15866,7 +15896,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -15914,7 +15947,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -15924,7 +15960,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -15966,7 +16005,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -15982,7 +16024,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -15992,11 +16037,17 @@
             },
             {
               "type": "h3",
-              "text": "3.3 Startup Folders"
+              "text": "3.3 Startup Folders",
+              "parts": [
+                "3.3 Startup Folders"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -16006,7 +16057,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -16054,7 +16108,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -16064,7 +16121,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -16099,7 +16159,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -16111,7 +16174,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -16121,11 +16187,17 @@
             },
             {
               "type": "h3",
-              "text": "3.4 Services"
+              "text": "3.4 Services",
+              "parts": [
+                "3.4 Services"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -16140,7 +16212,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -16199,7 +16274,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -16214,7 +16292,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -16251,7 +16332,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -16266,7 +16350,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -16276,11 +16363,17 @@
             },
             {
               "type": "h3",
-              "text": "3.5 Office Macros"
+              "text": "3.5 Office Macros",
+              "parts": [
+                "3.5 Office Macros"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -16290,7 +16383,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -16338,7 +16434,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -16348,7 +16447,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -16389,7 +16491,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -16404,7 +16509,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -16414,11 +16522,17 @@
             },
             {
               "type": "h3",
-              "text": "3.6 Implant Persistence (C2 Frameworks)"
+              "text": "3.6 Implant Persistence (C2 Frameworks)",
+              "parts": [
+                "3.6 Implant Persistence (C2 Frameworks)"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -16428,7 +16542,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -16487,7 +16604,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -16497,7 +16617,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -16532,7 +16655,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -16548,7 +16674,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -16558,15 +16687,24 @@
             },
             {
               "type": "h2",
-              "text": "4. 🚀 Privilege Escalation"
+              "text": "4. 🚀 Privilege Escalation",
+              "parts": [
+                "4. 🚀 Privilege Escalation"
+              ]
             },
             {
               "type": "h3",
-              "text": "4.1 Token Manipulation"
+              "text": "4.1 Token Manipulation",
+              "parts": [
+                "4.1 Token Manipulation"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -16581,7 +16719,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -16629,7 +16770,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -16649,7 +16793,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -16697,7 +16844,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -16714,7 +16864,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -16729,11 +16882,17 @@
             },
             {
               "type": "h3",
-              "text": "4.2 UAC Bypass"
+              "text": "4.2 UAC Bypass",
+              "parts": [
+                "4.2 UAC Bypass"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -16753,7 +16912,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -16812,7 +16974,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -16822,7 +16987,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -16863,7 +17031,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -16877,7 +17048,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -16887,11 +17061,17 @@
             },
             {
               "type": "h3",
-              "text": "4.3 Kernel Exploits"
+              "text": "4.3 Kernel Exploits",
+              "parts": [
+                "4.3 Kernel Exploits"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -16906,7 +17086,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -16954,7 +17137,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -16970,7 +17156,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -17007,7 +17196,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -17023,7 +17215,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -17033,11 +17228,17 @@
             },
             {
               "type": "h3",
-              "text": "4.4 Unquoted Service Paths"
+              "text": "4.4 Unquoted Service Paths",
+              "parts": [
+                "4.4 Unquoted Service Paths"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -17047,7 +17248,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -17095,7 +17299,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -17105,7 +17312,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -17140,7 +17350,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -17156,7 +17369,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -17166,11 +17382,17 @@
             },
             {
               "type": "h3",
-              "text": "4.5 DLL Hijacking"
+              "text": "4.5 DLL Hijacking",
+              "parts": [
+                "4.5 DLL Hijacking"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -17180,7 +17402,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -17239,7 +17464,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -17249,7 +17477,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -17286,7 +17517,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -17300,7 +17534,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -17310,11 +17547,17 @@
             },
             {
               "type": "h3",
-              "text": "4.6 Misconfigurations Exploitation"
+              "text": "4.6 Misconfigurations Exploitation",
+              "parts": [
+                "4.6 Misconfigurations Exploitation"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -17329,7 +17572,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -17388,7 +17634,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -17398,7 +17647,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -17436,7 +17688,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -17452,7 +17707,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -17462,15 +17720,24 @@
             },
             {
               "type": "h2",
-              "text": "5. 🎭 Defense Evasion"
+              "text": "5. 🎭 Defense Evasion",
+              "parts": [
+                "5. 🎭 Defense Evasion"
+              ]
             },
             {
               "type": "h3",
-              "text": "5.1 AMSI Bypass"
+              "text": "5.1 AMSI Bypass",
+              "parts": [
+                "5.1 AMSI Bypass"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -17482,7 +17749,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -17519,7 +17789,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -17531,7 +17804,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -17569,7 +17845,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -17583,7 +17862,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -17595,11 +17877,17 @@
             },
             {
               "type": "h3",
-              "text": "5.2 AV/EDR Evasion"
+              "text": "5.2 AV/EDR Evasion",
+              "parts": [
+                "5.2 AV/EDR Evasion"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -17613,7 +17901,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -17661,7 +17952,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -17671,7 +17965,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -17706,7 +18003,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -17724,7 +18024,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -17736,11 +18039,17 @@
             },
             {
               "type": "h3",
-              "text": "5.3 Obfuscation"
+              "text": "5.3 Obfuscation",
+              "parts": [
+                "5.3 Obfuscation"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -17750,7 +18059,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -17787,7 +18099,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -17797,7 +18112,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -17833,7 +18151,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -17849,7 +18170,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -17859,11 +18183,17 @@
             },
             {
               "type": "h3",
-              "text": "5.4 Binary Packing/Stubbing"
+              "text": "5.4 Binary Packing/Stubbing",
+              "parts": [
+                "5.4 Binary Packing/Stubbing"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -17873,7 +18203,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -17910,7 +18243,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -17920,7 +18256,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -17954,7 +18293,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -17967,7 +18309,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -17977,11 +18322,17 @@
             },
             {
               "type": "h3",
-              "text": "5.5 Time-based Evasion"
+              "text": "5.5 Time-based Evasion",
+              "parts": [
+                "5.5 Time-based Evasion"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -17991,7 +18342,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -18028,7 +18382,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -18038,7 +18395,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -18068,7 +18428,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -18081,7 +18444,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -18091,11 +18457,17 @@
             },
             {
               "type": "h3",
-              "text": "5.6 Masquerading"
+              "text": "5.6 Masquerading",
+              "parts": [
+                "5.6 Masquerading"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -18105,7 +18477,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -18142,7 +18517,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -18152,7 +18530,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -18187,7 +18568,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -18200,7 +18584,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -18210,15 +18597,24 @@
             },
             {
               "type": "h2",
-              "text": "6. 🔐 Credential Access"
+              "text": "6. 🔐 Credential Access",
+              "parts": [
+                "6. 🔐 Credential Access"
+              ]
             },
             {
               "type": "h3",
-              "text": "6.1 Mimikatz / LaZagne / Rubeus"
+              "text": "6.1 Mimikatz / LaZagne / Rubeus",
+              "parts": [
+                "6.1 Mimikatz / LaZagne / Rubeus"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -18228,7 +18624,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -18265,7 +18664,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -18275,7 +18677,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -18312,7 +18717,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -18328,7 +18736,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -18338,11 +18749,17 @@
             },
             {
               "type": "h3",
-              "text": "6.2 LSASS Dump"
+              "text": "6.2 LSASS Dump",
+              "parts": [
+                "6.2 LSASS Dump"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -18357,7 +18774,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -18394,7 +18814,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -18404,7 +18827,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -18442,7 +18868,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -18459,7 +18888,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -18469,11 +18901,17 @@
             },
             {
               "type": "h3",
-              "text": "6.3 SAM Extraction"
+              "text": "6.3 SAM Extraction",
+              "parts": [
+                "6.3 SAM Extraction"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -18485,7 +18923,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -18522,7 +18963,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -18532,7 +18976,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -18569,7 +19016,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -18585,7 +19035,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -18595,11 +19048,17 @@
             },
             {
               "type": "h3",
-              "text": "6.4 Credential Spraying / Brute Force"
+              "text": "6.4 Credential Spraying / Brute Force",
+              "parts": [
+                "6.4 Credential Spraying / Brute Force"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -18609,7 +19068,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -18646,7 +19108,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -18656,7 +19121,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -18691,7 +19159,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -18706,7 +19177,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -18716,11 +19190,17 @@
             },
             {
               "type": "h3",
-              "text": "6.5 Keylogging"
+              "text": "6.5 Keylogging",
+              "parts": [
+                "6.5 Keylogging"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -18730,7 +19210,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -18767,7 +19250,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -18777,7 +19263,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -18812,7 +19301,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -18823,7 +19315,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -18833,11 +19328,17 @@
             },
             {
               "type": "h3",
-              "text": "6.6 Clipboard Access"
+              "text": "6.6 Clipboard Access",
+              "parts": [
+                "6.6 Clipboard Access"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -18847,7 +19348,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -18884,7 +19388,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -18894,7 +19401,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -18929,7 +19439,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -18940,7 +19453,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -18950,15 +19466,24 @@
             },
             {
               "type": "h2",
-              "text": "7. 🔎 Discovery"
+              "text": "7. 🔎 Discovery",
+              "parts": [
+                "7. 🔎 Discovery"
+              ]
             },
             {
               "type": "h3",
-              "text": "7.1 AD Enumeration"
+              "text": "7.1 AD Enumeration",
+              "parts": [
+                "7.1 AD Enumeration"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -18968,7 +19493,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -19005,7 +19533,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -19015,7 +19546,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -19050,7 +19584,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -19063,7 +19600,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -19073,11 +19613,17 @@
             },
             {
               "type": "h3",
-              "text": "7.2 Network Scanning"
+              "text": "7.2 Network Scanning",
+              "parts": [
+                "7.2 Network Scanning"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -19087,7 +19633,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -19124,7 +19673,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -19134,7 +19686,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -19170,7 +19725,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -19186,7 +19744,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -19196,11 +19757,17 @@
             },
             {
               "type": "h3",
-              "text": "7.3 User/Group Listing"
+              "text": "7.3 User/Group Listing",
+              "parts": [
+                "7.3 User/Group Listing"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -19210,7 +19777,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -19247,7 +19817,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -19257,7 +19830,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -19292,7 +19868,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -19306,7 +19885,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -19316,11 +19898,17 @@
             },
             {
               "type": "h3",
-              "text": "7.4 Shares and Drives"
+              "text": "7.4 Shares and Drives",
+              "parts": [
+                "7.4 Shares and Drives"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -19330,7 +19918,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -19367,7 +19958,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -19377,7 +19971,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -19413,7 +20010,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -19427,7 +20027,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -19437,11 +20040,17 @@
             },
             {
               "type": "h3",
-              "text": "7.5 System Details"
+              "text": "7.5 System Details",
+              "parts": [
+                "7.5 System Details"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -19451,7 +20060,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -19488,7 +20100,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -19498,7 +20113,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -19533,7 +20151,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -19549,7 +20170,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -19559,11 +20183,17 @@
             },
             {
               "type": "h3",
-              "text": "7.6 Domain Trusts"
+              "text": "7.6 Domain Trusts",
+              "parts": [
+                "7.6 Domain Trusts"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -19573,7 +20203,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -19610,7 +20243,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -19620,7 +20256,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -19654,7 +20293,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -19667,7 +20309,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -19677,15 +20322,24 @@
             },
             {
               "type": "h2",
-              "text": "8. 🔁 Lateral Movement"
+              "text": "8. 🔁 Lateral Movement",
+              "parts": [
+                "8. 🔁 Lateral Movement"
+              ]
             },
             {
               "type": "h3",
-              "text": "8.1 PsExec / WMI / SMB / WinRM"
+              "text": "8.1 PsExec / WMI / SMB / WinRM",
+              "parts": [
+                "8.1 PsExec / WMI / SMB / WinRM"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -19695,7 +20349,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -19743,7 +20400,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -19753,7 +20413,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -19789,7 +20452,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -19805,7 +20471,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -19815,11 +20484,17 @@
             },
             {
               "type": "h3",
-              "text": "8.2 Pass-the-Hash / Pass-the-Ticket"
+              "text": "8.2 Pass-the-Hash / Pass-the-Ticket",
+              "parts": [
+                "8.2 Pass-the-Hash / Pass-the-Ticket"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -19829,7 +20504,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -19866,7 +20544,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -19876,7 +20557,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -19911,7 +20595,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -19927,7 +20614,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -19937,11 +20627,17 @@
             },
             {
               "type": "h3",
-              "text": "8.3 Remote Desktop Protocol (RDP)"
+              "text": "8.3 Remote Desktop Protocol (RDP)",
+              "parts": [
+                "8.3 Remote Desktop Protocol (RDP)"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -19951,7 +20647,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -19999,7 +20698,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -20009,7 +20711,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -20048,7 +20753,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -20064,7 +20772,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -20078,11 +20789,17 @@
             },
             {
               "type": "h3",
-              "text": "8.4 Credential Reuse"
+              "text": "8.4 Credential Reuse",
+              "parts": [
+                "8.4 Credential Reuse"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -20092,7 +20809,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -20129,7 +20849,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -20139,7 +20862,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -20174,7 +20900,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -20189,7 +20918,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -20199,11 +20931,17 @@
             },
             {
               "type": "h3",
-              "text": "8.5 WMI Event Subscription"
+              "text": "8.5 WMI Event Subscription",
+              "parts": [
+                "8.5 WMI Event Subscription"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -20213,7 +20951,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -20239,7 +20980,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -20249,7 +20993,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -20291,7 +21038,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -20310,7 +21060,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -20320,15 +21073,24 @@
             },
             {
               "type": "h2",
-              "text": "9. 📡 Command & Control (C2)"
+              "text": "9. 📡 Command & Control (C2)",
+              "parts": [
+                "9. 📡 Command & Control (C2)"
+              ]
             },
             {
               "type": "h3",
-              "text": "9.1 C2 Frameworks"
+              "text": "9.1 C2 Frameworks",
+              "parts": [
+                "9.1 C2 Frameworks"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -20338,7 +21100,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -20386,7 +21151,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -20396,7 +21164,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -20431,7 +21202,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -20449,7 +21223,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -20459,11 +21236,17 @@
             },
             {
               "type": "h3",
-              "text": "9.2 Protocols (HTTP/S, DNS, etc.)"
+              "text": "9.2 Protocols (HTTP/S, DNS, etc.)",
+              "parts": [
+                "9.2 Protocols (HTTP/S, DNS, etc.)"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -20473,7 +21256,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -20521,7 +21307,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -20531,7 +21320,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -20565,7 +21357,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -20581,7 +21376,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -20591,11 +21389,17 @@
             },
             {
               "type": "h3",
-              "text": "9.3 Beacon Configuration"
+              "text": "9.3 Beacon Configuration",
+              "parts": [
+                "9.3 Beacon Configuration"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -20605,7 +21409,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -20653,7 +21460,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -20663,7 +21473,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -20697,7 +21510,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -20711,7 +21527,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -20721,11 +21540,17 @@
             },
             {
               "type": "h3",
-              "text": "9.4 C2 Evasion"
+              "text": "9.4 C2 Evasion",
+              "parts": [
+                "9.4 C2 Evasion"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -20737,7 +21562,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -20785,7 +21613,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -20795,7 +21626,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -20830,7 +21664,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -20846,7 +21683,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -20856,11 +21696,17 @@
             },
             {
               "type": "h3",
-              "text": "9.5 Reverse Shells & One-Liners"
+              "text": "9.5 Reverse Shells & One-Liners",
+              "parts": [
+                "9.5 Reverse Shells & One-Liners"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -20870,7 +21716,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -20929,7 +21778,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -20939,7 +21791,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -20974,7 +21829,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -20992,7 +21850,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -21002,15 +21863,24 @@
             },
             {
               "type": "h2",
-              "text": "10. 📤 Exfiltration"
+              "text": "10. 📤 Exfiltration",
+              "parts": [
+                "10. 📤 Exfiltration"
+              ]
             },
             {
               "type": "h3",
-              "text": "10.1 Compressing & Encoding Data"
+              "text": "10.1 Compressing & Encoding Data",
+              "parts": [
+                "10.1 Compressing & Encoding Data"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -21020,7 +21890,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -21057,7 +21930,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -21067,7 +21943,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -21104,7 +21983,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -21122,7 +22004,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -21134,11 +22019,17 @@
             },
             {
               "type": "h3",
-              "text": "10.2 Using Common Ports"
+              "text": "10.2 Using Common Ports",
+              "parts": [
+                "10.2 Using Common Ports"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -21154,7 +22045,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -21191,7 +22085,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -21201,7 +22098,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -21235,7 +22135,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -21252,7 +22155,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -21262,11 +22168,17 @@
             },
             {
               "type": "h3",
-              "text": "10.3 Cloud Exfiltration"
+              "text": "10.3 Cloud Exfiltration",
+              "parts": [
+                "10.3 Cloud Exfiltration"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -21276,7 +22188,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -21324,7 +22239,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -21334,7 +22252,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -21369,7 +22290,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -21385,7 +22309,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -21395,11 +22322,17 @@
             },
             {
               "type": "h3",
-              "text": "10.4 DNS/ICMP Tunnels"
+              "text": "10.4 DNS/ICMP Tunnels",
+              "parts": [
+                "10.4 DNS/ICMP Tunnels"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -21409,7 +22342,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -21457,7 +22393,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -21467,7 +22406,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -21501,7 +22443,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -21517,7 +22462,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -21527,15 +22475,24 @@
             },
             {
               "type": "h2",
-              "text": "11. 💣 Impact / Actions on Objectives"
+              "text": "11. 💣 Impact / Actions on Objectives",
+              "parts": [
+                "11. 💣 Impact / Actions on Objectives"
+              ]
             },
             {
               "type": "h3",
-              "text": "11.1 Data Destruction"
+              "text": "11.1 Data Destruction",
+              "parts": [
+                "11.1 Data Destruction"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -21545,7 +22502,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -21582,7 +22542,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -21592,7 +22555,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -21626,7 +22592,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -21644,7 +22613,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -21654,11 +22626,17 @@
             },
             {
               "type": "h3",
-              "text": "11.2 Ransomware Deployment"
+              "text": "11.2 Ransomware Deployment",
+              "parts": [
+                "11.2 Ransomware Deployment"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -21668,7 +22646,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -21694,7 +22675,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -21704,7 +22688,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -21739,7 +22726,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -21749,7 +22739,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -21759,11 +22752,17 @@
             },
             {
               "type": "h3",
-              "text": "11.3 Account Manipulation"
+              "text": "11.3 Account Manipulation",
+              "parts": [
+                "11.3 Account Manipulation"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -21773,7 +22772,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -21810,7 +22812,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -21820,7 +22825,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -21855,7 +22863,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -21868,7 +22879,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -21878,11 +22892,17 @@
             },
             {
               "type": "h3",
-              "text": "11.4 Data Extraction"
+              "text": "11.4 Data Extraction",
+              "parts": [
+                "11.4 Data Extraction"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -21892,7 +22912,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -21918,7 +22941,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -21928,7 +22954,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -21963,7 +22992,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -21978,7 +23010,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -21988,11 +23023,17 @@
             },
             {
               "type": "h3",
-              "text": "11.5 Defacement / Persistence"
+              "text": "11.5 Defacement / Persistence",
+              "parts": [
+                "11.5 Defacement / Persistence"
+              ]
             },
             {
               "type": "h4",
-              "text": "What It Is / Why It Matters"
+              "text": "What It Is / Why It Matters",
+              "parts": [
+                "What It Is / Why It Matters"
+              ]
             },
             {
               "type": "p",
@@ -22002,7 +23043,10 @@
             },
             {
               "type": "h4",
-              "text": "Quick Steps / Commands"
+              "text": "Quick Steps / Commands",
+              "parts": [
+                "Quick Steps / Commands"
+              ]
             },
             {
               "type": "p",
@@ -22028,7 +23072,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -22038,7 +23085,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -22073,7 +23123,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -22085,7 +23138,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -22095,15 +23151,24 @@
             },
             {
               "type": "h2",
-              "text": "12. 🔧 Technical Sections"
+              "text": "12. 🔧 Technical Sections",
+              "parts": [
+                "12. 🔧 Technical Sections"
+              ]
             },
             {
               "type": "h3",
-              "text": "12.1 Tools"
+              "text": "12.1 Tools",
+              "parts": [
+                "12.1 Tools"
+              ]
             },
             {
               "type": "h4",
-              "text": "Essential tool categories and examples:"
+              "text": "Essential tool categories and examples:",
+              "parts": [
+                "Essential tool categories and examples:"
+              ]
             },
             {
               "type": "p",
@@ -22151,7 +23216,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -22161,7 +23229,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -22196,7 +23267,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -22209,7 +23283,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -22219,11 +23296,17 @@
             },
             {
               "type": "h3",
-              "text": "12.2 Payloads & One-Liners"
+              "text": "12.2 Payloads & One-Liners",
+              "parts": [
+                "12.2 Payloads & One-Liners"
+              ]
             },
             {
               "type": "h4",
-              "text": "Comprehensive payload reference:"
+              "text": "Comprehensive payload reference:",
+              "parts": [
+                "Comprehensive payload reference:"
+              ]
             },
             {
               "type": "p",
@@ -22249,7 +23332,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -22259,7 +23345,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -22294,7 +23383,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -22308,7 +23400,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -22318,11 +23413,17 @@
             },
             {
               "type": "h3",
-              "text": "12.3 OPSEC Notes"
+              "text": "12.3 OPSEC Notes",
+              "parts": [
+                "12.3 OPSEC Notes"
+              ]
             },
             {
               "type": "h4",
-              "text": "Operational security considerations:"
+              "text": "Operational security considerations:",
+              "parts": [
+                "Operational security considerations:"
+              ]
             },
             {
               "type": "p",
@@ -22370,7 +23471,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -22382,7 +23486,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -22417,7 +23524,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -22428,7 +23538,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -22438,11 +23551,17 @@
             },
             {
               "type": "h3",
-              "text": "12.4 MITRE ATT&CK Mapping"
+              "text": "12.4 MITRE ATT&CK Mapping",
+              "parts": [
+                "12.4 MITRE ATT&CK Mapping"
+              ]
             },
             {
               "type": "h4",
-              "text": "Framework alignment for reporting:"
+              "text": "Framework alignment for reporting:",
+              "parts": [
+                "Framework alignment for reporting:"
+              ]
             },
             {
               "type": "p",
@@ -22468,7 +23587,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -22478,7 +23600,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -22508,7 +23633,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -22521,7 +23649,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -22531,11 +23662,17 @@
             },
             {
               "type": "h3",
-              "text": "12.5 C2 Infrastructure Setup"
+              "text": "12.5 C2 Infrastructure Setup",
+              "parts": [
+                "12.5 C2 Infrastructure Setup"
+              ]
             },
             {
               "type": "h4",
-              "text": "Professional C2 infrastructure:"
+              "text": "Professional C2 infrastructure:",
+              "parts": [
+                "Professional C2 infrastructure:"
+              ]
             },
             {
               "type": "p",
@@ -22572,7 +23709,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -22582,7 +23722,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -22616,7 +23759,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -22634,7 +23780,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -22644,15 +23793,24 @@
             },
             {
               "type": "h2",
-              "text": "13. 🎯 Bonus"
+              "text": "13. 🎯 Bonus",
+              "parts": [
+                "13. 🎯 Bonus"
+              ]
             },
             {
               "type": "h3",
-              "text": "13.1 Realistic Scenarios"
+              "text": "13.1 Realistic Scenarios",
+              "parts": [
+                "13.1 Realistic Scenarios"
+              ]
             },
             {
               "type": "h4",
-              "text": "Common engagement scenarios:"
+              "text": "Common engagement scenarios:",
+              "parts": [
+                "Common engagement scenarios:"
+              ]
             },
             {
               "type": "p",
@@ -22678,7 +23836,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -22688,7 +23849,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -22722,7 +23886,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -22734,7 +23901,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -22744,11 +23914,17 @@
             },
             {
               "type": "h3",
-              "text": "13.2 Checklists"
+              "text": "13.2 Checklists",
+              "parts": [
+                "13.2 Checklists"
+              ]
             },
             {
               "type": "h4",
-              "text": "Engagement preparation and execution:"
+              "text": "Engagement preparation and execution:",
+              "parts": [
+                "Engagement preparation and execution:"
+              ]
             },
             {
               "type": "p",
@@ -22774,7 +23950,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -22784,7 +23963,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -22818,7 +24000,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -22828,7 +24013,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -22838,11 +24026,17 @@
             },
             {
               "type": "h3",
-              "text": "13.3 Reporting Templates"
+              "text": "13.3 Reporting Templates",
+              "parts": [
+                "13.3 Reporting Templates"
+              ]
             },
             {
               "type": "h4",
-              "text": "Professional reporting structure:"
+              "text": "Professional reporting structure:",
+              "parts": [
+                "Professional reporting structure:"
+              ]
             },
             {
               "type": "p",
@@ -22868,7 +24062,10 @@
             },
             {
               "type": "h4",
-              "text": "What to Expect"
+              "text": "What to Expect",
+              "parts": [
+                "What to Expect"
+              ]
             },
             {
               "type": "p",
@@ -22878,7 +24075,10 @@
             },
             {
               "type": "h4",
-              "text": "Detection / Hardening"
+              "text": "Detection / Hardening",
+              "parts": [
+                "Detection / Hardening"
+              ]
             },
             {
               "type": "ul",
@@ -22912,7 +24112,10 @@
             },
             {
               "type": "h4",
-              "text": "Tools / References"
+              "text": "Tools / References",
+              "parts": [
+                "Tools / References"
+              ]
             },
             {
               "type": "p",
@@ -22922,7 +24125,10 @@
             },
             {
               "type": "h4",
-              "text": "OPSEC / Notes"
+              "text": "OPSEC / Notes",
+              "parts": [
+                "OPSEC / Notes"
+              ]
             },
             {
               "type": "p",
@@ -22934,7 +24140,7 @@
         },
         {
           "id": "new",
-          "title": "new",
+          "title": "LOLBins",
           "content": [
             {
               "type": "h2",
