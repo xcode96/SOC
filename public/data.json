@@ -29989,11 +29989,388 @@
           "content": [
             {
               "type": "h2",
-              "text": "Welcome to the CompTIA Network+ Guide"
+              "text": "💡 Introduction",
+              "parts": [
+                "💡 Introduction"
+              ]
             },
             {
               "type": "p",
-              "text": "This is a new guide. Start adding topics!"
+              "parts": [
+                "The CompTIA Network+ certification is a foundational networking certification for IT and cybersecurity."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Course Assumptions**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "This course builds upon assumed knowledge from CompTIA A+ certifications (hardware, software, computer networks)."
+                  ]
+                },
+                {
+                  "parts": [
+                    "The course is designed to be a full textbook replacement, but a recommended textbook is \"The Official CompTIA Network+ Student Guide.\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Exam Domains**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "The CompTIA Network+ N10-009 exam consists of five domains:"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        "**1. Networking Concepts (23%):**",
+                        " Network topologies, protocols, components."
+                      ]
+                    },
+                    {
+                      "parts": [
+                        "**2. Network Implementation (20%):**",
+                        " Setting up/configuring infrastructure, routing, switching (VLANs, STP), wireless technologies, physical installation."
+                      ]
+                    },
+                    {
+                      "parts": [
+                        "**3. Network Operations (19%):**",
+                        " Network management, organizational documents, lifecycle management, monitoring tools (SNMP, SIEMs), disaster recovery (RPO, RTO), network services (IPv4, IPv6), performance management."
+                      ]
+                    },
+                    {
+                      "parts": [
+                        "**4. Network Security (14%):**",
+                        " Fundamental security concepts (encryption, IAM), physical/logical security, network segmentation, security policies."
+                      ]
+                    },
+                    {
+                      "parts": [
+                        "**5. Network Troubleshooting (24%):**",
+                        " Troubleshooting methodology, resolving cabling/interface issues, service-related problems, performance issues (bandwidth, latency, packet loss), troubleshooting tools/protocols."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Exam Objectives**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "The exam objectives PDF is a checklist of topics, not a teaching order."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Exam Format**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Up to 90 questions in 90 minutes."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Mix of multiple-choice, multiple-select, and performance-based questions (PBQs/simulations)."
+                  ]
+                },
+                {
+                  "parts": [
+                    "PBQs are typically at the beginning (3-5 questions)."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Passing score: 720 out of 900 (approximately 75% correct)."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Exam Voucher**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Can be purchased from CompTIA or Dion Training (with a discount)."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Study Tips**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Utilize closed captioning and video transcripts."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Adjust video playback speed."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Download the study guide PDF for notes and offline study."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Join Facebook group or Discord server for support."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "💡 Exam Tips",
+              "parts": [
+                "💡 Exam Tips"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "This section provides tips for taking the CompTIA Network+ exam."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Read Questions Carefully**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "No trick questions; read multiple times to understand exactly what is being asked."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Identify Distractors**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Eliminate incorrect answer choices to increase chances of guessing correctly."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Pay Attention to Formatting**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Bold, italics, or all-uppercase words are important keywords."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**\"Book Answer\" Rule**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Answer questions based on CompTIA Network+ knowledge from the course/official textbook, not personal workplace experience."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Select the answer that is true most often or in the most cases."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Understand Key Concepts**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Focus on the core concept the test writer is asking about, rather than fighting the question."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Keyword Association Examples**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Confidentiality → Encryption"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Integrity → Hashing"
+                  ]
+                },
+                {
+                  "parts": [
+                    "Availability → Redundancy and Resiliency"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Recognition, Not Recitation**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "You don't need to memorize terms word-for-word; just recognize them from answer choices."
+                  ]
+                },
+                {
+                  "parts": [
+                    "No fill-in-the-blank or essay questions."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Vendor-Neutral Knowledge**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Exam questions are generic; you only need to know ",
+                    "*what*",
+                    " a tool is used for, not specific syntax or how to operate it."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Example: For NMAP, know it's a network mapping tool used to find open ports, not the specific command."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "✅ ",
+                "**Set a Target Date**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Plan your study schedule (e.g., 30, 60, or 90 days) and work backward to stay on track."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Aim for 1-2 hours of study per day for 30-day certification."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Avoid studying over a very long period (6-12 months) to prevent forgetting earlier material."
+                  ]
+                }
+              ]
             }
           ]
         }
