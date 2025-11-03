@@ -6591,17 +6591,9 @@
               ]
             },
             {
-              "type": "p",
-              "parts": [
-                "**AutoRecon**",
-                " is a powerful multi-threaded network reconnaissance tool created by ",
-                {
-                  "type": "link",
-                  "text": "**Tib3rius**",
-                  "href": "https://github.com/Tib3rius/AutoRecon"
-                },
-                ". It automates the initial stages of enumeration — scanning targets, identifying open ports, fingerprinting services, and launching enumeration scripts for common services."
-              ]
+              "type": "highlight",
+              "color": "blue",
+              "text": "AutoRecon is a powerful multi-threaded network reconnaissance tool created by [**Tib3rius**](https://github.com/Tib3rius/AutoRecon). It automates the initial stages of enumeration — scanning targets, identifying open ports, fingerprinting services, and launching enumeration scripts for common services.!"
             },
             {
               "type": "hr"
@@ -6881,899 +6873,252 @@
               ]
             },
             {
-              "type": "p",
-              "parts": [
-                {
-                  "type": "inline_code",
-                  "text": ""
-                },
-                "`\n   results/\n   └── 192.168.0.1/\n       ├── scans/\n       │   ├── nmap/\n       │   └── gobuster/\n       ├── enum/\n       │   ├── smb/\n       │   └── http/\n       └── reports/\n   ",
-                {
-                  "type": "inline_code",
-                  "text": ""
-                },
-                "`"
-              ]
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "🌐 Multiple Targets",
-              "parts": [
-                "🌐 Multiple Targets"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "You can provide a list of targets via a file:"
-              ]
-            },
-            {
               "type": "code",
-              "language": "bash",
-              "text": "autorecon -vv -t targets.txt"
+              "language": "",
+              "text": "   results/\n   └── 192.168.0.1/\n       ├── scans/\n       │   ├── nmap/\n       │   └── gobuster/\n       ├── enum/\n       │   ├── smb/\n       │   └── http/\n       └── reports/\n   ```\n\n---\n\n### 🌐 Multiple Targets\n\nYou can provide a list of targets via a file:\n"
             },
             {
               "type": "p",
               "parts": [
-                "Where ",
-                {
-                  "type": "inline_code",
-                  "text": "targets.txt"
-                },
-                " contains:"
+                "autorecon -vv -t targets.txt"
               ]
             },
             {
               "type": "code",
               "language": "",
-              "text": "192.168.0.1\n192.168.0.2\n10.10.10.5"
+              "text": "\nWhere `targets.txt` contains:\n"
             },
             {
               "type": "p",
               "parts": [
-                "AutoRecon will process each host sequentially (or in parallel, depending on options)."
-              ]
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "🧰 Common Flags & Options",
-              "parts": [
-                "🧰 Common Flags & Options"
+                "192.168.0.1"
               ]
             },
             {
               "type": "p",
               "parts": [
-                "| Flag                        | Description                                                                |"
+                "192.168.0.2"
               ]
             },
             {
               "type": "p",
               "parts": [
-                "| --------------------------- | -------------------------------------------------------------------------- |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "-t FILE"
-                },
-                "                   | Target file (list of IPs or hostnames)                                     |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "-p PORTS"
-                },
-                "                  | Specify custom ports (e.g. ",
-                {
-                  "type": "inline_code",
-                  "text": "-p 21,22,80,443"
-                },
-                ")                              |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "--single-target"
-                },
-                "           | Force AutoRecon to treat a host as a single target (skip multi-host logic) |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "--no-port-scan"
-                },
-                "            | Skip initial Nmap scan (useful if you already know open ports)             |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "--only-scans"
-                },
-                "              | Run only Nmap scans, skip enumeration phase                                |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "--resume"
-                },
-                "                  | Resume a previous scan session                                             |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "-o DIR"
-                },
-                "                    | Set custom output directory                                                |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "--overwrite"
-                },
-                "               | Overwrite existing output files                                            |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "--nmap-append-args \"ARGS\""
-                },
-                " | Add custom arguments to Nmap commands                                      |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "-v"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "-vv"
-                },
-                "                 | Verbose output levels                                                      |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                {
-                  "type": "inline_code",
-                  "text": "--debug"
-                },
-                "                   | Show debug messages (developer mode)                                       |"
-              ]
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "🧮 Example Workflows",
-              "parts": [
-                "🧮 Example Workflows"
-              ]
-            },
-            {
-              "type": "h4",
-              "text": "Example 1: Quick and Verbose Scan",
-              "parts": [
-                "Example 1: Quick and Verbose Scan"
-              ]
-            },
-            {
-              "type": "code",
-              "language": "bash",
-              "text": "autorecon -vv 10.10.10.10"
-            },
-            {
-              "type": "p",
-              "parts": [
-                "This will:"
-              ]
-            },
-            {
-              "type": "ul",
-              "items": [
-                {
-                  "parts": [
-                    "Perform a quick Nmap scan for all ports."
-                  ]
-                },
-                {
-                  "parts": [
-                    "Detect open services."
-                  ]
-                },
-                {
-                  "parts": [
-                    "Run default enumeration modules automatically."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "h4",
-              "text": "Example 2: Scan a Range of IPs",
-              "parts": [
-                "Example 2: Scan a Range of IPs"
-              ]
-            },
-            {
-              "type": "code",
-              "language": "bash",
-              "text": "autorecon -vv 192.168.0.1-50"
-            },
-            {
-              "type": "h4",
-              "text": "Example 3: Scan a C Class Subnet",
-              "parts": [
-                "Example 3: Scan a C Class Subnet"
-              ]
-            },
-            {
-              "type": "code",
-              "language": "bash",
-              "text": "autorecon -vv 10.11.1.0/24"
-            },
-            {
-              "type": "h4",
-              "text": "Example 4: Skip Port Scan (use existing list)",
-              "parts": [
-                "Example 4: Skip Port Scan (use existing list)"
-              ]
-            },
-            {
-              "type": "code",
-              "language": "bash",
-              "text": "autorecon --no-port-scan -p 22,80,139,445 -vv 192.168.56.101"
-            },
-            {
-              "type": "h4",
-              "text": "Example 5: Resume a Broken Scan",
-              "parts": [
-                "Example 5: Resume a Broken Scan"
-              ]
-            },
-            {
-              "type": "code",
-              "language": "bash",
-              "text": "autorecon --resume 192.168.56.101"
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "🧱 Output Structure",
-              "parts": [
-                "🧱 Output Structure"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "AutoRecon creates a directory structure like this:"
+                "10.10.10.5"
               ]
             },
             {
               "type": "code",
               "language": "",
-              "text": "results/\n├── 192.168.0.1/\n│   ├── scans/\n│   │   ├── nmap/\n│   │   │   ├── 01-initial.txt\n│   │   │   └── 02-service.txt\n│   ├── enum/\n│   │   ├── smb/\n│   │   ├── http/\n│   │   └── ftp/\n│   ├── loot/\n│   │   └── found_files/\n│   ├── screenshots/\n│   └── reports/\n│       └── summary.txt"
-            },
-            {
-              "type": "ul",
-              "items": [
-                {
-                  "parts": [
-                    "**scans/**",
-                    " → Nmap and Gobuster results"
-                  ]
-                },
-                {
-                  "parts": [
-                    "**enum/**",
-                    " → Output from enumeration tools (enum4linux, snmpwalk, etc.)"
-                  ]
-                },
-                {
-                  "parts": [
-                    "**loot/**",
-                    " → Downloaded files, credentials, etc."
-                  ]
-                },
-                {
-                  "parts": [
-                    "**reports/**",
-                    " → Final summary reports"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "🔍 Tools Used Internally",
-              "parts": [
-                "🔍 Tools Used Internally"
-              ]
+              "text": "\nAutoRecon will process each host sequentially (or in parallel, depending on options).\n\n---\n\n### 🧰 Common Flags & Options\n\n| Flag                        | Description                                                                |\n\n| --------------------------- | -------------------------------------------------------------------------- |\n\n| `-t FILE`                   | Target file (list of IPs or hostnames)                                     |\n\n| `-p PORTS`                  | Specify custom ports (e.g. `-p 21,22,80,443`)                              |\n\n| `--single-target`           | Force AutoRecon to treat a host as a single target (skip multi-host logic) |\n\n| `--no-port-scan`            | Skip initial Nmap scan (useful if you already know open ports)             |\n\n| `--only-scans`              | Run only Nmap scans, skip enumeration phase                                |\n\n| `--resume`                  | Resume a previous scan session                                             |\n\n| `-o DIR`                    | Set custom output directory                                                |\n\n| `--overwrite`               | Overwrite existing output files                                            |\n\n| `--nmap-append-args \"ARGS\"` | Add custom arguments to Nmap commands                                      |\n\n| `-v`, `-vv`                 | Verbose output levels                                                      |\n\n| `--debug`                   | Show debug messages (developer mode)                                       |\n\n---\n\n### 🧮 Example Workflows\n\n#### Example 1: Quick and Verbose Scan\n"
             },
             {
               "type": "p",
               "parts": [
-                "AutoRecon can automatically call many common recon tools:"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| Service            | Tools Used                                                   |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ------------------ | ------------------------------------------------------------ |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**FTP**",
-                "            | ",
-                {
-                  "type": "inline_code",
-                  "text": "nmap"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "ftp-anon"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "hydra"
-                },
-                " (optional)                       |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**SSH**",
-                "            | ",
-                {
-                  "type": "inline_code",
-                  "text": "nmap"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "ssh-audit"
-                },
-                "                                          |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**HTTP/S**",
-                "         | ",
-                {
-                  "type": "inline_code",
-                  "text": "nmap http-enum"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "gobuster"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "nikto"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "whatweb"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "curl"
-                },
-                "     |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**SMB**",
-                "            | ",
-                {
-                  "type": "inline_code",
-                  "text": "nmap smb-* scripts"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "enum4linux-ng"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "smbclient"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "smbmap"
-                },
-                " |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**SNMP**",
-                "           | ",
-                {
-                  "type": "inline_code",
-                  "text": "snmpwalk"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "onesixtyone"
-                },
-                "                                    |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**DNS**",
-                "            | ",
-                {
-                  "type": "inline_code",
-                  "text": "dig"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "dnsrecon"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "dnsenum"
-                },
-                "                                 |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**NFS**",
-                "            | ",
-                {
-                  "type": "inline_code",
-                  "text": "showmount"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "nmap nfs-* scripts"
-                },
-                "                            |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**SMTP/POP3/IMAP**",
-                " | ",
-                {
-                  "type": "inline_code",
-                  "text": "nmap smtp-* scripts"
-                },
-                ", ",
-                {
-                  "type": "inline_code",
-                  "text": "hydra"
-                },
-                " (optional)                    |"
-              ]
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "📊 Reporting",
-              "parts": [
-                "📊 Reporting"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "AutoRecon automatically creates:"
-              ]
-            },
-            {
-              "type": "ul",
-              "items": [
-                {
-                  "parts": [
-                    "A ",
-                    "**summary report**",
-                    " (",
-                    {
-                      "type": "inline_code",
-                      "text": "summary.txt"
-                    },
-                    ") listing all open ports, protocols, services, and findings."
-                  ]
-                },
-                {
-                  "parts": [
-                    "A ",
-                    "**loot directory**",
-                    " for credentials, web files, and sensitive data."
-                  ]
-                },
-                {
-                  "parts": [
-                    "Individual ",
-                    "**tool outputs**",
-                    " for manual inspection and reference during exploitation."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "🧹 Cleaning Up / Restarting",
-              "parts": [
-                "🧹 Cleaning Up / Restarting"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "To delete results and re-run:"
+                "autorecon -vv 10.10.10.10"
               ]
             },
             {
               "type": "code",
-              "language": "bash",
-              "text": "rm -rf results/192.168.0.1\nautorecon -vv 192.168.0.1"
+              "language": "",
+              "text": "\nThis will:\n\n- Perform a quick Nmap scan for all ports.\n- Detect open services.\n- Run default enumeration modules automatically.\n\n#### Example 2: Scan a Range of IPs\n"
             },
             {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "💡 Tips & Best Practices",
+              "type": "p",
               "parts": [
-                "💡 Tips & Best Practices"
-              ]
-            },
-            {
-              "type": "ul",
-              "items": [
-                {
-                  "parts": [
-                    "Always use ",
-                    {
-                      "type": "inline_code",
-                      "text": "-vv"
-                    },
-                    " for detailed real-time updates."
-                  ]
-                },
-                {
-                  "parts": [
-                    "Run AutoRecon inside ",
-                    {
-                      "type": "inline_code",
-                      "text": "tmux"
-                    },
-                    " or ",
-                    {
-                      "type": "inline_code",
-                      "text": "screen"
-                    },
-                    " to prevent interruption."
-                  ]
-                },
-                {
-                  "parts": [
-                    "Combine with ",
-                    {
-                      "type": "inline_code",
-                      "text": "autorecon --resume"
-                    },
-                    " if scans stop unexpectedly."
-                  ]
-                },
-                {
-                  "parts": [
-                    "Check the ",
-                    {
-                      "type": "inline_code",
-                      "text": "reports/summary.txt"
-                    },
-                    " file first for a high-level overview."
-                  ]
-                },
-                {
-                  "parts": [
-                    "Follow up with manual enumeration once you identify key services."
-                  ]
-                },
-                {
-                  "parts": [
-                    "You can ",
-                    "**extend AutoRecon**",
-                    " by writing custom module files in ",
-                    {
-                      "type": "inline_code",
-                      "text": "/modules/"
-                    },
-                    " directory."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "🚀 Example Full Workflow (OSCP-style)",
-              "parts": [
-                "🚀 Example Full Workflow (OSCP-style)"
+                "autorecon -vv 192.168.0.1-50"
               ]
             },
             {
               "type": "code",
-              "language": "bash",
-              "text": "# Step 1: Quick discovery\nautorecon -vv 10.11.1.101\n\n# Step 2: Review output\ncat results/10.11.1.101/reports/summary.txt\n\n# Step 3: Manual follow-up enumeration\ncd results/10.11.1.101/enum/http/\ncat gobuster.txt\n\n# Step 4: Exploitation phase (after recon findings)"
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "🧩 Automation + Integration",
-              "parts": [
-                "🧩 Automation + Integration"
-              ]
+              "language": "",
+              "text": "\n#### Example 3: Scan a C Class Subnet\n"
             },
             {
               "type": "p",
               "parts": [
-                "AutoRecon can be combined with:"
-              ]
-            },
-            {
-              "type": "ul",
-              "items": [
-                {
-                  "parts": [
-                    "**CrackMapExec**",
-                    ", ",
-                    "**Responder**",
-                    ", or ",
-                    "**BloodHound**",
-                    " for post-enum."
-                  ]
-                },
-                {
-                  "parts": [
-                    "**CherryTree**",
-                    ", ",
-                    "**Obsidian**",
-                    ", or ",
-                    "**Joplin**",
-                    " for structured note-taking."
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Python scripts**",
-                    " or ",
-                    "**custom modules**",
-                    " for extra enumeration (e.g., Jenkins, WebDAV)."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "🏁 Quick Reference",
-              "parts": [
-                "🏁 Quick Reference"
+                "autorecon -vv 10.11.1.0/24"
               ]
             },
             {
               "type": "code",
-              "language": "bash",
-              "text": "# Default recon with verbose output\nautorecon -vv 192.168.0.1\n\n# Multiple hosts from file\nautorecon -vv -t targets.txt\n\n# Skip port scan and use known ports\nautorecon -vv --no-port-scan -p 22,80,443 192.168.0.1\n\n# Resume a previous scan\nautorecon --resume 192.168.0.1\n\n# Specify output directory\nautorecon -o /path/to/output 192.168.0.1"
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
-              "text": "📚 Summary",
-              "parts": [
-                "📚 Summary"
-              ]
+              "language": "",
+              "text": "\n#### Example 4: Skip Port Scan (use existing list)\n"
             },
             {
               "type": "p",
               "parts": [
-                "| Feature           | Description                                              |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ----------------- | -------------------------------------------------------- |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**Author**",
-                "        | Tib3rius                                                 |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**Language**",
-                "      | Python 3                                                 |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**Purpose**",
-                "       | Automated recon and enumeration                          |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**Tools Used**",
-                "    | Nmap, Gobuster, Enum4Linux, SMBMap, Nikto, etc.          |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**Best Use Case**",
-                " | Initial scanning and service enumeration                 |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**Output Format**",
-                " | Organized directories with Nmap, enum, loot, and reports |"
-              ]
-            },
-            {
-              "type": "hr"
-            },
-            {
-              "type": "p",
-              "parts": [
-                "**Example Command:**"
+                "autorecon --no-port-scan -p 22,80,139,445 -vv 192.168.56.101"
               ]
             },
             {
               "type": "code",
-              "language": "bash",
-              "text": "autorecon -vv 192.168.0.1"
+              "language": "",
+              "text": "\n#### Example 5: Resume a Broken Scan\n"
             },
             {
               "type": "p",
               "parts": [
-                "**Result:**",
-                "\nAutoRecon performs a comprehensive network reconnaissance on ",
-                {
-                  "type": "inline_code",
-                  "text": "192.168.0.1"
-                },
-                ", producing structured outputs ready for exploitation and documentation."
+                "autorecon --resume 192.168.56.101"
               ]
             },
             {
-              "type": "hr"
+              "type": "code",
+              "language": "",
+              "text": "\n---\n\n### 🧱 Output Structure\n\nAutoRecon creates a directory structure like this:\n"
             },
             {
               "type": "p",
               "parts": [
-                "Would you like me to include ",
-                "**custom Nmap profiles**",
-                " used internally by AutoRecon (e.g., initial, full, UDP scans) with full command examples next?"
+                "results/\n├── 192.168.0.1/\n│   ├── scans/\n│   │   ├── nmap/\n│   │   │   ├── 01-initial.txt\n│   │   │   └── 02-service.txt\n│   ├── enum/\n│   │   ├── smb/\n│   │   ├── http/\n│   │   └── ftp/\n│   ├── loot/\n│   │   └── found_files/\n│   ├── screenshots/\n│   └── reports/\n│       └── summary.txt"
               ]
+            },
+            {
+              "type": "code",
+              "language": "",
+              "text": "\n- **scans/** → Nmap and Gobuster results\n- **enum/** → Output from enumeration tools (enum4linux, snmpwalk, etc.)\n- **loot/** → Downloaded files, credentials, etc.\n- **reports/** → Final summary reports\n\n---\n\n### 🔍 Tools Used Internally\n\nAutoRecon can automatically call many common recon tools:\n\n| Service            | Tools Used                                                   |\n\n| ------------------ | ------------------------------------------------------------ |\n\n| **FTP**            | `nmap`, `ftp-anon`, `hydra` (optional)                       |\n\n| **SSH**            | `nmap`, `ssh-audit`                                          |\n\n| **HTTP/S**         | `nmap http-enum`, `gobuster`, `nikto`, `whatweb`, `curl`     |\n\n| **SMB**            | `nmap smb-* scripts`, `enum4linux-ng`, `smbclient`, `smbmap` |\n\n| **SNMP**           | `snmpwalk`, `onesixtyone`                                    |\n\n| **DNS**            | `dig`, `dnsrecon`, `dnsenum`                                 |\n\n| **NFS**            | `showmount`, `nmap nfs-* scripts`                            |\n\n| **SMTP/POP3/IMAP** | `nmap smtp-* scripts`, `hydra` (optional)                    |\n\n---\n\n### 📊 Reporting\n\nAutoRecon automatically creates:\n\n- A **summary report** (`summary.txt`) listing all open ports, protocols, services, and findings.\n- A **loot directory** for credentials, web files, and sensitive data.\n- Individual **tool outputs** for manual inspection and reference during exploitation.\n\n---\n\n### 🧹 Cleaning Up / Restarting\n\nTo delete results and re-run:\n"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "rm -rf results/192.168.0.1\nautorecon -vv 192.168.0.1"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "",
+              "text": "\n---\n\n### 💡 Tips & Best Practices\n\n- Always use `-vv` for detailed real-time updates.\n- Run AutoRecon inside `tmux` or `screen` to prevent interruption.\n- Combine with `autorecon --resume` if scans stop unexpectedly.\n- Check the `reports/summary.txt` file first for a high-level overview.\n- Follow up with manual enumeration once you identify key services.\n- You can **extend AutoRecon** by writing custom module files in `/modules/` directory.\n\n---\n\n### 🚀 Example Full Workflow (OSCP-style)\n"
+            },
+            {
+              "type": "h1",
+              "text": "Step 1: Quick discovery",
+              "parts": [
+                "Step 1: Quick discovery"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "autorecon -vv 10.11.1.101"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Step 2: Review output",
+              "parts": [
+                "Step 2: Review output"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "cat results/10.11.1.101/reports/summary.txt"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Step 3: Manual follow-up enumeration",
+              "parts": [
+                "Step 3: Manual follow-up enumeration"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "cd results/10.11.1.101/enum/http/\ncat gobuster.txt"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Step 4: Exploitation phase (after recon findings)",
+              "parts": [
+                "Step 4: Exploitation phase (after recon findings)"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "",
+              "text": "\n---\n\n### 🧩 Automation + Integration\n\nAutoRecon can be combined with:\n\n- **CrackMapExec**, **Responder**, or **BloodHound** for post-enum.\n- **CherryTree**, **Obsidian**, or **Joplin** for structured note-taking.\n- **Python scripts** or **custom modules** for extra enumeration (e.g., Jenkins, WebDAV).\n\n---\n\n### 🏁 Quick Reference\n"
+            },
+            {
+              "type": "h1",
+              "text": "Default recon with verbose output",
+              "parts": [
+                "Default recon with verbose output"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "autorecon -vv 192.168.0.1"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Multiple hosts from file",
+              "parts": [
+                "Multiple hosts from file"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "autorecon -vv -t targets.txt"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Skip port scan and use known ports",
+              "parts": [
+                "Skip port scan and use known ports"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "autorecon -vv --no-port-scan -p 22,80,443 192.168.0.1"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Resume a previous scan",
+              "parts": [
+                "Resume a previous scan"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "autorecon --resume 192.168.0.1"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Specify output directory",
+              "parts": [
+                "Specify output directory"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "autorecon -o /path/to/output 192.168.0.1"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "",
+              "text": "\n---\n\n### 📚 Summary\n\n| Feature           | Description                                              |\n\n| ----------------- | -------------------------------------------------------- |\n\n| **Author**        | Tib3rius                                                 |\n\n| **Language**      | Python 3                                                 |\n\n| **Purpose**       | Automated recon and enumeration                          |\n\n| **Tools Used**    | Nmap, Gobuster, Enum4Linux, SMBMap, Nikto, etc.          |\n\n| **Best Use Case** | Initial scanning and service enumeration                 |\n\n| **Output Format** | Organized directories with Nmap, enum, loot, and reports |\n\n---\n\n**Example Command:**\n"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "autorecon -vv 192.168.0.1"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "",
+              "text": "\n**Result:**\nAutoRecon performs a comprehensive network reconnaissance on `192.168.0.1`, producing structured outputs ready for exploitation and documentation.\n\n---\n\nWould you like me to include **custom Nmap profiles** used internally by AutoRecon (e.g., initial, full, UDP scans) with full command examples next?"
             }
           ]
         }
