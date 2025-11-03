@@ -6580,678 +6580,104 @@
           ]
         },
         {
-          "id": "m",
-          "title": "n",
+          "id": "2",
+          "title": "Autorecon",
           "content": [
             {
               "type": "h2",
-              "text": "2.1.1 Data Classification ##",
+              "text": "Autorecon",
               "parts": [
-                "2.1.1 Data Classification ##"
+                "Autorecon"
               ]
             },
             {
               "type": "p",
               "parts": [
-                "Data is the lifeblood of any organization. From financial records to customer information, strategic plans, and trade secrets, the variety and volume of data are immense, even for small manufacturing companies. Protecting this data from unauthorized access, use, disclosure, modification, or destruction is not just good practice, it's crucial for survival."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":link: Keep in mind what you learned in ",
+                "**AutoRecon**",
+                " is a powerful multi-threaded network reconnaissance tool created by ",
                 {
                   "type": "link",
-                  "text": "1.2 Understand and apply security concepts",
-                  "href": "https://github.com/lorenzoleonelli/CISSP-Zero-to-Hero/blob/main/DOMAIN1%3A%20Security%20and%20Risk%20Management/1.02%20Understand%20and%20apply%20security%20concepts.md#121-confidentiality-integrity-and-availability-authenticity-and-nonrepudiation-5-pillars-of-information-security"
-                }
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Data security strictly requires a proper ",
-                "**data classification**",
-                ". To understand the concept behind data classification you can think of it like sorting your clothes: you wouldn't throw your delicates in with your work boots, right? Similarly, data classification is the process of organizing data into categories that reflect its sensitivity and value. This careful categorization allows organizations to apply the appropriate level of security controls, ensuring that the \"crown jewels\" are kept under lock and key while less critical information can be accessed more easily."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "By classifying data, organizations can:"
-              ]
-            },
-            {
-              "type": "ul",
-              "items": [
-                {
-                  "parts": [
-                    "**Prioritize Protection**",
-                    ": Allocate resources effectively, focusing more stringent security measures on highly sensitive data. "
-                  ]
+                  "text": "**Tib3rius**",
+                  "href": "https://github.com/Tib3rius/AutoRecon"
                 },
-                {
-                  "parts": [
-                    "**Facilitate Informed Decision Making**",
-                    ": Make data-driven decisions about security investments and policies. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Meet Compliance Requirements**",
-                    ": Adhere to legal and regulatory frameworks like GDPR."
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Reduce Risk**",
-                    ": Minimize the likelihood and impact of data breaches. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Streamline Data Management**",
-                    ": Improve data handling, storage, and retrieval processes."
-                  ]
-                }
+                ". It automates the initial stages of enumeration — scanning targets, identifying open ports, fingerprinting services, and launching enumeration scripts for common services."
               ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":necktie: There's no one-size-fits-all approach to data classification. Different organizations may use different schemes, but the underlying principle is the same: assigning a level of sensitivity that dictates the level of protection."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Organizations use various criteria to determine the appropriate classification level for data. These criteria may include:"
-              ]
-            },
-            {
-              "type": "ul",
-              "items": [
-                {
-                  "parts": [
-                    "The value of the data"
-                  ]
-                },
-                {
-                  "parts": [
-                    "The age of the data"
-                  ]
-                },
-                {
-                  "parts": [
-                    "The usefulness of the data"
-                  ]
-                },
-                {
-                  "parts": [
-                    "The level of damage that could be caused if the data were disclosed"
-                  ]
-                },
-                {
-                  "parts": [
-                    "Legal, regulatory, or contractual responsibility to protect the data"
-                  ]
-                },
-                {
-                  "parts": [
-                    "Effects the data has on security"
-                  ]
-                },
-                {
-                  "parts": [
-                    "Who should be able to access the data"
-                  ]
-                },
-                {
-                  "parts": [
-                    "Who should be able to modify the data"
-                  ]
-                },
-                {
-                  "parts": [
-                    "Who should be able to reproduce the data"
-                  ]
-                },
-                {
-                  "parts": [
-                    "Lost opportunity costs that could be incurred if the data were not available or were corrupted"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":link: ",
-                {
-                  "type": "link",
-                  "text": "NIST SP 800-122, Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)",
-                  "href": "https://csrc.nist.gov/pubs/sp/800/122/final"
-                },
-                ", provides recommendations for identifying and securing PII to prevent unauthorized access and data breaches. It outlines risk assessment methods, security controls, and best practices for minimizing the collection, storage, and exposure of sensitive personal data."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":link: Protected Health Information (PHI) is defined by ",
-                {
-                  "type": "link",
-                  "text": "HIPAA (Health Insurance Portability and Accountability Act)",
-                  "href": "https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html"
-                },
-                " as \"individually identifiable health information\" that is transmitted or maintained in any form or medium (electronic, paper, or oral). This includes information related to an individual's past, present, or future physical or mental health, healthcare services, or payment for healthcare, which can be linked to a specific person."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "The following Infographic tries to recap the different types of sensitive data you may encounter in organizations:"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "<img width=\"1091\" height=\"1071\" alt=\"SensitiveDataEquation drawio\" src=\"",
-                {
-                  "type": "link",
-                  "text": "https://github.com/user-attachments/assets/c97d2025-7271-4f97-91bd-b8854c998eef",
-                  "href": "https://github.com/user-attachments/assets/c97d2025-7271-4f97-91bd-b8854c998eef"
-                },
-                "\" />"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Some common data classification levels for commercial businesses include:"
-              ]
-            },
-            {
-              "type": "ul",
-              "items": [
-                {
-                  "parts": [
-                    "**Confidential:**",
-                    " The most sensitive data, unauthorized disclosure of which could severely impact the company. Think trade secrets, financial algorithms, or strategic plans. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Private:**",
-                    " Data that requires more than normal protection to ensure its confidentiality. Examples include employee records, medical information, or legal documents. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Sensitive:**",
-                    " Data that requires special precautions but is not as critical as confidential or private data. Financial reports, marketing strategies, or upcoming projects fall under this category. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Public:**",
-                    " Information that is generally available and poses no risk if disclosed. This might include company addresses, press releases, or product brochures"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Military and government organizations employ a different classification scheme, reflecting the potential impact on national security. These are common military classification levels:"
-              ]
-            },
-            {
-              "type": "ul",
-              "items": [
-                {
-                  "parts": [
-                    "**Top Secret:**",
-                    " Unauthorized disclosure could cause exceptionally grave damage to national security, such as jeopardizing military operations or revealing sensitive intelligence sources."
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Secret:**",
-                    " Data that, if disclosed, could cause serious damage to national security. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Confidential:**",
-                    " Information that could cause damage to national security if compromised. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Unclassified:**",
-                    " Data that doesn't meet the criteria for classified information but may still require some level of protection. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Controlled Unclassified Information (CUI):**",
-                    " Sensitive information that is not classified but requires safeguarding. "
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| Environment               | Classification Level         | Description & Examples                                                                 |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "|---------------------------|------------------------------|----------------------------------------------------------------------------------------|"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**Commercial (e.g., business)**",
-                " | ",
-                "**Confidential**",
-                "           | Most sensitive data—trade secrets, financial algorithms, strategic plans. Unauthorized disclosure could severely impact the company.  |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "|                           | ",
-                "**Private**",
-                "                 | Data needing more protection than typical internal info—e.g., employee records, medical data, legal documents. |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "|                           | ",
-                "**Sensitive**",
-                "               | Important data still requiring special handling—e.g., financial reports, marketing strategies, upcoming projects.  |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "|                           | ",
-                "**Public**",
-                "                  | Freely shareable information—e.g., press releases, product brochures, company addresses. No risk if disclosed.  |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "| ",
-                "**Military / Government**",
-                " | ",
-                "**Top Secret**",
-                "              | Unauthorized disclosure could cause exceptionally grave damage to national security.  |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "|                           | ",
-                "**Secret**",
-                "                  | Disclosure could cause serious damage to national security. |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "|                           | ",
-                "**Confidential**",
-                "            | Disclosure could reasonably cause damage to national security.|"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "|                           | ",
-                "**Unclassified**",
-                "            | Information not meeting higher classification criteria; still may require minimal protection. |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "|                           | ",
-                "**Controlled Unclassified Information (CUI)**",
-                " | Unclassified but sensitive information requiring safeguarding under law, regulation, or policy. Includes export‑controlled technical data, contracts, and similar.  |"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":link: The National Cybersecurity Center of Excellence (NCCoE) has released a preliminary draft of NIST Special Publication (SP) 1800-39A, Implementing Data Classification Practices, for public comment. You can find it ",
-                {
-                  "type": "link",
-                  "text": "here",
-                  "href": "https://csrc.nist.gov/News/2023/implementing-data-class-practices-sp-1800-39a"
-                }
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Data classification is more than just slapping labels on data. It's an ongoing process that involves defining clear criteria for classification, assigning roles and responsibilities, implementing security controls and regularly reviewing and updating the classification scheme."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":necktie: As an information security manager, it’s crucial to monitor and prevent data creep. In data management, this phenomenon occurs when data continuously accumulates without proper oversight, resulting in increased complexity and inefficiencies in handling and processing. If left unchecked, excessive data growth can strain resources and make data management more challenging."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Here are some key steps in building a robust data classification program:"
-              ]
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "**Define Classification Levels**",
-                    ": Clearly define the different levels of data sensitivity and their corresponding security requirements. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Establish Ownership**",
-                    ": Identify ",
-                    {
-                      "type": "link",
-                      "text": "data owners",
-                      "href": "https://github.com/lorenzoleonelli/CISSP-Zero-to-Hero/blob/main/DOMAIN1:%20Security%20and%20Risk%20Management/1.03%20Evaluate,%20apply,%20and%20sustain%20security%20governance%20principles.md#133-organizational-roles-and-responsibilities"
-                    },
-                    " who are responsible for classifying data and ensuring its protection. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Develop Procedures**",
-                    ": Create a documented process for classifying data, including criteria, guidelines, and review mechanisms. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Implement Security Controls**",
-                    ": Deploy appropriate technical and administrative controls to safeguard data at each classification level. "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**Train and Educate**",
-                    ": Provide comprehensive training to all employees on data classification policies and procedures. "
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "code",
-              "language": "mermaid",
-              "text": "flowchart LR\n  A[Start: Establish Data Classification Program] --> B[Define Classification Levels]\n  B --> C[Establish Data Ownership]\n  C --> D[Develop Classification Procedures]\n  D --> E[Implement Security Controls]\n  E --> F[Train & Educate Employees]\n  F --> G[Maintain & Review Programme]\n\n    classDef center fill:#ffffff,color:#000000,stroke:#000000,stroke-width:1px,font-weight:bold\n    classDef node fill:#e0e0e0,color:#000000,stroke:#000000,stroke-width:1px"
-            },
-            {
-              "type": "p",
-              "parts": [
-                "**Data Categorization**",
-                " comes before Data Classification and focuses on grouping data based on its inherent content, purpose, or characteristics. For example, you might categorize data into types like \"financial records,\" \"employee records,\" \"customer data,\" or \"transaction logs.\" The goal of data categorization is to organize the data in a way that makes sense for the organization, so that it can be better managed and analyzed. It doesn't necessarily involve sensitivity or security at this point; it's more about understanding and grouping the data for practical use."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Categorization Criteria are usually:"
-              ]
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "Content-based: Categorizing data based on the actual content of the data, such as personally identifiable information (PII), financial data, or intellectual property."
-                  ]
-                },
-                {
-                  "parts": [
-                    "Context-based: Categorizing data based on its source, ownership, location, or other contextual information."
-                  ]
-                },
-                {
-                  "parts": [
-                    "User-based: Categorizing data based on its intended use or the users who have access to it."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Usually after categorization data is classified. Data classification assigns sensitivity levels to the categorized data based on its potential impact if exposed, modified, or destroyed."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":brain: Data classification and data categorization are distinct concepts. Data classification focuses on assigning sensitivity levels to data based on its potential impact. Data categorization, on the other hand, involves grouping data into specific categories based on its content, purpose, or other relevant characteristics."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":necktie: ",
-                "**Data classification and categorization are ongoing processes.**",
-                " As data changes over time, its classification and categorization may need to be updated.\n",
-                "**Data classification and categorization should be integrated with other security controls.**",
-                " This includes access control, encryption, data loss prevention, and incident response.\n",
-                "**User training and awareness are essential for the success of data classification and categorization programs.**",
-                " Employees need to understand the importance of these processes and how to properly handle data at different classification levels."
-              ]
-            },
-            {
-              "type": "h3",
-              "text": "Open Questions ###",
-              "parts": [
-                "Open Questions ###"
-              ]
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "What are the primary goals of data classification?"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nData classification aims to identify sensitive data, group it based on its level of sensitivity, and apply appropriate security controls to protect it from unauthorized access, use, disclosure, modification, or destruction. This helps organizations comply with legal, regulatory, and contractual requirements and reduce the risk of data breaches.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "What are the key differences between commercial and military data classification levels?"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nCommercial data classification levels typically focus on the potential impact on the organization's business operations, while military data classification levels emphasize the potential impact on national security. For example, \"Confidential\" data in a commercial setting might involve sensitive business information, while \"Confidential\" data in a military context could relate to information that, if disclosed, could cause damage to national security.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "Provide three examples of criteria that can be used to determine the classification level of data."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nThe value of the data (e.g., financial, strategic, personal), the age of the data (e.g., current, historical), and the potential impact of disclosure (e.g., financial loss, reputational damage, legal liability) are all criteria used to determine the appropriate classification level.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "Describe the role of data owners in a data classification program."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nData owners are responsible for determining the initial classification level of data, reviewing the classification periodically, and ensuring that appropriate security controls are in place to protect the data. They play a crucial role in managing and safeguarding sensitive information within an organization.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "Briefly explain how data categorization differs from data classification."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nData classification focuses on assigning a sensitivity level to data (e.g., confidential, public) based on its potential impact if compromised. Data categorization, on the other hand, involves grouping data into specific categories based on its content, purpose, or other characteristics to facilitate data management, retrieval, and compliance.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "What are the potential benefits of implementing a data categorization system?"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nData categorization can improve data management by organizing data into logical groups, enhance data discoverability by making it easier to search for and retrieve specific information, and facilitate compliance with data privacy regulations by enabling organizations to identify and protect sensitive data more effectively.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "Explain the concept of context-based data categorization."
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nContext-based categorization involves classifying data based on factors such as its source, ownership, location, or the context in which it was created or used. For example, data related to a specific project or department might be categorized together, regardless of its specific content.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "Why is it important to have a procedure for declassifying data?"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nA procedure for declassifying data is important because it allows organizations to release data that is no longer sensitive or to lower the classification level of data that has become less sensitive over time. This ensures that data is not unnecessarily protected, reducing the burden of security controls and facilitating information sharing.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "What security awareness training should be provided to employees regarding data classification and categorization?"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nEmployees should receive training on the organization's data classification policy, including the different classification levels, the criteria used to determine classification, and their responsibilities for handling data at each level. They should also understand the importance of data categorization and how it relates to data protection.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "Why are data classification and categorization considered ongoing processes?"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nData classification and categorization are ongoing processes because the sensitivity and value of data can change over time, and new data is constantly being created. Organizations must regularly review and update their classification and categorization schemes to ensure that data is appropriately protected.\n</details>"
             },
             {
               "type": "hr"
             },
             {
-              "type": "h2",
-              "text": "2.1.2 Asset Classification ##",
+              "type": "h3",
+              "text": "🔗 Official Repository",
               "parts": [
-                "2.1.2 Asset Classification ##"
+                "🔗 Official Repository"
               ]
             },
             {
               "type": "p",
               "parts": [
-                "Assets encompass not only information, but also the physical and digital systems that house, process, and transmit it. Recognizing the diverse nature of these assets and their varying levels of sensitivity is the cornerstone of effective security."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":link: ",
+                "👉 ",
+                "**GitHub:**",
+                " ",
                 {
                   "type": "link",
-                  "text": "NIST SP 1800-5 IT Asset Management",
-                  "href": "https://csrc.nist.gov/pubs/sp/1800/5/final"
+                  "text": "https://github.com/Tib3rius/AutoRecon",
+                  "href": "https://github.com/Tib3rius/AutoRecon"
+                }
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🧠 Overview",
+              "parts": [
+                "🧠 Overview"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "AutoRecon is not a single scanning tool — it’s a ",
+                "**wrapper and orchestrator**",
+                " that runs multiple scanning tools (like ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap"
                 },
-                "  offers organizations, particularly in the financial services sector, an example solution to effectively track, manage, and report on information technology (IT) assets throughout their entire lifecycle."
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "nikto"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "gobuster"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "enum4linux"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "smbclient"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "snmpwalk"
+                },
+                ", etc.) in an automated and structured way."
               ]
             },
             {
               "type": "p",
               "parts": [
-                "Asset classification is a systematic and continuous process that involves identifying, categorizing, and assigning value to each asset based on its sensitivity, criticality, and the potential impact of its compromise. This process extends beyond mere data classification to encompass the hardware, software, and physical locations where information resides. For example, a smartphone containing confidential financial data would be classified as a high-value asset requiring stringent security measures, while a printer used for general office tasks would be classified as a low-value asset."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "A robust asset classification program could offer the following benefits:"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "-Enhanced Security Posture: by understanding the value and sensitivity of each asset, organizations can tailor security controls to provide the appropriate level of protection. This targeted approach ensures that resources are allocated efficiently and that the most critical assets receive the highest level of security."
+                "It:"
               ]
             },
             {
@@ -7259,63 +6685,170 @@
               "items": [
                 {
                   "parts": [
-                    "Improved Risk Management: asset classification facilitates a comprehensive risk assessment by enabling organizations to identify potential threats and vulnerabilities specific to each asset category. This knowledge empowers security teams to implement proactive measures to mitigate risks before they materialize."
+                    "Runs ",
+                    "**Nmap**",
+                    " scans with varying levels of depth."
                   ]
                 },
                 {
                   "parts": [
-                    "Streamlined Operations: a well-defined asset classification framework provides a clear roadmap for managing assets throughout their lifecycle. This includes establishing procedures for asset acquisition, disposal, and data handling, ensuring compliance with regulatory requirements and minimizing security gaps."
+                    "Detects open ports and automatically launches relevant enumeration scripts."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Organizes all output into neat folders and files."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Saves time by running tasks ",
+                    "**asynchronously**",
+                    " with multi-threading."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Supports resuming scans and detailed logging."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Integrates cleanly into an OSCP workflow."
                   ]
                 }
               ]
             },
             {
-              "type": "p",
-              "parts": [
-                "To effectively implement asset classification, organizations can adopt a tiered approach, assigning assets to different levels based on their criticality and the potential impact of their compromise. A common framework involves categorizing assets into tiers such as Tier 0 (mission-critical), Tier 1 (important), and Tier 2 (general use). Each tier is associated with specific security controls and procedures, ensuring that the level of protection aligns with the asset's value. For example, Tier 0 assets, such as databases containing sensitive customer information, would require the most stringent security measures, including access control restrictions, encryption, and regular vulnerability assessments. In contrast, Tier 2 assets, such as personal workstations, may only necessitate basic security measures like password protection and antivirus software."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":brain: Asset classes should be chosen based on the organization’s unique operational, regulatory, and business requirements. Categories should reflect factors like data sensitivity, criticality to operations, value, and compliance obligations to enable effective security controls and resource prioritization."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Beyond categorizing assets, organizations must establish clear procedures for data handling in all its states: at rest, in transit, and in use. For instance, data at rest on storage devices should be encrypted to protect its confidentiality. Data in transit over networks should be secured using a combination of symmetric and asymmetric encryption to ensure its integrity and confidentiality. Data in use, while being processed by applications, requires careful management of temporary storage buffers and access controls to prevent unauthorized disclosure."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":link: See also 2.6.1 Data States"
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":necktie: For effective asset management, define and classify all assets by criticality and sensitivity, engaging stakeholders to ensure accountability and alignment with business objectives."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                ":necktie: Measure asset classification by assessing the percentage of assets accurately categorized based on sensitivity and criticality. Regularly review classification processes to ensure they align with regulatory requirements and evolving organizational needs."
-              ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Implementing a comprehensive asset classification program is a foundational step towards achieving robust cybersecurity. By understanding the value of their assets and implementing appropriate security controls, organizations reduce their risk exposure and protect their most valuable resources."
-              ]
+              "type": "hr"
             },
             {
               "type": "h3",
-              "text": "Open Questions ###",
+              "text": "⚙️ Installation",
               "parts": [
-                "Open Questions ###"
+                "⚙️ Installation"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "AutoRecon can be installed on Kali Linux, Parrot, or any Debian-based OS."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "1. Clone the Repository",
+              "parts": [
+                "1. Clone the Repository"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "git clone https://github.com/Tib3rius/AutoRecon.git\ncd AutoRecon"
+            },
+            {
+              "type": "h4",
+              "text": "2. Create and Activate a Virtual Environment",
+              "parts": [
+                "2. Create and Activate a Virtual Environment"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "python3 -m venv venv\nsource venv/bin/activate"
+            },
+            {
+              "type": "h4",
+              "text": "3. Install Dependencies",
+              "parts": [
+                "3. Install Dependencies"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "pip install -r requirements.txt"
+            },
+            {
+              "type": "h4",
+              "text": "4. (Optional) Install Globally",
+              "parts": [
+                "4. (Optional) Install Globally"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "sudo python3 setup.py install"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "You can now run it as a command:"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "autorecon -h"
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🧩 Basic Usage",
+              "parts": [
+                "🧩 Basic Usage"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Single Target Scan",
+              "parts": [
+                "Single Target Scan"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "autorecon -vv 192.168.0.1"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Flags:**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "type": "inline_code",
+                      "text": "-v"
+                    },
+                    " → verbose output"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "type": "inline_code",
+                      "text": "-vv"
+                    },
+                    " → very verbose (shows real-time scan progress)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "AutoRecon will:"
               ]
             },
             {
@@ -7323,140 +6856,924 @@
               "items": [
                 {
                   "parts": [
-                    "How does asset classification differ from data classification?"
+                    "Run a ",
+                    "**quick TCP scan**",
+                    " to detect open ports."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Launch ",
+                    "**Nmap service/version**",
+                    " scans on discovered ports."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Enumerate each service (HTTP, SMB, FTP, etc.) using appropriate tools."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Save all results to a structured directory:"
                   ]
                 }
               ]
             },
             {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nAsset classification focuses on the sensitivity and value of information systems and assets that store, process, and transmit data, while data classification focuses solely on identifying the sensitivity of the data itself.\n</details>"
+              "type": "p",
+              "parts": [
+                {
+                  "type": "inline_code",
+                  "text": ""
+                },
+                "`\n   results/\n   └── 192.168.0.1/\n       ├── scans/\n       │   ├── nmap/\n       │   └── gobuster/\n       ├── enum/\n       │   ├── smb/\n       │   └── http/\n       └── reports/\n   ",
+                {
+                  "type": "inline_code",
+                  "text": ""
+                },
+                "`"
+              ]
             },
             {
-              "type": "ol",
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🌐 Multiple Targets",
+              "parts": [
+                "🌐 Multiple Targets"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "You can provide a list of targets via a file:"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "autorecon -vv -t targets.txt"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Where ",
+                {
+                  "type": "inline_code",
+                  "text": "targets.txt"
+                },
+                " contains:"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "",
+              "text": "192.168.0.1\n192.168.0.2\n10.10.10.5"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "AutoRecon will process each host sequentially (or in parallel, depending on options)."
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🧰 Common Flags & Options",
+              "parts": [
+                "🧰 Common Flags & Options"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| Flag                        | Description                                                                |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| --------------------------- | -------------------------------------------------------------------------- |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "-t FILE"
+                },
+                "                   | Target file (list of IPs or hostnames)                                     |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "-p PORTS"
+                },
+                "                  | Specify custom ports (e.g. ",
+                {
+                  "type": "inline_code",
+                  "text": "-p 21,22,80,443"
+                },
+                ")                              |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "--single-target"
+                },
+                "           | Force AutoRecon to treat a host as a single target (skip multi-host logic) |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "--no-port-scan"
+                },
+                "            | Skip initial Nmap scan (useful if you already know open ports)             |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "--only-scans"
+                },
+                "              | Run only Nmap scans, skip enumeration phase                                |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "--resume"
+                },
+                "                  | Resume a previous scan session                                             |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "-o DIR"
+                },
+                "                    | Set custom output directory                                                |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "--overwrite"
+                },
+                "               | Overwrite existing output files                                            |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "--nmap-append-args \"ARGS\""
+                },
+                " | Add custom arguments to Nmap commands                                      |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "-v"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "-vv"
+                },
+                "                 | Verbose output levels                                                      |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "type": "inline_code",
+                  "text": "--debug"
+                },
+                "                   | Show debug messages (developer mode)                                       |"
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🧮 Example Workflows",
+              "parts": [
+                "🧮 Example Workflows"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Example 1: Quick and Verbose Scan",
+              "parts": [
+                "Example 1: Quick and Verbose Scan"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "autorecon -vv 10.10.10.10"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "This will:"
+              ]
+            },
+            {
+              "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "Why is it essential to classify assets according to their sensitivity and criticality?"
+                    "Perform a quick Nmap scan for all ports."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Detect open services."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Run default enumeration modules automatically."
                   ]
                 }
               ]
             },
             {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nClassifying assets allows organizations to tailor security controls to protect assets based on their value and potential impact if compromised, ensuring appropriate resource allocation for security measures.\n</details>"
+              "type": "h4",
+              "text": "Example 2: Scan a Range of IPs",
+              "parts": [
+                "Example 2: Scan a Range of IPs"
+              ]
             },
             {
-              "type": "ol",
+              "type": "code",
+              "language": "bash",
+              "text": "autorecon -vv 192.168.0.1-50"
+            },
+            {
+              "type": "h4",
+              "text": "Example 3: Scan a C Class Subnet",
+              "parts": [
+                "Example 3: Scan a C Class Subnet"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "autorecon -vv 10.11.1.0/24"
+            },
+            {
+              "type": "h4",
+              "text": "Example 4: Skip Port Scan (use existing list)",
+              "parts": [
+                "Example 4: Skip Port Scan (use existing list)"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "autorecon --no-port-scan -p 22,80,139,445 -vv 192.168.56.101"
+            },
+            {
+              "type": "h4",
+              "text": "Example 5: Resume a Broken Scan",
+              "parts": [
+                "Example 5: Resume a Broken Scan"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "autorecon --resume 192.168.56.101"
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🧱 Output Structure",
+              "parts": [
+                "🧱 Output Structure"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "AutoRecon creates a directory structure like this:"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "",
+              "text": "results/\n├── 192.168.0.1/\n│   ├── scans/\n│   │   ├── nmap/\n│   │   │   ├── 01-initial.txt\n│   │   │   └── 02-service.txt\n│   ├── enum/\n│   │   ├── smb/\n│   │   ├── http/\n│   │   └── ftp/\n│   ├── loot/\n│   │   └── found_files/\n│   ├── screenshots/\n│   └── reports/\n│       └── summary.txt"
+            },
+            {
+              "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "What factors should be considered when determining the classification of an asset?"
+                    "**scans/**",
+                    " → Nmap and Gobuster results"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**enum/**",
+                    " → Output from enumeration tools (enum4linux, snmpwalk, etc.)"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**loot/**",
+                    " → Downloaded files, credentials, etc."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**reports/**",
+                    " → Final summary reports"
                   ]
                 }
               ]
             },
             {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nFactors include the type of data handled by the asset, the processes it performs, its importance to business operations, and the potential impact of a security breach involving that asset.\n</details>"
+              "type": "hr"
             },
             {
-              "type": "ol",
+              "type": "h3",
+              "text": "🔍 Tools Used Internally",
+              "parts": [
+                "🔍 Tools Used Internally"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "AutoRecon can automatically call many common recon tools:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| Service            | Tools Used                                                   |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ------------------ | ------------------------------------------------------------ |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**FTP**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "ftp-anon"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "hydra"
+                },
+                " (optional)                       |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**SSH**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "ssh-audit"
+                },
+                "                                          |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**HTTP/S**",
+                "         | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap http-enum"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "gobuster"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "nikto"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "whatweb"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "curl"
+                },
+                "     |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**SMB**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap smb-* scripts"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "enum4linux-ng"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "smbclient"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "smbmap"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**SNMP**",
+                "           | ",
+                {
+                  "type": "inline_code",
+                  "text": "snmpwalk"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "onesixtyone"
+                },
+                "                                    |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**DNS**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "dig"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "dnsrecon"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "dnsenum"
+                },
+                "                                 |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**NFS**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "showmount"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap nfs-* scripts"
+                },
+                "                            |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**SMTP/POP3/IMAP**",
+                " | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap smtp-* scripts"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "hydra"
+                },
+                " (optional)                    |"
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "📊 Reporting",
+              "parts": [
+                "📊 Reporting"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "AutoRecon automatically creates:"
+              ]
+            },
+            {
+              "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "What is the role of a data owner in the asset classification process?"
+                    "A ",
+                    "**summary report**",
+                    " (",
+                    {
+                      "type": "inline_code",
+                      "text": "summary.txt"
+                    },
+                    ") listing all open ports, protocols, services, and findings."
+                  ]
+                },
+                {
+                  "parts": [
+                    "A ",
+                    "**loot directory**",
+                    " for credentials, web files, and sensitive data."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Individual ",
+                    "**tool outputs**",
+                    " for manual inspection and reference during exploitation."
                   ]
                 }
               ]
             },
             {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nData owners are responsible for determining the classification level of the data and defining appropriate security controls for its protection.\n</details>"
+              "type": "hr"
             },
             {
-              "type": "ol",
+              "type": "h3",
+              "text": "🧹 Cleaning Up / Restarting",
+              "parts": [
+                "🧹 Cleaning Up / Restarting"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "To delete results and re-run:"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "rm -rf results/192.168.0.1\nautorecon -vv 192.168.0.1"
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "💡 Tips & Best Practices",
+              "parts": [
+                "💡 Tips & Best Practices"
+              ]
+            },
+            {
+              "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "What is the purpose of clear markings on hardware assets regarding data classification?"
+                    "Always use ",
+                    {
+                      "type": "inline_code",
+                      "text": "-vv"
+                    },
+                    " for detailed real-time updates."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Run AutoRecon inside ",
+                    {
+                      "type": "inline_code",
+                      "text": "tmux"
+                    },
+                    " or ",
+                    {
+                      "type": "inline_code",
+                      "text": "screen"
+                    },
+                    " to prevent interruption."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Combine with ",
+                    {
+                      "type": "inline_code",
+                      "text": "autorecon --resume"
+                    },
+                    " if scans stop unexpectedly."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Check the ",
+                    {
+                      "type": "inline_code",
+                      "text": "reports/summary.txt"
+                    },
+                    " file first for a high-level overview."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Follow up with manual enumeration once you identify key services."
+                  ]
+                },
+                {
+                  "parts": [
+                    "You can ",
+                    "**extend AutoRecon**",
+                    " by writing custom module files in ",
+                    {
+                      "type": "inline_code",
+                      "text": "/modules/"
+                    },
+                    " directory."
                   ]
                 }
               ]
             },
             {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nClear markings serve as a visual reminder to users about the sensitivity of data that can be processed or stored on the asset, helping to prevent accidental data breaches.\n</details>"
+              "type": "hr"
             },
             {
-              "type": "ol",
+              "type": "h3",
+              "text": "🚀 Example Full Workflow (OSCP-style)",
+              "parts": [
+                "🚀 Example Full Workflow (OSCP-style)"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Step 1: Quick discovery\nautorecon -vv 10.11.1.101\n\n# Step 2: Review output\ncat results/10.11.1.101/reports/summary.txt\n\n# Step 3: Manual follow-up enumeration\ncd results/10.11.1.101/enum/http/\ncat gobuster.txt\n\n# Step 4: Exploitation phase (after recon findings)"
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🧩 Automation + Integration",
+              "parts": [
+                "🧩 Automation + Integration"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "AutoRecon can be combined with:"
+              ]
+            },
+            {
+              "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "Explain the relationship between the classification of an asset and the classification of the data it contains."
+                    "**CrackMapExec**",
+                    ", ",
+                    "**Responder**",
+                    ", or ",
+                    "**BloodHound**",
+                    " for post-enum."
                   ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nThe classification of an asset should typically be as high as the classification of the most sensitive data it stores or processes. This ensures that the asset's security measures are adequate for the data it handles.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
+                },
                 {
                   "parts": [
-                    "Briefly outline the first three steps in establishing a proper asset classification program."
+                    "**CherryTree**",
+                    ", ",
+                    "**Obsidian**",
+                    ", or ",
+                    "**Joplin**",
+                    " for structured note-taking."
                   ]
-                }
-              ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nFirst, define the classification levels used by the organization. Second, establish specific criteria for determining how data is classified. Third, identify the data owners who will be responsible for classifying the data.\n</details>"
-            },
-            {
-              "type": "ol",
-              "items": [
+                },
                 {
                   "parts": [
-                    "What is the importance of a data custodian in relation to classified data?"
+                    "**Python scripts**",
+                    " or ",
+                    "**custom modules**",
+                    " for extra enumeration (e.g., Jenkins, WebDAV)."
                   ]
                 }
               ]
             },
             {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nThe data custodian is responsible for the day-to-day management and protection of classified data, ensuring that it is stored, handled, and accessed according to defined security policies and procedures.\n</details>"
+              "type": "hr"
             },
             {
-              "type": "ol",
-              "items": [
+              "type": "h3",
+              "text": "🏁 Quick Reference",
+              "parts": [
+                "🏁 Quick Reference"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "# Default recon with verbose output\nautorecon -vv 192.168.0.1\n\n# Multiple hosts from file\nautorecon -vv -t targets.txt\n\n# Skip port scan and use known ports\nautorecon -vv --no-port-scan -p 22,80,443 192.168.0.1\n\n# Resume a previous scan\nautorecon --resume 192.168.0.1\n\n# Specify output directory\nautorecon -o /path/to/output 192.168.0.1"
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "📚 Summary",
+              "parts": [
+                "📚 Summary"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| Feature           | Description                                              |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ----------------- | -------------------------------------------------------- |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**Author**",
+                "        | Tib3rius                                                 |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**Language**",
+                "      | Python 3                                                 |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**Purpose**",
+                "       | Automated recon and enumeration                          |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**Tools Used**",
+                "    | Nmap, Gobuster, Enum4Linux, SMBMap, Nikto, etc.          |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**Best Use Case**",
+                " | Initial scanning and service enumeration                 |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**Output Format**",
+                " | Organized directories with Nmap, enum, loot, and reports |"
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Example Command:**"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "text": "autorecon -vv 192.168.0.1"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Result:**",
+                "\nAutoRecon performs a comprehensive network reconnaissance on ",
                 {
-                  "parts": [
-                    "Why is it crucial to integrate data classification procedures into the security awareness program?"
-                  ]
-                }
+                  "type": "inline_code",
+                  "text": "192.168.0.1"
+                },
+                ", producing structured outputs ready for exploitation and documentation."
               ]
             },
             {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nIntegrating data classification into security awareness training ensures that all employees understand the importance of data security, how to handle data at different classification levels, and their responsibilities in protecting sensitive information.\n</details>"
+              "type": "hr"
             },
             {
-              "type": "ol",
-              "items": [
-                {
-                  "parts": [
-                    "Briefly describe two benefits of having a well-defined asset classification system."
-                  ]
-                }
+              "type": "p",
+              "parts": [
+                "Would you like me to include ",
+                "**custom Nmap profiles**",
+                " used internally by AutoRecon (e.g., initial, full, UDP scans) with full command examples next?"
               ]
-            },
-            {
-              "type": "html",
-              "html": "<details>\n  <summary>Show answer</summary>\nTwo benefits are: (1) Enhanced security posture by applying appropriate safeguards to assets based on their value; (2) Improved compliance with regulatory requirements and industry standards for data protection.\n</details>"
             }
           ]
         }
