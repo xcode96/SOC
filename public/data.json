@@ -86,6 +86,17 @@
       "color": "bg-orange-800/80",
       "status": "Explore the guide",
       "href": "#/guide/n1"
+    },
+    {
+      "id": "top",
+      "title": "OWAPS TOP 10",
+      "color": "bg-violet-800/80",
+      "tag": {
+        "name": "10",
+        "color": "bg-violet-500/50 text-white"
+      },
+      "status": "Explore the guide",
+      "href": "#/guide/top"
     }
   ],
   "guideData": {
@@ -42790,6 +42801,170 @@
                   ]
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    "top": {
+      "title": "OWAPS TOP 10 Interactive Guide",
+      "topics": [
+        {
+          "id": "toc",
+          "title": "OWASP Top 10 ",
+          "content": [
+            {
+              "type": "h2",
+              "text": "Welcome to the OWAPS TOP 10 Guide",
+              "parts": [
+                "Welcome to the OWAPS TOP 10 Guide"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "This is a new guide. Start adding topics!"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1",
+          "title": "Broken Access Control ",
+          "content": [
+            {
+              "type": "h2",
+              "text": "Broken Access Control "
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Cryptographic Failures",
+          "content": [
+            {
+              "type": "h2",
+              "text": "Cryptographic Failures"
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": " Injection ",
+          "content": [
+            {
+              "type": "h2",
+              "text": " Injection "
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "title": " Insecure Design",
+          "content": [
+            {
+              "type": "h2",
+              "text": " Insecure Design"
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "title": "Security Misconfiguration ",
+          "content": [
+            {
+              "type": "h2",
+              "text": "Security Misconfiguration "
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
+            }
+          ]
+        },
+        {
+          "id": "6",
+          "title": "Vulnerable and Outdated Components",
+          "content": [
+            {
+              "type": "h2",
+              "text": "Vulnerable and Outdated Components"
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
+            }
+          ]
+        },
+        {
+          "id": "7",
+          "title": "Identification and Authentication Failures",
+          "content": [
+            {
+              "type": "h2",
+              "text": "Identification and Authentication Failures"
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
+            }
+          ]
+        },
+        {
+          "id": "8",
+          "title": " Software and Data Integrity Failures",
+          "content": [
+            {
+              "type": "h2",
+              "text": " Software and Data Integrity Failures"
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
+            }
+          ]
+        },
+        {
+          "id": "9",
+          "title": "Security Logging and Monitoring Failures ",
+          "content": [
+            {
+              "type": "h2",
+              "text": "Security Logging and Monitoring Failures "
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
+            }
+          ]
+        },
+        {
+          "id": "10",
+          "title": "Server-Side Request Forgery (SSRF)",
+          "content": [
+            {
+              "type": "h2",
+              "text": "Server-Side Request Forgery (SSRF)"
+            },
+            {
+              "type": "p",
+              "text": "Content for this topic is coming soon."
             }
           ]
         }
