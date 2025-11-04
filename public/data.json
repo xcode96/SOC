@@ -1997,6 +1997,4307 @@
               ]
             }
           ]
+        },
+        {
+          "id": "1",
+          "title": "n",
+          "content": [
+            {
+              "type": "blockquote",
+              "text": "**Color Key:**\n- {Red}[red]: Key problems, vulnerabilities, attacks, risks, or flaws.\n- {Green}[green]: Solutions, best practices, security controls, or mitigations.\n- {Blue}[blue]: Important technical terms, concepts, protocols, or standards.\n- {Yellow}[yellow]: Specific tools, software, or frameworks.\n- {Purple}[purple]: Main categories or sections of the document.\n- {Fuchsia}[fuchsia]: Company or contact information, and promotional text."
+            },
+            {
+              "type": "h1",
+              "text": "{OWASP Top 10 2021}[purple] — Bug Name Examples by Category",
+              "parts": [
+                {
+                  "text": "OWASP Top 10 2021",
+                  "color": "purple"
+                },
+                " — Bug Name Examples by Category"
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A01: {Broken Access Control}[red]",
+              "parts": [
+                "A01: ",
+                {
+                  "text": "Broken Access Control",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "IDOR",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Directory or Path Traversal",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Function Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Privilege Escalation",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Horizontal and Vertical Privilege Escalation",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A02: {Cryptographic Failures}[red]",
+              "parts": [
+                "A02: ",
+                {
+                  "text": "Cryptographic Failures",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Cleartext Transmission of Sensitive Data",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insufficient Entropy",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Random Number Generation",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Padding Oracle Attack",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "Use of ",
+                    {
+                      "text": "Weak Ciphers",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Weak or Misconfigured Cryptographic Configurations",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A03: {Injection}[red]",
+              "parts": [
+                "A03: ",
+                {
+                  "text": "Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "OS Command Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "SQL Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Cross-Site Scripting (XSS)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Expression Language Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "XML Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "LDAP Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "NoSQL Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "SSTI",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A04: {Insecure Design}[red]",
+              "parts": [
+                "A04: ",
+                {
+                  "text": "Insecure Design",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Security-by-Obscurity",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Session Fixation",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unintended Functionality",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "Use of ",
+                    {
+                      "text": "Hardcoded Credentials",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Weak Error Handling",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A05: {Security Misconfiguration}[red]",
+              "parts": [
+                "A05: ",
+                {
+                  "text": "Security Misconfiguration",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Default Accounts and Passwords",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Default or Weak Configuration Settings",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Disabled Security Features",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Improperly Configured Permissions and Access Controls (Insecure Permissions)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unnecessary Features or Services Enabled",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "Use of ",
+                    {
+                      "text": "Vulnerable Software",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Directory Listing Enabled",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Default Passwords or Credentials",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Improperly Configured Cross-Origin Resource Sharing (CORS)",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A06: {Vulnerable and Outdated Components}[red]",
+              "parts": [
+                "A06: ",
+                {
+                  "text": "Vulnerable and Outdated Components",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Use of ",
+                    {
+                      "text": "Known Vulnerable Components",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Outdated Libraries and Frameworks",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Third-Party Components with Unpatched Vulnerabilities",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Lack of Patching and Updates",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A07: {Identification and Authentication Failures}[red]",
+              "parts": [
+                "A07: ",
+                {
+                  "text": "Identification and Authentication Failures",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Brute-Force Attacks",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Credential Stuffing",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Credential Theft",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Session Hijacking",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Weak Password Policies",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Weak Session Cookies",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Lack of Multi-Factor Authentication (MFA)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Session Management",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Authentication Protocols",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Password Storage",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "User Enumeration",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A08: {Software and Data Integrity Failures}[red]",
+              "parts": [
+                "A08: ",
+                {
+                  "text": "Software and Data Integrity Failures",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Direct Object References (IDOR)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Server-Side Request Forgery (SSRF)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "SQL Injection and NoSQL Injection Variants",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Tampering with Updates",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unvalidated Redirects and Forwards",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A09: {Security Logging and Monitoring Failures}[red]",
+              "parts": [
+                "A09: ",
+                {
+                  "text": "Security Logging and Monitoring Failures",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Lack of Audit Logging",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insufficient Log Data",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unmonitored Logs",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unsecured Logs",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A10: {Server-Side Request Forgery (SSRF)}[red]",
+              "parts": [
+                "A10: ",
+                {
+                  "text": "Server-Side Request Forgery (SSRF)",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Unauthenticated SSRF",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Authenticated SSRF",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "{WEB APPLICATION PENTESTING CHECKLIST}[purple]",
+              "parts": [
+                {
+                  "text": "WEB APPLICATION PENTESTING CHECKLIST",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "{OWASP Based Checklist}[blue]",
+              "parts": [
+                {
+                  "text": "OWASP Based Checklist",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{INFORMATION GATHERING}[purple]",
+              "parts": [
+                {
+                  "text": "INFORMATION GATHERING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "1. {Open Source Reconnaissance}[blue]",
+              "parts": [
+                "1. ",
+                {
+                  "text": "Open Source Reconnaissance",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Perform ",
+                {
+                  "text": "Google Dorks",
+                  "color": "blue"
+                },
+                " search\n☐ Perform ",
+                {
+                  "text": "OSINT",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "2. {Fingerprint Web Application Framework}[blue]",
+              "parts": [
+                "2. ",
+                {
+                  "text": "Fingerprint Web Application Framework",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Use the ",
+                {
+                  "text": "Wappalyzer",
+                  "color": "yellow"
+                },
+                " browser extension\n☐ Use ",
+                {
+                  "text": "Whatweb",
+                  "color": "yellow"
+                },
+                "\n☐ View ",
+                {
+                  "text": "URL extensions",
+                  "color": "blue"
+                },
+                "\n☐ View ",
+                {
+                  "text": "HTML source code",
+                  "color": "blue"
+                },
+                "\n☐ View the ",
+                {
+                  "text": "cookie parameter",
+                  "color": "blue"
+                },
+                "\n☐ View the ",
+                {
+                  "text": "HTTP headers",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "3. {Enumerating Web Server’s Applications}[blue]",
+              "parts": [
+                "3. ",
+                {
+                  "text": "Enumerating Web Server’s Applications",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Enumerating with ",
+                {
+                  "text": "Nmap",
+                  "color": "yellow"
+                },
+                "\n☐ Enumerating with ",
+                {
+                  "text": "Netcat",
+                  "color": "yellow"
+                },
+                "\n☐ Perform a ",
+                {
+                  "text": "DNS lookup",
+                  "color": "blue"
+                },
+                "\n☐ Perform a ",
+                {
+                  "text": "Reverse DNS lookup",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "4. {Fingerprinting Web Server}[blue]",
+              "parts": [
+                "4. ",
+                {
+                  "text": "Fingerprinting Web Server",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Find the type of ",
+                {
+                  "text": "Web Server",
+                  "color": "blue"
+                },
+                "\n☐ Find the version details of the ",
+                {
+                  "text": "Web Server",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "5. {Identifying Application’s Entry Points}[blue]",
+              "parts": [
+                "5. ",
+                {
+                  "text": "Identifying Application’s Entry Points",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify what the methods used are?\n☐ Identify where the methods used are?\n☐ Identify the ",
+                {
+                  "text": "Injection point",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "6. {Looking For Metafiles}[blue]",
+              "parts": [
+                "6. ",
+                {
+                  "text": "Looking For Metafiles",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ View the ",
+                {
+                  "text": "Robots.txt",
+                  "color": "blue"
+                },
+                " file\n☐ View the ",
+                {
+                  "text": "Sitemap.xml",
+                  "color": "blue"
+                },
+                " file\n☐ View the ",
+                {
+                  "text": "Humans.txt",
+                  "color": "blue"
+                },
+                " file\n☐ View the ",
+                {
+                  "text": "Security.txt",
+                  "color": "blue"
+                },
+                " file"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "7. {Review The Web Contents}[blue]",
+              "parts": [
+                "7. ",
+                {
+                  "text": "Review The Web Contents",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Inspect the page source for ",
+                {
+                  "text": "sensitive info",
+                  "color": "red"
+                },
+                "\n☐ Try to find ",
+                {
+                  "text": "Sensitive Javascript codes",
+                  "color": "red"
+                },
+                "\n☐ Try to find any ",
+                {
+                  "text": "keys",
+                  "color": "red"
+                },
+                "\n☐ Make sure the ",
+                {
+                  "text": "autocomplete is disabled",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "8. {Map Application Architecture}[blue]",
+              "parts": [
+                "8. ",
+                {
+                  "text": "Map Application Architecture",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Map the overall site structure"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "9. {Mapping Execution Paths}[blue]",
+              "parts": [
+                "9. ",
+                {
+                  "text": "Mapping Execution Paths",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Use ",
+                {
+                  "text": "Burp Suite",
+                  "color": "yellow"
+                },
+                "\n☐ Use ",
+                {
+                  "text": "Dirsearch",
+                  "color": "yellow"
+                },
+                "\n☐ Use ",
+                {
+                  "text": "Gobuster",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{CONFIGURATION & DEPLOYMENT MANAGEMENT TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "CONFIGURATION & DEPLOYMENT MANAGEMENT TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "10. {Test Network Configuration}[blue]",
+              "parts": [
+                "10. ",
+                {
+                  "text": "Test Network Configuration",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check the network configuration\n☐ Check for ",
+                {
+                  "text": "default settings",
+                  "color": "red"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "default credentials",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "11. {Test Application Configuration}[blue]",
+              "parts": [
+                "11. ",
+                {
+                  "text": "Test Application Configuration",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure only ",
+                {
+                  "text": "required modules",
+                  "color": "green"
+                },
+                " are used\n☐ Ensure ",
+                {
+                  "text": "unwanted modules are disabled",
+                  "color": "green"
+                },
+                "\n☐ Ensure the server can handle ",
+                {
+                  "text": "DOS",
+                  "color": "red"
+                },
+                "\n☐ Check how the application is handling ",
+                {
+                  "text": "4xx & 5xx errors",
+                  "color": "blue"
+                },
+                "\n☐ Check for the ",
+                {
+                  "text": "privilege required",
+                  "color": "blue"
+                },
+                " to run\n☐ Check ",
+                {
+                  "text": "logs for sensitive info",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "12. {Test File Extension Handling}[blue]",
+              "parts": [
+                "12. ",
+                {
+                  "text": "Test File Extension Handling",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure the server won’t return ",
+                {
+                  "text": "sensitive extensions",
+                  "color": "red"
+                },
+                "\n☐ Ensure the server won’t accept ",
+                {
+                  "text": "malicious extensions",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "file upload vulnerabilities",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "13. {Enumerate Infrastructure & Admin Interfaces}[blue]",
+              "parts": [
+                "13. ",
+                {
+                  "text": "Enumerate Infrastructure & Admin Interfaces",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Try to find the ",
+                {
+                  "text": "Infrastructure Interface",
+                  "color": "blue"
+                },
+                "\n☐ Try to find the ",
+                {
+                  "text": "Admin Interface",
+                  "color": "blue"
+                },
+                "\n☐ Identify the ",
+                {
+                  "text": "hidden admin functionalities",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "14. {Review Backup & Unreferenced Files}[blue]",
+              "parts": [
+                "14. ",
+                {
+                  "text": "Review Backup & Unreferenced Files",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure ",
+                {
+                  "text": "unreferenced files don’t contain any sensitive info",
+                  "color": "green"
+                },
+                "\n☐ Ensure the namings of old and new backup files\n☐ Check the functionality of unreferenced pages"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "15. {Testing HTTP Methods}[blue]",
+              "parts": [
+                "15. ",
+                {
+                  "text": "Testing HTTP Methods",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Discover the ",
+                {
+                  "text": "supported methods",
+                  "color": "blue"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "PUT method is disabled",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "OPTIONS method is disabled",
+                  "color": "green"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "access control bypass",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "XST attacks",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "HTTP method overriding",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "16. {Test HSTS}[blue]",
+              "parts": [
+                "16. ",
+                {
+                  "text": "Test HSTS",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure ",
+                {
+                  "text": "HSTS is enabled",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "17. {Test Cloud Storage}[blue]",
+              "parts": [
+                "17. ",
+                {
+                  "text": "Test Cloud Storage",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check the ",
+                {
+                  "text": "sensitive paths of AWS",
+                  "color": "red"
+                },
+                "\n☐ Check the ",
+                {
+                  "text": "sensitive paths of Google Cloud",
+                  "color": "red"
+                },
+                "\n☐ Check the ",
+                {
+                  "text": "sensitive paths of Azure",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "18. {Test File Permission}[blue]",
+              "parts": [
+                "18. ",
+                {
+                  "text": "Test File Permission",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure the ",
+                {
+                  "text": "permissions for sensitive files",
+                  "color": "green"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "directory enumeration",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "19. {Test RIA Cross Domain Policy}[blue]",
+              "parts": [
+                "19. ",
+                {
+                  "text": "Test RIA Cross Domain Policy",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check for ",
+                {
+                  "text": "Adobe’s Cross Domain Policy",
+                  "color": "blue"
+                },
+                "\n☐ Ensure it has the ",
+                {
+                  "text": "least privilege",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "20. {Test For Subdomain Takeover}[blue]",
+              "parts": [
+                "20. ",
+                {
+                  "text": "Test For Subdomain Takeover",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test ",
+                {
+                  "text": "DNS, A, and CNAME records",
+                  "color": "blue"
+                },
+                " for ",
+                {
+                  "text": "subdomain takeover",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "NS records",
+                  "color": "blue"
+                },
+                " for ",
+                {
+                  "text": "subdomain takeover",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "404 response",
+                  "color": "blue"
+                },
+                " for ",
+                {
+                  "text": "subdomain takeover",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{IDENTITY MANAGEMENT TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "IDENTITY MANAGEMENT TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "21. {Test User Registration Process}[blue]",
+              "parts": [
+                "21. ",
+                {
+                  "text": "Test User Registration Process",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure the ",
+                {
+                  "text": "same user or identity can’t register again and again",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "registrations are verified",
+                  "color": "green"
+                },
+                "\n☐ Ensure ",
+                {
+                  "text": "disposable email addresses are rejected",
+                  "color": "green"
+                },
+                "\n☐ Check what proof is required for successful registration"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "22. {Test Role Definitions}[blue]",
+              "parts": [
+                "22. ",
+                {
+                  "text": "Test Role Definitions",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test for ",
+                {
+                  "text": "forced browsing",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "IDOR (Insecure Direct Object Reference)",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "parameter tampering",
+                  "color": "red"
+                },
+                "\n☐ Ensure ",
+                {
+                  "text": "low privilege users can’t able to access high privilege resources",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "23. {Testing For Account Enumeration}[blue]",
+              "parts": [
+                "23. ",
+                {
+                  "text": "Testing For Account Enumeration",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check the response when a valid username and password entered\n☐ Check the response when a valid username and an invalid password entered\n☐ Check the response when an invalid username and password entered\n☐ Ensure the ",
+                {
+                  "text": "rate-limiting functionality is enabled",
+                  "color": "green"
+                },
+                " in username and password fields"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "24. {Test Account Provisioning Process}[blue]",
+              "parts": [
+                "24. ",
+                {
+                  "text": "Test Account Provisioning Process",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check the verification for the provisioning process\n☐ Check the verification for the de-provisioning process\n☐ Check the provisioning rights for an admin user to other users\n☐ Check whether a user is able to de-provision themself or not?\n☐ Check for the resources of a de-provisioned user"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "25. {Test For Weak Username Policy}[red]",
+              "parts": [
+                "25. ",
+                {
+                  "text": "Test For Weak Username Policy",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check the response for both valid and invalid usernames\n☐ Check for ",
+                {
+                  "text": "username enumeration",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{AUTHENTICATION TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "AUTHENTICATION TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "26. {Test For Default Credentials}[red]",
+              "parts": [
+                "26. ",
+                {
+                  "text": "Test For Default Credentials",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test with ",
+                {
+                  "text": "default credentials",
+                  "color": "red"
+                },
+                "\n☐ Test organization name as credentials\n☐ Test for ",
+                {
+                  "text": "response manipulation",
+                  "color": "red"
+                },
+                "\n☐ Test for the ",
+                {
+                  "text": "default username and a blank password",
+                  "color": "red"
+                },
+                "\n☐ Review the ",
+                {
+                  "text": "page source for credentials",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "27. {Test For Weak Lockout Mechanism}[red]",
+              "parts": [
+                "27. ",
+                {
+                  "text": "Test For Weak Lockout Mechanism",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure the ",
+                {
+                  "text": "account has been locked",
+                  "color": "green"
+                },
+                " after 3-5 incorrect attempts\n☐ Ensure the system accepts only the ",
+                {
+                  "text": "valid CAPTCHA",
+                  "color": "green"
+                },
+                "\n☐ Ensure the system rejects the invalid CAPTCHA\n☐ Ensure ",
+                {
+                  "text": "CAPTCHA code regenerated",
+                  "color": "green"
+                },
+                " after reloaded\n☐ Ensure CAPTCHA reloads after entering the wrong code\n☐ Ensure the user has a ",
+                {
+                  "text": "recovery option",
+                  "color": "green"
+                },
+                " for a lockout account"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "28. {Test For Un-Encrypted Channel}[red]",
+              "parts": [
+                "28. ",
+                {
+                  "text": "Test For Un-Encrypted Channel",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check for the ",
+                {
+                  "text": "HTTP login page",
+                  "color": "red"
+                },
+                "\n☐ Check for the ",
+                {
+                  "text": "HTTP register or sign-in page",
+                  "color": "red"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "HTTP forgot password page",
+                  "color": "red"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "HTTP change password",
+                  "color": "red"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "resources on HTTP after logout",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "forced browsing to HTTP pages",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "29. {Test For Vulnerable Remember Password}[red]",
+              "parts": [
+                "29. ",
+                {
+                  "text": "Test For Vulnerable Remember Password",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure that the ",
+                {
+                  "text": "stored password is encrypted",
+                  "color": "green"
+                },
+                "\n☐ Ensure that the ",
+                {
+                  "text": "stored password is on the server-side",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "30. {Test For Browser Cache Weakness}[red]",
+              "parts": [
+                "30. ",
+                {
+                  "text": "Test For Browser Cache Weakness",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure ",
+                {
+                  "text": "proper cache-control is set",
+                  "color": "green"
+                },
+                " on sensitive pages\n☐ Ensure ",
+                {
+                  "text": "no sensitive data is stored in the browser cache storage",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "31. {Test For Weak Password Policy}[red]",
+              "parts": [
+                "31. ",
+                {
+                  "text": "Test For Weak Password Policy",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure the ",
+                {
+                  "text": "password policy is set to strong",
+                  "color": "green"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "password reusability",
+                  "color": "red"
+                },
+                "\n☐ Check the user is prevented to use his ",
+                {
+                  "text": "username as a password",
+                  "color": "red"
+                },
+                "\n☐ Check for the usage of ",
+                {
+                  "text": "common weak passwords",
+                  "color": "red"
+                },
+                "\n☐ Check the ",
+                {
+                  "text": "minimum password length",
+                  "color": "green"
+                },
+                " to be set\n☐ Check the ",
+                {
+                  "text": "maximum password length",
+                  "color": "green"
+                },
+                " to be set"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "32. {Testing For Weak Security Questions}[red]",
+              "parts": [
+                "32. ",
+                {
+                  "text": "Testing For Weak Security Questions",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check for the ",
+                {
+                  "text": "complexity of the questions",
+                  "color": "green"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "brute-forcing",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "33. {Test For Bypassing Authentication Schema}[red]",
+              "parts": [
+                "33. ",
+                {
+                  "text": "Test For Bypassing Authentication Schema",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test ",
+                {
+                  "text": "forced browsing directly to the internal dashboard without login",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "session ID prediction",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "authentication parameter tampering",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "SQL injection on the login page",
+                  "color": "red"
+                },
+                "\n☐ Test to ",
+                {
+                  "text": "gain access with the help of session ID",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "multiple logins allowed",
+                  "color": "red"
+                },
+                " or not?"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "34. {Test For Weak Password Reset Function}[red]",
+              "parts": [
+                "34. ",
+                {
+                  "text": "Test For Weak Password Reset Function",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check what information is required to reset the password\n☐ Check for ",
+                {
+                  "text": "password reset function with HTTP",
+                  "color": "red"
+                },
+                "\n☐ Test the ",
+                {
+                  "text": "randomness of the password reset tokens",
+                  "color": "green"
+                },
+                "\n☐ Test the ",
+                {
+                  "text": "uniqueness of the password reset tokens",
+                  "color": "green"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "rate limiting on password reset tokens",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "token must expire after being used",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "token must expire after not being used for a long time",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "35. {Test For Weak Password Change Function}[red]",
+              "parts": [
+                "35. ",
+                {
+                  "text": "Test For Weak Password Change Function",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check if the ",
+                {
+                  "text": "old password asked",
+                  "color": "green"
+                },
+                " to make a change\n☐ Check for the ",
+                {
+                  "text": "uniqueness of the forgotten password",
+                  "color": "green"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "blank password change",
+                  "color": "red"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "password change function with HTTP",
+                  "color": "red"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "old password is not displayed",
+                  "color": "green"
+                },
+                " after changed\n☐ Ensure the ",
+                {
+                  "text": "other sessions got destroyed",
+                  "color": "green"
+                },
+                " after the password change"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "36. {Test For Weak Authentication In Alternative Channel}[red]",
+              "parts": [
+                "36. ",
+                {
+                  "text": "Test For Weak Authentication In Alternative Channel",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test authentication on the desktop browsers\n☐ Test authentication on the mobile browsers\n☐ Test authentication in a different country\n☐ Test authentication in a different language\n☐ Test authentication on desktop applications\n☐ Test authentication on mobile applications"
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{AUTHORIZATION TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "AUTHORIZATION TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "37. {Testing Traversal With Encoding}[blue]",
+              "parts": [
+                "37. ",
+                {
+                  "text": "Testing Traversal With Encoding",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "Base64 encoding",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "URL encoding",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "ASCII encoding",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "HTML encoding",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "Hex encoding",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "Binary encoding",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "Octal encoding",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "Gzip encoding",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "38. {Testing Directory Traversal File Include}[blue]",
+              "parts": [
+                "38. ",
+                {
+                  "text": "Testing Directory Traversal File Include",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify the ",
+                {
+                  "text": "injection point",
+                  "color": "red"
+                },
+                " on the URL\n☐ Test for ",
+                {
+                  "text": "Local File Inclusion",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "Remote File Inclusion",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " on the ",
+                {
+                  "text": "URL parameter",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " on the ",
+                {
+                  "text": "cookie parameter",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "39. {Testing Travesal With Different OS Schemes}[blue]",
+              "parts": [
+                "39. ",
+                {
+                  "text": "Testing Travesal With Different OS Schemes",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "Unix schemes",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "Windows schemes",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Traversal",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "Mac schemes",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "40. {Test Authorization Schema Bypass}[red]",
+              "parts": [
+                "40. ",
+                {
+                  "text": "Test Authorization Schema Bypass",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test for ",
+                {
+                  "text": "Horizontal authorization schema bypass",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "Vertical authorization schema bypass",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "override the target with custom headers",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "41. {Test For Insecure Direct Object Reference}[red]",
+              "parts": [
+                "41. ",
+                {
+                  "text": "Test For Insecure Direct Object Reference",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test to change the ",
+                {
+                  "text": "ID parameter",
+                  "color": "blue"
+                },
+                "\n☐ Test to add ",
+                {
+                  "text": "parameters at the endpoints",
+                  "color": "blue"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "HTTP parameter pollution",
+                  "color": "red"
+                },
+                "\n☐ Test by adding an extension at the end\n☐ Test with ",
+                {
+                  "text": "outdated API versions",
+                  "color": "red"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "wrapping the ID with an array",
+                  "color": "red"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "wrapping the ID with a JSON object",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "JSON parameter pollution",
+                  "color": "red"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "changing the case",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "path traversal",
+                  "color": "red"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "changing words",
+                  "color": "red"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "changing methods",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "42. {Test For Privilege Escalation}[red]",
+              "parts": [
+                "42. ",
+                {
+                  "text": "Test For Privilege Escalation",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify the ",
+                {
+                  "text": "injection point",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "bypassing the security measures",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "forced browsing",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "IDOR",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "parameter tampering to high privileged user",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{SESSION MANAGEMENT TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "SESSION MANAGEMENT TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "43. {Test For Session Management Schema}[blue]",
+              "parts": [
+                "43. ",
+                {
+                  "text": "Test For Session Management Schema",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure all ",
+                {
+                  "text": "Set-Cookie directives are secure",
+                  "color": "green"
+                },
+                "\n☐ Ensure ",
+                {
+                  "text": "no cookie operation takes place over an unencrypted channel",
+                  "color": "red"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "cookie can’t be forced over an unencrypted channel",
+                  "color": "red"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "HTTPOnly flag is enabled",
+                  "color": "green"
+                },
+                "\n☐ Check if any ",
+                {
+                  "text": "persistent cookies",
+                  "color": "blue"
+                },
+                " are\n☐ Check for ",
+                {
+                  "text": "session cookies",
+                  "color": "blue"
+                },
+                " and ",
+                {
+                  "text": "cookie expiration date/time",
+                  "color": "blue"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "session fixation",
+                  "color": "red"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "concurrent login",
+                  "color": "red"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "session after logout",
+                  "color": "red"
+                },
+                "\n☐ Check for ",
+                {
+                  "text": "session after closing the browser",
+                  "color": "red"
+                },
+                "\n☐ Try ",
+                {
+                  "text": "decoding cookies (Base64, Hex, URL, etc)",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "44. {Test For Cookie Attributes}[blue]",
+              "parts": [
+                "44. ",
+                {
+                  "text": "Test For Cookie Attributes",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure the ",
+                {
+                  "text": "cookie must be set with the secure attribute",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "cookie must be set with the path attribute",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "cookie must have the HTTPOnly flag",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "45. {Test For Session Fixation}[red]",
+              "parts": [
+                "45. ",
+                {
+                  "text": "Test For Session Fixation",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure ",
+                {
+                  "text": "new cookies have been issued upon a successful authentication",
+                  "color": "green"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "manipulating the cookies",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "46. {Test For Exposed Session Variables}[red]",
+              "parts": [
+                "46. ",
+                {
+                  "text": "Test For Exposed Session Variables",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test for ",
+                {
+                  "text": "encryption",
+                  "color": "green"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "GET and POST vulnerabilities",
+                  "color": "red"
+                },
+                "\n☐ Test if ",
+                {
+                  "text": "GET request incorporating the session ID",
+                  "color": "red"
+                },
+                " used\n☐ Test by ",
+                {
+                  "text": "interchanging POST with GET method",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "47. {Test For Back Refresh Attack}[red]",
+              "parts": [
+                "47. ",
+                {
+                  "text": "Test For Back Refresh Attack",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test after password change\n☐ Test after logout"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "48. {Test For Cross Site Request Forgery}[red]",
+              "parts": [
+                "48. ",
+                {
+                  "text": "Test For Cross Site Request Forgery",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check if the ",
+                {
+                  "text": "token is validated on the server-side",
+                  "color": "green"
+                },
+                " or not\n☐ Check if the ",
+                {
+                  "text": "token is validated for full or partial length",
+                  "color": "green"
+                },
+                "\n☐ Check by comparing the ",
+                {
+                  "text": "CSRF tokens",
+                  "color": "blue"
+                },
+                " for multiple dummy accounts\n☐ Check CSRF by ",
+                {
+                  "text": "interchanging POST with GET method",
+                  "color": "red"
+                },
+                "\n☐ Check CSRF by ",
+                {
+                  "text": "removing the CSRF token parameter",
+                  "color": "red"
+                },
+                "\n☐ Check CSRF by removing the CSRF token and using a ",
+                {
+                  "text": "blank parameter",
+                  "color": "red"
+                },
+                "\n☐ Check CSRF by using ",
+                {
+                  "text": "unused tokens",
+                  "color": "red"
+                },
+                "\n☐ Check CSRF by ",
+                {
+                  "text": "replacing the CSRF token with its own values",
+                  "color": "red"
+                },
+                "\n☐ Check CSRF by ",
+                {
+                  "text": "changing the content type to form-multipart",
+                  "color": "red"
+                },
+                "\n☐ Check CSRF by ",
+                {
+                  "text": "changing or deleting some characters of the CSRF token",
+                  "color": "red"
+                },
+                "\n☐ Check CSRF by ",
+                {
+                  "text": "changing the referrer to Referrer",
+                  "color": "red"
+                },
+                "\n☐ Check CSRF by ",
+                {
+                  "text": "changing the host values",
+                  "color": "red"
+                },
+                "\n☐ Check CSRF alongside ",
+                {
+                  "text": "clickjacking",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "49. {Test For Logout Functionality}[blue]",
+              "parts": [
+                "49. ",
+                {
+                  "text": "Test For Logout Functionality",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check the logout function on different pages\n☐ Check for the visibility of the logout button\n☐ Ensure after logout the ",
+                {
+                  "text": "session was ended",
+                  "color": "green"
+                },
+                "\n☐ Ensure after logout we ",
+                {
+                  "text": "can’t able to access the dashboard by pressing the back button",
+                  "color": "green"
+                },
+                "\n☐ Ensure ",
+                {
+                  "text": "proper session timeout has been set",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "50. {Test For Session Puzzling}[red]",
+              "parts": [
+                "50. ",
+                {
+                  "text": "Test For Session Puzzling",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify all the ",
+                {
+                  "text": "session variables",
+                  "color": "blue"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "break the logical flow of the session generation",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "51. {Test For Session Timeout}[blue]",
+              "parts": [
+                "51. ",
+                {
+                  "text": "Test For Session Timeout",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure there is a ",
+                {
+                  "text": "session timeout exists",
+                  "color": "green"
+                },
+                "\n☐ Ensure after the timeout, all of the ",
+                {
+                  "text": "tokens are destroyed",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "52. {Test For Session Hijacking}[red]",
+              "parts": [
+                "52. ",
+                {
+                  "text": "Test For Session Hijacking",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test ",
+                {
+                  "text": "session hijacking",
+                  "color": "red"
+                },
+                " on target that doesn’t has ",
+                {
+                  "text": "HSTS enabled",
+                  "color": "green"
+                },
+                "\n☐ Test by login with the help of ",
+                {
+                  "text": "captured cookies",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{INPUT VALIDATION TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "INPUT VALIDATION TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "53. {Test For Reflected Cross Site Scripting}[red]",
+              "parts": [
+                "53. ",
+                {
+                  "text": "Test For Reflected Cross Site Scripting",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure ",
+                {
+                  "text": "these characters are filtered <>’’&””",
+                  "color": "green"
+                },
+                "\n☐ Test with a ",
+                {
+                  "text": "character escape sequence",
+                  "color": "blue"
+                },
+                "\n☐ Test by replacing < and > with ",
+                {
+                  "text": "HTML entities &lt; and &gt;",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "payload with both lower and upper case",
+                  "color": "red"
+                },
+                "\n☐ Test to ",
+                {
+                  "text": "break firewall regex by new line /r/n",
+                  "color": "red"
+                },
+                "\n☐ Test with ",
+                {
+                  "text": "double encoding",
+                  "color": "red"
+                },
+                "\n☐ Test with ",
+                {
+                  "text": "recursive filters",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "injecting anchor tags without whitespace",
+                  "color": "red"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "replacing whitespace with bullets",
+                  "color": "red"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "changing HTTP methods",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "54. {Test For HTTP Parameter Pollution}[red]",
+              "parts": [
+                "54. ",
+                {
+                  "text": "Test For HTTP Parameter Pollution",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify the ",
+                {
+                  "text": "backend server and parsing method",
+                  "color": "blue"
+                },
+                " used\n☐ Try to access the ",
+                {
+                  "text": "injection point",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass the input filters",
+                  "color": "red"
+                },
+                " using ",
+                {
+                  "text": "HTTP Parameter Pollution",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "55. {Test For Stored Cross Site Scripting}[red]",
+              "parts": [
+                "55. ",
+                {
+                  "text": "Test For Stored Cross Site Scripting",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify ",
+                {
+                  "text": "stored input parameters",
+                  "color": "blue"
+                },
+                " that will reflect on the client side\n☐ Look for input parameters on the profile page\n☐ Look for input parameters on the shopping cart page\n☐ Look for input parameters on the file upload page\n☐ Look for input parameters on the settings page\n☐ Look for input parameters on the forum, comment page\n☐ Test uploading a file with ",
+                {
+                  "text": "XSS payload as its file name",
+                  "color": "red"
+                },
+                "\n☐ Test with ",
+                {
+                  "text": "HTML tags",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "56. {Test For SQL Injection}[red]",
+              "parts": [
+                "56. ",
+                {
+                  "text": "Test For SQL Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test ",
+                {
+                  "text": "SQL Injection",
+                  "color": "red"
+                },
+                " on ",
+                {
+                  "text": "authentication forms",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "SQL Injection",
+                  "color": "red"
+                },
+                " on the ",
+                {
+                  "text": "search bar",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "SQL Injection",
+                  "color": "red"
+                },
+                " on ",
+                {
+                  "text": "editable characteristics",
+                  "color": "blue"
+                },
+                "\n☐ Try to find ",
+                {
+                  "text": "SQL keywords or entry point detections",
+                  "color": "blue"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "inject SQL queries",
+                  "color": "red"
+                },
+                "\n☐ Use tools like ",
+                {
+                  "text": "SQLmap",
+                  "color": "yellow"
+                },
+                " or ",
+                {
+                  "text": "Hackbar",
+                  "color": "yellow"
+                },
+                "\n☐ Use ",
+                {
+                  "text": "Google dorks",
+                  "color": "blue"
+                },
+                " to find the ",
+                {
+                  "text": "SQL keywords",
+                  "color": "blue"
+                },
+                "\n☐ Try ",
+                {
+                  "text": "GET based SQL Injection",
+                  "color": "red"
+                },
+                "\n☐ Try ",
+                {
+                  "text": "POST based SQL Injection",
+                  "color": "red"
+                },
+                "\n☐ Try ",
+                {
+                  "text": "COOKIE based SQL Injection",
+                  "color": "red"
+                },
+                "\n☐ Try ",
+                {
+                  "text": "HEADER based SQL Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "57. {Test For XPATH Injection}[red]",
+              "parts": [
+                "57. ",
+                {
+                  "text": "Test For XPATH Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify ",
+                {
+                  "text": "XPATH Injection point",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "XPATH Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "58. {Testing For XML Injection}[red]",
+              "parts": [
+                "58. ",
+                {
+                  "text": "Testing For XML Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Check if the application is using ",
+                {
+                  "text": "XML for processing",
+                  "color": "blue"
+                },
+                "\n☐ Identify the ",
+                {
+                  "text": "XML Injection point by XML metacharacter",
+                  "color": "red"
+                },
+                "\n☐ ",
+                {
+                  "text": "Construct XSS payload on top of XML",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "59. {Test For Command Injection}[red]",
+              "parts": [
+                "59. ",
+                {
+                  "text": "Test For Command Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify the ",
+                {
+                  "text": "Injection points",
+                  "color": "red"
+                },
+                "\n☐ Look for ",
+                {
+                  "text": "Command Injection keywords",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Command Injection",
+                  "color": "red"
+                },
+                " using ",
+                {
+                  "text": "different delimiters",
+                  "color": "blue"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Command Injection",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "payload list",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "Command Injection",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "different OS commands",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "60. {Test For Local File Inclusion}[red]",
+              "parts": [
+                "60. ",
+                {
+                  "text": "Test For Local File Inclusion",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Look for ",
+                {
+                  "text": "LFI keywords",
+                  "color": "blue"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "change the local path",
+                  "color": "red"
+                },
+                "\n☐ Use ",
+                {
+                  "text": "LFI payload list",
+                  "color": "red"
+                },
+                "\n☐ Test LFI by adding a ",
+                {
+                  "text": "null byte",
+                  "color": "blue"
+                },
+                " at the end"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "61. {Test For Remote File Inclusion}[red]",
+              "parts": [
+                "61. ",
+                {
+                  "text": "Test For Remote File Inclusion",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Look for ",
+                {
+                  "text": "RFI keywords",
+                  "color": "blue"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "change the remote path",
+                  "color": "red"
+                },
+                "\n☐ Use ",
+                {
+                  "text": "RFI payload list",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "62. {Test For Format String Injection}[red]",
+              "parts": [
+                "62. ",
+                {
+                  "text": "Test For Format String Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify the ",
+                {
+                  "text": "Injection points",
+                  "color": "red"
+                },
+                "\n☐ Use ",
+                {
+                  "text": "different format parameters as payloads",
+                  "color": "red"
+                },
+                "\n☐ Assess the ",
+                {
+                  "text": "injection impact",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "63. {Test For Host Header Injection}[red]",
+              "parts": [
+                "63. ",
+                {
+                  "text": "Test For Host Header Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test for ",
+                {
+                  "text": "HHI",
+                  "color": "red"
+                },
+                " by changing the ",
+                {
+                  "text": "real Host parameter",
+                  "color": "blue"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "HHI",
+                  "color": "red"
+                },
+                " by adding ",
+                {
+                  "text": "X-Forwarded Host parameter",
+                  "color": "blue"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "HHI",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "swapping the real Host and X-Forwarded Host parameter",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "HHI",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "adding two Host parameters",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "HHI",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "adding the target values in front of the original values",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "HHI",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "adding the target with a slash after the original values",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "HHI",
+                  "color": "red"
+                },
+                " with ",
+                {
+                  "text": "other injections on the Host parameter",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "HHI",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "password reset poisoning",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "64. {Test For LDAP Injection}[red]",
+              "parts": [
+                "64. ",
+                {
+                  "text": "Test For LDAP Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Use ",
+                {
+                  "text": "LDAP search filters",
+                  "color": "blue"
+                },
+                "\n☐ Try ",
+                {
+                  "text": "LDAP Injection for access control bypass",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "65. {Test For IMAP SMTP Injection}[red]",
+              "parts": [
+                "65. ",
+                {
+                  "text": "Test For IMAP SMTP Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify ",
+                {
+                  "text": "IMAP SMTP Injection point",
+                  "color": "red"
+                },
+                "\n☐ Understand the ",
+                {
+                  "text": "data flow",
+                  "color": "blue"
+                },
+                "\n☐ Understand the ",
+                {
+                  "text": "deployment structure",
+                  "color": "blue"
+                },
+                " of the system\n☐ Assess the ",
+                {
+                  "text": "injection impact",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "66. {Test For Server Side Reqest Forgery}[red]",
+              "parts": [
+                "66. ",
+                {
+                  "text": "Test For Server Side Reqest Forgery",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Look for ",
+                {
+                  "text": "SSRF keywords",
+                  "color": "blue"
+                },
+                "\n☐ Search for ",
+                {
+                  "text": "SSRF keywords",
+                  "color": "blue"
+                },
+                " only under the ",
+                {
+                  "text": "request header and body",
+                  "color": "blue"
+                },
+                "\n☐ Identify the ",
+                {
+                  "text": "Injection points",
+                  "color": "red"
+                },
+                "\n☐ Test if the ",
+                {
+                  "text": "Injection points are exploitable",
+                  "color": "red"
+                },
+                "\n☐ Assess the ",
+                {
+                  "text": "injection impact",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "67. {Test For Server Side Includes}[red]",
+              "parts": [
+                "67. ",
+                {
+                  "text": "Test For Server Side Includes",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Use ",
+                {
+                  "text": "Google dorks",
+                  "color": "blue"
+                },
+                " to find the ",
+                {
+                  "text": "SSI",
+                  "color": "blue"
+                },
+                "\n☐ ",
+                {
+                  "text": "Construct RCE on top of SSI",
+                  "color": "red"
+                },
+                "\n☐ ",
+                {
+                  "text": "Construct other injections on top of SSI",
+                  "color": "red"
+                },
+                "\n☐ ",
+                {
+                  "text": "Test Injecting SSI on login pages, header fields, referrer, etc",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "68. {Test For Server Side Template Injection}[red]",
+              "parts": [
+                "68. ",
+                {
+                  "text": "Test For Server Side Template Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify the ",
+                {
+                  "text": "Template injection vulnerability points",
+                  "color": "red"
+                },
+                "\n☐ Identify the ",
+                {
+                  "text": "Templating engine",
+                  "color": "blue"
+                },
+                "\n☐ Use the ",
+                {
+                  "text": "tplmap",
+                  "color": "yellow"
+                },
+                " to exploit"
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{ERROR HANDLING TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "ERROR HANDLING TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "69. {Test For Improper Error Handling}[red]",
+              "parts": [
+                "69. ",
+                {
+                  "text": "Test For Improper Error Handling",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify the ",
+                {
+                  "text": "error output",
+                  "color": "red"
+                },
+                "\n☐ Analyze the ",
+                {
+                  "text": "different outputs returned",
+                  "color": "red"
+                },
+                "\n☐ Look for ",
+                {
+                  "text": "common error handling flaws",
+                  "color": "red"
+                },
+                "\n☐ Test error handling by ",
+                {
+                  "text": "modifying the URL parameter",
+                  "color": "red"
+                },
+                "\n☐ Test error handling by ",
+                {
+                  "text": "uploading unrecognized file formats",
+                  "color": "red"
+                },
+                "\n☐ Test error handling by ",
+                {
+                  "text": "entering unrecognized inputs",
+                  "color": "red"
+                },
+                "\n☐ Test error handling by ",
+                {
+                  "text": "making all possible errors",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{WEAK CRYPTOGRAPHY TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "WEAK CRYPTOGRAPHY TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "70. {Test For Weak Transport Layer Security}[red]",
+              "parts": [
+                "70. ",
+                {
+                  "text": "Test For Weak Transport Layer Security",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test for ",
+                {
+                  "text": "DROWN weakness on SSLv2 protocol",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "POODLE weakness on SSLv3 protocol",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "BEAST weakness on TLSv1.0 protocol",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "FREAK weakness on export cipher suites",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "Null ciphers",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "NOMORE weakness on RC4",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "LUCKY 13 weakness on CBC mode ciphers",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "CRIME weakness on TLS compression",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "LOGJAM on DHE keys",
+                  "color": "red"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "digital certificates should have at least 2048 bits of key length",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "digital certificates should have at least SHA - 256 signature algorithm",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "digital certificates should not use MDF and SHA - 1",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "validity of the digital certificate",
+                  "color": "green"
+                },
+                "\n☐ Ensure the ",
+                {
+                  "text": "minimum key length requirements",
+                  "color": "green"
+                },
+                "\n☐ Look for ",
+                {
+                  "text": "weak cipher suites",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{BUSINESS LOGIC TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "BUSINESS LOGIC TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "71. {Test For Business Logic}[blue]",
+              "parts": [
+                "71. ",
+                {
+                  "text": "Test For Business Logic",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify the ",
+                {
+                  "text": "logic of how the application works",
+                  "color": "blue"
+                },
+                "\n☐ Identify the ",
+                {
+                  "text": "functionality of all the buttons",
+                  "color": "blue"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "changing the numerical values into high or negative values",
+                  "color": "red"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "changing the quantity",
+                  "color": "red"
+                },
+                "\n☐ Test by ",
+                {
+                  "text": "modifying the payments",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "parameter tampering",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "72. {Test For Malicious File Upload}[red]",
+              "parts": [
+                "72. ",
+                {
+                  "text": "Test For Malicious File Upload",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "uploading malicious files",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by putting your ",
+                {
+                  "text": "IP address on the file name",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "right to left override",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "encoded file name",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "XSS payload on the file name",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "RCE payload on the file name",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "LFI payload on the file name",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "RFI payload on the file name",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "SQL payload on the file name",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "other injections on the file name",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "Inserting the payload inside of an image by the bmp.pl tool",
+                  "color": "red"
+                },
+                "\n☐ Test ",
+                {
+                  "text": "malicious file upload",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "uploading large files (leads to DOS)",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{CLIENT SIDE TESTING}[purple]",
+              "parts": [
+                {
+                  "text": "CLIENT SIDE TESTING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "73. {Test For URL Redirect}[red]",
+              "parts": [
+                "73. ",
+                {
+                  "text": "Test For URL Redirect",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Look for ",
+                {
+                  "text": "URL redirect parameters",
+                  "color": "blue"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "URL redirection on domain parameters",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "URL redirection",
+                  "color": "red"
+                },
+                " by using a ",
+                {
+                  "text": "payload list",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "URL redirection",
+                  "color": "red"
+                },
+                " by using a ",
+                {
+                  "text": "whitelisted word at the end",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "URL redirection",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "creating a new subdomain",
+                  "color": "red"
+                },
+                " with the same as the target\n☐ Test for ",
+                {
+                  "text": "URL redirection",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "XSS",
+                  "color": "red"
+                },
+                "\n☐ Test for ",
+                {
+                  "text": "URL redirection",
+                  "color": "red"
+                },
+                " by ",
+                {
+                  "text": "profile URL flaw",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "74. {Test For Cross Origin Resource Sharing}[red]",
+              "parts": [
+                "74. ",
+                {
+                  "text": "Test For Cross Origin Resource Sharing",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Look for “",
+                {
+                  "text": "Access -Control-Allow- Origin",
+                  "color": "blue"
+                },
+                "” on the response\n☐ Use the ",
+                {
+                  "text": "CORS HTML exploit code",
+                  "color": "red"
+                },
+                " for further exploitation"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "75. {Test For Clickjacking}[red]",
+              "parts": [
+                "75. ",
+                {
+                  "text": "Test For Clickjacking",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure “",
+                {
+                  "text": "X -Frame- Options headers are enabled",
+                  "color": "green"
+                },
+                "”\n☐ Exploit with ",
+                {
+                  "text": "iframe HTML code for POC",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "76. {Test For DOM Based Cross Site Scripting}[red]",
+              "parts": [
+                "76. ",
+                {
+                  "text": "Test For DOM Based Cross Site Scripting",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Try to identify ",
+                {
+                  "text": "DOM sinks",
+                  "color": "blue"
+                },
+                "\n☐ ",
+                {
+                  "text": "Build payloads to that DOM sink type",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{OTHER COMMON ISSUES}[purple]",
+              "parts": [
+                {
+                  "text": "OTHER COMMON ISSUES",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "77. {Test For No-Rate Limiting}[red]",
+              "parts": [
+                "77. ",
+                {
+                  "text": "Test For No-Rate Limiting",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure ",
+                {
+                  "text": "rate limiting is enabled",
+                  "color": "green"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass rate limiting by changing the case of the endpoints",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass rate limiting by adding / at the end of the URL",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass rate limiting by adding HTTP headers",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass rate limiting by adding HTTP headers twice",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass rate limiting by adding Origin headers",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass rate limiting by IP rotation",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass rate limiting by using null bytes",
+                  "color": "blue"
+                },
+                " at the end\n☐ Try to ",
+                {
+                  "text": "bypass rate limiting by using race conditions",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "78. {Test For Broken Link Hijack}[red]",
+              "parts": [
+                "78. ",
+                {
+                  "text": "Test For Broken Link Hijack",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure there is ",
+                {
+                  "text": "no broken links are there",
+                  "color": "green"
+                },
+                "\n☐ Test broken links by using the ",
+                {
+                  "text": "blc tool",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "79. {Test For EXIF Geodata}[blue]",
+              "parts": [
+                "79. ",
+                {
+                  "text": "Test For EXIF Geodata",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure the ",
+                {
+                  "text": "website is striping the geodata",
+                  "color": "green"
+                },
+                "\n☐ Test with ",
+                {
+                  "text": "EXIF checker",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "80. {Test For SPF}[blue]",
+              "parts": [
+                "80. ",
+                {
+                  "text": "Test For SPF",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Ensure the ",
+                {
+                  "text": "website is having SPF record",
+                  "color": "green"
+                },
+                "\n☐ Test SPF by ",
+                {
+                  "text": "nslookup command",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "81. {Test For Weak 2FA}[red]",
+              "parts": [
+                "81. ",
+                {
+                  "text": "Test For Weak 2FA",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Try to ",
+                {
+                  "text": "bypass 2FA by using poor session management",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass 2FA via the OAuth mechanism",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass 2FA via brute-forcing",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass 2FA via response manipulation",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass 2FA by using activation links to login",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass 2FA by using status code manipulation",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass 2FA by changing the email or password",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass 2FA by using a null or empty entry",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass 2FA by changing the boolean into false",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass 2FA by removing the 2FA parameter on the request",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "82. {Test For Weak OTP Implementation}[red]",
+              "parts": [
+                "82. ",
+                {
+                  "text": "Test For Weak OTP Implementation",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Try to ",
+                {
+                  "text": "bypass OTP by entering the old OTP",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass OTP by brute-forcing",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass OTP by using a null or empty entry",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass OTP by response manipulation",
+                  "color": "red"
+                },
+                "\n☐ Try to ",
+                {
+                  "text": "bypass OTP by status code manipulation",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "blockquote",
+              "text": "\"It takes 20 years to build a reputation and few minutes of {cyber-incident}[red] to ruin it.\" — Stephane Nappo"
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Secure Your Business with ",
+                {
+                  "text": "Byte Capsule",
+                  "color": "fuchsia"
+                },
+                " – International Award Winner & ",
+                {
+                  "text": "ISO 27001 Accredited",
+                  "color": "green"
+                },
+                " ",
+                {
+                  "text": "Cybersecurity Startup",
+                  "color": "fuchsia"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "✔️ Who Can Benefit?",
+              "parts": [
+                "✔️ Who Can Benefit?"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Enterprises",
+                      "color": "fuchsia"
+                    },
+                    ": ",
+                    {
+                      "text": "Protect sensitive data",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "maintain compliance",
+                      "color": "green"
+                    },
+                    ", and ",
+                    {
+                      "text": "avoid costly breaches",
+                      "color": "green"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Startups",
+                      "color": "fuchsia"
+                    },
+                    ": Build a ",
+                    {
+                      "text": "secure foundation",
+                      "color": "green"
+                    },
+                    " for your business from day one."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Financial Institutions",
+                      "color": "fuchsia"
+                    },
+                    ": ",
+                    {
+                      "text": "Safeguard customer data",
+                      "color": "green"
+                    },
+                    " and ",
+                    {
+                      "text": "meet regulatory requirements",
+                      "color": "green"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "E-Commerce Platforms",
+                      "color": "fuchsia"
+                    },
+                    ": ",
+                    {
+                      "text": "Ensure secure transactions",
+                      "color": "green"
+                    },
+                    " and ",
+                    {
+                      "text": "protect customer trust",
+                      "color": "green"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Government Agencies",
+                      "color": "fuchsia"
+                    },
+                    ": ",
+                    {
+                      "text": "Strengthen national security",
+                      "color": "green"
+                    },
+                    " and ",
+                    {
+                      "text": "protect critical infrastructure",
+                      "color": "green"
+                    },
+                    "."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "✔️ Ready to Secure Your Business?",
+              "parts": [
+                "✔️ Ready to Secure Your Business?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Don’t wait for a breach to happen. ",
+                {
+                  "text": "Partner with Byte Capsule",
+                  "color": "fuchsia"
+                },
+                " to ",
+                {
+                  "text": "proactively identify and address vulnerabilities",
+                  "color": "green"
+                },
+                " before they can be ",
+                {
+                  "text": "exploited",
+                  "color": "red"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "📣 Contact Us Today:",
+              "parts": [
+                "📣 Contact Us Today:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "📞 ",
+                {
+                  "text": "Call: 01796934898",
+                  "color": "fuchsia"
+                },
+                "\n📧 ",
+                {
+                  "text": "Email: pentest@bytecapsuleit.com",
+                  "color": "fuchsia"
+                },
+                "\n📍 ",
+                {
+                  "text": "Location: 15 Indira Road (Level 4), Farmgate, Dhaka - 1215, Bangladesh.",
+                  "color": "fuchsia"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
