@@ -21128,14 +21128,19 @@
           "content": [
             {
               "type": "h1",
-              "text": "37 Toughest Interview Questions – {Traps}[red] & {Best‑Answer Playbook}[green]",
+              "text": "37 Toughest Interview Questions",
               "parts": [
-                "37 Toughest Interview Questions – ",
+                "37 Toughest Interview Questions"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
                 {
                   "text": "Traps",
                   "color": "red"
                 },
-                " & ",
+                " & \n",
                 {
                   "text": "Best‑Answer Playbook",
                   "color": "green"
