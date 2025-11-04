@@ -79,6 +79,13 @@
       },
       "status": "Explore the guide",
       "href": "#/guide/mind"
+    },
+    {
+      "id": "n1",
+      "title": "Networking ",
+      "color": "bg-orange-800/80",
+      "status": "Explore the guide",
+      "href": "#/guide/n1"
     }
   ],
   "guideData": {
@@ -22903,6 +22910,2714 @@
             {
               "type": "p",
               "text": "Content for this topic is coming soon."
+            }
+          ]
+        }
+      ]
+    },
+    "n1": {
+      "title": "Networking  Interactive Guide",
+      "topics": [
+        {
+          "id": "toc",
+          "title": "Welcome to Networking ",
+          "content": [
+            {
+              "type": "p",
+              "parts": [
+                "**Color Key:**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Blue",
+                      "color": "blue"
+                    },
+                    "Core technical concepts and foundational elements."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Green",
+                      "color": "green"
+                    },
+                    ": Positive outcomes, benefits, solutions, and career advantages."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Red",
+                      "color": "red"
+                    },
+                    ": Threats, vulnerabilities, and exploitation."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Purple",
+                      "color": "purple"
+                    },
+                    ": Actions, skills, and processes."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Yellow",
+                      "color": "yellow"
+                    },
+                    ": Emphasized importance and critical areas."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Why {Networking}[blue] Matters",
+              "parts": [
+                "Why ",
+                {
+                  "text": "Networking",
+                  "color": "blue"
+                },
+                " Matters"
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Backbone of the Internet}[blue]",
+              "parts": [
+                {
+                  "text": "Backbone of the Internet",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Everything online runs on ",
+                {
+                  "text": "networks",
+                  "color": "blue"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Connects Devices}[blue]",
+              "parts": [
+                {
+                  "text": "Connects Devices",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Computers",
+                  "color": "blue"
+                },
+                ", ",
+                {
+                  "text": "servers",
+                  "color": "blue"
+                },
+                ", ",
+                {
+                  "text": "IOT",
+                  "color": "blue"
+                },
+                ", everything talks through ",
+                {
+                  "text": "networks",
+                  "color": "blue"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Essential for Hackers}[yellow]",
+              "parts": [
+                {
+                  "text": "Essential for Hackers",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Understanding ",
+                {
+                  "text": "networks",
+                  "color": "blue"
+                },
+                " means knowing how to ",
+                {
+                  "text": "explore",
+                  "color": "purple"
+                },
+                " and ",
+                {
+                  "text": "exploit",
+                  "color": "red"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Powerful for Security}[green]",
+              "parts": [
+                {
+                  "text": "Powerful for Security",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Detect",
+                  "color": "purple"
+                },
+                ", ",
+                {
+                  "text": "prevent",
+                  "color": "green"
+                },
+                ", and mitigate ",
+                {
+                  "text": "attacks",
+                  "color": "red"
+                },
+                ". ",
+                {
+                  "text": "Troubleshoot",
+                  "color": "purple"
+                },
+                " like a pro by knowing what happens under the hood."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Career Game-Changer}[green]",
+              "parts": [
+                {
+                  "text": "Career Game-Changer",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Networking skills",
+                  "color": "green"
+                },
+                " are ",
+                {
+                  "text": "in demand",
+                  "color": "green"
+                },
+                " across tech jobs."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Master ",
+                {
+                  "text": "networking",
+                  "color": "blue"
+                },
+                ", and you master the ",
+                {
+                  "text": "digital world",
+                  "color": "yellow"
+                },
+                "!"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Basic Networking Concepts",
+          "content": [
+            {
+              "type": "h1",
+              "text": "Basic Networking Concepts",
+              "parts": [
+                "Basic Networking Concepts"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "IP Address",
+                      "color": "blue"
+                    },
+                    "**",
+                    " - ",
+                    {
+                      "text": "Unique address",
+                      "color": "green"
+                    },
+                    " for each device on a network."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "MAC Address",
+                      "color": "blue"
+                    },
+                    "**",
+                    " - ",
+                    {
+                      "text": "Hardware identifier",
+                      "color": "green"
+                    },
+                    " for network interfaces."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Subnet",
+                      "color": "blue"
+                    },
+                    "**",
+                    " - ",
+                    {
+                      "text": "Divides networks",
+                      "color": "green"
+                    },
+                    " into smaller, manageable parts."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Gateway",
+                      "color": "blue"
+                    },
+                    "**",
+                    " - ",
+                    {
+                      "text": "Device that connects your network",
+                      "color": "green"
+                    },
+                    " to other networks."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "DNS (Domain Name System)",
+                      "color": "blue"
+                    },
+                    "**",
+                    " - ",
+                    {
+                      "text": "Translates domain names into IP addresses",
+                      "color": "green"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "DHCP (Dynamic Host Configuration Protocol)",
+                      "color": "blue"
+                    },
+                    "**",
+                    " - ",
+                    {
+                      "text": "Automatically assigns IPs",
+                      "color": "green"
+                    },
+                    " to devices."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "LAN & WAN",
+                      "color": "blue"
+                    },
+                    "**",
+                    " - ",
+                    {
+                      "text": "Local Area Networks",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "Wide Area Network",
+                      "color": "green"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Protocols",
+                      "color": "blue"
+                    },
+                    "**",
+                    " - ",
+                    {
+                      "text": "Rules that devices follow to communicate",
+                      "color": "green"
+                    },
+                    " (",
+                    {
+                      "text": "TCP",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "UDP",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "HTTP",
+                      "color": "purple"
+                    },
+                    ", etc)."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "OSI Model The Hacker Cheatsheet",
+          "content": [
+            {
+              "type": "h1",
+              "text": "{OSI Model}[red] {The Hacker Cheatsheet}[red]",
+              "parts": [
+                {
+                  "text": "OSI Model",
+                  "color": "red"
+                },
+                " ",
+                {
+                  "text": "The Hacker Cheatsheet",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "The ",
+                {
+                  "text": "OSI (Open Systems Interconnection) model",
+                  "color": "blue"
+                },
+                " is a conceptual framework that standardizes the functions of a telecommunication or computing system into seven distinct layers, describing how network systems communicate."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{OSI Layers}[purple] (Top-Down)",
+              "parts": [
+                {
+                  "text": "OSI Layers",
+                  "color": "purple"
+                },
+                " (Top-Down)"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Layer 7: Application Layer",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Description:**",
+                    " Provides network services directly to end-user applications."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Protocols:**",
+                    " ",
+                    {
+                      "text": "SMTP",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "HTTP",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "FTP",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "HTTPS",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "P2P",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "DNS",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Data Unit:**",
+                    " ",
+                    {
+                      "text": "Data",
+                      "color": "yellow"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Layer 6: Presentation Layer",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Description:**",
+                    " Handles data formatting, encryption, and compression."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Protocols:**",
+                    " ",
+                    {
+                      "text": "JPEG",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "MPEG",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "IMAP",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Data Unit:**",
+                    " ",
+                    {
+                      "text": "Data",
+                      "color": "yellow"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Layer 5: Session Layer",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Description:**",
+                    " Manages communication sessions, establishing, managing, and terminating connections."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Protocols:**",
+                    " ",
+                    {
+                      "text": "RPC (Sockets)",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Data Unit:**",
+                    " ",
+                    {
+                      "text": "Data",
+                      "color": "yellow"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Layer 4: Transport Layer",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Description:**",
+                    " Provides reliable or unreliable data transfer between end systems."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Protocols:**",
+                    " ",
+                    {
+                      "text": "TCP",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "UDP",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Data Unit:**",
+                    " ",
+                    {
+                      "text": "TCP Segment",
+                      "color": "yellow"
+                    },
+                    " / ",
+                    {
+                      "text": "UDP Packet",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Key Header Fields:**"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "source port",
+                          "color": "fuchsia"
+                        }
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            {
+                              "text": "destination port",
+                              "color": "fuchsia"
+                            }
+                          ]
+                        },
+                        {
+                          "parts": [
+                            {
+                              "text": "sequence number",
+                              "color": "fuchsia"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Layer 3: Network Layer",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Description:**",
+                    " Handles logical addressing and routing of packets across networks."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Protocols:**",
+                    " ",
+                    {
+                      "text": "IP",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "ICMP",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "IPSec",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Data Unit:**",
+                    " ",
+                    {
+                      "text": "IP Datagram",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Key Header Fields:**"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "source IP address",
+                          "color": "fuchsia"
+                        }
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            {
+                              "text": "destination IP address",
+                              "color": "fuchsia"
+                            }
+                          ]
+                        },
+                        {
+                          "parts": [
+                            {
+                              "text": "datagram sequence order",
+                              "color": "fuchsia"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Layer 2: Data Link Layer",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Description:**",
+                    " Provides reliable data transfer across a physical link, managing ",
+                    {
+                      "text": "MAC addresses",
+                      "color": "fuchsia"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Protocols:**",
+                    " ",
+                    {
+                      "text": "ARP",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "VLAN",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "STP",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Data Unit:**",
+                    " ",
+                    {
+                      "text": "Frame",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Key Header Fields:**"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "source MAC address",
+                          "color": "fuchsia"
+                        }
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            {
+                              "text": "destination MAC address",
+                              "color": "fuchsia"
+                            }
+                          ]
+                        },
+                        {
+                          "parts": [
+                            {
+                              "text": "frame control",
+                              "color": "fuchsia"
+                            }
+                          ]
+                        },
+                        {
+                          "parts": [
+                            {
+                              "text": "sequence control",
+                              "color": "fuchsia"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Layer 1: Physical Layer",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Description:**",
+                    " Deals with the physical transmission of raw bits over a communication medium."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Technologies:**",
+                    " ",
+                    {
+                      "text": "Hubs",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "Fiber",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Data Unit:**",
+                    " ",
+                    {
+                      "text": "Bit",
+                      "color": "yellow"
+                    },
+                    " (e.g., ",
+                    {
+                      "type": "inline_code",
+                      "text": "10010111..."
+                    },
+                    ")"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Communication Flow",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Encapsulation",
+                  "color": "blue"
+                },
+                " (From ",
+                {
+                  "text": "Device A",
+                  "color": "red"
+                },
+                " to ",
+                {
+                  "text": "Device B",
+                  "color": "red"
+                },
+                ")"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "As ",
+                {
+                  "text": "Data",
+                  "color": "yellow"
+                },
+                " moves down the ",
+                {
+                  "text": "OSI Model",
+                  "color": "blue"
+                },
+                " layers from the ",
+                {
+                  "text": "Application Layer",
+                  "color": "purple"
+                },
+                " to the ",
+                {
+                  "text": "Physical Layer",
+                  "color": "purple"
+                },
+                ", each layer adds its own ",
+                {
+                  "text": "header",
+                  "color": "fuchsia"
+                },
+                " information. This process transforms the ",
+                {
+                  "text": "data unit",
+                  "color": "yellow"
+                },
+                " at each stage:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "HTTP header",
+                      "color": "fuchsia"
+                    },
+                    " (Layer 7)"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "TCP header",
+                      "color": "fuchsia"
+                    },
+                    " (Layer 4)"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "IP header",
+                      "color": "fuchsia"
+                    },
+                    " (Layer 3)"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "MAC header",
+                      "color": "fuchsia"
+                    },
+                    " (Layer 2)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "The ",
+                {
+                  "text": "Data",
+                  "color": "yellow"
+                },
+                " progressively transforms:\n",
+                {
+                  "text": "Data",
+                  "color": "yellow"
+                },
+                " &rarr; ",
+                {
+                  "text": "TCP Segment",
+                  "color": "yellow"
+                },
+                " / ",
+                {
+                  "text": "UDP Packet",
+                  "color": "yellow"
+                },
+                " &rarr; ",
+                {
+                  "text": "IP Datagram",
+                  "color": "yellow"
+                },
+                " &rarr; ",
+                {
+                  "text": "Frame",
+                  "color": "yellow"
+                },
+                " &rarr; ",
+                {
+                  "text": "Bit",
+                  "color": "yellow"
+                },
+                " stream."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "De-encapsulation",
+                  "color": "blue"
+                },
+                " (From ",
+                {
+                  "text": "Device B",
+                  "color": "red"
+                },
+                " to ",
+                {
+                  "text": "Device A",
+                  "color": "red"
+                },
+                ")"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "As ",
+                {
+                  "text": "Data",
+                  "color": "yellow"
+                },
+                " moves up the ",
+                {
+                  "text": "OSI Model",
+                  "color": "blue"
+                },
+                " layers from the ",
+                {
+                  "text": "Physical Layer",
+                  "color": "purple"
+                },
+                " to the ",
+                {
+                  "text": "Application Layer",
+                  "color": "purple"
+                },
+                ", each layer removes and processes its corresponding ",
+                {
+                  "text": "header",
+                  "color": "fuchsia"
+                },
+                " information, eventually delivering the original ",
+                {
+                  "text": "Data",
+                  "color": "yellow"
+                },
+                " to the application."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "title": "Common Protocols 1",
+          "content": [
+            {
+              "type": "h2",
+              "text": "{TCP / UDP}[fuchsia]",
+              "parts": [
+                {
+                  "text": "TCP / UDP",
+                  "color": "fuchsia"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Ports",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "many",
+                      "color": "yellow"
+                    },
+                    " (",
+                    {
+                      "text": "transport layer",
+                      "color": "blue"
+                    },
+                    ")"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Why care",
+                      "color": "blue"
+                    },
+                    ":"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "TCP",
+                          "color": "blue"
+                        },
+                        " = ",
+                        {
+                          "text": "connection-oriented",
+                          "color": "blue"
+                        },
+                        " (risks: ",
+                        {
+                          "text": "session hijack",
+                          "color": "red"
+                        },
+                        ", ",
+                        {
+                          "text": "SYN floods",
+                          "color": "red"
+                        },
+                        ")."
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            {
+                              "text": "UDP",
+                              "color": "blue"
+                            },
+                            " = ",
+                            {
+                              "text": "connectionless",
+                              "color": "blue"
+                            },
+                            " (risks: ",
+                            {
+                              "text": "amplification",
+                              "color": "red"
+                            },
+                            ", ",
+                            {
+                              "text": "stealthy services",
+                              "color": "red"
+                            },
+                            ")."
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Tools",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "nmap -sT",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "nmap -sU",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "tcpdump",
+                      "color": "purple"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{DNS}[fuchsia]",
+              "parts": [
+                {
+                  "text": "DNS",
+                  "color": "fuchsia"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Ports",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "53",
+                      "color": "yellow"
+                    },
+                    " (",
+                    {
+                      "text": "UDP/TCP",
+                      "color": "blue"
+                    },
+                    ")"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Why care",
+                      "color": "blue"
+                    },
+                    ":"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "Reconnaissance",
+                          "color": "red"
+                        },
+                        " (",
+                        {
+                          "text": "zone transfer",
+                          "color": "red"
+                        },
+                        ")."
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            {
+                              "text": "Subdomain enumeration",
+                              "color": "red"
+                            },
+                            "."
+                          ]
+                        },
+                        {
+                          "parts": [
+                            {
+                              "text": "DNS tunneling",
+                              "color": "red"
+                            },
+                            " / ",
+                            {
+                              "text": "exfiltration",
+                              "color": "red"
+                            },
+                            "."
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Tools",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "dig",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "dnsrecon",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "subfinder",
+                      "color": "purple"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{HTTP / HTTPS}[fuchsia]",
+              "parts": [
+                {
+                  "text": "HTTP / HTTPS",
+                  "color": "fuchsia"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Ports",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "80",
+                      "color": "yellow"
+                    },
+                    " (",
+                    {
+                      "text": "HTTP",
+                      "color": "blue"
+                    },
+                    "), ",
+                    {
+                      "text": "443",
+                      "color": "yellow"
+                    },
+                    " (",
+                    {
+                      "text": "HTTPS",
+                      "color": "blue"
+                    },
+                    ")"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Why care",
+                      "color": "blue"
+                    },
+                    ":"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "Web applications",
+                          "color": "blue"
+                        },
+                        " live here."
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            "Vulnerabilities: ",
+                            {
+                              "text": "XSS",
+                              "color": "red"
+                            },
+                            ", ",
+                            {
+                              "text": "SQLi",
+                              "color": "red"
+                            },
+                            ", ",
+                            {
+                              "text": "SSRF",
+                              "color": "red"
+                            },
+                            ", ",
+                            {
+                              "text": "authentication flaws",
+                              "color": "red"
+                            },
+                            "."
+                          ]
+                        },
+                        {
+                          "parts": [
+                            {
+                              "text": "HTTPS",
+                              "color": "green"
+                            },
+                            " ",
+                            {
+                              "text": "hides content",
+                              "color": "green"
+                            },
+                            " but ",
+                            {
+                              "text": "not all flaws",
+                              "color": "red"
+                            },
+                            "."
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Tools",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "Burp Suite",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "curl",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "nikto",
+                      "color": "purple"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{SSH}[fuchsia]",
+              "parts": [
+                {
+                  "text": "SSH",
+                  "color": "fuchsia"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Port",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "22",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Why care",
+                      "color": "blue"
+                    },
+                    ":"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "Remote shell access",
+                          "color": "blue"
+                        },
+                        "."
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            "Vulnerabilities: ",
+                            {
+                              "text": "brute force",
+                              "color": "red"
+                            },
+                            ", ",
+                            {
+                              "text": "key misconfiguration",
+                              "color": "red"
+                            },
+                            ", ",
+                            {
+                              "text": "lateral movement",
+                              "color": "red"
+                            },
+                            "."
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Tools",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "ssh",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "hydra",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "ssh-keyscan",
+                      "color": "purple"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{FTP / SFTP}[fuchsia]",
+              "parts": [
+                {
+                  "text": "FTP / SFTP",
+                  "color": "fuchsia"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Ports",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "21",
+                      "color": "yellow"
+                    },
+                    " (",
+                    {
+                      "text": "FTP",
+                      "color": "blue"
+                    },
+                    "), ",
+                    {
+                      "text": "22",
+                      "color": "yellow"
+                    },
+                    " (",
+                    {
+                      "text": "SFTP",
+                      "color": "blue"
+                    },
+                    ")"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Why care",
+                      "color": "blue"
+                    },
+                    ":"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "FTP",
+                          "color": "blue"
+                        },
+                        " often uses ",
+                        {
+                          "text": "plaintext credentials",
+                          "color": "red"
+                        },
+                        "."
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            {
+                              "text": "Anonymous upload risks",
+                              "color": "red"
+                            },
+                            "."
+                          ]
+                        },
+                        {
+                          "parts": [
+                            {
+                              "text": "SFTP",
+                              "color": "green"
+                            },
+                            " is ",
+                            {
+                              "text": "more secure",
+                              "color": "green"
+                            },
+                            " but ",
+                            {
+                              "text": "credentials matter",
+                              "color": "red"
+                            },
+                            "."
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Tools",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "ftp",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "lftp",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "nc",
+                      "color": "purple"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{SMTP / IMAP / POP3}[fuchsia]",
+              "parts": [
+                {
+                  "text": "SMTP / IMAP / POP3",
+                  "color": "fuchsia"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Ports",
+                      "color": "blue"
+                    },
+                    ":"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "SMTP",
+                          "color": "blue"
+                        },
+                        ": ",
+                        {
+                          "text": "25",
+                          "color": "yellow"
+                        },
+                        ", ",
+                        {
+                          "text": "587",
+                          "color": "yellow"
+                        },
+                        ", ",
+                        {
+                          "text": "465",
+                          "color": "yellow"
+                        }
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            {
+                              "text": "IMAP",
+                              "color": "blue"
+                            },
+                            ": ",
+                            {
+                              "text": "143",
+                              "color": "yellow"
+                            },
+                            ", ",
+                            {
+                              "text": "993",
+                              "color": "yellow"
+                            }
+                          ]
+                        },
+                        {
+                          "parts": [
+                            {
+                              "text": "POP3",
+                              "color": "blue"
+                            },
+                            ": ",
+                            {
+                              "text": "110",
+                              "color": "yellow"
+                            },
+                            ", ",
+                            {
+                              "text": "995",
+                              "color": "yellow"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Why care",
+                      "color": "blue"
+                    },
+                    ":"
+                  ],
+                  "subItems": [
+                    {
+                      "parts": [
+                        {
+                          "text": "Phishing",
+                          "color": "red"
+                        },
+                        "."
+                      ],
+                      "subItems": [
+                        {
+                          "parts": [
+                            {
+                              "text": "Mail-based injection",
+                              "color": "red"
+                            },
+                            "."
+                          ]
+                        },
+                        {
+                          "parts": [
+                            {
+                              "text": "Account takeover",
+                              "color": "red"
+                            },
+                            "."
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Tools",
+                      "color": "blue"
+                    },
+                    ": ",
+                    {
+                      "text": "swaks",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "openssl s_client",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "telnet",
+                      "color": "purple"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "title": "Common Protocols 2",
+          "content": [
+            {
+              "type": "h1",
+              "text": "{Common Network Services}[blue]",
+              "parts": [
+                {
+                  "text": "Common Network Services",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{SMB (Server Message Block)}[blue]",
+              "parts": [
+                {
+                  "text": "SMB (Server Message Block)",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Ports",
+                      "color": "purple"
+                    },
+                    ": ",
+                    {
+                      "text": "445/139",
+                      "color": "purple"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Context",
+                      "color": "yellow"
+                    },
+                    ": ",
+                    {
+                      "text": "File shares",
+                      "color": "yellow"
+                    },
+                    " & ",
+                    {
+                      "text": "Windows internals",
+                      "color": "yellow"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Why Care}[yellow]",
+              "parts": [
+                {
+                  "text": "Why Care",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Lateral movement",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "EternalBlue-style exploits",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Tools}[green]",
+              "parts": [
+                {
+                  "text": "Tools",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "smbclient",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "enum4linux",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "crackmapexec",
+                      "color": "green"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{LDAP (Lightweight Directory Access Protocol)}[blue]",
+              "parts": [
+                {
+                  "text": "LDAP (Lightweight Directory Access Protocol)",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Ports",
+                      "color": "purple"
+                    },
+                    ": ",
+                    {
+                      "text": "389/636",
+                      "color": "purple"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Why Care}[yellow]",
+              "parts": [
+                {
+                  "text": "Why Care",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "AD enumeration",
+                      "color": "red"
+                    },
+                    " & ",
+                    {
+                      "text": "user lookup",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Tools}[green]",
+              "parts": [
+                {
+                  "text": "Tools",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "ldapsearch",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "impacket",
+                      "color": "green"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{RDP (Remote Desktop Protocol)}[blue]",
+              "parts": [
+                {
+                  "text": "RDP (Remote Desktop Protocol)",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Ports",
+                      "color": "purple"
+                    },
+                    ": ",
+                    {
+                      "text": "3389",
+                      "color": "purple"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Why Care}[yellow]",
+              "parts": [
+                {
+                  "text": "Why Care",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Remote Desktop",
+                      "color": "yellow"
+                    },
+                    " for ",
+                    {
+                      "text": "credential harvesting",
+                      "color": "red"
+                    },
+                    " & ",
+                    {
+                      "text": "persistence",
+                      "color": "red"
+                    },
+                    "."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Tools}[green]",
+              "parts": [
+                {
+                  "text": "Tools",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "freerdp",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "rdpcheck",
+                      "color": "green"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "{Network Utilities & Encryption}[blue]",
+              "parts": [
+                {
+                  "text": "Network Utilities & Encryption",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{ICMP (Internet Control Message Protocol)}[blue]",
+              "parts": [
+                {
+                  "text": "ICMP (Internet Control Message Protocol)",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Why Care}[yellow]",
+              "parts": [
+                {
+                  "text": "Why Care",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Discovery",
+                      "color": "yellow"
+                    },
+                    ", ",
+                    {
+                      "text": "traceroute",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Covert channels",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Tools}[green]",
+              "parts": [
+                {
+                  "text": "Tools",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "ping",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "hping3",
+                      "color": "green"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{DHCP (Dynamic Host Configuration Protocol)}[blue]",
+              "parts": [
+                {
+                  "text": "DHCP (Dynamic Host Configuration Protocol)",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Why Care}[yellow]",
+              "parts": [
+                {
+                  "text": "Why Care",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Rogue DHCP",
+                      "color": "red"
+                    },
+                    " can ",
+                    {
+                      "text": "hijack routing/DNS",
+                      "color": "red"
+                    },
+                    "."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Tools}[green]",
+              "parts": [
+                {
+                  "text": "Tools",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "dhcpdump",
+                      "color": "green"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{SNMP (Simple Network Management Protocol)}[blue]",
+              "parts": [
+                {
+                  "text": "SNMP (Simple Network Management Protocol)",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Ports",
+                      "color": "purple"
+                    },
+                    ": ",
+                    {
+                      "text": "161/162",
+                      "color": "purple"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Why Care}[yellow]",
+              "parts": [
+                {
+                  "text": "Why Care",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Device information",
+                      "color": "yellow"
+                    },
+                    " via ",
+                    {
+                      "text": "community strings",
+                      "color": "red"
+                    },
+                    "."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Tools}[green]",
+              "parts": [
+                {
+                  "text": "Tools",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "snmpwalk",
+                      "color": "green"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{TLS/SSL (Transport Layer Security / Secure Sockets Layer)}[blue]",
+              "parts": [
+                {
+                  "text": "TLS/SSL (Transport Layer Security / Secure Sockets Layer)",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Why Care}[yellow]",
+              "parts": [
+                {
+                  "text": "Why Care",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Encryption layer",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Weak ciphers",
+                      "color": "red"
+                    },
+                    ", ",
+                    {
+                      "text": "misconfiguration",
+                      "color": "red"
+                    },
+                    " = ",
+                    {
+                      "text": "attack surface",
+                      "color": "red"
+                    },
+                    "."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Tools}[green]",
+              "parts": [
+                {
+                  "text": "Tools",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "openssl s_client",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "testssl.sh",
+                      "color": "green"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9",
+          "title": "Networking Tools",
+          "content": [
+            {
+              "type": "h1",
+              "text": "{Networking Tools Every Hacker Must Know}[red]",
+              "parts": [
+                {
+                  "text": "Networking Tools Every Hacker Must Know",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{Essential Tools and Their Functions}[purple]",
+              "parts": [
+                {
+                  "text": "Essential Tools and Their Functions",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Nmap",
+                      "color": "blue"
+                    },
+                    "**",
+                    ": ",
+                    {
+                      "text": "Port scanning",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "OS detection",
+                      "color": "green"
+                    },
+                    ", and ",
+                    {
+                      "text": "service enumeration",
+                      "color": "green"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Wireshark",
+                      "color": "blue"
+                    },
+                    "**",
+                    ": ",
+                    {
+                      "text": "Packet analysis",
+                      "color": "green"
+                    },
+                    " and ",
+                    {
+                      "text": "deep protocol inspection",
+                      "color": "green"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "tcpdump",
+                      "color": "blue"
+                    },
+                    "**",
+                    ": ",
+                    {
+                      "text": "High-speed packet capture",
+                      "color": "green"
+                    },
+                    " for quick captures."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Masscan",
+                      "color": "blue"
+                    },
+                    "**",
+                    ": ",
+                    {
+                      "text": "Command-line port scanner",
+                      "color": "green"
+                    },
+                    " for ",
+                    {
+                      "text": "massive IP ranges",
+                      "color": "yellow"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Netcat (nc)",
+                      "color": "blue"
+                    },
+                    "**",
+                    ": ",
+                    {
+                      "text": "Banner grabbing",
+                      "color": "green"
+                    },
+                    " and ",
+                    {
+                      "text": "raw TCP-UDP connections",
+                      "color": "yellow"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Burp Suite",
+                      "color": "blue"
+                    },
+                    "**",
+                    ": ",
+                    {
+                      "text": "Web vulnerability scanner",
+                      "color": "green"
+                    },
+                    " and ",
+                    {
+                      "text": "proxy",
+                      "color": "green"
+                    },
+                    " for ",
+                    {
+                      "text": "pen testing",
+                      "color": "yellow"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "dnsrecon",
+                      "color": "blue"
+                    },
+                    "**",
+                    ": ",
+                    {
+                      "text": "DNS enumeration",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "zone transfer",
+                      "color": "yellow"
+                    },
+                    ", and ",
+                    {
+                      "text": "record gathering",
+                      "color": "green"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Shodan",
+                      "color": "blue"
+                    },
+                    "**",
+                    ": ",
+                    {
+                      "text": "Search engine",
+                      "color": "green"
+                    },
+                    " for ",
+                    {
+                      "text": "internet-connected devices and services",
+                      "color": "yellow"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Metasploit",
+                      "color": "blue"
+                    },
+                    "**",
+                    ": ",
+                    {
+                      "text": "Exploitation framework",
+                      "color": "green"
+                    },
+                    " for ",
+                    {
+                      "text": "automated pen testing",
+                      "color": "yellow"
+                    },
+                    "."
+                  ]
+                }
+              ]
             }
           ]
         }
