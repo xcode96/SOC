@@ -6964,36 +6964,403 @@
             {
               "type": "code",
               "language": "",
-              "text": "\n---\n\n### 🧱 Output Structure\n\nAutoRecon creates a directory structure like this:\n"
+              "text": "\n---\n\n### 🧱 Output Structure\n\nAutoRecon creates a directory structure like this:\n\n\n\nresults/\n├── 192.168.0.1/\n│   ├── scans/\n│   │   ├── nmap/\n│   │   │   ├── 01-initial.txt\n│   │   │   └── 02-service.txt\n│   ├── enum/\n│   │   ├── smb/\n│   │   ├── http/\n│   │   └── ftp/\n│   ├── loot/\n│   │   └── found_files/\n│   ├── screenshots/\n│   └── reports/\n│       └── summary.txt\n"
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**scans/**",
+                    " → Nmap and Gobuster results"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**enum/**",
+                    " → Output from enumeration tools (enum4linux, snmpwalk, etc.)"
+                  ]
+                },
+                {
+                  "parts": [
+                    "**loot/**",
+                    " → Downloaded files, credentials, etc."
+                  ]
+                },
+                {
+                  "parts": [
+                    "**reports/**",
+                    " → Final summary reports"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🔍 Tools Used Internally",
+              "parts": [
+                "🔍 Tools Used Internally"
+              ]
             },
             {
               "type": "p",
               "parts": [
-                "results/\n├── 192.168.0.1/\n│   ├── scans/\n│   │   ├── nmap/\n│   │   │   ├── 01-initial.txt\n│   │   │   └── 02-service.txt\n│   ├── enum/\n│   │   ├── smb/\n│   │   ├── http/\n│   │   └── ftp/\n│   ├── loot/\n│   │   └── found_files/\n│   ├── screenshots/\n│   └── reports/\n│       └── summary.txt"
+                "AutoRecon can automatically call many common recon tools:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| Service            | Tools Used                                                   |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ------------------ | ------------------------------------------------------------ |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**FTP**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "ftp-anon"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "hydra"
+                },
+                " (optional)                       |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**SSH**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "ssh-audit"
+                },
+                "                                          |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**HTTP/S**",
+                "         | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap http-enum"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "gobuster"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "nikto"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "whatweb"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "curl"
+                },
+                "     |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**SMB**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap smb-* scripts"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "enum4linux-ng"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "smbclient"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "smbmap"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**SNMP**",
+                "           | ",
+                {
+                  "type": "inline_code",
+                  "text": "snmpwalk"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "onesixtyone"
+                },
+                "                                    |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**DNS**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "dig"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "dnsrecon"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "dnsenum"
+                },
+                "                                 |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**NFS**",
+                "            | ",
+                {
+                  "type": "inline_code",
+                  "text": "showmount"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap nfs-* scripts"
+                },
+                "                            |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                "**SMTP/POP3/IMAP**",
+                " | ",
+                {
+                  "type": "inline_code",
+                  "text": "nmap smtp-* scripts"
+                },
+                ", ",
+                {
+                  "type": "inline_code",
+                  "text": "hydra"
+                },
+                " (optional)                    |"
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "📊 Reporting",
+              "parts": [
+                "📊 Reporting"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "AutoRecon automatically creates:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "A ",
+                    "**summary report**",
+                    " (",
+                    {
+                      "type": "inline_code",
+                      "text": "summary.txt"
+                    },
+                    ") listing all open ports, protocols, services, and findings."
+                  ]
+                },
+                {
+                  "parts": [
+                    "A ",
+                    "**loot directory**",
+                    " for credentials, web files, and sensitive data."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Individual ",
+                    "**tool outputs**",
+                    " for manual inspection and reference during exploitation."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🧹 Cleaning Up / Restarting",
+              "parts": [
+                "🧹 Cleaning Up / Restarting"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "To delete results and re-run:"
               ]
             },
             {
               "type": "code",
               "language": "",
-              "text": "\n- **scans/** → Nmap and Gobuster results\n- **enum/** → Output from enumeration tools (enum4linux, snmpwalk, etc.)\n- **loot/** → Downloaded files, credentials, etc.\n- **reports/** → Final summary reports\n\n---\n\n### 🔍 Tools Used Internally\n\nAutoRecon can automatically call many common recon tools:\n\n| Service            | Tools Used                                                   |\n\n| ------------------ | ------------------------------------------------------------ |\n\n| **FTP**            | `nmap`, `ftp-anon`, `hydra` (optional)                       |\n\n| **SSH**            | `nmap`, `ssh-audit`                                          |\n\n| **HTTP/S**         | `nmap http-enum`, `gobuster`, `nikto`, `whatweb`, `curl`     |\n\n| **SMB**            | `nmap smb-* scripts`, `enum4linux-ng`, `smbclient`, `smbmap` |\n\n| **SNMP**           | `snmpwalk`, `onesixtyone`                                    |\n\n| **DNS**            | `dig`, `dnsrecon`, `dnsenum`                                 |\n\n| **NFS**            | `showmount`, `nmap nfs-* scripts`                            |\n\n| **SMTP/POP3/IMAP** | `nmap smtp-* scripts`, `hydra` (optional)                    |\n\n---\n\n### 📊 Reporting\n\nAutoRecon automatically creates:\n\n- A **summary report** (`summary.txt`) listing all open ports, protocols, services, and findings.\n- A **loot directory** for credentials, web files, and sensitive data.\n- Individual **tool outputs** for manual inspection and reference during exploitation.\n\n---\n\n### 🧹 Cleaning Up / Restarting\n\nTo delete results and re-run:\n"
+              "text": "\nrm -rf results/192.168.0.1\nautorecon -vv 192.168.0.1\n"
             },
             {
-              "type": "p",
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "💡 Tips & Best Practices",
               "parts": [
-                "rm -rf results/192.168.0.1\nautorecon -vv 192.168.0.1"
+                "💡 Tips & Best Practices"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Always use ",
+                    {
+                      "type": "inline_code",
+                      "text": "-vv"
+                    },
+                    " for detailed real-time updates."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Run AutoRecon inside ",
+                    {
+                      "type": "inline_code",
+                      "text": "tmux"
+                    },
+                    " or ",
+                    {
+                      "type": "inline_code",
+                      "text": "screen"
+                    },
+                    " to prevent interruption."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Combine with ",
+                    {
+                      "type": "inline_code",
+                      "text": "autorecon --resume"
+                    },
+                    " if scans stop unexpectedly."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Check the ",
+                    {
+                      "type": "inline_code",
+                      "text": "reports/summary.txt"
+                    },
+                    " file first for a high-level overview."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Follow up with manual enumeration once you identify key services."
+                  ]
+                },
+                {
+                  "parts": [
+                    "You can ",
+                    "**extend AutoRecon**",
+                    " by writing custom module files in ",
+                    {
+                      "type": "inline_code",
+                      "text": "/modules/"
+                    },
+                    " directory."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "hr"
+            },
+            {
+              "type": "h3",
+              "text": "🚀 Example Full Workflow (OSCP-style)",
+              "parts": [
+                "🚀 Example Full Workflow (OSCP-style)"
               ]
             },
             {
               "type": "code",
               "language": "",
-              "text": "\n---\n\n### 💡 Tips & Best Practices\n\n- Always use `-vv` for detailed real-time updates.\n- Run AutoRecon inside `tmux` or `screen` to prevent interruption.\n- Combine with `autorecon --resume` if scans stop unexpectedly.\n- Check the `reports/summary.txt` file first for a high-level overview.\n- Follow up with manual enumeration once you identify key services.\n- You can **extend AutoRecon** by writing custom module files in `/modules/` directory.\n\n---\n\n### 🚀 Example Full Workflow (OSCP-style)\n"
-            },
-            {
-              "type": "h1",
-              "text": "Step 1: Quick discovery",
-              "parts": [
-                "Step 1: Quick discovery"
-              ]
+              "text": "\n# Step 1: Quick discovery\n"
             },
             {
               "type": "p",
@@ -7118,7 +7485,12 @@
             {
               "type": "code",
               "language": "",
-              "text": "\n**Result:**\nAutoRecon performs a comprehensive network reconnaissance on `192.168.0.1`, producing structured outputs ready for exploitation and documentation.\n\n---\n\nWould you like me to include **custom Nmap profiles** used internally by AutoRecon (e.g., initial, full, UDP scans) with full command examples next?"
+              "text": "\n**Result:**\nAutoRecon performs a comprehensive network reconnaissance on `192.168.0.1`, producing structured outputs ready for exploitation and documentation.\n\n---\n\nWould you like me to include **custom Nmap profiles** used internally by AutoRecon (e.g., initial, full, UDP scans) with full command examples next?\n"
+            },
+            {
+              "type": "code",
+              "language": "",
+              "text": ""
             }
           ]
         }
