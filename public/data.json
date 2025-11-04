@@ -42814,31 +42814,1070 @@
           "title": "OWASP Top 10 ",
           "content": [
             {
-              "type": "h2",
-              "text": "Welcome to the OWAPS TOP 10 Guide",
+              "type": "h1",
+              "text": "{OWASP Top 10 2021}[purple] — Bug Name Examples by Category",
               "parts": [
-                "Welcome to the OWAPS TOP 10 Guide"
+                {
+                  "text": "OWASP Top 10 2021",
+                  "color": "purple"
+                },
+                " — Bug Name Examples by Category"
               ]
             },
             {
-              "type": "p",
+              "type": "h2",
+              "text": "A01: {Broken Access Control}[red]",
               "parts": [
-                "This is a new guide. Start adding topics!"
+                "A01: ",
+                {
+                  "text": "Broken Access Control",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "IDOR",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Directory or Path Traversal",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Function Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Privilege Escalation",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Horizontal and Vertical Privilege Escalation",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A02: {Cryptographic Failures}[red]",
+              "parts": [
+                "A02: ",
+                {
+                  "text": "Cryptographic Failures",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Cleartext Transmission of Sensitive Data",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insufficient Entropy",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Random Number Generation",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Padding Oracle Attack",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "Use of ",
+                    {
+                      "text": "Weak Ciphers",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Weak or Misconfigured Cryptographic Configurations",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A03: {Injection}[red]",
+              "parts": [
+                "A03: ",
+                {
+                  "text": "Injection",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "OS Command Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "SQL Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Cross-Site Scripting (XSS)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Expression Language Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "XML Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "LDAP Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "NoSQL Injection",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "SSTI",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A04: {Insecure Design}[red]",
+              "parts": [
+                "A04: ",
+                {
+                  "text": "Insecure Design",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Security-by-Obscurity",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Session Fixation",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unintended Functionality",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "Use of ",
+                    {
+                      "text": "Hardcoded Credentials",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Weak Error Handling",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A05: {Security Misconfiguration}[red]",
+              "parts": [
+                "A05: ",
+                {
+                  "text": "Security Misconfiguration",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Default Accounts and Passwords",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Default or Weak Configuration Settings",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Disabled Security Features",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Improperly Configured Permissions and Access Controls (Insecure Permissions)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unnecessary Features or Services Enabled",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    "Use of ",
+                    {
+                      "text": "Vulnerable Software",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Directory Listing Enabled",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Default Passwords or Credentials",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Improperly Configured Cross-Origin Resource Sharing (CORS)",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A06: {Vulnerable and Outdated Components}[red]",
+              "parts": [
+                "A06: ",
+                {
+                  "text": "Vulnerable and Outdated Components",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "Use of ",
+                    {
+                      "text": "Known Vulnerable Components",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Outdated Libraries and Frameworks",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Third-Party Components with Unpatched Vulnerabilities",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Lack of Patching and Updates",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A07: {Identification and Authentication Failures}[red]",
+              "parts": [
+                "A07: ",
+                {
+                  "text": "Identification and Authentication Failures",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Brute-Force Attacks",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Credential Stuffing",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Credential Theft",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Session Hijacking",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Weak Password Policies",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Weak Session Cookies",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Lack of Multi-Factor Authentication (MFA)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Session Management",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Authentication Protocols",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Password Storage",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "User Enumeration",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A08: {Software and Data Integrity Failures}[red]",
+              "parts": [
+                "A08: ",
+                {
+                  "text": "Software and Data Integrity Failures",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Insecure Direct Object References (IDOR)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Server-Side Request Forgery (SSRF)",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "SQL Injection and NoSQL Injection Variants",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Tampering with Updates",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unvalidated Redirects and Forwards",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A09: {Security Logging and Monitoring Failures}[red]",
+              "parts": [
+                "A09: ",
+                {
+                  "text": "Security Logging and Monitoring Failures",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Lack of Audit Logging",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Insufficient Log Data",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unmonitored Logs",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Unsecured Logs",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "A10: {Server-Side Request Forgery (SSRF)}[red]",
+              "parts": [
+                "A10: ",
+                {
+                  "text": "Server-Side Request Forgery (SSRF)",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Unauthenticated SSRF",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Authenticated SSRF",
+                      "color": "red"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "{WEB APPLICATION PENTESTING CHECKLIST}[purple]",
+              "parts": [
+                {
+                  "text": "WEB APPLICATION PENTESTING CHECKLIST",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "{OWASP Based Checklist}[blue]",
+              "parts": [
+                {
+                  "text": "OWASP Based Checklist",
+                  "color": "blue"
+                }
               ]
             }
           ]
         },
         {
           "id": "1",
-          "title": "Broken Access Control ",
+          "title": "INFORMATION GATHERING",
           "content": [
             {
               "type": "h2",
-              "text": "Broken Access Control "
+              "text": "{INFORMATION GATHERING}[purple]",
+              "parts": [
+                {
+                  "text": "INFORMATION GATHERING",
+                  "color": "purple"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "1. {Open Source Reconnaissance}[blue]",
+              "parts": [
+                "1. ",
+                {
+                  "text": "Open Source Reconnaissance",
+                  "color": "blue"
+                }
+              ]
             },
             {
               "type": "p",
-              "text": "Content for this topic is coming soon."
+              "parts": [
+                "☐ Perform ",
+                {
+                  "text": "Google Dorks",
+                  "color": "blue"
+                },
+                " search"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Perform ",
+                {
+                  "text": "OSINT",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "2. {Fingerprint Web Application Framework}[blue]",
+              "parts": [
+                "2. ",
+                {
+                  "text": "Fingerprint Web Application Framework",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Use the ",
+                {
+                  "text": "Wappalyzer",
+                  "color": "yellow"
+                },
+                " browser extension"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Use ",
+                {
+                  "text": "Whatweb",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ View ",
+                {
+                  "text": "URL extensions",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ View ",
+                {
+                  "text": "HTML source code",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ View the ",
+                {
+                  "text": "cookie parameter",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ View the ",
+                {
+                  "text": "HTTP headers",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "3. {Enumerating Web Server’s Applications}[blue]",
+              "parts": [
+                "3. ",
+                {
+                  "text": "Enumerating Web Server’s Applications",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Enumerating with ",
+                {
+                  "text": "Nmap",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Enumerating with ",
+                {
+                  "text": "Netcat",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Perform a ",
+                {
+                  "text": "DNS lookup",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Perform a ",
+                {
+                  "text": "Reverse DNS lookup",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "4. {Fingerprinting Web Server}[blue]",
+              "parts": [
+                "4. ",
+                {
+                  "text": "Fingerprinting Web Server",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Find the type of ",
+                {
+                  "text": "Web Server",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Find the version details of the ",
+                {
+                  "text": "Web Server",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "5. {Identifying Application’s Entry Points}[blue]",
+              "parts": [
+                "5. ",
+                {
+                  "text": "Identifying Application’s Entry Points",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify what the methods used are?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify where the methods used are?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Identify the ",
+                {
+                  "text": "Injection point",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "6. {Looking For Metafiles}[blue]",
+              "parts": [
+                "6. ",
+                {
+                  "text": "Looking For Metafiles",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ View the ",
+                {
+                  "text": "Robots.txt",
+                  "color": "blue"
+                },
+                " file"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ View the ",
+                {
+                  "text": "Sitemap.xml",
+                  "color": "blue"
+                },
+                " file"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ View the ",
+                {
+                  "text": "Humans.txt",
+                  "color": "blue"
+                },
+                " file"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ View the ",
+                {
+                  "text": "Security.txt",
+                  "color": "blue"
+                },
+                " file"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "7. {Review The Web Contents}[blue]",
+              "parts": [
+                "7. ",
+                {
+                  "text": "Review The Web Contents",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Inspect the page source for ",
+                {
+                  "text": "sensitive info",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Try to find ",
+                {
+                  "text": "Sensitive Javascript codes",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Try to find any ",
+                {
+                  "text": "keys",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Make sure the ",
+                {
+                  "text": "autocomplete is disabled",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "8. {Map Application Architecture}[blue]",
+              "parts": [
+                "8. ",
+                {
+                  "text": "Map Application Architecture",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Map the overall site structure"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "9. {Mapping Execution Paths}[blue]",
+              "parts": [
+                "9. ",
+                {
+                  "text": "Mapping Execution Paths",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Use ",
+                {
+                  "text": "Burp Suite",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Use ",
+                {
+                  "text": "Dirsearch",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "☐ Use ",
+                {
+                  "text": "Gobuster",
+                  "color": "yellow"
+                }
+              ]
             }
           ]
         },
