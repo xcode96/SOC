@@ -4153,6 +4153,1158 @@
               "text": "Logs to Check: Access Logs, System Event Logs, Network Logs."
             }
           ]
+        },
+        {
+          "id": "1",
+          "title": "1",
+          "content": [
+            {
+              "type": "h1",
+              "text": "TOP 30 {Security Operations Center (SOC)}[blue] Interview Questions & Answers",
+              "parts": [
+                "TOP 30 ",
+                {
+                  "text": "Security Operations Center (SOC)",
+                  "color": "blue"
+                },
+                " Interview Questions & Answers"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "The ",
+                {
+                  "text": "SOC Analyst",
+                  "color": "purple"
+                },
+                " (",
+                {
+                  "text": "L1",
+                  "color": "purple"
+                },
+                " & ",
+                {
+                  "text": "L2",
+                  "color": "purple"
+                },
+                ") interview questions and answers shared here are based on personal understanding, learning, and experience. These are intended solely for reference and educational purposes."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "It's highly recommended to customize the responses according to one's own knowledge, real-time exposure, ",
+                {
+                  "text": "tools",
+                  "color": "green"
+                },
+                " used, and practical scenarios to sound authentic and confident during interviews."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{L1 SOC Analyst}[purple] Questions",
+              "parts": [
+                {
+                  "text": "L1 SOC Analyst",
+                  "color": "purple"
+                },
+                " Questions"
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.1. What is a Security Operations Center (SOC)?",
+              "parts": [
+                "Q.1. What is a Security Operations Center (SOC)?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "A ",
+                {
+                  "text": "SOC",
+                  "color": "blue"
+                },
+                " is a centralized team that continuously monitors, detects, analyzes, and responds to ",
+                {
+                  "text": "cybersecurity incidents",
+                  "color": "fuchsia"
+                },
+                " in real time within an organization."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.2. What are the primary responsibilities of an L1 SOC Analyst?",
+              "parts": [
+                "Q.2. What are the primary responsibilities of an L1 SOC Analyst?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "L1 Analysts",
+                  "color": "purple"
+                },
+                " ",
+                {
+                  "text": "monitor alerts",
+                  "color": "green"
+                },
+                ", perform ",
+                {
+                  "text": "initial triage",
+                  "color": "blue"
+                },
+                ", ",
+                {
+                  "text": "escalate confirmed incidents",
+                  "color": "yellow"
+                },
+                ", and document findings."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.3. What is a SIEM and how is it used in SOC operations?",
+              "parts": [
+                "Q.3. What is a SIEM and how is it used in SOC operations?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "A ",
+                {
+                  "text": "SIEM",
+                  "color": "green"
+                },
+                " is a ",
+                {
+                  "text": "security information and event management system",
+                  "color": "blue"
+                },
+                " that collects, aggregates, and analyzes ",
+                {
+                  "text": "log data",
+                  "color": "fuchsia"
+                },
+                " from various sources to detect ",
+                {
+                  "text": "security threats",
+                  "color": "red"
+                },
+                " and manage ",
+                {
+                  "text": "security incidents",
+                  "color": "fuchsia"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.4. What is the difference between a false positive and a false negative in security alerts?",
+              "parts": [
+                "Q.4. What is the difference between a false positive and a false negative in security alerts?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "A ",
+                {
+                  "text": "false positive",
+                  "color": "red"
+                },
+                " is an ",
+                {
+                  "text": "alert",
+                  "color": "fuchsia"
+                },
+                " triggered without a ",
+                {
+                  "text": "real threat",
+                  "color": "red"
+                },
+                ". A ",
+                {
+                  "text": "false negative",
+                  "color": "red"
+                },
+                " is when a ",
+                {
+                  "text": "real threat",
+                  "color": "red"
+                },
+                " goes undetected."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.5. What is phishingin the context of cybersecurity?",
+              "parts": [
+                "Q.5. What is phishingin the context of cybersecurity?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Phishing",
+                  "color": "red"
+                },
+                " is a technique used by ",
+                {
+                  "text": "attackers",
+                  "color": "red"
+                },
+                " to trick individuals into revealing ",
+                {
+                  "text": "sensitive information",
+                  "color": "fuchsia"
+                },
+                " via deceptive emails or websites."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.6. What steps are typically followed after receiving a security alert?",
+              "parts": [
+                "Q.6. What steps are typically followed after receiving a security alert?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Review the alert",
+                  "color": "yellow"
+                },
+                ", ",
+                {
+                  "text": "analyze log details",
+                  "color": "yellow"
+                },
+                ", ",
+                {
+                  "text": "validate the event",
+                  "color": "yellow"
+                },
+                ", check for ",
+                {
+                  "text": "indicators of compromise (IOCs)",
+                  "color": "blue"
+                },
+                ", and ",
+                {
+                  "text": "escalate",
+                  "color": "yellow"
+                },
+                " if necessary."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.7. What does the CIA triad represent in information security?",
+              "parts": [
+                "Q.7. What does the CIA triad represent in information security?"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Confidentiality",
+                      "color": "blue"
+                    },
+                    ": Restricting access to authorized users"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Integrity",
+                      "color": "blue"
+                    },
+                    ": Ensuring data is not altered"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Availability",
+                      "color": "blue"
+                    },
+                    ": Ensuring systems and data are accessible when needed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.8. How can suspicious login activity be identified in log data?",
+              "parts": [
+                "Q.8. How can suspicious login activity be identified in log data?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "By reviewing login times, geolocations, ",
+                {
+                  "text": "multiple failed login attempts",
+                  "color": "red"
+                },
+                ", or access from unfamiliar devices/IPs."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.9. What are Indicators of Compromise (IOCs)?",
+              "parts": [
+                "Q.9. What are Indicators of Compromise (IOCs)?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "IOCs",
+                  "color": "blue"
+                },
+                " are data points that suggest a ",
+                {
+                  "text": "security breach",
+                  "color": "red"
+                },
+                ", such as ",
+                {
+                  "text": "malicious IPs",
+                  "color": "red"
+                },
+                ", ",
+                {
+                  "text": "file hashes",
+                  "color": "fuchsia"
+                },
+                ", domains, or registry changes."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.10. What tools are commonly used to investigate alerts?",
+              "parts": [
+                "Q.10. What tools are commonly used to investigate alerts?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Common ",
+                {
+                  "text": "tools",
+                  "color": "green"
+                },
+                " include ",
+                {
+                  "text": "SIEM platforms",
+                  "color": "green"
+                },
+                " (e.g., ",
+                {
+                  "text": "Splunk",
+                  "color": "green"
+                },
+                "), ",
+                {
+                  "text": "WHOIS",
+                  "color": "green"
+                },
+                ", ",
+                {
+                  "text": "VirusTotal",
+                  "color": "green"
+                },
+                ", ",
+                {
+                  "text": "Shodan",
+                  "color": "green"
+                },
+                ", and ",
+                {
+                  "text": "endpoint monitoring tools",
+                  "color": "green"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.11. What is the function of a {firewall}[green]?",
+              "parts": [
+                "Q.11. What is the function of a ",
+                {
+                  "text": "firewall",
+                  "color": "green"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "A ",
+                {
+                  "text": "firewall",
+                  "color": "green"
+                },
+                " filters incoming and outgoing ",
+                {
+                  "text": "network traffic",
+                  "color": "fuchsia"
+                },
+                " based on ",
+                {
+                  "text": "security rules",
+                  "color": "fuchsia"
+                },
+                " to block ",
+                {
+                  "text": "unauthorized access",
+                  "color": "red"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.12. How are {alerts}[fuchsia] {prioritized}[yellow] in a {SOC}[blue] environment?",
+              "parts": [
+                "Q.12. How are ",
+                {
+                  "text": "alerts",
+                  "color": "fuchsia"
+                },
+                " ",
+                {
+                  "text": "prioritized",
+                  "color": "yellow"
+                },
+                " in a ",
+                {
+                  "text": "SOC",
+                  "color": "blue"
+                },
+                " environment?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Alerts",
+                  "color": "fuchsia"
+                },
+                " are ",
+                {
+                  "text": "prioritized",
+                  "color": "yellow"
+                },
+                " based on impact, criticality of the affected asset, and potential ",
+                {
+                  "text": "threat severity",
+                  "color": "red"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.13. What is {triage}[blue] in {cybersecurity incident management}[yellow]?",
+              "parts": [
+                "Q.13. What is ",
+                {
+                  "text": "triage",
+                  "color": "blue"
+                },
+                " in ",
+                {
+                  "text": "cybersecurity incident management",
+                  "color": "yellow"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Triage",
+                  "color": "blue"
+                },
+                " is the ",
+                {
+                  "text": "process",
+                  "color": "yellow"
+                },
+                " of evaluating and categorizing ",
+                {
+                  "text": "alerts",
+                  "color": "fuchsia"
+                },
+                " to determine which require immediate attention or ",
+                {
+                  "text": "escalation",
+                  "color": "yellow"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.14. What is a {brute-force attack}[red]?",
+              "parts": [
+                "Q.14. What is a ",
+                {
+                  "text": "brute-force attack",
+                  "color": "red"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "It is an ",
+                {
+                  "text": "attack",
+                  "color": "red"
+                },
+                " where an intruder attempts to gain access by systematically ",
+                {
+                  "text": "guessing passwords",
+                  "color": "red"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.15. What is the purpose of a {ticketing system}[green] in {SOC}[blue] operations?",
+              "parts": [
+                "Q.15. What is the purpose of a ",
+                {
+                  "text": "ticketing system",
+                  "color": "green"
+                },
+                " in ",
+                {
+                  "text": "SOC",
+                  "color": "blue"
+                },
+                " operations?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Ticketing systems",
+                  "color": "green"
+                },
+                " are used to ",
+                {
+                  "text": "document",
+                  "color": "yellow"
+                },
+                ", assign, track, and ",
+                {
+                  "text": "manage the lifecycle of security incidents",
+                  "color": "yellow"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "{L2 SOC Analyst}[purple] Questions",
+              "parts": [
+                {
+                  "text": "L2 SOC Analyst",
+                  "color": "purple"
+                },
+                " Questions"
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.16. How does the role of an {L2 SOC Analyst}[purple] differ from {L1}[purple]?",
+              "parts": [
+                "Q.16. How does the role of an ",
+                {
+                  "text": "L2 SOC Analyst",
+                  "color": "purple"
+                },
+                " differ from ",
+                {
+                  "text": "L1",
+                  "color": "purple"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "L2 Analysts",
+                  "color": "purple"
+                },
+                " conduct ",
+                {
+                  "text": "deeper investigations",
+                  "color": "yellow"
+                },
+                ", validate ",
+                {
+                  "text": "escalated incidents",
+                  "color": "yellow"
+                },
+                ", perform ",
+                {
+                  "text": "threat hunting",
+                  "color": "green"
+                },
+                ", and assist in ",
+                {
+                  "text": "incident response",
+                  "color": "yellow"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.17. What are the phases of the {Incident Response lifecycle}[yellow]?",
+              "parts": [
+                "Q.17. What are the phases of the ",
+                {
+                  "text": "Incident Response lifecycle",
+                  "color": "yellow"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Preparation",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Detection & Analysis",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Containment",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Eradication",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Recovery",
+                      "color": "yellow"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Lessons Learned",
+                      "color": "yellow"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.18. What is {threat hunting}[green] in a {SOC}[blue] environment?",
+              "parts": [
+                "Q.18. What is ",
+                {
+                  "text": "threat hunting",
+                  "color": "green"
+                },
+                " in a ",
+                {
+                  "text": "SOC",
+                  "color": "blue"
+                },
+                " environment?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Threat hunting",
+                  "color": "green"
+                },
+                " involves proactively searching for ",
+                {
+                  "text": "undetected threats",
+                  "color": "red"
+                },
+                " using behavioral analytics, hypotheses, and ",
+                {
+                  "text": "threat intelligence",
+                  "color": "green"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.19. How is {malware analysis}[green] typically conducted?",
+              "parts": [
+                "Q.19. How is ",
+                {
+                  "text": "malware analysis",
+                  "color": "green"
+                },
+                " typically conducted?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Malware analysis",
+                  "color": "green"
+                },
+                " involves checking file behavior, hashes, static and dynamic analysis, and running samples in ",
+                {
+                  "text": "sandboxes",
+                  "color": "green"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.20. What is meant by {lateral movement}[red] in a {cyberattack}[red]?",
+              "parts": [
+                "Q.20. What is meant by ",
+                {
+                  "text": "lateral movement",
+                  "color": "red"
+                },
+                " in a ",
+                {
+                  "text": "cyberattack",
+                  "color": "red"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Lateral movement",
+                  "color": "red"
+                },
+                " refers to an ",
+                {
+                  "text": "attacker's progression",
+                  "color": "red"
+                },
+                " through a network after gaining initial access, aiming to reach critical systems."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.21. How is the {MITRE ATT&CK framework}[blue] utilized in investigations?",
+              "parts": [
+                "Q.21. How is the ",
+                {
+                  "text": "MITRE ATT&CK framework",
+                  "color": "blue"
+                },
+                " utilized in investigations?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "It helps map observed tactics and techniques to known ",
+                {
+                  "text": "attacker behavior",
+                  "color": "red"
+                },
+                ", aiding in detection, analysis, and ",
+                {
+                  "text": "response planning",
+                  "color": "yellow"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.22. How is {log correlation}[green] useful in {incident investigation}[yellow]?",
+              "parts": [
+                "Q.22. How is ",
+                {
+                  "text": "log correlation",
+                  "color": "green"
+                },
+                " useful in ",
+                {
+                  "text": "incident investigation",
+                  "color": "yellow"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Log correlation",
+                  "color": "green"
+                },
+                " connects events across multiple sources to reveal hidden patterns and understand ",
+                {
+                  "text": "attack vectors",
+                  "color": "red"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.23. How can a {phishing attack}[red] be validated?",
+              "parts": [
+                "Q.23. How can a ",
+                {
+                  "text": "phishing attack",
+                  "color": "red"
+                },
+                " be validated?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "By analyzing ",
+                {
+                  "text": "email headers",
+                  "color": "fuchsia"
+                },
+                ", inspecting ",
+                {
+                  "text": "URLs or attachments",
+                  "color": "fuchsia"
+                },
+                ", checking sender authenticity, and reviewing recipient actions."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.24. What {steps}[yellow] should be followed when handling a {ransomware incident}[red]?",
+              "parts": [
+                "Q.24. What ",
+                {
+                  "text": "steps",
+                  "color": "yellow"
+                },
+                " should be followed when handling a ",
+                {
+                  "text": "ransomware incident",
+                  "color": "red"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Isolate infected systems",
+                  "color": "yellow"
+                },
+                ", ",
+                {
+                  "text": "identify malware",
+                  "color": "green"
+                },
+                ", review encryption behavior, ",
+                {
+                  "text": "preserve evidence",
+                  "color": "yellow"
+                },
+                ", and ",
+                {
+                  "text": "initiate incident response protocol",
+                  "color": "yellow"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.25. What are some common indicators of {privilege escalation}[red]?",
+              "parts": [
+                "Q.25. What are some common indicators of ",
+                {
+                  "text": "privilege escalation",
+                  "color": "red"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Unusual privilege assignments, access to ",
+                {
+                  "text": "sensitive files",
+                  "color": "fuchsia"
+                },
+                ", execution of system-level commands, or group membership changes."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.26. How can a {complex incident}[fuchsia] be {resolved and documented}[yellow]?",
+              "parts": [
+                "Q.26. How can a ",
+                {
+                  "text": "complex incident",
+                  "color": "fuchsia"
+                },
+                " be ",
+                {
+                  "text": "resolved and documented",
+                  "color": "yellow"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "By conducting ",
+                {
+                  "text": "root cause analysis",
+                  "color": "yellow"
+                },
+                ", ",
+                {
+                  "text": "mitigating the threat",
+                  "color": "yellow"
+                },
+                ", ",
+                {
+                  "text": "documenting steps taken",
+                  "color": "yellow"
+                },
+                ", and ",
+                {
+                  "text": "updating playbooks",
+                  "color": "yellow"
+                },
+                " for future reference."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.27. What are {threat intelligence feeds}[green] and why are they important?",
+              "parts": [
+                "Q.27. What are ",
+                {
+                  "text": "threat intelligence feeds",
+                  "color": "green"
+                },
+                " and why are they important?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Threat intel feeds",
+                  "color": "green"
+                },
+                " provide up-to-date data on ",
+                {
+                  "text": "known threats",
+                  "color": "red"
+                },
+                " (IPs, domains, hashes), helping analysts stay ahead of ",
+                {
+                  "text": "new attacks",
+                  "color": "red"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.28. How is {endpoint telemetry}[blue] analyzed during an investigation?",
+              "parts": [
+                "Q.28. How is ",
+                {
+                  "text": "endpoint telemetry",
+                  "color": "blue"
+                },
+                " analyzed during an investigation?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Using ",
+                {
+                  "text": "EDR tools",
+                  "color": "green"
+                },
+                " to assess file activity, process behavior, registry modifications, and ",
+                {
+                  "text": "network connections",
+                  "color": "fuchsia"
+                },
+                " on the affected endpoint."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.29. What is the purpose of {packet analysis tools}[green] like {Wireshark}[green]?",
+              "parts": [
+                "Q.29. What is the purpose of ",
+                {
+                  "text": "packet analysis tools",
+                  "color": "green"
+                },
+                " like ",
+                {
+                  "text": "Wireshark",
+                  "color": "green"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "These ",
+                {
+                  "text": "tools",
+                  "color": "green"
+                },
+                " capture and inspect ",
+                {
+                  "text": "network packets",
+                  "color": "fuchsia"
+                },
+                " to detect anomalies, unauthorized data transfer, or ",
+                {
+                  "text": "malicious traffic",
+                  "color": "red"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h3",
+              "text": "Q.30. How can {SOC processes}[yellow] be continuously {improved}[yellow]?",
+              "parts": [
+                "Q.30. How can ",
+                {
+                  "text": "SOC processes",
+                  "color": "yellow"
+                },
+                " be continuously ",
+                {
+                  "text": "improved",
+                  "color": "yellow"
+                },
+                "?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "By refining ",
+                {
+                  "text": "detection rules",
+                  "color": "green"
+                },
+                ", ",
+                {
+                  "text": "updating response playbooks",
+                  "color": "green"
+                },
+                ", reducing ",
+                {
+                  "text": "false positives",
+                  "color": "red"
+                },
+                ", ",
+                {
+                  "text": "automating tasks",
+                  "color": "yellow"
+                },
+                ", and ",
+                {
+                  "text": "training the team",
+                  "color": "yellow"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Crack your ",
+                {
+                  "text": "SOC",
+                  "color": "blue"
+                },
+                " interview with confidence—practice with Thinkcloudly’s simple and effective questions!"
+              ]
+            }
+          ]
         }
       ]
     },
