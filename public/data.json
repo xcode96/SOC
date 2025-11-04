@@ -21123,41 +21123,54 @@
       "title": "Traps & Best",
       "topics": [
         {
-          "id": "toc",
+          "id": "ds",
           "title": "Traps & Best",
           "content": [
             {
               "type": "h1",
-              "text": "37 Toughest Interview Questions – Traps & Best‑Answer Playbook",
+              "text": "37 Toughest Interview Questions – {Traps}[red] & {Best‑Answer Playbook}[green]",
               "parts": [
-                "37 Toughest Interview Questions – Traps & Best‑Answer Playbook"
+                "37 Toughest Interview Questions – ",
+                {
+                  "text": "Traps",
+                  "color": "red"
+                },
+                " & ",
+                {
+                  "text": "Best‑Answer Playbook",
+                  "color": "green"
+                }
               ]
             },
             {
               "type": "p",
               "parts": [
-                "For each interview question you’ll see:"
-              ]
-            },
-            {
-              "type": "ul",
-              "items": [
+                "For each ",
                 {
-                  "parts": [
-                    "**TRAP**",
-                    " – what the interviewer is trying to catch you doing.  "
-                  ]
+                  "text": "interview question",
+                  "color": "blue"
                 },
-                {
-                  "parts": [
-                    "**BEST ANSWER**",
-                    " – a concise, high‑impact response you can tailor with your own facts."
-                  ]
-                }
+                " you’ll see:"
               ]
             },
             {
-              "type": "hr"
+              "type": "p",
+              "parts": [
+                "**TRAP**",
+                " – what the interviewer is trying to ",
+                {
+                  "text": "catch you doing",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER**",
+                " – a ",
+                {
+                  "text": "concise, high‑impact response",
+                  "color": "green"
+                },
+                " you can tailor with your own facts."
+              ]
             },
             {
               "type": "h2",
@@ -21167,50 +21180,77 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " 80 % of interviews start here. Candidates usually ",
+                {
+                  "text": "ramble",
+                  "color": "red"
+                },
+                "—",
+                {
+                  "text": "life story",
+                  "color": "red"
+                },
+                ", ",
+                {
+                  "text": "irrelevant jobs",
+                  "color": "red"
+                },
+                ", ",
+                {
+                  "text": "personal details",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " 80 % of interviews start here.  Candidates usually ",
-                    "**ramble**",
-                    "—life story, irrelevant jobs, personal details.  "
+                    "Begin with your ",
+                    {
+                      "text": "current role",
+                      "color": "purple"
+                    },
+                    " & ",
+                    {
+                      "text": "key achievement",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Link that achievement to the ",
                     {
-                      "parts": [
-                        "Begin with ",
-                        "**your current role & key achievement**",
-                        ".  "
-                      ]
+                      "text": "needs you’ve heard the employer has",
+                      "color": "yellow"
                     },
+                    " (ask a quick clarifying question if needed)."
+                  ]
+                },
+                {
+                  "parts": [
+                    "End with a ",
                     {
-                      "parts": [
-                        "**Link**",
-                        " that achievement to the ",
-                        "**needs you’ve heard**",
-                        " the employer has (ask a quick clarifying question if needed).  "
-                      ]
+                      "text": "one‑sentence pitch",
+                      "color": "green"
                     },
+                    " that shows you’re the ",
                     {
-                      "parts": [
-                        "End with a ",
-                        "**one‑sentence pitch**",
-                        " that shows you’re the perfect match."
-                      ]
-                    }
+                      "text": "perfect match",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21220,54 +21260,121 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Appear egotistical",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "overly modest",
+                  "color": "red"
+                },
+                "; give a ",
+                {
+                  "text": "generic list",
+                  "color": "red"
+                },
+                " that isn’t ",
+                {
+                  "text": "tied to the job",
+                  "color": "yellow"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Appear ",
-                    "**egotistical**",
-                    " or ",
-                    "**overly modest**",
-                    "; give a generic list that isn’t tied to the job.  "
+                    {
+                      "text": "Pick 2‑3 strengths that match the posting",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "State the strength."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Back it up with ",
                     {
-                      "parts": [
-                        "  ",
-                        "*Pick 2‑3 strengths that match the posting.*",
-                        "  "
-                      ]
+                      "text": "one recent, results‑oriented example",
+                      "color": "green"
                     },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Reference the “",
                     {
-                      "parts": [
-                        "State the strength.  "
-                      ]
+                      "text": "top‑10 traits employers love",
+                      "color": "yellow"
                     },
+                    "” (",
                     {
-                      "parts": [
-                        "Back it up with ",
-                        "**one recent, results‑oriented example**",
-                        ".  "
-                      ]
+                      "text": "track‑record",
+                      "color": "purple"
                     },
+                    ", ",
                     {
-                      "parts": [
-                        "Reference the “top‑10 traits employers love” (track‑record, intelligence, honesty, culture‑fit, likability, communication, dedication, purpose, enthusiasm, confidence)."
-                      ]
-                    }
+                      "text": "intelligence",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "honesty",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "culture‑fit",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "likability",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "communication",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "dedication",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "purpose",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "enthusiasm",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "confidence",
+                      "color": "purple"
+                    },
+                    ")."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21277,44 +21384,47 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Any admission is an eliminator",
+                  "color": "red"
+                },
+                " – you get honesty points but risk an “F”.\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Any admission is an ",
-                    "**eliminator**",
-                    " – you get honesty points but risk an “F”.  "
+                    "Option A (disguise): ",
+                    {
+                      "text": "Turn a strength into a weakness",
+                      "color": "green"
+                    },
+                    " (e.g., “I push my team hard because I love results”)."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Option B (deflection): ",
                     {
-                      "parts": [
-                        "**Option A (disguise):**",
-                        " Turn a strength into a weakness (e.g., “I push my team hard because I love results”).  "
-                      ]
+                      "text": "Claim you see no real weakness",
+                      "color": "green"
                     },
+                    " that would affect performance and immediately ",
                     {
-                      "parts": [
-                        "**Option B (deflection):**",
-                        " Claim you ",
-                        "**see no real weakness**",
-                        " that would affect performance and immediately ",
-                        "**re‑emphasise your strongest qualifications**",
-                        "."
-                      ]
-                    }
+                      "text": "re‑emphasise your strongest qualifications",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21324,44 +21434,61 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " Candidates may ",
+                {
+                  "text": "spill personal regrets",
+                  "color": "red"
+                },
+                " (",
+                {
+                  "text": "family",
+                  "color": "red"
+                },
+                ", ",
+                {
+                  "text": "relationships",
+                  "color": "red"
+                },
+                ") – ",
+                {
+                  "text": "disastrous",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Candidates may spill ",
-                    "**personal regrets**",
-                    " (family, relationships) – disastrous.  "
+                    {
+                      "text": "Say you harbor no regrets",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Add a ",
                     {
-                      "parts": [
-                        "Say you ",
-                        "**harbor no regrets**",
-                        ".  "
-                      ]
+                      "text": "positive habit",
+                      "color": "purple"
                     },
+                    " you practice (e.g., nightly reflection, acknowledging teammates) that shows you ",
                     {
-                      "parts": [
-                        "Add a ",
-                        "**positive habit**",
-                        " you practice (e.g., nightly reflection, acknowledging teammates) that shows you ",
-                        "**prevent regrets from happening**",
-                        "."
-                      ]
-                    }
+                      "text": "prevent regrets from happening",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21371,53 +21498,115 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Bad‑mouth the former employer",
+                  "color": "red"
+                },
+                ", use “",
+                {
+                  "text": "personality clash",
+                  "color": "red"
+                },
+                "”, or ",
+                {
+                  "text": "sound negative",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Bad‑mouth the former employer, use “personality clash”, or sound negative.  "
+                    {
+                      "text": "Stay completely positive",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Focus on ",
                     {
-                      "parts": [
-                        "Stay ",
-                        "**completely positive**",
-                        ".  "
-                      ]
+                      "text": "growth",
+                      "color": "purple"
                     },
+                    ", ",
                     {
-                      "parts": [
-                        "Focus on ",
-                        "**growth, new challenges, better alignment with your career goals**",
-                        ".  "
-                      ]
+                      "text": "new challenges",
+                      "color": "purple"
                     },
+                    ", ",
                     {
-                      "parts": [
-                        "If you were let go, cite ",
-                        "**external factors**",
-                        " (layoff, merger) and keep the tone factual."
-                      ]
-                    }
+                      "text": "better alignment with your career goals",
+                      "color": "purple"
+                    },
+                    "."
+                  ]
+                },
+                {
+                  "parts": [
+                    "If you were let go, cite ",
+                    {
+                      "text": "external factors",
+                      "color": "green"
+                    },
+                    " (",
+                    {
+                      "text": "layoff",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "merger",
+                      "color": "green"
+                    },
+                    ") and ",
+                    {
+                      "text": "keep the tone factual",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
-              "text": "Q6 – The “Silent Treatment”",
+              "text": "Q6 – The “{Silent Treatment}[blue]”",
               "parts": [
-                "Q6 – The “Silent Treatment”"
+                "Q6 – The “",
+                {
+                  "text": "Silent Treatment",
+                  "color": "blue"
+                },
+                "”"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " Interviewer sits ",
+                {
+                  "text": "silent",
+                  "color": "blue"
+                },
+                " after you answer; candidates ",
+                {
+                  "text": "panic and ramble",
+                  "color": "red"
+                },
+                " to fill the void.\n",
+                "**BEST ANSWER:**"
               ]
             },
             {
@@ -21425,37 +21614,20 @@
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Interviewer sits silent after you answer; candidates panic and ",
-                    "**ramble**",
-                    " to fill the void.  "
+                    {
+                      "text": "Remain silent for a moment",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
-                    {
-                      "parts": [
-                        "Remain ",
-                        "**silent**",
-                        " for a moment.  "
-                      ]
-                    },
-                    {
-                      "parts": [
-                        "Politely ask, ",
-                        "*“Is there anything else you’d like me to clarify on that point?”*"
-                      ]
-                    }
+                    "Politely ask, ",
+                    "*“{Is there anything else you’d like me to clarify on that point?}[green]”*"
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21465,42 +21637,56 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Stammer",
+                  "color": "red"
+                },
+                ", ",
+                {
+                  "text": "stumble",
+                  "color": "red"
+                },
+                ", or give a ",
+                {
+                  "text": "generic “I’m the best”",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Stammer, stumble, or give a generic “I’m the best”.  "
+                    {
+                      "text": "Review the job requirements you heard",
+                      "color": "yellow"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "For each, give a “",
                     {
-                      "parts": [
-                        "Review the ",
-                        "**job requirements**",
-                        " you heard.  "
-                      ]
+                      "text": "Because you need X, I have Y",
+                      "color": "green"
                     },
+                    "” statement with a ",
                     {
-                      "parts": [
-                        "For each, give a ",
-                        "**“Because you need X, I have Y”**",
-                        " statement with a ",
-                        "**specific accomplishment**",
-                        "."
-                      ]
-                    }
+                      "text": "specific accomplishment",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21510,48 +21696,67 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " Interviewer worries you’ll ",
+                {
+                  "text": "leave quickly",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "demand more pay",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Interviewer worries you’ll ",
-                    "**leave quickly**",
-                    " or demand more pay.  "
+                    "Frame ",
+                    {
+                      "text": "over‑qualification as advantage",
+                      "color": "green"
+                    },
+                    ": you can ",
+                    {
+                      "text": "contribute immediately",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "bring training value",
+                      "color": "purple"
+                    },
+                    ", and you’re ",
+                    {
+                      "text": "committed for the long term",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Stress that the ",
                     {
-                      "parts": [
-                        "Frame over‑qualification as ",
-                        "**advantage**",
-                        ": you can ",
-                        "**contribute immediately**",
-                        ", bring ",
-                        "**training value**",
-                        ", and you’re ",
-                        "**committed for the long term**",
-                        ".  "
-                      ]
+                      "text": "core work excites you",
+                      "color": "purple"
                     },
+                    ", not the ",
                     {
-                      "parts": [
-                        "Stress that ",
-                        "**the core work excites you**",
-                        ", not the title."
-                      ]
-                    }
+                      "text": "title",
+                      "color": "yellow"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21561,46 +21766,52 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Appear presumptuous",
+                  "color": "red"
+                },
+                " (naming promotions) or ",
+                {
+                  "text": "rudderless",
+                  "color": "red"
+                },
+                " (vague).\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Appear ",
-                    "**presumptuous**",
-                    " (naming promotions) or ",
-                    "**rudderless**",
-                    " (vague).  "
+                    "Emphasise ",
+                    {
+                      "text": "long‑term commitment to the company’s mission",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Explain that ",
                     {
-                      "parts": [
-                        "Emphasise ",
-                        "**long‑term commitment**",
-                        " to the ",
-                        "**company’s mission**",
-                        ".  "
-                      ]
+                      "text": "excellence in this role",
+                      "color": "purple"
                     },
+                    " will naturally generate ",
                     {
-                      "parts": [
-                        "Explain that ",
-                        "**excellence in this role will naturally generate future opportunities**",
-                        "."
-                      ]
-                    }
+                      "text": "future opportunities",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21610,42 +21821,56 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Reveal you’re not interested in the current role",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Reveal you’re ",
-                    "**not interested**",
-                    " in the current role.  "
+                    {
+                      "text": "Mirror the qualities of this employer",
+                      "color": "green"
+                    },
+                    " (",
+                    {
+                      "text": "culture",
+                      "color": "yellow"
+                    },
+                    ", ",
+                    {
+                      "text": "growth",
+                      "color": "yellow"
+                    },
+                    ", ",
+                    {
+                      "text": "industry leadership",
+                      "color": "yellow"
+                    },
+                    ")."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Explain why those qualities ",
                     {
-                      "parts": [
-                        "Mirror the ",
-                        "**qualities of this employer**",
-                        " (culture, growth, industry leadership).  "
-                      ]
+                      "text": "align with your personal career goals",
+                      "color": "purple"
                     },
-                    {
-                      "parts": [
-                        "Explain why those qualities ",
-                        "**align with your personal career goals**",
-                        "."
-                      ]
-                    }
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21655,40 +21880,60 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "No evidence of research",
+                  "color": "red"
+                },
+                " → “",
+                {
+                  "text": "I need a job.",
+                  "color": "red"
+                },
+                "”\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " No evidence of research → “I need a job.”  "
+                    {
+                      "text": "Cite specific sources",
+                      "color": "green"
+                    },
+                    " (",
+                    {
+                      "text": "annual report",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "recent news",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "product launch",
+                      "color": "green"
+                    },
+                    ")."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
                     {
-                      "parts": [
-                        "Cite ",
-                        "**specific sources**",
-                        " (annual report, recent news, product launch).  "
-                      ]
+                      "text": "Connect those points to how you can add value",
+                      "color": "purple"
                     },
-                    {
-                      "parts": [
-                        "Connect those points to ",
-                        "**how you can add value**",
-                        "."
-                      ]
-                    }
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21698,46 +21943,51 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " Interviewer gauges ",
+                {
+                  "text": "desperation",
+                  "color": "red"
+                },
+                "; you may ",
+                {
+                  "text": "look unwanted",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Interviewer gauges ",
-                    "**desperation**",
-                    "; you may look ",
-                    "**unwanted**",
-                    ".  "
+                    {
+                      "text": "Position yourself as a desired candidate",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Mention ",
                     {
-                      "parts": [
-                        "Position yourself as a ",
-                        "**desired candidate**",
-                        ".  "
-                      ]
+                      "text": "one or two other opportunities",
+                      "color": "green"
                     },
+                    " in broad terms, then stress why ",
                     {
-                      "parts": [
-                        "Mention ",
-                        "**one or two other opportunities**",
-                        " in broad terms, then stress ",
-                        "**why this role is your top choice**",
-                        "."
-                      ]
-                    }
+                      "text": "this role is your top choice",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21747,46 +21997,72 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Appear damaged goods",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "inactive",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Appear ",
-                    "**damaged goods**",
-                    " or ",
-                    "**inactive**",
-                    ".  "
+                    "Frame the ",
+                    {
+                      "text": "gap as a strategic pause",
+                      "color": "green"
+                    },
+                    " to find the ",
+                    {
+                      "text": "right fit",
+                      "color": "purple"
+                    },
+                    " (",
+                    {
+                      "text": "industry slowdown",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "personal development",
+                      "color": "purple"
+                    },
+                    ")."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Highlight any ",
                     {
-                      "parts": [
-                        "Frame the gap as a ",
-                        "**strategic pause**",
-                        " to find the ",
-                        "**right fit**",
-                        " (industry slowdown, personal development).  "
-                      ]
+                      "text": "training",
+                      "color": "purple"
                     },
+                    ", ",
                     {
-                      "parts": [
-                        "Highlight any ",
-                        "**training, consulting, volunteering**",
-                        " done during that time."
-                      ]
-                    }
+                      "text": "consulting",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "volunteering",
+                      "color": "purple"
+                    },
+                    " done during that time."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21796,38 +22072,41 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Invitation to criticise",
+                  "color": "red"
+                },
+                "; you may ",
+                {
+                  "text": "appear disloyal",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Invitation to ",
-                    "**criticise**",
-                    "; you may appear ",
-                    "**disloyal**",
-                    ".  "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
                     {
-                      "parts": [
-                        "**Never negative**",
-                        " – speak only of ",
-                        "**positive aspects**",
-                        " you genuinely appreciate."
-                      ]
-                    }
+                      "text": "Never negative",
+                      "color": "green"
+                    },
+                    " – speak only of ",
+                    {
+                      "text": "positive aspects you genuinely appreciate",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21837,42 +22116,62 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Pretending you read books you haven’t",
+                  "color": "red"
+                },
+                "; ",
+                {
+                  "text": "looking unread",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Pretending you read books you haven’t; looking ",
-                    "**unread**",
-                    ".  "
+                    "List ",
+                    {
+                      "text": "2‑3 recent professional books",
+                      "color": "green"
+                    },
+                    " (",
+                    {
+                      "text": "leadership",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "industry trends",
+                      "color": "purple"
+                    },
+                    ")."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Add ",
                     {
-                      "parts": [
-                        "List ",
-                        "**2‑3 recent professional books**",
-                        " (leadership, industry trends).  "
-                      ]
+                      "text": "one bestseller fiction",
+                      "color": "green"
                     },
+                    " to show you’re ",
                     {
-                      "parts": [
-                        "Add ",
-                        "**one bestseller fiction**",
-                        " to show you’re well‑rounded."
-                      ]
-                    }
+                      "text": "well‑rounded",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21882,44 +22181,57 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Admitting a serious flaw",
+                  "color": "red"
+                },
+                " that could ",
+                {
+                  "text": "hurt you",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Admitting a ",
-                    "**serious flaw**",
-                    " that could hurt you.  "
+                    "Open with a ",
+                    {
+                      "text": "track record of strong performance",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Present a ",
                     {
-                      "parts": [
-                        "Open with a ",
-                        "**track record of strong performance**",
-                        ".  "
-                      ]
+                      "text": "minor criticism",
+                      "color": "green"
                     },
+                    ", describe ",
                     {
-                      "parts": [
-                        "Present a ",
-                        "**minor criticism**",
-                        ", describe what you learned, and show how it ",
-                        "**made you stronger**",
-                        "."
-                      ]
-                    }
+                      "text": "what you learned",
+                      "color": "purple"
+                    },
+                    ", and show how it ",
+                    {
+                      "text": "made you stronger",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -21929,50 +22241,91 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Suggests you’ll neglect work",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "don’t fit the culture",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Suggests you’ll ",
-                    "**neglect work**",
-                    " or don’t fit the culture.  "
+                    "Choose ",
+                    {
+                      "text": "interests that show balance",
+                      "color": "purple"
+                    },
+                    " and ",
+                    {
+                      "text": "fit the company culture",
+                      "color": "yellow"
+                    },
+                    " (e.g., ",
+                    {
+                      "text": "marathon → stamina",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "volunteering → teamwork",
+                      "color": "purple"
+                    },
+                    ")."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Emphasise they ",
                     {
-                      "parts": [
-                        "Choose interests that ",
-                        "**show balance**",
-                        " and ",
-                        "**fit the company culture**",
-                        " (e.g., marathon → stamina, volunteering → teamwork).  "
-                      ]
+                      "text": "won’t interfere with job performance",
+                      "color": "green"
                     },
-                    {
-                      "parts": [
-                        "Emphasise they ",
-                        "**won’t interfere with job performance**",
-                        "."
-                      ]
-                    }
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
-              "text": "Q18 – The “Fatal Flaw” question",
+              "text": "Q18 – The “{Fatal Flaw}[blue]” question",
               "parts": [
-                "Q18 – The “Fatal Flaw” question"
+                "Q18 – The “",
+                {
+                  "text": "Fatal Flaw",
+                  "color": "blue"
+                },
+                "” question"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " Interviewer probes a ",
+                {
+                  "text": "deal‑breaker",
+                  "color": "red"
+                },
+                "; ",
+                {
+                  "text": "defensive answers raise alarm",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
               ]
             },
             {
@@ -21980,41 +22333,34 @@
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Interviewer probes a ",
-                    "**deal‑breaker**",
-                    "; defensive answers raise alarm.  "
+                    {
+                      "text": "Own the flaw honestly",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "don’t apologize",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Show how the flaw ",
                     {
-                      "parts": [
-                        "**Own the flaw honestly**",
-                        ", ",
-                        "**don’t apologize**",
-                        ".  "
-                      ]
+                      "text": "spurred you to over‑perform",
+                      "color": "purple"
                     },
+                    ", backing it with ",
                     {
-                      "parts": [
-                        "Show how the flaw ",
-                        "**spurred you to over‑perform**",
-                        ", backing it with ",
-                        "**tangible results**",
-                        "."
-                      ]
-                    }
+                      "text": "tangible results",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22024,46 +22370,47 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Risk of sounding patronising or insensitive",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Risk of sounding ",
-                    "**patronising**",
-                    " or ",
-                    "**insensitive**",
-                    ".  "
+                    "State you ",
+                    {
+                      "text": "respect merit‑based hiring",
+                      "color": "green"
+                    },
+                    "; ",
+                    {
+                      "text": "age/gender are irrelevant to performance",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Highlight a ",
                     {
-                      "parts": [
-                        "State you ",
-                        "**respect merit‑based hiring**",
-                        "; age/gender are ",
-                        "**irrelevant**",
-                        " to performance.  "
-                      ]
+                      "text": "respectful, inclusive attitude",
+                      "color": "purple"
                     },
-                    {
-                      "parts": [
-                        "Highlight a ",
-                        "**respectful, inclusive attitude**",
-                        " toward all colleagues."
-                      ]
-                    }
+                    " toward all colleagues."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22073,46 +22420,61 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Either spill secrets",
+                  "color": "red"
+                },
+                " (",
+                {
+                  "text": "lose trust",
+                  "color": "red"
+                },
+                ") or ",
+                {
+                  "text": "refuse outright",
+                  "color": "red"
+                },
+                " (",
+                {
+                  "text": "seem uncooperative",
+                  "color": "red"
+                },
+                ").\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Either ",
-                    "**spill secrets**",
-                    " (lose trust) or ",
-                    "**refuse outright**",
-                    " (seem uncooperative).  "
+                    {
+                      "text": "Politely refuse to disclose any confidential data",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Explain you’re ",
                     {
-                      "parts": [
-                        "Politely refuse to disclose any ",
-                        "**confidential data**",
-                        ".  "
-                      ]
+                      "text": "protecting integrity",
+                      "color": "purple"
                     },
+                    " and instead share ",
                     {
-                      "parts": [
-                        "Explain you’re protecting ",
-                        "**integrity**",
-                        " and instead share ",
-                        "**public achievements**",
-                        " that illustrate your value."
-                      ]
-                    }
+                      "text": "public achievements",
+                      "color": "purple"
+                    },
+                    " that illustrate your value."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22122,35 +22484,37 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " Tests ",
+                {
+                  "text": "loyalty vs integrity",
+                  "color": "blue"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Tests ",
-                    "**loyalty vs integrity**",
-                    ".  "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "“I would never do anything that ",
                     {
-                      "parts": [
-                        "“I would never do anything that harms the company. ",
-                        "**Integrity is non‑negotiable**",
-                        ".”"
-                      ]
-                    }
+                      "text": "harms the company",
+                      "color": "red"
+                    },
+                    ". ",
+                    {
+                      "text": "Integrity is non‑negotiable",
+                      "color": "purple"
+                    },
+                    ".”"
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22160,37 +22524,47 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Reveals regrets",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "negative self‑assessment",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Reveals ",
-                    "**regrets**",
-                    " or ",
-                    "**negative self‑assessment**",
-                    ".  "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "“I’m ",
                     {
-                      "parts": [
-                        "“I’m happy with my journey; ",
-                        "**I wouldn’t change a thing**",
-                        ". Every experience taught me something valuable.”"
-                      ]
-                    }
+                      "text": "happy with my journey",
+                      "color": "purple"
+                    },
+                    "; I ",
+                    {
+                      "text": "wouldn’t change a thing",
+                      "color": "green"
+                    },
+                    ". Every experience ",
+                    {
+                      "text": "taught me something valuable",
+                      "color": "purple"
+                    },
+                    ".”"
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22200,44 +22574,57 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Lets you admit underperformance",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Lets you admit ",
-                    "**underperformance**",
-                    ".  "
+                    "Acknowledge that ",
+                    {
+                      "text": "everyone can improve",
+                      "color": "fuchsia"
+                    },
+                    ", but stress you ",
+                    {
+                      "text": "don’t recall any major shortfall",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "If pressed, cite ",
                     {
-                      "parts": [
-                        "Acknowledge that ",
-                        "**everyone can improve**",
-                        ", but stress you ",
-                        "**don’t recall any major shortfall**",
-                        ".  "
-                      ]
+                      "text": "external factors",
+                      "color": "green"
                     },
+                    " (",
                     {
-                      "parts": [
-                        "If pressed, cite ",
-                        "**external factors**",
-                        " (market shift, restructuring) beyond your control."
-                      ]
-                    }
+                      "text": "market shift",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "restructuring",
+                      "color": "green"
+                    },
+                    ") beyond your control."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22247,34 +22634,51 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Simple",
+                  "color": "blue"
+                },
+                "; candidate may give a ",
+                {
+                  "text": "vague answer",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Simple; candidate may give a vague answer.  "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
                     {
-                      "parts": [
-                        "**Absolutely**",
-                        " – give a ",
-                        "**specific high‑pressure project**",
-                        " you delivered successfully (e.g., tight deadline, crisis)."
-                      ]
-                    }
+                      "text": "Absolutely",
+                      "color": "green"
+                    },
+                    " – give a ",
+                    {
+                      "text": "specific high‑pressure project you delivered successfully",
+                      "color": "purple"
+                    },
+                    " (e.g., ",
+                    {
+                      "text": "tight deadline",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "crisis",
+                      "color": "purple"
+                    },
+                    ")."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22284,46 +22688,67 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Appear hot‑headed",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "whining",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Appear ",
-                    "**hot‑headed**",
-                    " or ",
-                    "**whining**",
-                    ".  "
+                    "Emphasise you’re ",
+                    {
+                      "text": "even‑tempered",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Identify ",
                     {
-                      "parts": [
-                        "Emphasise you’re ",
-                        "**even‑tempered**",
-                        ".  "
-                      ]
+                      "text": "genuine irritants",
+                      "color": "green"
                     },
+                    " (e.g., ",
                     {
-                      "parts": [
-                        "Identify genuine irritants (e.g., ",
-                        "**lack of effort, dishonesty, negativity**",
-                        ") and note you handle them ",
-                        "**constructively**",
-                        "."
-                      ]
-                    }
+                      "text": "lack of effort",
+                      "color": "red"
+                    },
+                    ", ",
+                    {
+                      "text": "dishonesty",
+                      "color": "red"
+                    },
+                    ", ",
+                    {
+                      "text": "negativity",
+                      "color": "red"
+                    },
+                    ") and note you ",
+                    {
+                      "text": "handle them constructively",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22333,37 +22758,52 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " May seem ",
+                {
+                  "text": "money‑driven",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "unambitious",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " May seem ",
-                    "**money‑driven**",
-                    " or ",
-                    "**unambitious**",
-                    ".  "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Acknowledge ",
                     {
-                      "parts": [
-                        "Acknowledge money matters but stress you ",
-                        "**prioritise meaningful work, culture fit, and growth**",
-                        " over salary alone."
-                      ]
-                    }
+                      "text": "money matters",
+                      "color": "fuchsia"
+                    },
+                    " but stress you ",
+                    {
+                      "text": "prioritise meaningful work",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "culture fit",
+                      "color": "purple"
+                    },
+                    ", and ",
+                    {
+                      "text": "growth over salary alone",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22373,40 +22813,77 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Irrelevant",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "cliché answer",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Irrelevant or cliché answer.  "
+                    "Name ",
+                    {
+                      "text": "2‑3 mentors/figures",
+                      "color": "green"
+                    },
+                    " (e.g., ",
+                    {
+                      "text": "former CEO",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "historical leader",
+                      "color": "purple"
+                    },
+                    ")."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Briefly cite the ",
                     {
-                      "parts": [
-                        "Name ",
-                        "**2‑3 mentors/figures**",
-                        " (e.g., former CEO, historical leader).  "
-                      ]
+                      "text": "quality you adopted",
+                      "color": "purple"
                     },
+                    " (",
                     {
-                      "parts": [
-                        "Briefly cite ",
-                        "**the quality you adopted**",
-                        " (vision, resilience, integrity) and how it shapes your work."
-                      ]
-                    }
+                      "text": "vision",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "resilience",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "integrity",
+                      "color": "purple"
+                    },
+                    ") and how it ",
+                    {
+                      "text": "shapes your work",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22416,39 +22893,57 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Unprepared",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "irrelevant story",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Unprepared or irrelevant story.  "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Summarise the ",
                     {
-                      "parts": [
-                        "Summarise the ",
-                        "**context**",
-                        ", ",
-                        "**options**",
-                        ", ",
-                        "**decision process**",
-                        ", and ",
-                        "**positive outcome**",
-                        " in 2‑3 concise sentences."
-                      ]
-                    }
+                      "text": "context",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "options",
+                      "color": "green"
+                    },
+                    ", ",
+                    {
+                      "text": "decision process",
+                      "color": "green"
+                    },
+                    ", and ",
+                    {
+                      "text": "positive outcome",
+                      "color": "green"
+                    },
+                    " in ",
+                    {
+                      "text": "2‑3 concise sentences",
+                      "color": "fuchsia"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22458,37 +22953,42 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Associates you with boring work",
+                  "color": "red"
+                },
+                "; you may ",
+                {
+                  "text": "sound disengaged",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Associates you with ",
-                    "**boring work**",
-                    "; you may sound disengaged.  "
-                  ]
-                },
-                {
-                  "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "State you ",
                     {
-                      "parts": [
-                        "State you ",
-                        "**never get bored**",
-                        "; you always find ",
-                        "**challenge or learning**",
-                        " in every role."
-                      ]
-                    }
+                      "text": "never get bored",
+                      "color": "purple"
+                    },
+                    "; you always find ",
+                    {
+                      "text": "challenge or learning",
+                      "color": "purple"
+                    },
+                    " in every role."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22498,44 +22998,47 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Reveals attendance problems",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Reveals ",
-                    "**attendance problems**",
-                    ".  "
+                    "If your record is clean, ",
+                    {
+                      "text": "highlight your perfect attendance",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "If there was a gap, frame it as an ",
                     {
-                      "parts": [
-                        "If your record is clean, highlight your ",
-                        "**perfect attendance**",
-                        ".  "
-                      ]
+                      "text": "exceptional, resolved circumstance",
+                      "color": "green"
                     },
+                    " and stress your ",
                     {
-                      "parts": [
-                        "If there was a gap, frame it as an ",
-                        "**exceptional, resolved circumstance**",
-                        " and stress your ",
-                        "**overall reliability**",
-                        "."
-                      ]
-                    }
+                      "text": "overall reliability",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22545,42 +23048,52 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Appears a know‑it‑all",
+                  "color": "red"
+                },
+                "; ",
+                {
+                  "text": "risk of over‑promising",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Appears a ",
-                    "**know‑it‑all**",
-                    "; risk of over‑promising.  "
+                    "State you would first ",
+                    {
+                      "text": "listen and assess",
+                      "color": "green"
+                    },
+                    " before recommending changes."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Mention you’d ",
                     {
-                      "parts": [
-                        "State you would ",
-                        "**first listen and assess**",
-                        " before recommending changes.  "
-                      ]
+                      "text": "meet key stakeholders",
+                      "color": "green"
                     },
+                    " to understand ",
                     {
-                      "parts": [
-                        "Mention you’d ",
-                        "**meet key stakeholders**",
-                        " to understand current processes."
-                      ]
-                    }
+                      "text": "current processes",
+                      "color": "yellow"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22590,49 +23103,66 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Make‑or‑break question",
+                  "color": "red"
+                },
+                "; can ",
+                {
+                  "text": "expose a deal‑breaker",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Make‑or‑break question; can expose a ",
-                    "**deal‑breaker**",
-                    ".  "
+                    {
+                      "text": "Acknowledge the importance of the skill",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Explain how your ",
                     {
-                      "parts": [
-                        "Acknowledge the ",
-                        "**importance**",
-                        " of the skill.  "
-                      ]
+                      "text": "other strengths compensate",
+                      "color": "purple"
                     },
+                    " (",
                     {
-                      "parts": [
-                        "Explain how your ",
-                        "**other strengths compensate**",
-                        " (quick learner, related successes).  "
-                      ]
+                      "text": "quick learner",
+                      "color": "purple"
                     },
+                    ", ",
                     {
-                      "parts": [
-                        "Show the ",
-                        "**overall fit**",
-                        " remains strong."
-                      ]
-                    }
+                      "text": "related successes",
+                      "color": "purple"
+                    },
+                    ")."
+                  ]
+                },
+                {
+                  "parts": [
+                    "Show the ",
+                    {
+                      "text": "overall fit remains strong",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22642,42 +23172,56 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " “",
+                {
+                  "text": "No way",
+                  "color": "red"
+                },
+                "” → ",
+                {
+                  "text": "immediate rejection",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " “No way” → immediate rejection.  "
+                    {
+                      "text": "Show flexibility",
+                      "color": "purple"
+                    },
+                    ", ask about the ",
+                    {
+                      "text": "company’s expectations",
+                      "color": "yellow"
+                    },
+                    " (“",
+                    {
+                      "text": "What’s the norm for top performers here?",
+                      "color": "yellow"
+                    },
+                    "”)."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Balance willingness with a ",
                     {
-                      "parts": [
-                        "Show ",
-                        "**flexibility**",
-                        ", ask about the ",
-                        "**company’s expectations**",
-                        " (“What’s the norm for top performers here?”).  "
-                      ]
+                      "text": "brief note on personal life if needed",
+                      "color": "fuchsia"
                     },
-                    {
-                      "parts": [
-                        "Balance willingness with a brief note on ",
-                        "**personal life**",
-                        " if needed."
-                      ]
-                    }
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22687,40 +23231,60 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Flat “no” shuts the door",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Flat “no” shuts the door.  "
+                    {
+                      "text": "Express openness",
+                      "color": "purple"
+                    },
+                    " for the ",
+                    {
+                      "text": "right opportunity",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
                     {
-                      "parts": [
-                        "Express ",
-                        "**openness for the right opportunity**",
-                        ".  "
-                      ]
+                      "text": "Request details",
+                      "color": "green"
                     },
+                    " (",
                     {
-                      "parts": [
-                        "Request ",
-                        "**details**",
-                        " (locations, frequency) to demonstrate pragmatism."
-                      ]
-                    }
+                      "text": "locations",
+                      "color": "yellow"
+                    },
+                    ", ",
+                    {
+                      "text": "frequency",
+                      "color": "yellow"
+                    },
+                    ") to demonstrate ",
+                    {
+                      "text": "pragmatism",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22730,44 +23294,51 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Boasting may make you seem tyrannical",
+                  "color": "red"
+                },
+                "; ",
+                {
+                  "text": "denying may look weak",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Boasting may make you seem ",
-                    "**tyrannical**",
-                    "; denying may look weak.  "
+                    {
+                      "text": "Outline a hire‑right, fire‑last philosophy",
+                      "color": "green"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Emphasise you ",
                     {
-                      "parts": [
-                        "Outline a ",
-                        "**hire‑right, fire‑last philosophy**",
-                        ".  "
-                      ]
+                      "text": "fire only as a last resort",
+                      "color": "green"
                     },
+                    ", handling it ",
                     {
-                      "parts": [
-                        "Emphasise you ",
-                        "**fire only as a last resort**",
-                        ", handling it ",
-                        "**decisively and respectfully**",
-                        "."
-                      ]
-                    }
+                      "text": "decisively and respectfully",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22777,44 +23348,57 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Signals job‑hopping",
+                  "color": "red"
+                },
+                "; employer fears ",
+                {
+                  "text": "instability",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Signals ",
-                    "**job‑hopping**",
-                    "; employer fears instability.  "
+                    "Frame each move as ",
+                    {
+                      "text": "career growth",
+                      "color": "purple"
+                    },
+                    " or ",
+                    {
+                      "text": "strategic shift",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Highlight ",
                     {
-                      "parts": [
-                        "Frame each move as ",
-                        "**career growth or strategic shift**",
-                        ".  "
-                      ]
+                      "text": "longer tenures later in your career",
+                      "color": "purple"
                     },
+                    " and express a ",
                     {
-                      "parts": [
-                        "Highlight ",
-                        "**longer tenures later in your career**",
-                        " and express a ",
-                        "**commitment to a lasting role**",
-                        " now."
-                      ]
-                    }
+                      "text": "commitment to a lasting role now",
+                      "color": "purple"
+                    },
+                    "."
                   ]
                 }
               ]
-            },
-            {
-              "type": "hr"
             },
             {
               "type": "h2",
@@ -22824,92 +23408,155 @@
               ]
             },
             {
+              "type": "p",
+              "parts": [
+                "**TRAP:**",
+                " ",
+                {
+                  "text": "Not prepared",
+                  "color": "red"
+                },
+                " → answer sounds ",
+                {
+                  "text": "generic",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "culturally mismatched",
+                  "color": "red"
+                },
+                ".\n",
+                "**BEST ANSWER:**"
+              ]
+            },
+            {
               "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**TRAP:**",
-                    " Not prepared → answer sounds generic or culturally mismatched.  "
+                    "Identify ",
+                    {
+                      "text": "3‑6 core qualities",
+                      "color": "green"
+                    },
+                    " for each role (e.g., for a manager: ",
+                    {
+                      "text": "vision",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "coaching",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "accountability",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "communication",
+                      "color": "purple"
+                    },
+                    ", ",
+                    {
+                      "text": "empathy",
+                      "color": "purple"
+                    },
+                    ")."
                   ]
                 },
                 {
                   "parts": [
-                    "**BEST ANSWER:**",
-                    "  "
-                  ],
-                  "subItems": [
+                    "Deliver a ",
                     {
-                      "parts": [
-                        "Identify ",
-                        "**3‑6 core qualities**",
-                        " for each role (e.g., for a manager: vision, coaching, accountability, communication, empathy).  "
-                      ]
+                      "text": "concise bullet list",
+                      "color": "fuchsia"
                     },
+                    " tying those qualities to the ",
                     {
-                      "parts": [
-                        "Deliver a ",
-                        "**concise bullet list**",
-                        " tying those qualities to the ",
-                        "**company’s values**",
-                        "."
-                      ]
-                    }
+                      "text": "company’s values",
+                      "color": "yellow"
+                    },
+                    "."
                   ]
                 }
               ]
             },
             {
-              "type": "hr"
-            },
-            {
-              "type": "h3",
+              "type": "h2",
               "text": "How to use this sheet",
               "parts": [
                 "How to use this sheet"
               ]
             },
             {
-              "type": "ol",
+              "type": "ul",
               "items": [
                 {
                   "parts": [
-                    "**Memorise the structure**",
-                    " (Trap → Best Answer).  "
+                    {
+                      "text": "Memorise the structure",
+                      "color": "fuchsia"
+                    },
+                    " (",
+                    {
+                      "text": "Trap",
+                      "color": "red"
+                    },
+                    " → ",
+                    {
+                      "text": "Best Answer",
+                      "color": "green"
+                    },
+                    ")."
                   ]
                 },
                 {
                   "parts": [
-                    "**Insert your own metrics, stories, and company‑specific details**",
-                    ".  "
+                    {
+                      "text": "Insert your own metrics, stories, and company‑specific details",
+                      "color": "fuchsia"
+                    },
+                    "."
                   ]
                 },
                 {
                   "parts": [
-                    "**Rehearse aloud**",
-                    " (keep each answer ≤ 2 minutes).  "
+                    {
+                      "text": "Rehearse aloud",
+                      "color": "fuchsia"
+                    },
+                    " (",
+                    {
+                      "text": "keep each answer ≤ 2 minutes",
+                      "color": "fuchsia"
+                    },
+                    ")."
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Good luck",
+                      "color": "fuchsia"
+                    },
+                    "—armed with ",
+                    {
+                      "text": "traps",
+                      "color": "red"
+                    },
+                    " and ",
+                    {
+                      "text": "winning answers",
+                      "color": "green"
+                    },
+                    " you’ll sail through! 🚀"
                   ]
                 }
               ]
-            },
-            {
-              "type": "p",
-              "parts": [
-                "Good luck—armed with traps and winning answers you’ll sail through! 🚀"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "ds",
-          "title": "ed",
-          "content": [
-            {
-              "type": "h2",
-              "text": "ed"
-            },
-            {
-              "type": "p",
-              "text": "Content for this topic is coming soon."
             }
           ]
         }
