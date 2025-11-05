@@ -8468,7 +8468,7 @@
         },
         {
           "id": "1",
-          "title": "1",
+          "title": "Interview Questions ",
           "content": [
             {
               "type": "h1",
@@ -9614,6 +9614,1524 @@
                   "color": "blue"
                 },
                 " interview with confidence—practice with Thinkcloudly’s simple and effective questions!"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "19",
+          "title": "CyberDefender Cheat Sheet Forensics",
+          "content": [
+            {
+              "type": "h1",
+              "text": "Certified CyberDefender Cheat Sheet {Forensics}[blue]",
+              "parts": [
+                "Certified CyberDefender Cheat Sheet ",
+                {
+                  "text": "Forensics",
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Important Artifacts",
+              "parts": [
+                "Important Artifacts"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| Artifact | Path | Tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "HKEY_LOCAL_MACHINE",
+                  "color": "purple"
+                },
+                "/",
+                {
+                  "text": "SYSTEM",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "C:\\Windows\\System32\\config\\SYSTEM",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "HKEY_LOCAL_MACHINE",
+                  "color": "purple"
+                },
+                "/",
+                {
+                  "text": "SOFTWARE",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "C:\\Windows\\System32\\config\\SOFTWARE",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "HKEY_USERS",
+                  "color": "purple"
+                },
+                " | ",
+                {
+                  "text": "C:\\Windows\\System32\\config\\SAM",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "HKEY_CURRENT_USER",
+                  "color": "purple"
+                },
+                " | ",
+                {
+                  "text": "C:\\Users<USER>\\NTUSER.dat",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "C:\\Users<user>\\Local Settings\\Application Data\\Microsoft\\Windows\\UsrClass.dat",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Amcache.hve",
+                  "color": "fuchsia"
+                },
+                " | ",
+                {
+                  "text": "C:\\Windows\\appcompat\\Programs\\Amcache.hve",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "SECURITY",
+                  "color": "red"
+                },
+                " log | ",
+                {
+                  "text": "C:\\Windows\\winevt\\Logs\\Security.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Event logs Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "SYSTEM",
+                  "color": "red"
+                },
+                " log | ",
+                {
+                  "text": "C:\\Windows\\winevt\\Logs\\SYSTEM.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Event logs Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Application",
+                  "color": "red"
+                },
+                " log | ",
+                {
+                  "text": "C:\\Windows\\winevt\\Logs\\Application.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Event logs Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "TaskScheduler Operational",
+                  "color": "red"
+                },
+                " log | ",
+                {
+                  "text": "Microsoft-Windows-TaskScheduler%4Operational.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Event Log Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "System Information",
+              "parts": [
+                "System Information"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Windows version and installation date",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Computer name",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\ControlSet001\\Control\\ComputerName\\ComputerName",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Timezone",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\ControlSet001\\Control\\TimeZoneInformation",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Network Information",
+              "parts": [
+                "Network Information"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Identify physical cards",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\NetworkCards",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Identify interface configuration",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\ControlSet001\\Services\\Tcpip\\Parameters\\Interfaces",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Registry Explorer",
+                  "color": "green"
+                },
+                " / ",
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Connections History",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\NetworkList\\Signatures\\Unmanaged",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\NetworkList\\Profiles",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Microsoft-Windows-WLAN-AutoConfig%4Operational.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "WifiHistoryView",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Users Information",
+              "parts": [
+                "Users Information"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Username, creation date, login date, SIDSAM",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SAM",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Login, logout, deletion, creation",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "Security.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "EventLog Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Relevant Event IDs:**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "4624",
+                      "color": "yellow"
+                    },
+                    " -> Successful logon event"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "4625",
+                      "color": "yellow"
+                    },
+                    " -> Failed logon event"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "4634",
+                      "color": "yellow"
+                    },
+                    " -> Session terminated"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "4647",
+                      "color": "yellow"
+                    },
+                    " -> User initiated logoff"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "4672",
+                      "color": "yellow"
+                    },
+                    " -> Special privilege logon"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "4648",
+                      "color": "yellow"
+                    },
+                    " -> User run program as another user (Runas administrator)"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "4720",
+                      "color": "yellow"
+                    },
+                    "/",
+                    {
+                      "text": "4726",
+                      "color": "yellow"
+                    },
+                    " -> Account creation/deletion"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "File Activities - what happened?",
+              "parts": [
+                "File Activities - what happened?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "File name, path, timestamps, actions",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "$MFT",
+                  "color": "fuchsia"
+                },
+                ", ",
+                {
+                  "text": "$LogFile",
+                  "color": "fuchsia"
+                },
+                ", ",
+                {
+                  "text": "$UsnJrnl:$J",
+                  "color": "fuchsia"
+                },
+                " | ",
+                {
+                  "text": "NTFS Log Tracker",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Information about deleted files",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "$I30INDX",
+                  "color": "fuchsia"
+                },
+                " | ",
+                {
+                  "text": "I30INDXRipper",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "File Activities - who did it?",
+              "parts": [
+                "File Activities - who did it?"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Failed/Successful object access",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "Security.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "EventLog Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Relevant Event IDs:**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "4656",
+                      "color": "yellow"
+                    },
+                    " -> User tried to access an object"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "4660",
+                      "color": "yellow"
+                    },
+                    " -> Object was deleted"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "4663",
+                      "color": "yellow"
+                    },
+                    " -> User accessed the object successfully"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "4658",
+                      "color": "yellow"
+                    },
+                    " -> The user closed the opened object (file)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Recently used files/folders",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "NTUSER.dat",
+                  "color": "fuchsia"
+                },
+                " <br> ",
+                {
+                  "text": "Software\\Microsoft\\Office\\15.0<Office application>\\File MRU",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Software\\Microsoft\\Office\\15.0<Office application>\\Place MRU",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ComDlg32\\OpenSavePidlMRU*",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\RecentDocs",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\RunMRU",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Accessed folders",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "ShellBags",
+                  "color": "fuchsia"
+                },
+                " <br> ",
+                {
+                  "text": "NTUSER.dat",
+                  "color": "fuchsia"
+                },
+                " <br> ",
+                {
+                  "text": "USRCLASS.dat",
+                  "color": "fuchsia"
+                },
+                " | ",
+                {
+                  "text": "Shellbags Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Accessed files, its path, metadata, timestamps, drive letter",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "LNK files",
+                  "color": "fuchsia"
+                },
+                " <br> ",
+                {
+                  "text": "C:\\Users<User>\\Appdata\\Roaming\\Microsoft\\Windows\\Recent",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "C:\\Users<User>\\Desktop",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "C:\\Users<User>\\AppData\\Roaming\\Microsoft\\Office\\Recent\\",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "LECmd",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Frequently accessed files",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "JumpLists",
+                  "color": "fuchsia"
+                },
+                " <br> ",
+                {
+                  "text": "C:\\Users<User>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\AutomaticDestinations",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "C:\\Users<User>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\CustomDestinations",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "JumpLists Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Connected Devices",
+              "parts": [
+                "Connected Devices"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Vendor ID, Product ID, Serial Number, Device name",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\ControlSet001\\Enum\\USB",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Serial Number, First connection time, last connection time, last removal time",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\ControlSet001\\USBSTOR",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "USB Label",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\ControlSet001\\Enum\\SWD\\WPDBUSENUM",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "GUID, TYPE, serial number",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\ControlSet001\\Control\\DeviceClasses",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "VolumeGUID, Volume letter, serial number",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\MountedDevices",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "SOFTWARE\\Microsoft\\Windows Portable Devices\\Devices",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "SOFTWARE\\Microsoft\\Windows Search\\VolumeInfoCache",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Serial number, first connection time",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "setupapi.dev.log",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "notepad++",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Serial number, connections times, drive letter",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM.evtx",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Security.evtx",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Microsoft-Windows-Ntfs%4Operational.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "EventLog Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Relevant Event IDs:**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "20001",
+                      "color": "yellow"
+                    },
+                    " -> A new device is installed"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "6416",
+                      "color": "yellow"
+                    },
+                    " -> New external device recognized"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Automation",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "Registry",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "EventLogs",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "setupapi.dev.log",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "USBDeviceForensics",
+                  "color": "green"
+                },
+                {
+                  "text": "USBDetective",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "h1",
+              "text": "Execution Activities",
+              "parts": [
+                "Execution Activities"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Windows Services executable, date added",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\CurrentControlSet\\Services",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "Regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Service installation time, Service crashed, stop/start service event",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "Security.evtx",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "SYSTEM.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Eventlog Explorer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "**Relevant Event IDs:**"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "4697",
+                      "color": "yellow"
+                    },
+                    " -> Service gets installed"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "7034",
+                      "color": "yellow"
+                    },
+                    " -> Service crashed"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "7035",
+                      "color": "yellow"
+                    },
+                    " -> Start/stop requests"
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "7036",
+                      "color": "yellow"
+                    },
+                    " -> Service stopped/started"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| What to look for? | Where to find it? | Investigation tool |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Autorun applications",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Run",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\RunOnce",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "NTUSER.DAT",
+                  "color": "fuchsia"
+                },
+                "{}\\Software\\Microsoft\\Windows\\CurrentVersion\\Run}[red] <br> ",
+                {
+                  "text": "NTUSER.DAT",
+                  "color": "fuchsia"
+                },
+                "{}\\Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce}[red] | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Frequently run programs, last time, number of execution",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "UserAssist",
+                  "color": "fuchsia"
+                },
+                " <br> ",
+                {
+                  "text": "NTUSER.DAT",
+                  "color": "fuchsia"
+                },
+                "{}\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\UserAssist}[red] | ",
+                {
+                  "text": "UserAssist by didier steven",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Run of older applications on newer system",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SYSTEM\\CurrentControlSet\\Control\\SessionManager\\AppCompatCache\\AppCompatCache",
+                  "color": "fuchsia"
+                },
+                " | ",
+                {
+                  "text": "ShimCache parser",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Files path, md5 & sha1 hash",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "Amcache.hve",
+                  "color": "fuchsia"
+                },
+                " | ",
+                {
+                  "text": "Amcache parser",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Background applications",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "BAM & DAM",
+                  "color": "fuchsia"
+                },
+                " <br> ",
+                {
+                  "text": "SYSTEM\\ControlSet001\\Services\\bam\\State\\UserSettings",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "RegistryExplorer",
+                  "color": "green"
+                },
+                {
+                  "text": "regrip",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Filename, size, run count, each run timestamp, path",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "Prefetch",
+                  "color": "fuchsia"
+                },
+                " <br> ",
+                {
+                  "text": "C:\\Windows\\Prefetch",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "WinPrefetchView",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Program network usage, memory usage",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "SRUM",
+                  "color": "fuchsia"
+                },
+                " <br> ",
+                {
+                  "text": "C:\\Windows\\System32\\sru\\SRUDB.dat",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "SrumECmd",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "| ",
+                {
+                  "text": "Scheduled task",
+                  "color": "blue"
+                },
+                " | ",
+                {
+                  "text": "C:\\Windows\\Tasks",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Software\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\Taskcache\\Tasks",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Software\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\Taskcache\\Tree",
+                  "color": "red"
+                },
+                " <br> ",
+                {
+                  "text": "Microsoft-Windows-TaskScheduler%4Operational.evtx",
+                  "color": "red"
+                },
+                " | ",
+                {
+                  "text": "Task Scheduler Viewer",
+                  "color": "green"
+                },
+                " |"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "© 2025 Interactive Guide. All rights res"
               ]
             }
           ]
