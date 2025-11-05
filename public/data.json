@@ -11450,6 +11450,715 @@
               ]
             }
           ]
+        },
+        {
+          "id": "3",
+          "title": "Governance, Risk, and Compliance",
+          "content": [
+            {
+              "type": "h1",
+              "text": "Governance, Risk, and Compliance",
+              "parts": [
+                "Governance, Risk, and Compliance"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Don't know where to start? Here's a simple breakdown of the ",
+                {
+                  "text": "core areas",
+                  "color": "blue"
+                },
+                " you'll work with, explained in beginner-friendly terms."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Risk Assessments",
+              "parts": [
+                "Risk Assessments"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Think of a ",
+                {
+                  "text": "risk assessment",
+                  "color": "blue"
+                },
+                " like being the \"what could go wrong?\" person for a business. A great example is assessing a room for ",
+                {
+                  "text": "fire hazards",
+                  "color": "red"
+                },
+                ". You ",
+                {
+                  "text": "identify the risks",
+                  "color": "red"
+                },
+                ", such as ",
+                {
+                  "text": "faulty wiring",
+                  "color": "red"
+                },
+                " or ",
+                {
+                  "text": "flammable materials",
+                  "color": "red"
+                },
+                ", and then you figure out how likely they are and how much ",
+                {
+                  "text": "damage",
+                  "color": "red"
+                },
+                " they'd cause. ",
+                {
+                  "text": "Controls",
+                  "color": "green"
+                },
+                " like ",
+                {
+                  "text": "fire alarms",
+                  "color": "green"
+                },
+                " and ",
+                {
+                  "text": "clearly marked exits",
+                  "color": "green"
+                },
+                " are put in place to ",
+                {
+                  "text": "mitigate these risks",
+                  "color": "green"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Why It Matters:",
+              "parts": [
+                "Why It Matters:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Companies live or die by how well they ",
+                {
+                  "text": "prepare for risks",
+                  "color": "green"
+                },
+                ". That's why every ",
+                {
+                  "text": "GRC job",
+                  "color": "blue"
+                },
+                " touches ",
+                {
+                  "text": "risk assessments",
+                  "color": "blue"
+                },
+                " in some way."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Policies & Controls",
+              "parts": [
+                "Policies & Controls"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Policies",
+                  "color": "blue"
+                },
+                " are the \"rules of the game,\" and ",
+                {
+                  "text": "controls",
+                  "color": "blue"
+                },
+                " are how you ",
+                {
+                  "text": "enforce them",
+                  "color": "green"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Think of it like this:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Policy:**",
+                    " \"All employees must wear safety gear inside the construction site.\""
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Control:**",
+                    " A supervisor checks daily that helmets and vests are worn before anyone enters the site."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "In ",
+                {
+                  "text": "GRC",
+                  "color": "blue"
+                },
+                ", it's:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "**Policy:**",
+                    " \"All ",
+                    {
+                      "text": "sensitive data",
+                      "color": "red"
+                    },
+                    " must be ",
+                    {
+                      "text": "classified and labeled",
+                      "color": "green"
+                    },
+                    " according to the company’s ",
+                    {
+                      "text": "data protection standards",
+                      "color": "green"
+                    },
+                    ".\""
+                  ]
+                },
+                {
+                  "parts": [
+                    "**Control:**",
+                    " A quarterly review ensures files are correctly labeled (e.g., Public, Internal, Confidential) and stored in the right locations."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Why It Matters:",
+              "parts": [
+                "Why It Matters:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Without ",
+                {
+                  "text": "controls",
+                  "color": "green"
+                },
+                ", ",
+                {
+                  "text": "policies",
+                  "color": "blue"
+                },
+                " are just pretty words on paper. ",
+                {
+                  "text": "GRC pros",
+                  "color": "blue"
+                },
+                " make sure those words actually ",
+                {
+                  "text": "work in real life",
+                  "color": "green"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Audits",
+              "parts": [
+                "Audits"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Think of an ",
+                {
+                  "text": "audit",
+                  "color": "blue"
+                },
+                " like a ",
+                {
+                  "text": "reality check",
+                  "color": "green"
+                },
+                " for promises. If a restaurant says, \"We follow strict hygiene standards,\" an ",
+                {
+                  "text": "audit",
+                  "color": "blue"
+                },
+                " is the process of ",
+                {
+                  "text": "verifying that claim",
+                  "color": "green"
+                },
+                ". A health inspector might check the kitchen, review cleaning logs, and confirm that food is stored at the right temperatures."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "In ",
+                {
+                  "text": "GRC",
+                  "color": "blue"
+                },
+                ", it’s the same idea. If a company claims, \"Only authorized staff can access our servers,\" an ",
+                {
+                  "text": "auditor",
+                  "color": "blue"
+                },
+                " looks at ",
+                {
+                  "text": "access logs",
+                  "color": "green"
+                },
+                " and ",
+                {
+                  "text": "system settings",
+                  "color": "green"
+                },
+                " to ",
+                {
+                  "text": "confirm it’s true",
+                  "color": "green"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Why It Matters:",
+              "parts": [
+                "Why It Matters:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Without ",
+                {
+                  "text": "proof",
+                  "color": "green"
+                },
+                ", companies risk ",
+                {
+                  "text": "fines",
+                  "color": "red"
+                },
+                ", ",
+                {
+                  "text": "lawsuits",
+                  "color": "red"
+                },
+                ", or ",
+                {
+                  "text": "losing customer trust",
+                  "color": "red"
+                },
+                ". ",
+                {
+                  "text": "Audits",
+                  "color": "blue"
+                },
+                " simply show you’re ",
+                {
+                  "text": "doing what you promised",
+                  "color": "green"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Compliance Frameworks",
+              "parts": [
+                "Compliance Frameworks"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                {
+                  "text": "Frameworks",
+                  "color": "blue"
+                },
+                " are the ",
+                {
+                  "text": "cheat sheets of GRC",
+                  "color": "yellow"
+                },
+                ". They provide a ",
+                {
+                  "text": "checklist",
+                  "color": "green"
+                },
+                " of what a company should be doing to ",
+                {
+                  "text": "protect its business",
+                  "color": "green"
+                },
+                " from ",
+                {
+                  "text": "security threats",
+                  "color": "red"
+                },
+                ". These aren't just rules made up by someone; they are ",
+                {
+                  "text": "widely accepted standards",
+                  "color": "green"
+                },
+                ". The scary acronyms like ",
+                {
+                  "text": "ISO",
+                  "color": "purple"
+                },
+                ", ",
+                {
+                  "text": "NIST",
+                  "color": "purple"
+                },
+                ", ",
+                {
+                  "text": "HIPAA",
+                  "color": "purple"
+                },
+                ", and ",
+                {
+                  "text": "PCI",
+                  "color": "purple"
+                },
+                " are just different versions of:"
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    "\"A complete guide for a ",
+                    {
+                      "text": "strong security program",
+                      "color": "green"
+                    },
+                    ".\""
+                  ]
+                },
+                {
+                  "parts": [
+                    "\"A full set of rules to ",
+                    {
+                      "text": "protect your business from cyber threats",
+                      "color": "green"
+                    },
+                    ".\""
+                  ]
+                },
+                {
+                  "parts": [
+                    "\"The best ",
+                    {
+                      "text": "checklist",
+                      "color": "green"
+                    },
+                    " for ",
+                    {
+                      "text": "keeping your company's digital information safe",
+                      "color": "green"
+                    },
+                    ".\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Beginner Tip:",
+              "parts": [
+                "Beginner Tip:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "You don’t need to ",
+                {
+                  "text": "memorize frameworks",
+                  "color": "yellow"
+                },
+                ". Start by reading one ",
+                {
+                  "text": "table of contents",
+                  "color": "yellow"
+                },
+                ". Just seeing the ",
+                {
+                  "text": "structure",
+                  "color": "yellow"
+                },
+                " makes ",
+                {
+                  "text": "frameworks",
+                  "color": "blue"
+                },
+                " way less intimidating."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Reporting & Communication",
+              "parts": [
+                "Reporting & Communication"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Here’s the secret: ",
+                {
+                  "text": "GRC",
+                  "color": "blue"
+                },
+                " isn’t just about rules. It’s about ",
+                {
+                  "text": "talking about rules",
+                  "color": "yellow"
+                },
+                " so people actually ",
+                {
+                  "text": "listen",
+                  "color": "yellow"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Tech teams speak in code. Executives speak in money. ",
+                {
+                  "text": "GRC",
+                  "color": "blue"
+                },
+                " sits in the middle and ",
+                {
+                  "text": "translates",
+                  "color": "yellow"
+                },
+                ": \"",
+                {
+                  "text": "SQL injection vulnerability",
+                  "color": "purple"
+                },
+                "\" — \"",
+                {
+                  "text": "Hackers could steal customer data and we’d lose millions",
+                  "color": "red"
+                },
+                ".\""
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Why It Matters:",
+              "parts": [
+                "Why It Matters:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "If you can ",
+                {
+                  "text": "simplify complex stuff",
+                  "color": "yellow"
+                },
+                " so non-tech people get it, you're ",
+                {
+                  "text": "golden",
+                  "color": "yellow"
+                },
+                ". That’s the ",
+                {
+                  "text": " #1 skill GRC recruiters look for",
+                  "color": "yellow"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "GRC: The Complete Picture",
+              "parts": [
+                "GRC: The Complete Picture"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Think of ",
+                {
+                  "text": "GRC",
+                  "color": "blue"
+                },
+                " like a puzzle: every piece matters."
+              ]
+            },
+            {
+              "type": "ul",
+              "items": [
+                {
+                  "parts": [
+                    {
+                      "text": "Risk assessments",
+                      "color": "blue"
+                    },
+                    " show you the ",
+                    {
+                      "text": "dangers ahead",
+                      "color": "red"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Audits",
+                      "color": "blue"
+                    },
+                    " reveal ",
+                    {
+                      "text": "what’s really happening",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Policies",
+                      "color": "blue"
+                    },
+                    " keep everyone ",
+                    {
+                      "text": "aligned",
+                      "color": "green"
+                    }
+                  ]
+                },
+                {
+                  "parts": [
+                    {
+                      "text": "Frameworks",
+                      "color": "blue"
+                    },
+                    " give you a ",
+                    {
+                      "text": "map to follow",
+                      "color": "green"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Without one of these pieces, the whole picture ",
+                {
+                  "text": "falls apart",
+                  "color": "red"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Advice:",
+              "parts": [
+                "Advice:"
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "When you're starting out, don’t worry about being an ",
+                {
+                  "text": "expert in everything",
+                  "color": "yellow"
+                },
+                ". Instead, ",
+                {
+                  "text": "focus on how each piece connects to the bigger picture",
+                  "color": "yellow"
+                },
+                ". That ",
+                {
+                  "text": "mindset",
+                  "color": "yellow"
+                },
+                " will ",
+                {
+                  "text": "set you apart",
+                  "color": "yellow"
+                },
+                " in any ",
+                {
+                  "text": "GRC role",
+                  "color": "blue"
+                },
+                "."
+              ]
+            },
+            {
+              "type": "p",
+              "parts": [
+                "Ready to build your own ",
+                {
+                  "text": "GRC career puzzle",
+                  "color": "fuchsia"
+                },
+                "? Join ",
+                {
+                  "text": "GRCMastery",
+                  "color": "fuchsia"
+                },
+                " and I’ll guide you step by step.\n",
+                {
+                  "text": "https://grcmastery.com",
+                  "color": "fuchsia"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
